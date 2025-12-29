@@ -2,6 +2,8 @@
 Webpage of Data Management course
 
 
+**<https://fmfi-compbio.github.io/mad>**
+
 # How to update webpage
 
 * Individual lectures and other text material are in folder [`notes`](./notes) in Markdown format wich is converted to html
