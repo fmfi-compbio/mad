@@ -138,29 +138,29 @@ e.g. from a database. The Python script below obtains data (here a
 constant, in practice by SQL query) and passes it to Jinja template
 `templates/main.html`.
 
-``` Python
-    from flask import Flask, render_template, g
-    import sqlite3
+``` python
+from flask import Flask, render_template, g
+import sqlite3
     
-    app = Flask(__name__)
+app = Flask(__name__)
     
-    def connect_db():
-        return sqlite3.connect('db.sqlite3')
+def connect_db():
+    return sqlite3.connect('db.sqlite3')
     
-    @app.before_request
-    def before_request():
-        g.db = connect_db()
+@app.before_request
+def before_request():
+    g.db = connect_db()
     
-    @app.teardown_request
-    def teardown_request(exception):
-        db = getattr(g, 'db', None)
-        if db is not None:
-            db.close()
+@app.teardown_request
+def teardown_request(exception):
+    db = getattr(g, 'db', None)
+    if db is not None:
+        db.close()
     
-    @app.route('/')
-    def home():
-        fruits = ["apple", "pear", "banana"]  // replace by SQL query
-        return render_template('main.html', fruits=fruits)
+@app.route('/')
+def home():
+    fruits = ["apple", "pear", "banana"]  // replace by SQL query
+    return render_template('main.html', fruits=fruits)
 ```
 
 The Jinja template `templates/main.html` uses a for-loop to insert items
@@ -168,15 +168,15 @@ from the list, each enclosed in quotes and followed by comma. Otherwise
 the rest of the page is as above.
 
 ``` jinja
-    <!doctype html>
-    <html>
-    <head>
-      <title>Fruits</title>
-    </head>
-    <body>
-      <div id="main">
-      </div>
-      <script type="text/javascript">
+<!doctype html>
+<html>
+  <head>
+    <title>Fruits</title>
+  </head>
+  <body>
+    <div id="main">
+    </div>
+    <script type="text/javascript">
         // an array of fruits (example data)
         fruits = [
         {% for fruit in fruits %}
@@ -195,7 +195,7 @@ the rest of the page is as above.
             document.getElementById('main').appendChild(newPar);
           }
         }
-      </script>
-    </body>
-    </html>
+    </script>
+  </body>
+</html>
 ```
