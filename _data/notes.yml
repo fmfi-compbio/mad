@@ -2,8 +2,8 @@
 # text sa pouzije na vrchu kazdej stranky pod menu
 # vacsinou dolezite oznamy
 notes: |
-  <strong>Grades</strong> from marked homeworks are on the server in file <tt>/grades/userid.txt</tt>
-  <strong>Dates of <a href="/mad/notes/Project.html">project</a> submission and <a href="/mad/notes/Rules.html#Oral_exam">oral exams</a>:</strong><br/><em>Early:</em> submit project Wednesday May 28 9:00am, oral exams Friday May 30 9:00am (limit 8 students).<br><em>Regular:</em> submit project Monday June 16, 9:00am, oral exams Thursday June 19 and 20 (estimated 9:00am-2:00pm, schedule will be published before exam).<br>Sign up for one the exam days in AIS before June 16, 9:30am.<br><em>Remedial</em> exams will take place in the last week of the exam period. Beware, there will not be much time to prepare a better project. Projects should be submitted as homeworks to <tt>/submit/project</tt>.
+  <strong>Grades</strong> from marked homeworks are on the server in file <tt>/grades/userid.txt</tt><br/>
+  <strong>Dates of <a href="/mad/notes/Project.html">project</a> submission and <a href="/mad/notes/Rules.html#Oral_exam">oral exams</a>:</strong><br/><em>Early:</em> submit project Wednesday May 28 9:00am, oral exams Friday May 30 9:00am (limit 8 students).<br><em>Regular:</em> submit project Monday June 16, 9:00am, oral exams Thursday June 19 and 20 (estimated 9:00am-2:00pm, schedule will be published before exam).<br>Sign up for one the exam days in AIS before June 16, 9:30am.<br><em>Remedial</em> exams will take place in the last week of the exam period. Beware, there will not be much time to prepare a better project. Projects should be submitted as homeworks to <tt>/submit/project</tt>.<br/>
 
 # Please fill in the following <a href="https://goo.gl/forms/aKdhAAUZIGD80PrQ2">survey</a>.
 # Please submit [[Project#Project_proposal|project proposals]] until Monday April 14. Topics from potential bachelor topic supervisors can be found in <tt>/tasks/temy.txt</tt> (in Slovak). -->
