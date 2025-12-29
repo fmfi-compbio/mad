@@ -19,8 +19,9 @@ title: Lbioinf2
     sequence of additional codons and ends with a stop codon. Codons can
     be interrupted by introns.
 
-![Gene expression in eukaryotes](Dogma.png
-"Gene expression in eukaryotes")
+{% include figure.html
+   src="Dogma.png"
+   caption="Gene expression in eukaryotes" %}
 
 ## Computational gene finding
 

@@ -79,7 +79,7 @@ Example of a phylogenetic tree in newick format:
 <div class="float-right">
 {% include figure.html
    src="Tree.png"
-   width="300px"
+   width="400px"
    caption="Tree for gene O60568 (note: this particular tree does not agree well
    with real evolutionary history)" %}
 </div>

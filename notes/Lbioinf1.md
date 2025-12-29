@@ -69,9 +69,9 @@ A short video for this section: [1](https://youtu.be/qANrSl5w4t8)
   - Diagonal lines show alignments between the sequences (direction of
     the diagonal shows which DNA strand was aligned).
 
-![Dotplot of human and *Drosophila* mitochondrial
-genomes](Dotplot-mt-human-dros.png
-"Dotplot of human and Drosophila mitochondrial genomes")
+{% include figure.html
+   src="Dotplot-mt-human-dros.png"
+   caption="Dotplot of human and Drosophila mitochondrial genomes" %}
 
 ## File formats
 

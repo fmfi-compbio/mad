@@ -48,7 +48,10 @@ So data flow can be as follows:
   - The web browser executes JavaScript code in the HTML file, which
     creates visualization of the data.
 
-![Flow of data](Lflask.png "Flow of data")
+
+{% include figure.html
+   src="Lflask.png"
+   caption="Flow of data" %}
 
 **Warning:**
 

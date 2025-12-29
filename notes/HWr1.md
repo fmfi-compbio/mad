@@ -26,10 +26,10 @@ Beginners:
 
 Intermediate / advanced
 
-  - Skip to section [Expression data](./#Expression_data.md).
+  - Skip to section [Expression data](./#expression-data).
   - Do tasks D-F, but instead of `plot` and `matplot` functions from the
     basic R graphics library, use ggplot2 library. See the list of
-    resources [below](./#Optional:_ggplot2_library.md).
+    resources [below](./#optional-ggplot2-library).
 
 ### The first steps
 
@@ -330,7 +330,12 @@ methods.
     algorithm is randomized so you will get different clusters each
     time.
 
-![Examples of heatmaps](HW08-heatmap.png "Examples of heatmaps")
+<div class="float-right">
+{% include figure.html
+   src="HW08-heatmap.png"
+   width="400px"
+   caption="Examples of heatmaps" %}
+</div>
 
   - **Hierarchical clustering** puts all data points (genes) to a
     hierarchy so that smallest subtrees of the hierarchy are the most
@@ -383,8 +388,13 @@ cl$centers[3,]
 
 ### Task E
 
-![Example of a required plot (but for k=3, not k=5)](HW08-clusters.png
-"Example of a required plot (but for k=3, not k=5)") Draw a plot in
+<div class="float-right">
+{% include figure.html
+   src="HW08-clusters.png"
+   width="400px"
+   caption="Example of a required plot (but for k=3, not k=5)" %}
+</div>
+Draw a plot in
 which the x-axis corresponds to experiments, the y-axis is the
 expression level and the center of each cluster is shown as a line (use
 k-means clustering on the scaled frame `b`, computed as shown above)
@@ -395,9 +405,6 @@ k-means clustering on the scaled frame `b`, computed as shown above)
   - In this case we omit matrix `x`, the command will use numbers
     1,2,3... as columns of the missing matrix
   - Create `y` from `cl$centers` by applying function `t` (transpose)
-
-<!-- end list -->
-
   - **Submit** file `clusters.png` with your final plot
 
 ### Task F

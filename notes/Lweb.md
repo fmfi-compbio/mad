@@ -61,8 +61,13 @@ appropriate element with user comments in the HTML tree.
     element. Some of these elements also have a class (starting with a
     dot) or an ID (starting with `#`).
 
-![Web-screenshot1.png](Web-screenshot1.png "Web-screenshot1.png")
-![Web-screenshot2.png](Web-screenshot2.png "Web-screenshot2.png")
+{% include figure.html
+   src="Web-screenshot1.png"
+   caption="Selecting inspect in a menu" %}
+
+{% include figure.html
+   src="Web-screenshot2.png"
+   caption="Screenshot of element inspection" %}
 
 ### Extracting elements of interest from HTML tree
 
