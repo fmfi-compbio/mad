@@ -2,11 +2,11 @@
 # text sa pouzije na vrchu kazdej stranky pod menu
 # vacsinou dolezite oznamy
 notes: |
-  Prosíme študentov, aby pravidelne čítali e-maily na @uniba.sk adrese.<br/>
-  Kontaktujte nás pomocou e-mailovej adresy <img src="/prog1/files/E-prg.png" height="17" alt="email"> (bude odpovedať ten z nás, kto má príslušnú otázku na starosti alebo kto má práve čas).<br />
+  <strong>Grades</strong> from marked homeworks are on the server in file <tt>/grades/userid.txt</tt>
+  <strong>Dates of <a href="/mad/notes/Project.html">project</a> submission and <a href="/mad/notes/Rules.html#Oral_exam">oral exams</a>:</strong><br/><em>Early:</em> submit project Wednesday May 28 9:00am, oral exams Friday May 30 9:00am (limit 8 students).<br><em>Regular:</em> submit project Monday June 16, 9:00am, oral exams Thursday June 19 and 20 (estimated 9:00am-2:00pm, schedule will be published before exam).<br>Sign up for one the exam days in AIS before June 16, 9:30am.<br><em>Remedial</em> exams will take place in the last week of the exam period. Beware, there will not be much time to prepare a better project. Projects should be submitted as homeworks to <tt>/submit/project</tt>.
 
-
-# Na cvičení alebo aj skôr prosím vyplňte anonymnú [https://forms.gle/zVtWKm8VRfvo3cms6 anketu].<br />
-# [[Zimný semester, test pre pokročilých|Test pre pokročilých]] bude v stredu 24.9. o 18:10, [https://forms.gle/1gnRNUVDX8QaBajn7 prihlasovanie] do utorka večera.<br />
+# Please fill in the following <a href="https://goo.gl/forms/aKdhAAUZIGD80PrQ2">survey</a>.
+# Please submit [[Project#Project_proposal|project proposals]] until Monday April 14. Topics from potential bachelor topic supervisors can be found in <tt>/tasks/temy.txt</tt> (in Slovak). -->
+# Cpp homework is due May 15, 9:00am. Use the time to work on projects. <!-- Cloud homework is due on May 20 9:00am.
 # nepouzite oznamy su zakomentovane
 # treba dokomentovat a spravne odsadit
