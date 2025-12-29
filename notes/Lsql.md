@@ -253,7 +253,7 @@ further in the Python program.
 
 <!-- end list -->
 
-``` Python
+``` python
 import sqlite3
 
 # connect to a database 
@@ -288,7 +288,7 @@ multiplication table.
 
 <!-- end list -->
 
-``` Python
+``` python
 import sqlite3
 import argparse
 

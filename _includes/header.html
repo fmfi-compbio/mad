@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light  navbar-expand-lg">
+<nav class="navbar navbar-light bg-light navbar-expand-lg">
   <div class="navbar-header">
     <a class="navbar-brand" id="brand" href="{{ "/" | relative_url }}"><img src="/mad/files/Logo.png" alt="logo" height="100px">&nbsp;&nbsp;{{ site.title | escape }}</a>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
@@ -19,12 +19,7 @@
       {%- endfor -%}
     </ul>
   </div>
-  <div>
-    {{ site.data.notes.notes }}
-  </div>
 </nav>
-<!--  
 <nav class="container-fluid mb-4 bg-light">
   {{ site.data.notes.notes }}
 </nav>
--->

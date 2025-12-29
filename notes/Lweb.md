@@ -22,7 +22,7 @@ lectures.
 In Python, the simplest tool for downloading webpages is
 [`requests`](https://requests.readthedocs.io/en/master/) package:
 
-``` Python
+``` python
 import requests
 r = requests.get("http://en.wikipedia.org")
 print(r.text[:10])
@@ -36,7 +36,7 @@ library for parsing HTML.
 
 Parsing a webpage:
 
-``` Python
+``` python
 import requests
 from bs4 import BeautifulSoup
 
@@ -78,7 +78,7 @@ appropriate element with user comments in the HTML tree.
 
 To select all nodes with tag `<a>` you might use:
 
-``` Python
+``` python
 >>> links = parsed.select('a')
 >>> links[1]
 <a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
@@ -86,7 +86,7 @@ To select all nodes with tag `<a>` you might use:
 
 Getting inner text from the element is done by:
 
-``` Python
+``` python
 >>> links[1].string
 'Jump to navigation'
 ```
@@ -95,7 +95,7 @@ To select an `<li>` element and traverse its children, you can use the
 following code. Also note difference between attributes `string` and
 `text` (`text` contains text from all descendants):
 
-``` Python
+``` python
 >>> li = parsed.select('li')
 >>> li[10]
 <li><a href="/wiki/Fearless_(Taylor_Swift_album)" title="Fearless (Taylor Swift album)"><i>Fearless</i> (Taylor Swift album)</a></li>
@@ -110,7 +110,7 @@ a
 
 Here are examples of more complicated selection of HTML elements.
 
-``` Python
+``` python
 parsed.select('li i')  # tag inside a tag (not direct descendant), returns inner tag
 parsed.select('li > i')  # tag inside a tag (direct descendant), returns inner tag
 parsed.select('li > i')[0].parent  # gets the parent tag
@@ -137,7 +137,7 @@ To parse dates (written as a text), you have two options:
 
 <!-- end list -->
 
-``` Python
+``` python
 >>> import datetime
 >>> datetime_str = '9.10.18 13:55:26'
 >>> datetime.datetime.strptime(datetime_str, '%d.%m.%y %H:%M:%S')
@@ -150,7 +150,7 @@ datetime.datetime(2018, 10, 9, 13, 55, 26)
 
 <!-- end list -->
 
-``` Python
+``` python
 >>> import dateutil.parser
 >>> dateutil.parser.parse('2012-01-02 15:20:30')
 datetime.datetime(2012, 1, 2, 15, 20, 30)

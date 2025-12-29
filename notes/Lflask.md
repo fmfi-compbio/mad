@@ -121,7 +121,7 @@ class from the Scikit-learn library. It transforms a text into a bag of
 words representation. In this representation we get the list of words
 and the count for each word. Example:
 
-``` Python
+``` python
 from sklearn.feature_extraction.text import CountVectorizer
 
 vec = CountVectorizer(strip_accents='unicode')

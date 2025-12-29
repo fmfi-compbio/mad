@@ -55,7 +55,7 @@ python3 prog1.py
 The first script prints the second column (series title) from
 `series.csv`
 
-``` Python
+``` python
 # open a file for reading
 with open('series.csv') as csvfile:
     # iterate over lines of the input file
@@ -99,7 +99,7 @@ The following script prints the list of series of each TV channel.
 
 <!-- end list -->
 
-``` Python
+``` python
 from collections import defaultdict
 
 # Create a dictionary in which default value
@@ -169,7 +169,7 @@ episodes.
 
 <!-- end list -->
 
-``` Python
+``` python
 import csv
 
 # keep maximum number of votes and its episode
@@ -203,7 +203,7 @@ The following script shows an example of function definition.
 
 <!-- end list -->
 
-``` Python
+``` python
 import csv
 
 def read_csv_to_list(filename):
@@ -243,7 +243,7 @@ print(f"The number of episodes is {len(episodes)}.")
 
 <!-- end list -->
 
-``` Python
+``` python
 import argparse
 
 # create parser of arguments
@@ -272,7 +272,7 @@ This script is stored in `/tasks/python/argument_example.py`. To print
 the first three lines of file `/tasks/python/series.csv`, we can run it
 as follows:
 
-``` Python
+``` python
 python3 /tasks/python/argument_example.py -l 3 /tasks/python/series.csv
 # OR:
 python3 /tasks/python/argument_example.py --limit=3 /tasks/python/series.csv

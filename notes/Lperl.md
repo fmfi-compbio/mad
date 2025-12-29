@@ -48,7 +48,7 @@ perl -e'print "Hello world\n"'
 
 This is equivalent to the following code stored in a file:
 
-``` Perl
+``` perl
 #! /usr/bin/perl -w
 use strict;
 print "Hello world!\n";
@@ -106,7 +106,7 @@ Running the script
 For each series (column 0 of the file) we want to compute the number of
 episodes.
 
-``` Perl
+``` perl
 #! /usr/bin/perl -w
 use strict;
 
@@ -242,7 +242,7 @@ perl -we'print(("a" . "2")+1, "\n")'
 
 <!-- end list -->
 
-``` Perl
+``` perl
 my @a = (1,2,3);
 foreach my $val (@a) {  # iterate through all values
     $val++;             # increase each value in array by 1
@@ -272,7 +272,7 @@ Other useful commands
 
 <!-- end list -->
 
-``` Perl
+``` perl
 foreach my $key (keys %b) {
     print $key, " ", $b{$key}, "\n";
 }
@@ -291,7 +291,7 @@ foreach my $key (keys %b) {
 
 <!-- end list -->
 
-``` Perl
+``` perl
 my %a = ("fruits" => ["apple","banana","orange"],
          "vegetables" => ["tomato","carrot"]);
 $x = $a{"fruits"}[1];
@@ -349,7 +349,7 @@ $x = $aref->{"fruits"}[1];
 
 <!-- end list -->
 
-``` Perl
+``` perl
 my $i=42;       # variable with integer value
 my $x=3.1415;   # variable with floating-point value
 my $s="hello";  # variable with a string
@@ -368,7 +368,7 @@ printf("%10d %10.1f %10s\n", $i, $x, $s);
 
 <!-- end list -->
 
-``` Perl
+``` perl
 if($line =~ /hello/) {  
    print "line contains word hello as a substring";
 }
@@ -402,7 +402,7 @@ if($line =~ /^\>(\S+)/) { $name = $1; }
 
 ## Conditionals, loops
 
-``` Perl
+``` perl
 if(expression) {  # () and {} cannot be omitted
    commands
 } elsif(expression) {
@@ -437,7 +437,7 @@ expressions, e.g. `if(defined $x)`, `if($x eq "")`, `if($x==0)` etc.
 
 ## Input, output
 
-``` Perl
+``` perl
 # Reading one line from standard input
 $line = <STDIN>
 # If no more input data available, returns undef
@@ -484,7 +484,7 @@ scripts (these are not needed to solve the exercises).
 
 ### Opening files
 
-``` Perl
+``` perl
 my $in;
 open $in, "<", "path/file.txt" or die;  # open file for reading
 while(my $line = <$in>) {
@@ -513,7 +513,7 @@ Module <File::Temp> allows to create temporary working directories or
 files with automatically generated names. These are automatically
 deleted when the program finishes.
 
-``` Perl
+``` perl
 use File::Temp qw/tempdir/;
 my $dir = tempdir("atoms_XXXXXXX", TMPDIR => 1, CLEANUP => 1 ); 
 print STDERR "Creating temporary directory $dir\n";
@@ -522,7 +522,7 @@ open $out,">$dir/myfile.txt" or die;
 
 Copying files
 
-``` Perl
+``` perl
 use File::Copy;
 copy("file1","file2") or die "Copy failed: $!";
 copy("Copy.pm",\*STDOUT);
@@ -535,7 +535,7 @@ unlink, chmod,` ...
 Function `glob` finds files with wildcard characters similarly as on
 command line (see also `opendir, readdir`, and <File::Find>`  module `)
 
-``` Perl
+``` perl
 ls *.pl
 perl -le'foreach my $f (glob("*.pl")) { print $f; }'
 ```
@@ -546,7 +546,7 @@ Additional functions for working with file names, paths, etc. in modules
 Testing for an existence of a file (more in [perldoc -f
 -X](http://perldoc.perl.org/functions/-X.html))
 
-``` Perl
+``` perl
 if(-r "file.txt") { ... }  # is file.txt readable?
 if(-d "dir") {.... }       # is dir a directory?
 ```
@@ -560,7 +560,7 @@ Using the `system` command
 
 <!-- end list -->
 
-``` Perl
+``` perl
 my $ret = system("command arguments");
 ```
 
@@ -570,19 +570,19 @@ Using the backtick operator with capturing standard output to a variable
 
 <!-- end list -->
 
-``` Perl
+``` perl
 my $allfiles = `ls`;
 ```
 
 Using pipes (special form of open sends output to a different command,
 or reads output of a different command as a file)
 
-``` Perl
+``` perl
 open $in, "ls |";
 while(my $line = <$in>) { ... }
 ```
 
-``` Perl
+``` perl
 open $out, "| wc"; 
 print $out "1234\n"; 
 close $out;
@@ -592,7 +592,7 @@ close $out;
 
 ### Command-line arguments
 
-``` Perl
+``` perl
 # module for processing options in a standardized way
 use Getopt::Std;
 # string with usage manual
@@ -619,7 +619,7 @@ For long option names, see module Getopt::Long
 
 ### Defining functions
 
-``` Perl
+``` perl
 sub function_name {
   # arguments are stored in @_ array
   my ($firstarg, $secondarg) = @_;
@@ -640,7 +640,7 @@ sub function_name {
 A large library useful for bioinformatics. This snippet translates DNA
 sequence to a protein using the standard genetic code:
 
-``` Perl
+``` perl
 use Bio::Tools::CodonTable;
 sub translate
 {

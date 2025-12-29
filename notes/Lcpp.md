@@ -77,7 +77,7 @@ If there are no errors, this will create binary file
 differ). We can now import and use this module in Python. We need to be
 in the same directory as the compiled output.
 
-``` Python
+``` python
 import example_module
 
 # create class instance

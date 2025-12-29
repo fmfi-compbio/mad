@@ -376,7 +376,7 @@ cat reads-trim-qualities.tsv
 
 <!-- end list -->
 
-``` Perl
+``` perl
 #!/usr/bin/perl -w
 use strict;
 
