@@ -1,0 +1,105 @@
+# data na vytvorenie indexu so zoznamom prednasok
+# pre kazdy tyzden je tam datum, popis, co sa berie na prednaskach
+# a zoznam liniek na prednasky, ine subory a pod.
+# jednotlive polozky mozno zakomentovat # (nemenit odsadenie)
+
+weeks:
+  - date: '22.-28.9.'
+    content: 'Úvod, premenné, podmienky, výrazy, cyklus for'
+    items:
+      - {type: notes, file: P1, name: 'Prednáška 1'}
+      - {type: notes, file: P2, name: 'Prednáška 2'}
+      - {type: notes, file: C1, name: 'Cvičenia 1'}
+      - {type: notes, file: Softver, name: 'Softvér'}
+      - {type: notes, file: Testovac, name: 'Testovač návod'}
+      - {type: url, file: 'https://prog.dcs.fmph.uniba.sk/', name: 'Testovač'}
+
+  - date: '29.9-5.10'
+    content: 'Ďalšie príklady na cykly, Euklidov algoritmus, cyklus while, funkcie'
+    items:
+      - {type: notes, file: P3, name: 'Prednáška 3'}
+      - {type: notes, file: P4, name: 'Prednáška 4'}
+      - {type: text, name: 'Cvičenia 2'}
+     
+  - date: '6.-12.10.'
+    content: 'Teoretické cvičenie, polia, struct'
+    items:
+      - {type: notes, file: P5, name: 'Prednáška 5'}
+      - {type: url, file: 'https://youtu.be/Uml5x1K8CJU', name: 'video s koncom prednášky'}
+      - {type: notes, file: SVGdraw, name: 'Grafická knižnica SVGdraw'}
+      - {type: text, name: 'Cvičenia 3'}
+     
+  - date: '13.-19.10.'
+    content: ' Eratostenovo sito, jednoduché triedenia, binárne vyhľadávanie, zložitosť, znaky, switch'
+    items:
+      - {type: notes, file: P6, name: 'Prednáška 6'} 
+      - {type: notes, file: P7, name: 'Prednáška 7'} 
+      - {type: text, name: 'Cvičenia 4'}
+      - {type: url, file: https://prog.dcs.fmph.uniba.sk/task/1126, name: 'Miniprojekt'}
+      
+  - date: '20.-26.10.'
+    content: 'Reťazce, úvod do rekurzie'
+    items: 
+      - {type: notes, file: P8, name: 'Prednáška 8'}
+      - {type: notes, file: P9, name: 'Prednáška 9'}
+      - {type: text, name: 'Cvičenia 5'}
+      
+  - date: '27.10-2.11.'
+    content: 'Prehľadávanie s návratom, Mergesort, Quicksort'
+    items:
+      - {type: notes, file: P10, name: 'Prednáška 10'}
+      - {type: notes, file: P11, name: 'Prednáška 11'}
+      - {type: text, name: 'Cvičenia 6'}
+      - {type: url, file: https://prog.dcs.fmph.uniba.sk/task/1137, name: 'Miniprojekt'}
+      
+  - date: '3.11.-10.11.'
+    content: 'Smerníky, dynamické polia, práca s dvojrozmernými údajmi'
+    items: 
+      - {type: notes, file: P12, name: 'Prednáška 12'} 
+      - {type: notes, file: P13, name: 'Prednáška 13'}
+      - {type: text, name: 'Cvičenia 7'}
+      
+  - date: '10.-16.11.'
+    content: 'Spájaný zoznam, hašovanie, práca s konzolou na spôsob jazyka C'
+    items:
+      - {type: notes, file: P14, name: 'Prednáška 14'} 
+      - {type: notes, file: P15, name: 'Prednáška 15'}
+      - {type: text, name: 'Cvičenia 8'}
+      
+  # pondelok volno 
+  - date: '17.-23.11.'
+    content: 'Textové súbory'
+    items:
+      - {type: notes, file: P16, name: 'Prednáška 16'}
+      - {type: text, name: 'Cvičenia 9'}
+      - {type: url, file: https://prog.dcs.fmph.uniba.sk/task/1151, name: 'Miniprojekt'}
+      
+  # streda volno, video s vyfarbovanim plus nerekurzivny quicksort 
+  - date: '24.-30.11.'
+    content: 'Zásobník, rad, vyfarbovanie'
+    items:
+      - {type: notes, file: P17, name: 'Prednáška 17'}
+      - {type: notes, file: P18, name: 'Prednáška 18'}
+      - {type: text, name: 'Cvičenia 10'}
+  - date: '1.-7.12.'
+    content: 'Binárne stromy, aritmetické výrazy'
+    items: 
+      - {type: notes, file: P19, name: 'Prednáška 19'}
+      - {type: notes, file: P20, name: 'Prednáška 20'}
+      - {type: text, name: 'Cvičenia 11'}
+      - {type: notes, file: Test2, name: 'Druhý semestrálny test'}
+      
+  - date: '8.-14.12.'
+    content: 'Binárne vyhľadávacie stromy, prefixové stromy, informácie ku skúške, zhrnutie'
+    items: 
+      - {type: notes, file: P21, name: 'Prednáška 21'} 
+      - {type: notes, file: P22, name: 'Prednáška 22'} 
+      - {type: text, name: 'Cvičenia 12'}
+      - {type: notes, file: Skuska, name: 'Skúška'} 
+      - {type: file, file: Skuskove.pdf, name: 'Rady k skúškovému obdobiu'}
+      
+  - date: '15.-21.12.'
+    content: 'Nepreberané črty C a C++'
+    items: 
+      - {type: notes, file: P23, name: 'Prednáška 23'}
+      - {type: text, name: 'Cvičenia 13'}

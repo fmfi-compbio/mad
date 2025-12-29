@@ -1,0 +1,23 @@
+<ul>
+  {%- for week in site.data.semester.weeks %}
+     <li><strong>Týždeň {{ week.date }}</strong> {{ week.content }}<br />
+     {% assign first_item = 1 %}
+     {%- for item in week.items -%}
+       {%- if first_item != 1 %} · {% endif -%}
+       {% assign first_item = 0 %}
+       {%- if item.type == "notes" -%}
+         <a href="{{ item.file | prepend: '/notes/' | append: '.html' | relative_url }}">{{ item.name }}</a>
+       {%- endif -%}
+       {%- if item.type == "file" -%}
+         <a href="{{ item.file | prepend: '/files/' | relative_url }}">{{ item.name }}</a>
+       {%- endif -%}
+       {%- if item.type == "url" -%}
+         <a href="{{ item.file }} ">{{ item.name }}</a>
+       {%- endif -%}
+       {%- if item.type == "text" -%}
+         {{ item.name }}
+       {%- endif -%}
+     {%- endfor -%}
+     </li>
+  {%- endfor -%}
+</ul>

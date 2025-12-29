@@ -1,0 +1,17 @@
+theme: minima
+exclude: [README.md]
+
+# TODO: zmenit skolsky rok podla potreby
+title: 1-DAV-202 Data Management 2025/26
+short_title: MAD
+
+
+lang: en
+baseurl: "/mad"
+
+header_pages:
+  - index.md
+  - notes/Introduction.md
+  - notes/Rules.md
+  - notes/Project.md
+  - notes/Contact.md
