@@ -105,14 +105,15 @@ JavaScript the page would appear empty). The list of fruits is here a
 simple example of "data" to be displayed. Instead you will use data
 about a particular user.
 
-    <!doctype html>
-    <html>
-    <head>
+``` html
+<!doctype html>
+<html>
+  <head>
       <title>Fruits</title>
-    </head>
-    <body>
-    </body>
-    <script type="text/javascript">
+  </head>
+  <body>
+  </body>
+  <script type="text/javascript">
       // an array of fruits (example data)
       fruits = ["apple", "pear", "banana"]
       // call a function which will add the name of each fruit
@@ -127,8 +128,9 @@ about a particular user.
           document.body.appendChild(newPar);
         }
       }
-    </script>
-    </html>
+  </script>
+</html>
+```
 
 Instead of having a hard-coded "data" (list of fruits) directly in the
 HTML file, we may want to insert them by Python (flask application),
@@ -136,6 +138,7 @@ e.g. from a database. The Python script below obtains data (here a
 constant, in practice by SQL query) and passes it to Jinja template
 `templates/main.html`.
 
+``` Python
     from flask import Flask, render_template, g
     import sqlite3
     
@@ -158,11 +161,13 @@ constant, in practice by SQL query) and passes it to Jinja template
     def home():
         fruits = ["apple", "pear", "banana"]  // replace by SQL query
         return render_template('main.html', fruits=fruits)
+```
 
 The Jinja template `templates/main.html` uses a for-loop to insert items
 from the list, each enclosed in quotes and followed by comma. Otherwise
 the rest of the page is as above.
 
+``` jinja
     <!doctype html>
     <html>
     <head>
@@ -193,4 +198,4 @@ the rest of the page is as above.
       </script>
     </body>
     </html>
-
+```
