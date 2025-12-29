@@ -11,7 +11,7 @@ weeks:
       lecturer: TV
       topic: Introduction to the course
       items:
-        - {type: URL, file: 'https://goo.gl/forms/aKdhAAUZIGD80PrQ2', name: 'Survey'}
+        - {type: url, file: 'https://goo.gl/forms/aKdhAAUZIGD80PrQ2', name: 'Survey'}
         - {type: notes, file: Contact, name: 'Contact'}
         - {type: notes, file: Introduction, name: 'Introduction'}
         - {type: notes, file: Rules, name: 'Rules'}
@@ -43,13 +43,16 @@ weeks:
   - date: '2025-03-13'
     topics:
     - for: ALL
+      topic: Introduction to projects
+      items:
+        - {type: notes, file: Project, name: 'Project'}
+    - for: ALL
       lecturer: TV
       topic: SQL (and Python) for beginners
       items:
-        - {type: notes, file: Project, name: 'Project'}
         - {type: notes, file: Lsql, name: 'Lecture'}
-        - {type: notes, file: Python, name: 'Python'}
         - {type: notes, file: HWsql, name: 'Homework'}
+        - {type: notes, file: Python, name: 'Python tutorial'}
   - date: '2025-03-20'
     topics:
     - for: INF/DAV
@@ -96,8 +99,6 @@ weeks:
         - {type: notes, file: Lbioinf3, name: 'Lecture'}
         - {type: notes, file: HWbioinf3, name: 'Homework'}
     - for: ALL
-      lecturer: TV
-      topic: Project proposals due
       items:
         - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 14'}
   - date: '2025-04-17'
@@ -128,7 +129,7 @@ weeks:
   - date: '2025-05-22'
     note: 'No lecture'
     topics: []
-  - date: 'Optional materials'
+  - date: 'Optional introduction to R'
     note: |
       If you are interested in R language, you can look at these lectures
       and homeworks. Files for the tasks are available on the server.
@@ -139,6 +140,7 @@ weeks:
       items:
         - {type: notes, file: Lr1 , name: 'Lecture'}
         - {type: notes, file: HWr1, name: 'Homework'}
+    - for: ALL
       topic: Statistical tests in R
       items:
         - {type: notes, file: Lr2 , name: 'Lecture'}

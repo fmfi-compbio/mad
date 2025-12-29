@@ -76,6 +76,12 @@ use a program called [IQ-tree](http://www.iqtree.org/).
 
 Example of a phylogenetic tree in newick format:
 
+<div class="float-right">
+{% include figure.html
+   src="Tree.png"
+   caption="Tree for gene O60568 (note: this particular tree does not agree well
+   with real evolutionary history)" %}
+</div>
 ``` 
  ((opossum:0.09636245,rabbit:0.85794020):0.05219782,
 (rat:0.07263127,elephant:0.03306863):0.01043531,
@@ -84,10 +90,6 @@ Example of a phylogenetic tree in newick format:
 (human:0.01169266,baboon:0.00827402):0.02619598
 ):0.00816185):0.00631423):0.00800806);
 ```
-
-![Tree for gene O60568 (note: this particular tree does not agree well
-with real evolutionary history)](Tree.png
-"Tree for gene O60568 (note: this particular tree does not agree well with real evolutionary history)")
 
 #### Build a consensus tree
 
@@ -317,7 +319,7 @@ seconds in the third column as below. Your time measurements may differ.
     entire `small` folder.
 
 The correct tree extracted from a larger tree at the [UCSC genome
-browser](http://genome-euro.ucsc.edu/images/phylo/hg38_100way.png):
+browser](https://genome-euro.ucsc.edu/images/phylo/hg38_100way.png):
 
 ``` 
                                           +-------human

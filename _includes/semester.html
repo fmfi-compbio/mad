@@ -3,7 +3,9 @@
      <li><strong>{{ week.date }}</strong> {{ week.note }}
      <ul>
      {%- for topic in week.topics %}
-       <li>{{ topic.for }} ({{ topic.lecturer }}) {{topic.topic}}
+       <li>{{ topic.for }} 
+        {%- if topic.lecturer -%}({{ topic.lecturer }}){%- endif -%}
+        {{ topic.topic }}
       {% assign first_item = 1 %}
       {%- for item in topic.items -%}
          {%- if first_item != 1 %} · {% endif -%}
