@@ -1,6 +1,7 @@
 # data na vytvorenie indexu so zoznamom prednasok
-# pre kazdy tyzden je tam datum, popis, co sa berie na prednaskach
-# a zoznam liniek na prednasky, ine subory a pod.
+# pre kazdy tyzden je tam datum (date), nepovinna poznamka (note) a zoznam topicov
+# vacsinu tyzdnov jeden topic, niekedy zvlast pre INF a BIN
+# kazdy topic ma publikum (for), lecturer, topic a zoznam poloziek co su linku na prednasky a pod.
 # jednotlive polozky mozno zakomentovat # (nemenit odsadenie)
 
 weeks:
@@ -10,7 +11,135 @@ weeks:
       lecturer: TV
       topic: Introduction to the course
       items:
+        - {type: URL, file: 'https://goo.gl/forms/aKdhAAUZIGD80PrQ2', name: 'Survey'}
         - {type: notes, file: Contact, name: 'Contact'}
-
+        - {type: notes, file: Introduction, name: 'Introduction'}
+        - {type: notes, file: Rules, name: 'Rules'}
+        - {type: notes, file: Connecting_to_server, name: 'Connecting to server'}
+        - {type: notes, file: Editors, name: 'Editors'}
+        - {type: notes, file: Command-line_basics, name: 'Command-line basics'}
+    - for: ALL
+      lecturer: TV
+      topic: Introduction to Perl
+      items:
+        - {type: notes, file: Lperl, name: 'Lecture'}
+        - {type: notes, file: HWperl, name: 'Homework'}
+  - date: '2025-02-27'
+    topics:
+    - for: ALL
+      lecturer: BB
+      topic: Command-line tools, Perl one-liners
+      items:
+        - {type: notes, file: Lbash, name: 'Lecture'}
+        - {type: notes, file: HWbash, name: 'Homework'}
+  - date: '2025-03-06'
+    topics:
+    - for: ALL
+      lecturer: TV
+      topic: Job scheduling and make
+      items:
+        - {type: notes, file: Lmake, name: 'Lecture'}
+        - {type: notes, file: HWmake, name: 'Homework'}
+  - date: '2025-03-13'
+    topics:
+    - for: ALL
+      lecturer: TV
+      topic: SQL (and Python) for beginners
+      items:
+        - {type: notes, file: Project, name: 'Project'}
+        - {type: notes, file: Lsql, name: 'Lecture'}
+        - {type: notes, file: Python, name: 'Python'}
+        - {type: notes, file: HWsql, name: 'Homework'}
+  - date: '2025-03-20'
+    topics:
+    - for: INF/DAV
+      lecturer: VB
+      topic: Python, web crawling, HTML parsing, sqlite3
+      items:
+        - {type: notes, file: Lweb, name: 'Lecture'}
+        - {type: notes, file: HWweb, name: 'Homework'}
+        - {type: notes, file: Screen, name: 'Screen'}
+    - for: BIN
+      lecturer: BB
+      topic: Bioinformatics 1 (sequencing and genome assembly)
+      items:
+        - {type: notes, file: Lbioinf1, name: 'Lecture'}
+        - {type: notes, file: HWbioinf1, name: 'Homework'}
+  - date: '2025-03-27'
+    topics: []
+  - date: '2025-04-03'
+    topics:
+    - for: INF/DAV
+      lecturer: VB
+      topic: Text data processing, flask
+      items:
+        - {type: notes, file: Lflask, name: 'Lecture'}
+        - {type: notes, file: HWflask, name: 'Homework'}
+    - for: BIN
+      lecturer: BB
+      topic: Bioinformatics 2 (gene finding, RNA-seq)
+      items:
+        - {type: notes, file: Lbioinf2, name: 'Lecture'}
+        - {type: notes, file: HWbioinf2, name: 'Homework'}
+  - date: '2025-04-10'
+    topics:
+    - for: INF/DAV
+      lecturer: VB
+      topic: Data visualization in JavaScript
+      items:
+        - {type: notes, file: Ljavascript, name: 'Lecture'}
+        - {type: notes, file: HWjavascript, name: 'Homework'}
+    - for: BIN
+      lecturer: BB
+      topic: Bioinformatics 3 (genome variants)
+      items:
+        - {type: notes, file: Lbioinf3, name: 'Lecture'}
+        - {type: notes, file: HWbioinf3, name: 'Homework'}
+    - for: ALL
+      lecturer: TV
+      topic: Project proposals due
+      items:
+        - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 14'}
   - date: '2025-04-17'
-    note: 'Easter'    
+    note: 'Easter'
+    topics: []
+  - date: '2025-04-24'
+    topics:
+    - for: ALL
+      lecturer: BB
+      topic: Python + C++
+      items:
+        - {type: notes, file: Lcpp, name: 'Lecture'}
+        - {type: notes, file: HWcpp, name: 'Homework'}
+  - date: '2025-05-01'
+    note: 'Holiday'
+    topics: []
+  - date: '2025-05-08'
+    note: 'Holiday'
+    topics: []
+  - date: '2025-05-15'
+    topics:
+    - for: ALL
+      lecturer: VB
+      topic: Parallel computing
+      items:
+        - {type: notes, file: Lpar, name: 'Lecture'}
+        - {type: notes, file: HWpar, name: 'Homework'}
+  - date: '2025-05-22'
+    note: 'No lecture'
+    topics: []
+  - date: 'Optional materials'
+    note: |
+      If you are interested in R language, you can look at these lectures
+      and homeworks. Files for the tasks are available on the server.
+      However do not submit these homeworks.
+    topics:
+    - for: ALL
+      topic: Tutorial to R and basic plotting
+      items:
+        - {type: notes, file: Lr1 , name: 'Lecture'}
+        - {type: notes, file: HWr1, name: 'Homework'}
+      topic: Statistical tests in R
+      items:
+        - {type: notes, file: Lr2 , name: 'Lecture'}
+        - {type: notes, file: HWr2, name: 'Homework'}
