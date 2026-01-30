@@ -5,11 +5,12 @@
 # jednotlive polozky mozno zakomentovat # (nemenit odsadenie)
 
 weeks:
-  - date: '2025-02-20'
+  - date: '2026-02-19'
     topics:
     - for: ALL
-      lecturer: TV
+      lecturer: BB
       topic: Introduction to the course
+      show: 0
       items:
         - {type: url, file: 'https://goo.gl/forms/aKdhAAUZIGD80PrQ2', name: 'Survey'}
         - {type: notes, file: Contact, name: 'Contact'}
@@ -19,28 +20,31 @@ weeks:
         - {type: notes, file: Editors, name: 'Editors'}
         - {type: notes, file: Command-line_basics, name: 'Command-line basics'}
     - for: ALL
-      lecturer: TV
+      lecturer: BB
       topic: Introduction to Perl
+      show: 0
       items:
         - {type: notes, file: Lperl, name: 'Lecture'}
         - {type: notes, file: HWperl, name: 'Homework'}
-  - date: '2025-02-27'
+  - date: '2026-02-26'
     topics:
     - for: ALL
       lecturer: BB
       topic: Command-line tools, Perl one-liners
+      show: 0
       items:
         - {type: notes, file: Lbash, name: 'Lecture'}
         - {type: notes, file: HWbash, name: 'Homework'}
-  - date: '2025-03-06'
+  - date: '2026-03-06'
     topics:
     - for: ALL
       lecturer: TV
       topic: Job scheduling and make
+      show: 0
       items:
         - {type: notes, file: Lmake, name: 'Lecture'}
         - {type: notes, file: HWmake, name: 'Homework'}
-  - date: '2025-03-13'
+  - date: '2026-03-13'
     topics:
     - for: ALL
       topic: Introduction to projects
@@ -53,7 +57,7 @@ weeks:
         - {type: notes, file: Lsql, name: 'Lecture'}
         - {type: notes, file: HWsql, name: 'Homework'}
         - {type: notes, file: Python, name: 'Python tutorial'}
-  - date: '2025-03-20'
+  - date: '2026-03-20'
     topics:
     - for: INF/DAV
       lecturer: VB
@@ -68,9 +72,9 @@ weeks:
       items:
         - {type: notes, file: Lbioinf1, name: 'Lecture'}
         - {type: notes, file: HWbioinf1, name: 'Homework'}
-  - date: '2025-03-27'
+  - date: '2026-03-27'
     topics: []
-  - date: '2025-04-03'
+  - date: '2026-04-03'
     topics:
     - for: INF/DAV
       lecturer: VB
@@ -84,7 +88,7 @@ weeks:
       items:
         - {type: notes, file: Lbioinf2, name: 'Lecture'}
         - {type: notes, file: HWbioinf2, name: 'Homework'}
-  - date: '2025-04-10'
+  - date: '2026-04-10'
     topics:
     - for: INF/DAV
       lecturer: VB
@@ -101,10 +105,10 @@ weeks:
     - for: ALL
       items:
         - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 14'}
-  - date: '2025-04-17'
+  - date: '2026-04-17'
     note: 'Easter'
     topics: []
-  - date: '2025-04-24'
+  - date: '2026-04-24'
     topics:
     - for: ALL
       lecturer: BB
@@ -112,13 +116,13 @@ weeks:
       items:
         - {type: notes, file: Lcpp, name: 'Lecture'}
         - {type: notes, file: HWcpp, name: 'Homework'}
-  - date: '2025-05-01'
+  - date: '2026-05-01'
     note: 'Holiday'
     topics: []
-  - date: '2025-05-08'
+  - date: '2026-05-08'
     note: 'Holiday'
     topics: []
-  - date: '2025-05-15'
+  - date: '2026-05-15'
     topics:
     - for: ALL
       lecturer: VB
@@ -126,7 +130,7 @@ weeks:
       items:
         - {type: notes, file: Lpar, name: 'Lecture'}
         - {type: notes, file: HWpar, name: 'Homework'}
-  - date: '2025-05-22'
+  - date: '2026-05-22'
     note: 'No lecture'
     topics: []
   - date: 'Optional introduction to R'
