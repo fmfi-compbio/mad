@@ -68,10 +68,9 @@ error'`
 
 Command `qstat` displays jobs of the current user
 
-  - job 28 is running of server runner02 (status <t>r</tt>), job 29 is
+  - job 28 is running of server runner02 (status `r`), job 29 is
     waiting in queue (status `qw`)
 
-<!-- end list -->
 
 ``` 
 job-ID  prior   name       user         state submit/start at     queue       
@@ -83,8 +82,6 @@ job-ID  prior   name       user         state submit/start at     queue
   - Command `qstat -u '*'` displays jobs of all users.
   - Finished jobs disappear from the list.
   - Command `qstat -F threads` shows how many threads available:
-
-<!-- end list -->
 
 ``` 
 queuename                      qtype resv/used/tot. load_avg arch          states

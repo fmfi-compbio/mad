@@ -77,10 +77,10 @@ So data flow can be as follows:
 
 ## Using multiple charts in the same page (merging examples)
 
-  - You need to include <tt>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
-    </script>
-    </tt> just once. This is similar to `import` in Python.
+  - You need to include 
+    `\<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+    \</script>`
+     just once. This is similar to `import` in Python.
   - You can either load individual packages separately by commands of
     the form: `google.charts.load("current", {packages:["calendar"]});`
     or you can list all packages in one array of the `load` method.
