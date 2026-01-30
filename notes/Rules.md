@@ -45,7 +45,7 @@ sufficient points from other activities.
     the instructors.
   - You will submit a project during the exam period. Afterwards there
     will be an oral exam concentrating on the project and submitted
-    homework.
+    homeworks.
   - You will have an account on a Linux server dedicated to this course.
     Use this account only for the purposes of this course and try not to
     overload the server so that it serves all students. Any attempts to
@@ -178,24 +178,15 @@ Details:
     the code, the results obtained, and the text you submit must be
     **your own work**. It is forbidden to show your code or texts to the
     classmates.
-
-<!-- end list -->
-
   - When working on the homework and the project, we expect you to use
     Internet resources, especially various manuals and discussion forums
     on the used technologies. However, do not try to find ready-made
     solutions to the given tasks. List all resources used in a homework
     or a project.
-
-<!-- end list -->
-
-  - Do not use AI chatbots or AI code generation in your editor (such as
+  - **Do not use AI chatbots or AI code generation** in your editor (such as
     Github copilot and similar) for solving homeworks (you do not learn
     anything that way\!). Some use of AI code generation is permitted on
     the final projects, see [project rules](./Project.md).
-
-<!-- end list -->
-
   - If we find cases of plagiarism or unauthorized aids, all
     participating students will receive zero points for the relevant
     homework or project (including the students who provided their

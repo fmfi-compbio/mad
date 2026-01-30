@@ -2,19 +2,20 @@
 title: Contact
 ---
 
-* TOC
-{:toc}
-
 **Instructors**
 
-  - [Mgr. Vladimír Boža,
-    PhD.](http://dai.fmph.uniba.sk/w/Vladimir_Boza/sk)
   - [doc. Mgr. Broňa Brejová,
     PhD.](http://compbio.fmph.uniba.sk/~bbrejova/)
+  - [Luca Denti, Dr.](https://sluzby.fmph.uniba.sk/ludia/denti1)
+  - [Mgr. Askar Gafurov, PhD.](https://sluzby.fmph.uniba.sk/ludia/gafurov1)
   - [doc. Mgr. Tomáš Vinař, PhD.](http://compbio.fmph.uniba.sk/~tvinar/)
-  - [Nouffal Issa](https://sluzby.fmph.uniba.sk/ludia/issa7)
-  - Contact by us by email with questions or requests for longer
-    consultations
+  - [Mgr. Jana Černíková](https://sluzby.fmph.uniba.sk/ludia/cernikova6)
+  - [Muqadas Baksh](https://sluzby.fmph.uniba.sk/ludia/baksh1)
+  - Contact by us by email with questions or requests for consultations
+
+Some materials for this course were developed by [Mgr. Vladimír Boža,
+    PhD.](http://dai.fmph.uniba.sk/w/Vladimir_Boza/sk)
+  
 
 **Schedule**
 
