@@ -27,6 +27,7 @@ weeks:
       items:
         - {type: notes, file: Lperl, name: 'Lecture'}
         - {type: notes, file: HWperl, name: 'Homework'}
+
   - date: '2026-02-26'
     topics:
     - for: ALL
@@ -36,6 +37,7 @@ weeks:
       items:
         - {type: notes, file: Lbash, name: 'Lecture'}
         - {type: notes, file: HWbash, name: 'Homework'}
+
   - date: '2026-03-05'
     topics:
     - for: ALL
@@ -45,6 +47,7 @@ weeks:
       items:
         - {type: notes, file: Lmake, name: 'Lecture'}
         - {type: notes, file: HWmake, name: 'Homework'}
+
   - date: '2026-03-12'
     topics:
     - for: ALL
@@ -60,10 +63,11 @@ weeks:
         - {type: notes, file: Lsql, name: 'Lecture'}
         - {type: notes, file: HWsql, name: 'Homework'}
         - {type: notes, file: Python, name: 'Python tutorial'}
+
   - date: '2026-03-19'
     topics:
     - for: INF/DAV
-      lecturer: VB
+      lecturer: AG
       topic: Python, web crawling, HTML parsing, sqlite3
       show: 0
       items:
@@ -71,42 +75,45 @@ weeks:
         - {type: notes, file: HWweb, name: 'Homework'}
         - {type: notes, file: Screen, name: 'Screen'}
     - for: BIN
-      lecturer: BB
+      lecturer: LD
       topic: Bioinformatics 1 (sequencing and genome assembly)
       show: 0
       items:
         - {type: notes, file: Lbioinf1, name: 'Lecture'}
         - {type: notes, file: HWbioinf1, name: 'Homework'}
+
   - date: '2026-03-26'
-    topics: []
-  - date: '2026-04-02'
-    note: 'Easter'
     topics:
     - for: INF/DAV
-      lecturer: VB
+      lecturer: AG
       topic: Text data processing, flask
       show: 0
       items:
         - {type: notes, file: Lflask, name: 'Lecture'}
         - {type: notes, file: HWflask, name: 'Homework'}
     - for: BIN
-      lecturer: BB
+      lecturer: LD
       topic: Bioinformatics 2 (gene finding, RNA-seq)
       show: 0
       items:
         - {type: notes, file: Lbioinf2, name: 'Lecture'}
         - {type: notes, file: HWbioinf2, name: 'Homework'}
+
+  - date: '2026-04-02'
+    note: 'Easter'
+    topics: []
+
   - date: '2026-04-09'
     topics:
     - for: INF/DAV
-      lecturer: VB
+      lecturer: AG
       topic: Data visualization in JavaScript
       show: 0
       items:
         - {type: notes, file: Ljavascript, name: 'Lecture'}
         - {type: notes, file: HWjavascript, name: 'Homework'}
     - for: BIN
-      lecturer: BB
+      lecturer: LD
       topic: Bioinformatics 3 (genome variants)
       show: 0
       items:
@@ -116,9 +123,8 @@ weeks:
       show: 0
       items:
         - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 14'}
+
   - date: '2026-04-16'
-    topics: []
-  - date: '2026-04-23'
     topics:
     - for: ALL
       lecturer: BB
@@ -127,24 +133,37 @@ weeks:
       items:
         - {type: notes, file: Lcpp, name: 'Lecture'}
         - {type: notes, file: HWcpp, name: 'Homework'}
-  - date: '2026-04-30'
-    note: 'Holiday'
-    topics: []
-  - date: '2026-05-07'
-    note: 'Holiday'
-    topics: []
-  - date: '2026-05-14'
+
+  - date: '2026-04-23'
     topics:
     - for: ALL
-      lecturer: VB
+      lecturer: AG
       topic: Parallel computing
       show: 0
       items:
         - {type: notes, file: Lpar, name: 'Lecture'}
         - {type: notes, file: HWpar, name: 'Homework'}
+
+  - date: '2026-04-30'
+    topics:
+    - for: ALL
+      lecturer: Guest lecturer
+      topic: Additional topics
+      show: 0
+      items: []
+
+  - date: '2026-05-07'
+    note: 'No lecture'
+    topics: []
+
+  - date: '2026-05-14'
+    note: 'No lecture'
+    topics: []
+
   - date: '2026-05-21'
     note: 'No lecture'
     topics: []
+
   - date: 'Optional introduction to R'
     note: |
       If you are interested in R language, you can look at these lectures
