@@ -42,7 +42,6 @@ kate protocol.txt &                # open editor, run in the background
   - Here is an example of the commands you can use for submitting and
     checking submitted files. Change it to include your username
 
-<!-- end list -->
 
 ``` bash
 # protocol
@@ -69,10 +68,10 @@ ls -l /submit/perl/your_username
     /tasks/perl/series-small.tsv`
   - You should get the following output:
 
-<!-- end list -->
-
-    Black Mirror 3
-    Game of Thrones 3
+```
+Black Mirror 3
+Game of Thrones 3
+```
 
 **Extending the script**
 
@@ -90,11 +89,11 @@ ls -l /submit/perl/your_username
   - If you run your script on the small file, the output should look
     something like this (the exact column widths may differ):
 
-<!-- end list -->
-
-    ./series-stats.pl < /tasks/perl/series-small.tsv
-            Black Mirror        3        8.2
-         Game of Thrones        3        8.8
+```
+./series-stats.pl < /tasks/perl/series-small.tsv
+        Black Mirror        3        8.2
+     Game of Thrones        3        8.8
+```
 
   - Run your script also on the large file: `./series-stats.pl <
     /tasks/perl/series.tsv > series-stats.txt`
@@ -134,34 +133,35 @@ ls -l /submit/perl/your_username
       - The sequence itself is on the second line, long sequences can be
         split into multiple lines.
   - In our case, the name of the sequence will be the ID of the read
-    with the initial `@` replaced by `>` and each `/` replaced by (`_`).
+    with the initial `@` replaced by `>` and each `/` replaced by `_`.
       - You can try to use [`tr` or `s` regular expression
         operators](http://perldoc.perl.org/perlop.html#Quote-Like-Operators)
         (./see also the [lecture](Lperl#Regular_expressions.md))
+      - Special characters such as `/` should escaped in regular expressions by backslash `\/`
   - For example, the first two reads of the file
     `/tasks/perl/reads.fastq` are as follows (only the first 50 columns
     shown)
 
-<!-- end list -->
-
-    @SRR022868.1845/1
-    AAATTTAGGAAAAGATGATTTAGCAACATTTAGCCTTAATGAAAGACCAG...
-    +
-    IICIIIIIIIIIID%IIII8>I8III1II,II)I+III*II<II,E;-HI...
-    @SRR022868.1846/1
-    TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACA...
-    +
-    4CIIIIIIII52I)IIIII0I16IIIII2IIII;IIAII&I6AI+*+&G5...
+```
+@SRR022868.1845/1
+AAATTTAGGAAAAGATGATTTAGCAACATTTAGCCTTAATGAAAGACCAG...
++
+IICIIIIIIIIIID%IIII8>I8III1II,II)I+III*II<II,E;-HI...
+@SRR022868.1846/1
+TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACA...
++
+4CIIIIIIII52I)IIIII0I16IIIII2IIII;IIAII&I6AI+*+&G5...
+```
 
   - These should be reformatted as follows (again only first 50 columns
     shown, but you include entire reads):
 
-<!-- end list -->
-
-    >SRR022868.1845_1
-    AAATTTAGGAAAAGATGATTTAGCAACATTTAGCCTTAATGAAAGACCAGA...
-    >SRR022868.1846_1
-    TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACAC...
+```
+>SRR022868.1845_1
+AAATTTAGGAAAAGATGATTTAGCAACATTTAGCCTTAATGAAAGACCAGA...
+>SRR022868.1846_1
+TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACAC...
+```
 
 **Start programming**
 
@@ -170,35 +170,33 @@ ls -l /submit/perl/your_username
     in the FASTQ input file. You can use the following commands to
     start:
 
-<!-- end list -->
 
-    # copy our script to your folder under the new name
-    cp -i /tasks/perl/fastq-lengths.pl fastq2fasta.pl
-    # open in editor in background
-    kate fastq2fasta.pl & 
+```bash
+# copy our script to your folder under the new name
+cp -i /tasks/perl/fastq-lengths.pl fastq2fasta.pl
+# open in editor in background
+kate fastq2fasta.pl & 
+```
 
 **Running the script**
 
   - Run your script on the tiny file, compare with our precomputed
     correct answer:
 
-<!-- end list -->
-
-    ./fastq2fasta.pl < /tasks/perl/reads-tiny.fastq > reads-tiny.fasta
-    diff reads-tiny.fasta /tasks/perl/reads-tiny.fasta
+``` bash
+./fastq2fasta.pl < /tasks/perl/reads-tiny.fastq > reads-tiny.fasta
+diff reads-tiny.fasta /tasks/perl/reads-tiny.fasta
+```
 
   - Command `diff` prints differences between files. Here the output of
     `diff` should be empty. Otherwise try to look at the input and
     output files and fix your program to obtain the same output as we
     have.
+  - Also run your script on the small read file:
 
-<!-- end list -->
-
-  - Also run your script on the small read file
-
-<!-- end list -->
-
-    ./fastq2fasta.pl < /tasks/perl/reads-small.fastq > reads-small.fasta
+``` bash
+./fastq2fasta.pl < /tasks/perl/reads-small.fastq > reads-small.fasta
+```
 
 **Submitting**
 
@@ -232,17 +230,17 @@ ls -l /submit/perl/your_username
   - The first and last lines when you run `./fastq-quality.pl <
     /tasks/perl/reads-tiny.fastq` should be
 
-<!-- end list -->
-
-    0   5   28.2
-    1   5   33.0
-    ...
-    20  2   32.0
-    21  2   32.0
+```
+0   5   28.2
+1   5   33.0
+...
+20  2   32.0
+21  2   32.0
+```
 
 For example position 1 occurs in all reads and the qualities are
 B,A,B,A,D, which have ASCII values 66, 65, 66, 65, 68. After subtracting
-33 from each and averaging we get 33. On the last position (21), we have
+33 from each and averaging, we get 33. On the last position (21), we have
 only two reads with qualities A, which translates to value 32.
 
 **Running**
@@ -250,8 +248,6 @@ only two reads with qualities A, which translates to value 32.
   - Run the following commands, which runs your script on the large
     FASTQ file and selects every 10th position. The output is stored in
     `reads-qualities.tsv` and printed using `cat`
-
-<!-- end list -->
 
 ``` bash
 ./fastq-quality.pl < /tasks/perl/reads.fastq | perl -lane 'print if $F[0] % 10 == 0' > reads-qualities.tsv
@@ -283,7 +279,7 @@ cat reads-qualities.tsv
   - *Q* is the minimum acceptable quality (characters from quality
     string with ASCII value \>= ASCII value of *Q* are ok).
   - *L* is the minimum acceptable length of a read.
-  - First find the **last base** in a read which has quality at least
+  - Find the **last base** in a read which has quality at least
     *Q* (if any). All bases after this base will be removed from both
     the sequence and the quality string.
   - If the resulting read has fewer than *L* bases, it is omitted from
@@ -291,15 +287,11 @@ cat reads-qualities.tsv
 
 **Testing**
 
-  - You can check your program by the following tests.
-
-<!-- end list -->
+You can check your program by the following tests.
 
   - If you run the following two commands, nothing should be filtered
     out and thus you should get file `tmp` identical with input and thus
     output of the `diff` command should be empty.
-
-<!-- end list -->
 
 ``` bash
 # trim at quality ASCII >=33 and length >=1
@@ -311,7 +303,6 @@ diff /tasks/perl/reads-tiny.fastq tmp
     shortest read should be filtered out. Comparing with our solution
     should produce no differences.
 
-<!-- end list -->
 
 ``` bash
 # trim at quality ASCII >=33 and length >=1
@@ -323,17 +314,13 @@ diff reads-tiny-trim1.fastq /tasks/perl/reads-tiny-trim1.fastq
     trimming of bases with quality A in many reads and one read is
     omitted. Again, you should see no differences from our output.
 
-<!-- end list -->
-
 ``` bash
-./fastq-trim.pl B 1 < /tasks/perl/reads-tiny.fastq > reads-tiny-trim2.fastq
+./fastq-trim.pl B 8 < /tasks/perl/reads-tiny.fastq > reads-tiny-trim2.fastq
 diff reads-tiny-trim2.fastq /tasks/perl/reads-tiny-trim2.fastq
 ```
 
   - If you run the following commands, you should get empty output (no
     reads meet the criteria):
-
-<!-- end list -->
 
 ``` bash
 ./fastq-trim.pl d 1 < /tasks/perl/reads-small.fastq           # quality ASCII >=100, length >= 1
@@ -348,8 +335,6 @@ diff reads-tiny-trim2.fastq /tasks/perl/reads-tiny-trim2.fastq
     version of the bigger file using the commands below. Comment on the
     differences between statistics on the whole file in part C and
     filtered file in D. Are they as you expected?
-
-<!-- end list -->
 
 ``` bash
 # "2" means quality ASCII >= 50
@@ -373,8 +358,6 @@ cat reads-trim-qualities.tsv
 
   - Use the following snippet, which stores command-line arguments in
     variables `$Q` and `$L`:
-
-<!-- end list -->
 
 ``` perl
 #!/usr/bin/perl -w

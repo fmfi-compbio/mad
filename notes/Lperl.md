@@ -79,7 +79,6 @@ Running the script
   - From this dataset, we have selected only several series with a high
     number of voting users.
 
-<!-- end list -->
 
   - Each line of the file contains data about one episode of one series.
     Columns are tab-separated and contain the name of the series, the
@@ -88,14 +87,14 @@ Running the script
     season, rating of the episode and the number of voting users.
   - Here is a smaller version of this file with only six lines:
 
-<!-- end list -->
-
-    Black Mirror    The National Anthem 1   1   1   7.8 35156
-    Black Mirror    Fifteen Million Merits  2   1   2   8.2 35317
-    Black Mirror    The Entire History of You   3   1   3   8.6 35266
-    Game of Thrones Winter Is Coming    1   1   1   9   27890
-    Game of Thrones The Kingsroad   2   1   2   8.8 21414
-    Game of Thrones Lord Snow   3   1   3   8.7 20232
+```
+Black Mirror    The National Anthem 1   1   1   7.8 35156
+Black Mirror    Fifteen Million Merits  2   1   2   8.2 35317
+Black Mirror    The Entire History of You   3   1   3   8.6 35266
+Game of Thrones Winter Is Coming    1   1   1   9   27890
+Game of Thrones The Kingsroad   2   1   2   8.8 21414
+Game of Thrones Lord Snow   3   1   3   8.7 20232
+```
 
   - The smaller and the larger version of this file can be found at our
     server under filenames `/tasks/perl/series-small.tsv` and
@@ -145,8 +144,10 @@ perl -F'"\t"' -lane 'die unless @F==7; $count{$F[0]}++;
 When we run it for the small six-line input, we get the following
 output:
 
-    Black Mirror 3
-    Game of Thrones 3
+```
+Black Mirror 3
+Game of Thrones 3
+```
 
 ## The second input file for today: DNA sequencing reads (fastq)
 
@@ -183,14 +184,53 @@ output:
 The first 4 reads from file `/tasks/perl/reads-small.fastq` (trimmed to
 50 bases for better readability):
 
-    @SRR022868.1845/1
-    AAATTTAGGAAAAGATGATTTAGCAACATTTAGCCTTAATGAAAGACCAG
-    +
-    IICIIIIIIIIIID%IIII8>I8III1II,II)I+III*II<II,E;-HI
-    @SRR022868.1846/1
-    TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACA
-    +
-    4CIIIIIIII52I)IIIII0I16IIIII2IIII;IIAII&I6AI+*+&G5
+```
+@SRR022868.1845/1
+AAATTTAGGAAAAGATGATTTAGCAACATTTAGCCTTAATGAAAGACCAG
++
+IICIIIIIIIIIID%IIII8>I8III1II,II)I+III*II<II,E;-HI
+@SRR022868.1846/1
+TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACA
++
+4CIIIIIIII52I)IIIII0I16IIIII2IIII;IIAII&I6AI+*+&G5
+```
+
+An example script printing the lengths of all reads:
+
+``` perl
+#! /usr/bin/perl -w
+use strict;
+
+# This scripts reads a FASTQ file from standard input
+# and for each read prints its length.
+# It also checks that each line with the name of a read starts with @
+# and that the overall number of reads is divisible by 4.
+#
+# In a FASTQ file each read is specified by 4 lines:
+# name, DNA sequence, separator and quality string.
+
+my $count = 0;  # counter for lines
+
+while(my $line = <STDIN>) {  # read every line on input
+    chomp $line;    # delete end of line, if any
+
+    if($count % 4 == 0) {
+        # check that the first line in each 4-tuple starts with @
+        die "Bad read name '$line'" unless $line =~ /^@/;
+    }
+    
+    if($count % 4 == 1) {
+        # second line in each 4-tuple is the read, print its length
+        print length($line), "\n";
+    }
+    
+    $count++;  # increase line counter
+}
+
+# check that the number of lines is divisible by 4
+die unless $count % 4 == 0;
+```
+
 
 ## Variables, types
 
@@ -201,7 +241,6 @@ The first 4 reads from file `/tasks/perl/reads-small.fastq` (trimmed to
     reference etc.
   - Perl converts automatically between strings and numbers
 
-<!-- end list -->
 
 ``` bash
 perl -e'print((1 . "2")+1, "\n")'
@@ -240,8 +279,6 @@ perl -we'print(("a" . "2")+1, "\n")'
   - Command `foreach` iterates through values of an array (values can be
     changed during iteration):
 
-<!-- end list -->
-
 ``` perl
 my @a = (1,2,3);
 foreach my $val (@a) {  # iterate through all values
@@ -270,7 +307,6 @@ Other useful commands
   - Access element with key `"X"`: `$b{"X"}`
   - Write out all elements of associative array `%b`:
 
-<!-- end list -->
 
 ``` perl
 foreach my $key (keys %b) {
@@ -288,8 +324,6 @@ foreach my $key (keys %b) {
   - Pointer to an anonymous array: `[1,2,3]`, pointer to an anonymous
     hash: `{"key1" => "value1"}`
   - Hash of lists is stored as hash of pointers to lists:
-
-<!-- end list -->
 
 ``` perl
 my %a = ("fruits" => ["apple","banana","orange"],
@@ -347,7 +381,6 @@ $x = $aref->{"fruits"}[1];
   - The following arguments then specify values to be substituted for
     placeholders.
 
-<!-- end list -->
 
 ``` perl
 my $i=42;       # variable with integer value
@@ -365,8 +398,6 @@ printf("%10d %10.1f %10s\n", $i, $x, $s);
     now featured in many languages
   - Here only a few examples, more details can be found in [the official
     tutorial](http://perldoc.perl.org/perlretut.html)
-
-<!-- end list -->
 
 ``` perl
 if($line =~ /hello/) {  
@@ -394,9 +425,9 @@ $line =~ tr/ab/xy/;     # replace each 'a' with 'x', each 'b' with 'y'
 
 # if the line starts with >,
 # store the word following > (until the first whitespace)
-# and store it in variable $name 
 # (\S means non-whitespace),
 # the string matching part of expression in (..) is stored in $1
+# and then copied to $name
 if($line =~ /^\>(\S+)/) { $name = $1; }
 ```
 

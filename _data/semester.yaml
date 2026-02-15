@@ -129,7 +129,7 @@ weeks:
     - for: ALL
       show: 1
       items:
-        - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 13'}
+        - {type: notes, file: Project#project-proposal, name: 'Project proposals due Monday April 13'}
 
 
   - date: '2026-04-23'
