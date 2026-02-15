@@ -41,8 +41,8 @@ terminology from biology as needed.
       - obtaining data,
       - preprocessing it to suitable form,
       - connecting existing tools into pipelines,
-      - performing statistical tests and data visualization.
-  - More details on statistical methods, visualization and machine
+      - visualizing results
+  - More details on statistical methods, data visualization and machine
     learning are in different courses.
   - These tasks are fundamental in data science and bioinformatics, but
     also useful in many areas of computer science, where experimental

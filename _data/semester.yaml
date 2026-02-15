@@ -127,9 +127,9 @@ weeks:
         - {type: notes, file: Lbioinf3, name: 'Lecture'}
         - {type: notes, file: HWbioinf3, name: 'Homework'}
     - for: ALL
-      show: 0
+      show: 1
       items:
-        - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 14'}
+        - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 13'}
 
 
   - date: '2026-04-23'
