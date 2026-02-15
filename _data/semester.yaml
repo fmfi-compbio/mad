@@ -9,7 +9,7 @@ weeks:
   - date: '2026-02-19'
     topics:
     - for: ALL
-      lecturer: BB
+      lecturer: TV
       topic: Introduction to the course
       show: 0
       items:
@@ -21,7 +21,7 @@ weeks:
         - {type: notes, file: Editors, name: 'Editors'}
         - {type: notes, file: Command-line_basics, name: 'Command-line basics'}
     - for: ALL
-      lecturer: BB
+      lecturer: TV
       topic: Introduction to Perl
       show: 0
       items:
@@ -82,7 +82,17 @@ weeks:
         - {type: notes, file: Lbioinf1, name: 'Lecture'}
         - {type: notes, file: HWbioinf1, name: 'Homework'}
 
+
   - date: '2026-03-26'
+    note: 'Midterm test'
+    topics: []
+
+  - date: '2026-04-02'
+    note: 'Easter'
+    topics: []
+
+
+  - date: '2026-04-09'
     topics:
     - for: INF/DAV
       lecturer: AG
@@ -99,11 +109,8 @@ weeks:
         - {type: notes, file: Lbioinf2, name: 'Lecture'}
         - {type: notes, file: HWbioinf2, name: 'Homework'}
 
-  - date: '2026-04-02'
-    note: 'Easter'
-    topics: []
 
-  - date: '2026-04-09'
+  - date: '2026-04-16'
     topics:
     - for: INF/DAV
       lecturer: AG
@@ -124,7 +131,8 @@ weeks:
       items:
         - {type: notes, file: Project#Project_proposal, name: 'Project proposals due Monday April 14'}
 
-  - date: '2026-04-16'
+
+  - date: '2026-04-23'
     topics:
     - for: ALL
       lecturer: BB
@@ -134,7 +142,7 @@ weeks:
         - {type: notes, file: Lcpp, name: 'Lecture'}
         - {type: notes, file: HWcpp, name: 'Homework'}
 
-  - date: '2026-04-23'
+  - date: '2026-04-30'
     topics:
     - for: ALL
       lecturer: AG
@@ -144,7 +152,8 @@ weeks:
         - {type: notes, file: Lpar, name: 'Lecture'}
         - {type: notes, file: HWpar, name: 'Homework'}
 
-  - date: '2026-04-30'
+
+  - date: '2026-05-07'
     topics:
     - for: ALL
       lecturer: Guest lecturer
@@ -152,13 +161,10 @@ weeks:
       show: 0
       items: []
 
-  - date: '2026-05-07'
-    note: 'No lecture'
-    topics: []
-
   - date: '2026-05-14'
     note: 'No lecture'
     topics: []
+
 
   - date: '2026-05-21'
     note: 'No lecture'

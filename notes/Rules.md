@@ -7,7 +7,8 @@ title: Rules
 
 ## Grading
 
-  - Homeworks: 45%
+  - Homeworks: 30%
+  - Midterm test: 10%
   - Project proposal: 5%
   - Project: 40%
   - Oral exam: 10%
@@ -146,6 +147,13 @@ tables.
 
 More detailed information on projects is on [ a separate
 page](./Project.md).
+
+## Midterm
+
+* A midterm will take place during one of the lectures, see [the main page](../index.html) for dates.
+* You will be asked to solve problems similar to the first three homeworks (using Perl, command-line tools, and make, but not qsub).
+* Some documentation for these languages / systems and your submitted homeworks will be available but no internet access.
+
 
 ## Oral exam
 
