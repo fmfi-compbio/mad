@@ -5,8 +5,8 @@ title: HWperl
 * TOC
 {:toc}
 
-**Materials:** [the lecture](./Lperl.md), [Connecting to
-server](./Connecting_to_server.md), [Editors](./Editors.md)
+**Materials:** [the lecture](./Lperl.html), [Connecting to
+server](./Connecting_to_server.html), [Editors](./Editors.html)
 
 ### Files and setup
 
@@ -58,8 +58,7 @@ ls -l /submit/perl/your_username
 
 **Running the script from the lecture**
 
-  - Consider the program for counting series in the [lecture
-    1](./Lperl#A_sample_Perl_program.md), save it to file
+  - Consider the program for counting series in the [lecture](./Lperl.md#a-sample-perl-program), save it to file
     `series-stats.pl`
   - Open editor running in the background: `kate series-stats.pl &`
   - Copy and paste text to the editor, save it
@@ -82,7 +81,7 @@ Game of Thrones 3
     episodes, the average rating.
   - Use `printf` to print these three items right-justified in columns
     of a sufficient width; print the average rating to 1 decimal place
-    (./see [the lecture](Lperl#Formatted_printing.md)).
+    (see [the lecture](./Lperl.md#formatted-printing)).
 
 **Running the script**
 
@@ -110,7 +109,7 @@ Game of Thrones 3
 
   - In the rest of the assignment, we will write several scripts for
     working with [FASTQ
-    files](./Lperl#The_second_input_file_for_today:_DNA_sequencing_reads_.28fastq.29.md)
+    files](./Lperl.md#the-second-input-file-for-today-dna-sequencing-reads-fastq)
     introduced in the lecture. Similar scripts are often used by
     bioinformaticians working with DNA sequencing data.
   - We will work with three input files:
@@ -136,7 +135,7 @@ Game of Thrones 3
     with the initial `@` replaced by `>` and each `/` replaced by `_`.
       - You can try to use [`tr` or `s` regular expression
         operators](http://perldoc.perl.org/perlop.html#Quote-Like-Operators)
-        (./see also the [lecture](Lperl#Regular_expressions.md))
+        (./see also the [lecture](./Lperl.md#regular-expressions))
       - Special characters such as `/` should escaped in regular expressions by backslash `\/`
   - For example, the first two reads of the file
     `/tasks/perl/reads.fastq` are as follows (only the first 50 columns

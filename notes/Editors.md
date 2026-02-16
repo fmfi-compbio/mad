@@ -21,8 +21,8 @@ title: Editors
   - When working from Windows, you can also connect to the server via
     WinScp and edit the files using WinScp built-in editors or other
     editors installed on your computer (see
-    [Connecting\_to\_server](./Connecting_to_server.md)).
+    [Connecting to server](./Connecting_to_server.md)).
   - When working from Linux, you can mount your home directory using
     sshfs and again use editors installed on your computer (see
-    [Connecting\_to\_server](./Connecting_to_server.md)).
+    [Connecting to server](./Connecting_to_server.md)).
 
