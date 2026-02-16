@@ -195,7 +195,7 @@ TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACA
 4CIIIIIIII52I)IIIII0I16IIIII2IIII;IIAII&I6AI+*+&G5
 ```
 
-An example script printing the lengths of all reads:
+### A script printing the lengths of all reads
 
 ``` perl
 #! /usr/bin/perl -w
