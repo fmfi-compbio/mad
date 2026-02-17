@@ -152,7 +152,7 @@ page](./Project.md).
 
 * A midterm will take place during one of the lectures, see [the main page](../index.html) for dates.
 * You will be asked to solve problems similar to the first three homeworks (using Perl, command-line tools, and make, but not qsub).
-* Some documentation for these languages / systems and your submitted homeworks will be available but no internet access.
+* Lecture notes from this site, some documentation for these languages / systems and your submitted homeworks will be available but no internet access.
 
 
 ## Oral exam

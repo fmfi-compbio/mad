@@ -11,6 +11,7 @@ title: Contact
   - [doc. Mgr. Tomáš Vinař, PhD.](http://compbio.fmph.uniba.sk/~tvinar/)
   - [Mgr. Jana Černíková](https://sluzby.fmph.uniba.sk/ludia/cernikova6)
   - [Muqadas Baksh](https://sluzby.fmph.uniba.sk/ludia/baksh1)
+  - [Noufal Issa](https://sluzby.fmph.uniba.sk/ludia/issa7)
   - Contact by us by email with questions or requests for consultations
 
 Some materials for this course were developed by [Mgr. Vladimír Boža,

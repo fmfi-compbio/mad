@@ -16,7 +16,7 @@ title: Editors
         (see keyboard shortcuts at the bottom of the screen).
       - More advanced editors include [vim](https://www.vim.org/),
         [emacs](https://www.gnu.org/software/emacs/),
-        [ne](https://ne.di.unimi.it/) (read tutorials before starting
+        [ne](https://github.com/vigna/ne) (read tutorials before starting
         using them).
   - When working from Windows, you can also connect to the server via
     WinScp and edit the files using WinScp built-in editors or other

@@ -135,7 +135,7 @@ Game of Thrones 3
     with the initial `@` replaced by `>` and each `/` replaced by `_`.
       - You can try to use [`tr` or `s` regular expression
         operators](http://perldoc.perl.org/perlop.html#Quote-Like-Operators)
-        (./see also the [lecture](./Lperl.md#regular-expressions))
+        (see also the [lecture](./Lperl.md#regular-expressions))
       - Special characters such as `/` should escaped in regular expressions by backslash `\/`
   - For example, the first two reads of the file
     `/tasks/perl/reads.fastq` are as follows (only the first 50 columns
