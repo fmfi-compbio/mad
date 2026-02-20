@@ -76,7 +76,7 @@ Game of Thrones 3
 
   - Extend the script to compute the average rating of each series
     (averaging over all episodes in the series)
-  - Each row of the input table contains rating in column 5.
+  - Each row of the input table contains rating in column 5 (starting from 0).
   - Output a table with three columns: name of series, the number of
     episodes, the average rating.
   - Use `printf` to print these three items right-justified in columns

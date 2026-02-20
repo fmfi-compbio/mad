@@ -81,10 +81,10 @@ Running the script
 
 
   - Each line of the file contains data about one episode of one series.
-    Columns are tab-separated and contain the name of the series, the
-    name of the episode, the global index of the episode within the
-    series, the number of the season, the index of the episode with the
-    season, rating of the episode and the number of voting users.
+    Columns are tab-separated and contain (0) the name of the series, (1) the
+    name of the episode, (2) the global index of the episode within the
+    series, (3) the number of the season, (4) the index of the episode with the
+    season, (5) rating of the episode and (6) the number of voting users.
   - Here is a smaller version of this file with only six lines:
 
 ```
@@ -161,10 +161,10 @@ Game of Thrones 3
     website](http://gage.cbcb.umd.edu/data/Staphylococcus_aureus/Data.original/)).
   - Each read is stored in 4 lines:
       - line 1: ID of the read and other description, line starts with
-        @,
+        `@`,
       - line 2: DNA sequence, A,C,G,T are bases (nucleotides) of DNA, N
         means unknown base,
-      - line 3: +
+      - line 3: `+`
       - line 4: quality string, which is the string of the same length
         as DNA in line 2. ASCII code of each character represents
         quality of one base in DNA, where higher quality means lower
@@ -317,25 +317,6 @@ foreach my $key (keys %b) {
   - Initialization with a constant: `%b = ("key1" => "value1", "key2" =>
     "value2");`
   - Test for existence of a key: `if(exists $a{"X"}) {...}`
-
-### Multidimensional arrays, fun with pointers
-
-  - Pointer to a variable (scalar, array, dictionary): `\$a, \@a, \%a`
-  - Pointer to an anonymous array: `[1,2,3]`, pointer to an anonymous
-    hash: `{"key1" => "value1"}`
-  - Hash of lists is stored as hash of pointers to lists:
-
-``` perl
-my %a = ("fruits" => ["apple","banana","orange"],
-         "vegetables" => ["tomato","carrot"]);
-$x = $a{"fruits"}[1];
-push @{$a{"fruits"}}, "kiwi";
-my $aref = \%a;
-$x = $aref->{"fruits"}[1];
-```
-
-  - Module <Data::Dumper> has function `Dumper`, which recursively
-    prints complex data structures (good for debugging)
 
 ## Strings
 
@@ -512,6 +493,26 @@ while (my $line = <STDIN>) {
 
 For illustration, we briefly cover other topics frequently used in Perl
 scripts (these are not needed to solve the exercises).
+
+### Multidimensional arrays, fun with pointers
+
+  - Pointer to a variable (scalar, array, dictionary): `\$a, \@a, \%a`
+  - Pointer to an anonymous array: `[1,2,3]`, pointer to an anonymous
+    hash: `{"key1" => "value1"}`
+  - Hash of lists is stored as hash of pointers to lists:
+
+``` perl
+my %a = ("fruits" => ["apple","banana","orange"],
+         "vegetables" => ["tomato","carrot"]);
+$x = $a{"fruits"}[1];
+push @{$a{"fruits"}}, "kiwi";
+my $aref = \%a;
+$x = $aref->{"fruits"}[1];
+```
+
+  - Module `Data::Dumper` has function `Dumper`, which recursively
+    prints complex data structures (good for debugging)
+
 
 ### Opening files
 

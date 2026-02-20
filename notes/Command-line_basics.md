@@ -48,7 +48,7 @@ username@vyuka:/tasks/perl$ ls /tasks
 bash  bioinf1  bioinf2  bioinf3  cloud  flask  make  perl  python  r1  r2
 ```
 
-### Absolute a relative paths
+### Absolute and relative paths
 
   - **Absolute path** determines how to get to a given file or folder
     from the **root** of the whole filesystem.

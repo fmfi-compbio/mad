@@ -53,36 +53,36 @@ python example_job.py --output out --input "/tasks/par/dataset/*" --direct_runni
 This is the main part of the code:
 
 ``` python
- with beam.Pipeline(options=pipeline_options) as p:
+with beam.Pipeline(options=pipeline_options) as p:
 
-# Read the text file[pattern] into a PCollection.
-lines = p | 'Read' >> ReadFromText(known_args.input)
+  # Read the text file[pattern] into a PCollection.
+  lines = p | 'Read' >> ReadFromText(known_args.input)
 
-counts = (
-    lines
-    | 'Filter' >> beam.Filter(good_line)
-    | 'Split' >> (beam.ParDo(WordExtractingDoFn()))
-    | 'GroupAndSum' >> beam.CombinePerKey(sum))
+  counts = (
+      lines
+      | 'Filter' >> beam.Filter(good_line)
+      | 'Split' >> (beam.ParDo(WordExtractingDoFn()))
+      | 'GroupAndSum' >> beam.CombinePerKey(sum))
 
-# Format the counts into a PCollection of strings.
-def format_result(word, count):
-  return '%s: %d' % (word, count)
+  # Format the counts into a PCollection of strings.
+  def format_result(word, count):
+    return '%s: %d' % (word, count)
 
-output = counts | 'Format' >> beam.MapTuple(format_result)
+  output = counts | 'Format' >> beam.MapTuple(format_result)
 
-# Write the output using a "Write" transform that has side effects.
-output | 'Write' >> WriteToText(known_args.output)
+  # Write the output using a "Write" transform that has side effects.
+  output | 'Write' >> WriteToText(known_args.output)
 ```
 
-First, we create a PCollection (think of it as a distributed, unordered
+First, we create a `PCollection` (think of it as a distributed, unordered
 collection of elements, similar to an array but without meaningful
 indices). Then we apply various Beam transforms over it.
 
-  - Read: We use ReadFromText to load lines from a text file. Each line
-    becomes an element in the PCollection.
-  - Filter: The beam.Filter transform is used to remove unwanted data
-    early. It takes a function (in our case, good\_line) and keeps only
-    the elements for which the function returns True. Here,
+  - `Read`: We use `ReadFromText` to load lines from a text file. Each line
+    becomes an element in the `PCollection`.
+  - `Filter`: The `beam.Filter` transform is used to remove unwanted data
+    early. It takes a function (in our case, `good\_line`) and keeps only
+    the elements for which the function returns `True`. Here,
     good\_line(line) checks if a line contains only valid genome
     characters (A, C, G, or T). Lines that don't match are discarded.
   - ParDo: The beam.ParDo transform is a powerful and flexible way to

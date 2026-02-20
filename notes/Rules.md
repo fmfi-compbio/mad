@@ -8,7 +8,7 @@ title: Rules
 ## Grading
 
   - Homeworks: 30%
-  - Midterm test: 10%
+  - Midterm test: 15%
   - Project proposal: 5%
   - Project: 40%
   - Oral exam: 10%
