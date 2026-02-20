@@ -32,7 +32,7 @@ using std::string;
 
 class ExampleClass {
     // An example class which will have a counter
-    // of total length of strings encoutered
+    // of total length of strings encountered
 
     // variable holding the counter
     int counter_ = 0;

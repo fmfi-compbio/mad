@@ -385,13 +385,13 @@ if($line =~ /hello/) {
    print "line contains word hello as a substring";
 }
 if($line =~ /hello/i) {  # ignore letter case, also finds Hello, HELLO, hElLo
-   print "line contains word hello as a substring regardless of ltter case";
+   print "line contains word hello as a substring regardless of letter case";
 }
 if($line =~ /hello.*world/) {  # . is any character, * means any number of repeats
    print "line contains word hello later followed by word world";
 }
 if($line =~ /hello\s+world/) {  # \s is whitespace, + means at least one repeat
-   print "line contains words hello and word sepearted by whitespace";
+   print "line contains words hello and word separated by whitespace";
 }
 
 # editting strings
@@ -401,7 +401,7 @@ $line =~ s/[0-9]+/X/g;  # replace each sequence of numbers with character X
 $line =~ s/^./X/;       # the first character on a line is changed to X
                         # (^ means start of line, . means any character)
 $line =~ s/\///g;       # each slash '/' is removed 
-                        # (since / deliminates parts of the s operator, use \/
+                        # (since / delimits parts of the s operator, use \/
 $line =~ tr/ab/xy/;     # replace each 'a' with 'x', each 'b' with 'y' 
 
 # if the line starts with >,
@@ -529,7 +529,7 @@ open $out, ">", "path/file2.txt" or die; # open file for writing
 print $out "Hello world\n";
 close $out;
 # if we want to append to a file use the following instead:
-# open $out, ">>", "cesta/subor2.txt" or die;
+# open $out, ">>", "path/file2.txt" or die;
 
 # standard files
 print STDERR "Hello world\n";

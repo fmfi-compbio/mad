@@ -71,7 +71,7 @@ So data flow can be as follows:
     what you sent to browser.
   - Debugging tip 3: If you open devtools (Ctrl+Shift+J in Chrome, F12
     in Firefox) and go to the Console tab, you can see individual
-    Javacript errors.
+    Javascript errors.
   - Consult the [previous lecture](./Lflask.md) on running and
     accessing Flask applications.
 

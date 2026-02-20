@@ -239,7 +239,7 @@ further in the Python program.
   - The following script illustrates running a `SELECT` query and
     getting the results.
   - To start using a database, we first create objects called Connection
-    and Cursor. We use the cursor to run individual SQl queries.
+    and Cursor. We use the cursor to run individual SQL queries.
   - If we want to use particular values in the queries, which we have
     stored in variables, we use
     [placeholders](https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries)

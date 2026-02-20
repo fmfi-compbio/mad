@@ -295,7 +295,7 @@ seconds in the third column as below. Your time measurements may differ.
     task C (if any), all gene folders with tree files and the resulting
     combined trees and statistics files.
 
-### Task D (running make, final obersvations)
+### Task D (running make, final observations)
 
   - Copy your `Makefile` and any scripts you wrote in tasks B and C to
     folder `small`, which contains 9 human proteins and run `make` on

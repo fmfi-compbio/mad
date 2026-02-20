@@ -198,7 +198,7 @@ minimap2 -x asm10 -t 1 ref.fasta miniasm2.fasta > ref-miniasm2.paf
 /usr/local/share/miniasm/miniasm/minidot -f 12 ref-miniasm2.paf | \
   ps2pdf -dEPSCrop - ref-miniasm2.pdf
 # displaying dotplot
-# if evince does not work, copy the pdf file to your commputer and view there
+# if evince does not work, copy the pdf file to your computer and view there
 evince ref-miniasm2.pdf &
 ```
 
@@ -238,10 +238,10 @@ A short video introducing IGV: [1](https://youtu.be/46HhBqGGPU0)
   - **Submit** all four BAM files `ref-miseq.bam`, `ref-nanopore.bam`,
     `ref-spades.bam`, `ref-miniasm2.bam`
 
-(a) Align illumina reads (MiSeq files) to the reference sequence
+(a) Align Illumina reads (MiSeq files) to the reference sequence
 
 ``` bash
-# align illumina reads to reference
+# align Illumina reads to reference
 # minimap produces SAM file, samtools view converts to BAM, 
 # samtools sort orders reads by coordinate
 minimap2 -a -x sr --secondary=no -t 1 ref.fasta  miseq_R1.fastq.gz miseq_R2.fastq.gz | \

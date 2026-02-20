@@ -47,7 +47,7 @@ completely. For a suitable project proposal submitted on time, you will
 receive 5% of the total grade. We recommend consulting the instructors
 before submitting the proposal.
 
-**How to submit the proposal:** copy a file in txt alebo pdf format to
+**How to submit the proposal:** copy a file in txt or pdf format to
 `/submit/proposal/username` on the course server.
 
 ## Typical scheme of a project

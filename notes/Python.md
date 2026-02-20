@@ -231,7 +231,7 @@ print(f"The number of episodes is {len(episodes)}.")
     them as arguments from command line (similarly as various command
     line utilities, such as `sort`, `head` etc.).
   - You can then run the same script on different inputs or with
-    different setttings.
+    different settings.
   - In Python, this is usually achieved using
     [`argparse`](https://docs.python.org/3/library/argparse.html)
     library.

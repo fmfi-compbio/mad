@@ -106,7 +106,7 @@ on the cluster
   - Therefore it is a good idea to run `qrsh` within `screen` command
       - Run `screen` command, this creates a new shell
       - Within this shell, run `qrsh`, then whatever commands on the
-        rmeote server
+        remote server
       - By pressing `Ctrl-a d` you "detach" the screen, so that both
         shells (local and `qrsh`) continue running but you can close
         your local window
