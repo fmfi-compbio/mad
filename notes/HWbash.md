@@ -5,7 +5,7 @@ title: HWbash
 * TOC
 {:toc}
 
-[Lecture on Perl](./Lperl.md), [Lecture on command-line
+[Lecture on Perl](./Lperl.md), [lecture on command-line
 tools](./Lbash.md)
 
   - In this set of tasks, use command-line tools or one-liners in Perl,
@@ -15,7 +15,7 @@ tools](./Lbash.md)
     very specific properties of a particular input, such as the number
     of lines etc.)
 
-### Preparatory steps and submitting
+## Preparatory steps and submitting
 
 ``` bash
 # create a folder for this homework
@@ -44,12 +44,12 @@ cp -ipv protocol.txt human.txt pairs.txt similar.tsv best.txt function.txt passw
 ls -l /submit/bash/your_username
 ```
 
-### Introduction to tasks A-C
+## Introduction to tasks A-C
 
   - In these tasks we will again process bioinformatics data. We have
     two files of sequences in the FASTA format. This time the sequences
     represent proteins, not DNA, and therefore they use 20 different
-    letters representing different amino acids. Lines starting with '\>'
+    letters representing different amino acids. Lines starting with `\>`
     contain the identifier of a protein and potentially an additional
     description. This is followed by the sequence of this protein, which
     will not be needed in this task. This data comes from the
@@ -71,7 +71,7 @@ ls -l /submit/bash/your_username
     two columns representing the IDs of the dog and human proteins,
     respectively.
 
-### Task A (counting proteins)
+## Task A (counting proteins)
 
 **Steps (1) and (2)**
 
@@ -106,7 +106,7 @@ ls -l /submit/bash/your_username
   - **Submit** file `human.txt`, write your commands to the
     **protocol**.
 
-### Task B (counting matches)
+## Task B (counting matches)
 
 **Step (1)**
 
@@ -167,7 +167,7 @@ ls -l /submit/bash/your_username
   - **Submit** file `similar.tsv` and write your commands to the
     **protocol**.
 
-### Task C (joining information)
+## Task C (joining information)
 
 **Step (1)**
 
@@ -240,7 +240,7 @@ ls -l /submit/bash/your_username
   - **Submit** file `best.txt`. Write your commands and the answer to
     the question above to your **protocol**.
 
-### Task D (passwords)
+## Task D (passwords)
 
   - The file `/tasks/bash/names.txt` contains data about several people,
     one per line.

@@ -5,7 +5,7 @@ title: Lbash
 * TOC
 {:toc}
 
-[HWbash](./HWbash.md)
+Homework: [HWbash](./HWbash.md)
 
 This lecture introduces command-line tools and Perl one-liners.
 
