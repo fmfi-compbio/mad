@@ -299,8 +299,7 @@ awk 'END { print NR }'
 
 Instead of sed and awk, we will cover Perl one-liners.
 
-  - More examples can be found on various websites, e.g.
-    [2](https://learnbyexample.github.io/learn_perl_oneliners/one-liner-introduction.html)
+  - More examples can be found on [various websites](https://learnbyexample.github.io/learn_perl_oneliners/one-liner-introduction.html)
   - Documentation for [Perl
     switches](http://perldoc.perl.org/perlrun.html)
 

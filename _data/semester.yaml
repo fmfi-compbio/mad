@@ -9,7 +9,7 @@ weeks:
   - date: '2026-02-19'
     topics:
     - for: ALL
-      lecturer: TV
+      lecturer: TV,BB
       topic: Introduction to the course
       show: 1
       items:
@@ -33,13 +33,18 @@ weeks:
     - for: ALL
       lecturer: BB
       topic: Command-line tools, Perl one-liners
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lbash, name: 'Lecture'}
         - {type: notes, file: HWbash, name: 'Homework'}
 
   - date: '2026-03-05'
     topics:
+    - for: ALL
+      topic: Introduction to projects
+      show: 0
+      items:
+        - {type: notes, file: Project, name: 'Project'}
     - for: ALL
       lecturer: TV
       topic: Job scheduling and make
@@ -50,11 +55,6 @@ weeks:
 
   - date: '2026-03-12'
     topics:
-    - for: ALL
-      topic: Introduction to projects
-      show: 0
-      items:
-        - {type: notes, file: Project, name: 'Project'}
     - for: ALL
       lecturer: TV
       topic: SQL (and Python) for beginners
