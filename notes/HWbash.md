@@ -5,8 +5,8 @@ title: HWbash
 * TOC
 {:toc}
 
-[Lecture on Perl](./Lperl.md), [lecture on command-line
-tools](./Lbash.md)
+[Lecture on Perl](./Lperl.html), [lecture on command-line
+tools](./Lbash.html)
 
   - In this set of tasks, use command-line tools or one-liners in Perl,
     awk or sed. Do not write any scripts or programs.
