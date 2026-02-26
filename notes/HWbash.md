@@ -49,7 +49,7 @@ ls -l /submit/bash/your_username
   - In these tasks we will again process bioinformatics data. We have
     two files of sequences in the FASTA format. This time the sequences
     represent proteins, not DNA, and therefore they use 20 different
-    letters representing different amino acids. Lines starting with `\>`
+    letters representing different amino acids. Lines starting with `>`
     contain the identifier of a protein and potentially an additional
     description. This is followed by the sequence of this protein, which
     will not be needed in this task. This data comes from the
@@ -90,8 +90,7 @@ ls -l /submit/bash/your_username
 
   - Create file `human.txt` which contains sequence IDs and descriptions
     extracted from `human.fa`. This file will be used in Task C.
-  - Leading `>` should be removed. Any text after `OS=` in the
-    description should be also removed.
+  - Leading `>` should be removed. The text starting with `OS=` until the end of line in the description should be also removed.
   - This file should be sorted alphabetically.
   - The file should start as follows:
 

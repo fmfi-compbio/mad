@@ -38,15 +38,14 @@ Some tips for bash shell:
         your log.
       - For example, print the last commands using `tail
         ~/.bash_history`
-  - Various other history tricks exist, e.g. special variables
-    [1](http://samrowe.com/wordpress/advancing-in-the-bash-shell/).
+  - Various other history tricks exist, e.g. [special variables](https://www.gnu.org/software/bash/manual/html_node/History-Interaction.html).
   - `cd -` goes to previously visited directory (also see `pushd` and
     `popd`).
   - `ls -lt | head` shows 10 most recent files, useful for seeing what
     you have done last in a folder.
-
-Instead of bash, you can use more advanced command-line environments,
-e.g. [iPhyton notebook](http://ipython.org/notebook.html).
+  - for checking what is in a text-based file, use `less` rather than opening it in editor
+    - faster and uses less memory for big files
+    - prevents changing the file by mistake
 
 ## Redirecting and pipes
 
