@@ -41,11 +41,6 @@ weeks:
   - date: '2026-03-05'
     topics:
     - for: ALL
-      topic: Introduction to projects
-      show: 1
-      items:
-        - {type: notes, file: Project, name: 'Project'}
-    - for: ALL
       lecturer: TV
       topic: Job scheduling and make
       show: 1
@@ -55,6 +50,11 @@ weeks:
 
   - date: '2026-03-12'
     topics:
+    - for: ALL
+      topic: Introduction to projects
+      show: 0
+      items:
+        - {type: notes, file: Project, name: 'Project'}
     - for: ALL
       lecturer: TV
       topic: SQL (and Python) for beginners
