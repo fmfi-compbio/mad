@@ -42,13 +42,13 @@ weeks:
     topics:
     - for: ALL
       topic: Introduction to projects
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Project, name: 'Project'}
     - for: ALL
       lecturer: TV
       topic: Job scheduling and make
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lmake, name: 'Lecture'}
         - {type: notes, file: HWmake, name: 'Homework'}

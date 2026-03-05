@@ -258,7 +258,7 @@ interested in two lines from the `*.iqtree` files:
 
 To gather appropriate lines from all files and also know which file they
 come from, you can use grep command of the form  
-`grep --with-filename '^Log-likelihood of the tree:' gene_Q*/*.iqtree`  
+`grep --with-filename '^Log-likelihood of the tree:' gene_*/*.iqtree`  
 Its output will look like this:
 
     gene_Q6ZWJ1_human/JTT.iqtree:Log-likelihood of the tree: -4475.9510 (s.e. 121.3816)
