@@ -1,0 +1,256 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="perlfreebsd - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>perlfreebsd - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/perlfreebsd.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-platforms.html">Platform specific</a> &gt;
+      
+    
+    perlfreebsd
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>perlfreebsd</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#FreeBSD-core-dumps-from-readdir_r-with-ithreads">FreeBSD core dumps from readdir_r with ithreads</a></li><li><a href="#%24%5eX-doesn't-always-contain-a-full-path-in-FreeBSD">$^X doesn't always contain a full path in FreeBSD</a></li></ul><li><a href="#AUTHOR">AUTHOR</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>perlfreebsd - Perl version 5 on FreeBSD systems</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This document describes various features of FreeBSD that will affect how Perl
+version 5 (hereafter just Perl) is compiled and/or runs.</p>
+<a class='view-head2' id="FreeBSD-core-dumps-from-readdir_r-with-ithreads"></a><h3 class='h3' >FreeBSD core dumps from readdir_r with ithreads</h3>
+<p>When perl is configured to use ithreads, it will use re-entrant library calls
+in preference to non-re-entrant versions.  There is a bug in FreeBSD's
+<code class="inline"><span class="w">readdir_r</span></code>
+ function in versions 4.5 and earlier that can cause a SEGV when
+reading large directories. A patch for FreeBSD libc is available
+(see <a href="http://www.freebsd.org/cgi/query-pr.cgi?pr=misc/30631">http://www.freebsd.org/cgi/query-pr.cgi?pr=misc/30631</a> )
+which has been integrated into FreeBSD 4.6.</p>
+<a class='view-head2' id="%24%5eX-doesn't-always-contain-a-full-path-in-FreeBSD"></a><h3 class='h3' ><code class="inline"><span class="i">$^X</span></code>
+ doesn't always contain a full path in FreeBSD</h3>
+<p>perl sets <code class="inline"><span class="i">$^X</span></code>
+ where possible to a full path by asking the operating
+system. On FreeBSD the full path of the perl interpreter is found by using
+<code class="inline"><span class="w">sysctl</span></code>
+ with <code class="inline"><span class="w">KERN_PROC_PATHNAME</span></code>
+ if that is supported, else by reading
+the symlink <i>/proc/curproc/file</i>. FreeBSD 7 and earlier has a bug where
+either approach sometimes returns an incorrect value
+(see <a href="http://www.freebsd.org/cgi/query-pr.cgi?pr=35703">http://www.freebsd.org/cgi/query-pr.cgi?pr=35703</a> ).
+In these cases perl will fall back to the old behaviour of using C's
+<code class="inline"><span class="w">argv</span><span class="s">[</span><span class="n">0</span><span class="s">]</span></code>
+ value for <code class="inline"><span class="i">$^X</span></code>
+.</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Nicholas Clark &lt;nick@ccl4.org&gt;, collating wisdom supplied by Slaven Rezic
+and Tim Bunce.</p>
+<p>Please report any errors, updates, or suggestions to
+<a class='link-to-page' href="https://github.com/Perl/perl5/issues">https://github.com/Perl/perl5/issues</a>.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#FreeBSD-core-dumps-from-readdir_r-with-ithreads">FreeBSD core dumps from readdir_r with ithreads</a></li><li><a href="#%24%5eX-doesn't-always-contain-a-full-path-in-FreeBSD">$^X doesn't always contain a full path in FreeBSD</a></li></ul><li><a href="#AUTHOR">AUTHOR</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

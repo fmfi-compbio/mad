@@ -1,0 +1,311 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="open - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>open - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/open.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-pragmas.html">Pragmas</a> &gt;
+      
+    
+    open
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>open</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#IMPLEMENTATION-DETAILS">IMPLEMENTATION DETAILS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>open - perl pragma to set default PerlIO layers for input and output</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="w">IN</span>  <span class="cm">=&gt;</span> <span class="q">&#39;:crlf&#39;</span><span class="cm">,</span> <span class="w">OUT</span> <span class="cm">=&gt;</span> <span class="q">&#39;:raw&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/open.html">open</a> <a class="l_k" href="functions/my.html">my</a> <span class="i">$in</span><span class="cm">,</span> <span class="q">&#39;&lt;&#39;</span><span class="cm">,</span> <span class="q">&#39;foo.txt&#39;</span> <a class="l_k" href="functions/or.html">or</a> <a class="l_k" href="functions/die.html">die</a> <span class="q">&quot;open failed: $!&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/my.html">my</a> <span class="i">$line</span> = <span class="q">&lt;$in&gt;</span><span class="sc">;</span> <span class="c"># CRLF translated</span></li><li>    <a class="l_k" href="functions/close.html">close</a> <span class="i">$in</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/open.html">open</a> <a class="l_k" href="functions/my.html">my</a> <span class="i">$out</span><span class="cm">,</span> <span class="q">&#39;&gt;&#39;</span><span class="cm">,</span> <span class="q">&#39;bar.txt&#39;</span> <a class="l_k" href="functions/or.html">or</a> <a class="l_k" href="functions/die.html">die</a> <span class="q">&quot;open failed: $!&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">$out</span> <span class="i">$line</span><span class="sc">;</span> <span class="c"># no translation of bytes</span></li><li>    <a class="l_k" href="functions/close.html">close</a> <span class="i">$out</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="w">OUT</span> <span class="cm">=&gt;</span> <span class="q">&#39;:encoding(UTF-8)&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="w">IN</span>  <span class="cm">=&gt;</span> <span class="q">&#39;:encoding(iso-8859-7)&#39;</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="w">IO</span>  <span class="cm">=&gt;</span> <span class="q">&#39;:locale&#39;</span><span class="sc">;</span></li><li></li><li>    <span class="c"># IO implicit only for :utf8, :encoding, :locale</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="q">&#39;:encoding(UTF-8)&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="q">&#39;:encoding(iso-8859-7)&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="q">&#39;:locale&#39;</span><span class="sc">;</span></li><li></li><li>    <span class="c"># with :std, also affect global standard handles</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="q">&#39;:std&#39;</span><span class="cm">,</span> <span class="q">&#39;:encoding(UTF-8)&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="q">&#39;:std&#39;</span><span class="cm">,</span> <span class="w">OUT</span> <span class="cm">=&gt;</span> <span class="q">&#39;:encoding(cp1252)&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="q">&#39;:std&#39;</span><span class="cm">,</span> <span class="w">IO</span> <span class="cm">=&gt;</span> <span class="q">&#39;:raw :encoding(UTF-16LE)&#39;</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>Full-fledged support for I/O layers is now implemented provided
+Perl is configured to use PerlIO as its IO system (which has been the
+default since 5.8, and the only supported configuration since 5.16).</p>
+<p>The <code class="inline"><a class="l_k" href="functions/open.html">open</a></code> pragma serves as one of the interfaces to declare default
+"layers" (previously known as "disciplines") for all I/O. Any open(),
+readpipe() (aka qx//) and similar operators found within the
+lexical scope of this pragma will use the declared defaults via the
+<a href="perlvar.html#%24%7b%5eOPEN%7d">${^OPEN} </a> variable.</p>
+<p>Layers are specified with a leading colon by convention. You can
+specify a stack of multiple layers as a space-separated string.
+See <a href="PerlIO.html">PerlIO</a> for more information on the available layers.</p>
+<p>With the <code class="inline"><span class="w">IN</span></code>
+ subpragma you can declare the default layers
+of input streams, and with the <code class="inline"><span class="w">OUT</span></code>
+ subpragma you can declare
+the default layers of output streams.  With the <code class="inline"><span class="w">IO</span></code>
+ subpragma
+(may be omitted for <code class="inline"><span class="j">:</span><span class="w">utf8</span></code>
+, <code class="inline"><span class="j">:</span><span class="w">locale</span></code>
+, or <code class="inline"><span class="j">:</span><span class="w">encoding</span></code>
+) you
+can control both input and output streams simultaneously.</p>
+<p>When open() is given an explicit list of layers (with the three-arg
+syntax), they override the list declared using this pragma.  open() can
+also be given a single colon (:) for a layer name, to override this pragma
+and use the default as detailed in
+<a href="PerlIO.html#Defaults-and-how-to-override-them">Defaults and how to override them in PerlIO</a>.</p>
+<p>To translate from and to an arbitrary text encoding, use the <code class="inline"><span class="j">:</span><span class="w">encoding</span></code>
+
+layer.  The matching of encoding names in <code class="inline"><span class="j">:</span><span class="w">encoding</span></code>
+ is loose: case does
+not matter, and many encodings have several aliases.  See
+<a href="Encode/Supported.html">Encode::Supported</a> for details and the list of supported locales.</p>
+<p>If you want to set your encoding layers based on your
+locale environment variables, you can use the <code class="inline"><span class="j">:</span><span class="w">locale</span></code>
+ pseudo-layer.
+For example:</p>
+<pre class="verbatim"><ol><li>    <span class="i">$ENV</span>{<span class="w">LANG</span>} = <span class="q">&#39;ru_RU.KOI8-R&#39;</span><span class="sc">;</span></li><li>    <span class="c"># the :locale will probe the locale environment variables like LANG</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="w">OUT</span> <span class="cm">=&gt;</span> <span class="q">&#39;:locale&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/open.html">open</a><span class="s">(</span><a class="l_k" href="functions/my.html">my</a> <span class="i">$out</span><span class="cm">,</span> <span class="q">&#39;&gt;&#39;</span><span class="cm">,</span> <span class="q">&#39;koi8&#39;</span><span class="s">)</span> <a class="l_k" href="functions/or.html">or</a> <a class="l_k" href="functions/die.html">die</a> <span class="q">&quot;open failed: $!&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">$out</span> <a class="l_k" href="functions/chr.html">chr</a><span class="s">(</span><span class="n">0x430</span><span class="s">)</span><span class="sc">;</span> <span class="c"># CYRILLIC SMALL LETTER A = KOI8-R 0xc1</span></li><li>    <a class="l_k" href="functions/close.html">close</a> <span class="i">$out</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/open.html">open</a><span class="s">(</span><a class="l_k" href="functions/my.html">my</a> <span class="i">$in</span><span class="cm">,</span> <span class="q">&#39;&lt;&#39;</span><span class="cm">,</span> <span class="q">&#39;koi8&#39;</span><span class="s">)</span> <a class="l_k" href="functions/or.html">or</a> <a class="l_k" href="functions/die.html">die</a> <span class="q">&quot;open failed: $!&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/printf.html">printf</a> <span class="q">&quot;%#x\n&quot;</span><span class="cm">,</span> <a class="l_k" href="functions/ord.html">ord</a><span class="s">(</span><span class="q">&lt;$in&gt;</span><span class="s">)</span><span class="sc">;</span> <span class="c"># this should print 0xc1</span></li><li>    <a class="l_k" href="functions/close.html">close</a> <span class="i">$in</span><span class="sc">;</span></li></ol></pre><p>The logic of <code class="inline"><span class="j">:</span><span class="w">locale</span></code>
+ is described in full in
+<a href="encoding.html#The-%3alocale-sub-pragma">The :locale sub-pragma in encoding</a>,
+but in short it is first trying nl_langinfo(CODESET) and then
+guessing from the LC_ALL and LANG locale environment variables.
+<code class="inline"><span class="j">:</span><span class="w">locale</span></code>
+ also implicitly turns on <code class="inline"><span class="j">:</span><span class="w">std</span></code>
+.</p>
+<p><code class="inline"><span class="j">:</span><span class="w">std</span></code>
+ is not a layer but an additional subpragma.  When specified in the
+import list, it activates an additional functionality of pushing the
+layers selected for input/output handles to the standard filehandles
+(STDIN, STDOUT, STDERR).  If the new layers and existing layer stack both
+end with an <code class="inline"><span class="j">:</span><span class="w">encoding</span></code>
+ layer, the existing <code class="inline"><span class="j">:</span><span class="w">encoding</span></code>
+ layer will also
+be removed.</p>
+<p>For example, if both input and out are chosen to be <code class="inline"><span class="j">:</span><span class="i">encoding</span><span class="s">(</span><span class="w">UTF</span>-<span class="n">8</span><span class="s">)</span></code>
+, a
+<code class="inline"><span class="j">:</span><span class="w">std</span></code>
+ will mean that STDIN, STDOUT, and STDERR will also have
+<code class="inline"><span class="j">:</span><span class="i">encoding</span><span class="s">(</span><span class="w">UTF</span>-<span class="n">8</span><span class="s">)</span></code>
+ set.  On the other hand, if only output is chosen to
+be in <code class="inline"><span class="j">:</span><span class="i">encoding</span><span class="s">(</span><span class="w">koi8r</span><span class="s">)</span></code>
+, a <code class="inline"><span class="j">:</span><span class="w">std</span></code>
+ will cause only the STDOUT and STDERR
+to be in <code class="inline"><span class="w">koi8r</span></code>
+.</p>
+<p>The effect of <code class="inline"><span class="j">:</span><span class="w">std</span></code>
+ is not lexical as it modifies the layer stack of the
+global handles.  If you wish to apply only this global effect and not the
+effect on handles that are opened in that scope, you can isolate the call
+to this pragma in its own lexical scope.</p>
+<pre class="verbatim"><ol><li>    <span class="s">{</span> <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/open.html">open</a> <span class="q">&#39;:std&#39;</span><span class="cm">,</span> <span class="w">IO</span> <span class="cm">=&gt;</span> <span class="q">&#39;:encoding(UTF-8)&#39;</span> <span class="s">}</span></li></ol></pre><a class='view-head1' id="IMPLEMENTATION-DETAILS"></a><h2 class='h2' >IMPLEMENTATION DETAILS</h2>
+<p>There is a class method in <code class="inline"><span class="w">PerlIO::Layer</span></code>
+ <code class="inline"><span class="w">find</span></code>
+ which is
+implemented as XS code.  It is called by <code class="inline"><a class="l_k" href="functions/import.html">import</a></code> to validate the
+layers:</p>
+<pre class="verbatim"><ol><li>   <span class="i">PerlIO::Layer::-&gt;find</span><span class="s">(</span><span class="q">&quot;perlio&quot;</span><span class="s">)</span></li></ol></pre><p>The return value (if defined) is a Perl object, of class
+<code class="inline"><span class="w">PerlIO::Layer</span></code>
+ which is created by the C code in <i>perlio.c</i>.  As
+yet there is nothing useful you can do with the object at the perl
+level.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a class='function-name' href="functions/binmode.html">binmode</a>, <a class='function-name' href="functions/open.html">open</a>, <a href="perlunicode.html">perlunicode</a>, <a href="PerlIO.html">PerlIO</a>,
+<a href="encoding.html">encoding</a></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#IMPLEMENTATION-DETAILS">IMPLEMENTATION DETAILS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,271 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Symbol - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Symbol - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/Symbol.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-modules-S.html">Core modules (S)</a> &gt;
+      
+    
+    Symbol
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Symbol</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#BUGS">BUGS</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>Symbol - manipulate Perl symbols and their names</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">Symbol</span><span class="sc">;</span></li><li></li><li>    <span class="i">$sym</span> = <span class="w">gensym</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/open.html">open</a><span class="s">(</span><span class="i">$sym</span><span class="cm">,</span> <span class="q">&#39;&lt;&#39;</span><span class="cm">,</span> <span class="q">&quot;filename&quot;</span><span class="s">)</span><span class="sc">;</span></li><li>    <span class="i">$_</span> = <span class="q">&lt;$sym&gt;</span><span class="sc">;</span></li><li>    <span class="c"># etc.</span></li><li></li><li>    <span class="w">ungensym</span> <span class="i">$sym</span><span class="sc">;</span>      <span class="c"># no effect</span></li><li></li><li>    <span class="c"># replace *FOO{IO} handle but not $FOO, %FOO, etc.</span></li><li>    <span class="i">*FOO</span> = <span class="w">geniosym</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">qualify</span><span class="s">(</span><span class="q">&quot;x&quot;</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span>              <span class="c"># &quot;main::x&quot;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">qualify</span><span class="s">(</span><span class="q">&quot;x&quot;</span><span class="cm">,</span> <span class="q">&quot;FOO&quot;</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span>       <span class="c"># &quot;FOO::x&quot;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">qualify</span><span class="s">(</span><span class="q">&quot;BAR::x&quot;</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span>         <span class="c"># &quot;BAR::x&quot;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">qualify</span><span class="s">(</span><span class="q">&quot;BAR::x&quot;</span><span class="cm">,</span> <span class="q">&quot;FOO&quot;</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span>  <span class="c"># &quot;BAR::x&quot;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">qualify</span><span class="s">(</span><span class="q">&quot;STDOUT&quot;</span><span class="cm">,</span> <span class="q">&quot;FOO&quot;</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span>  <span class="c"># &quot;main::STDOUT&quot; (global)</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">qualify</span><span class="s">(</span>\<span class="i">*x</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span>              <span class="c"># returns \*x</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">qualify</span><span class="s">(</span>\<span class="i">*x</span><span class="cm">,</span> <span class="q">&quot;FOO&quot;</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span>       <span class="c"># returns \*x</span></li><li></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="w">refs</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="s">{</span> <span class="w">qualify_to_ref</span> <span class="i">$fh</span> <span class="s">}</span> <span class="q">&quot;foo!\n&quot;</span><span class="sc">;</span></li><li>    <span class="i">$ref</span> = <span class="w">qualify_to_ref</span> <span class="i">$name</span><span class="cm">,</span> <span class="i">$pkg</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">Symbol</span> <span class="q">qw(delete_package)</span><span class="sc">;</span></li><li>    <span class="i">delete_package</span><span class="s">(</span><span class="q">&#39;Foo::Bar&#39;</span><span class="s">)</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="q">&quot;deleted\n&quot;</span> <a class="l_k" href="functions/unless.html">unless</a> <a class="l_k" href="functions/exists.html">exists</a> <span class="i">$Foo::</span>{<span class="q">&#39;Bar::&#39;</span>}<span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p><code class="inline"><span class="w">Symbol::gensym</span></code>
+ creates an anonymous glob and returns a reference
+to it.  Such a glob reference can be used as a file or directory
+handle.</p>
+<p>For backward compatibility with older implementations that didn't
+support anonymous globs, <code class="inline"><span class="w">Symbol::ungensym</span></code>
+ is also provided.
+But it doesn't do anything.</p>
+<p><code class="inline"><span class="w">Symbol::geniosym</span></code>
+ creates an anonymous IO handle.  This can be
+assigned into an existing glob without affecting the non-IO portions
+of the glob.</p>
+<p><code class="inline"><span class="w">Symbol::qualify</span></code>
+ turns unqualified symbol names into qualified
+variable names (e.g. "myvar" -&gt; "MyPackage::myvar").  If it is given a
+second parameter, <code class="inline"><span class="w">qualify</span></code>
+ uses it as the default package;
+otherwise, it uses the package of its caller.  Regardless, global
+variable names (e.g. "STDOUT", "ENV", "SIG") are always qualified with
+"main::".</p>
+<p>Qualification applies only to symbol names (strings).  References are
+left unchanged under the assumption that they are glob references,
+which are qualified by their nature.</p>
+<p><code class="inline"><span class="w">Symbol::qualify_to_ref</span></code>
+ is just like <code class="inline"><span class="w">Symbol::qualify</span></code>
+ except that it
+returns a glob ref rather than a symbol name, so you can use the result
+even if <code class="inline"><a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="q">&#39;refs&#39;</span></code>
+ is in effect.</p>
+<p><code class="inline"><span class="w">Symbol::delete_package</span></code>
+ wipes out a whole package namespace.  Note
+this routine is not exported by default--you may want to import it
+explicitly.</p>
+<a class='view-head1' id="BUGS"></a><h2 class='h2' >BUGS</h2>
+<p><code class="inline"><span class="w">Symbol::delete_package</span></code>
+ is a bit too powerful. It undefines every symbol that
+lives in the specified package. Since perl, for performance reasons, does not
+perform a symbol table lookup each time a function is called or a global
+variable is accessed, some code that has already been loaded and that makes use
+of symbols in package <code class="inline"><span class="w">Foo</span></code>
+ may stop working after you delete <code class="inline"><span class="w">Foo</span></code>
+, even if
+you reload the <code class="inline"><span class="w">Foo</span></code>
+ module afterwards.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#BUGS">BUGS</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

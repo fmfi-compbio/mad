@@ -1,0 +1,232 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ptar - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>ptar - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/ptar.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-utilities.html">Utilities</a> &gt;
+      
+    
+    ptar
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>ptar</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#OPTIONS">OPTIONS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>ptar - a tar-like program written in perl</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>ptar is a small, tar look-alike program that uses the perl module
+Archive::Tar to extract, create and list tar archives.</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <span class="w">ptar</span> -c <span class="s">[</span>-<span class="w">v</span><span class="s">]</span> <span class="s">[</span>-z<span class="s">]</span> <span class="s">[</span>-C<span class="s">]</span> <span class="s">[</span>-f <span class="w">ARCHIVE_FILE</span> | -<span class="s">]</span> <span class="w">FILE</span> <span class="w">FILE</span> ...</li><li>    <span class="w">ptar</span> -c <span class="s">[</span>-<span class="w">v</span><span class="s">]</span> <span class="s">[</span>-z<span class="s">]</span> <span class="s">[</span>-C<span class="s">]</span> <span class="s">[</span>-T <a class="l_k" href="functions/index.html">index</a> | -<span class="s">]</span> <span class="s">[</span>-f <span class="w">ARCHIVE_FILE</span> | -<span class="s">]</span></li><li>    <span class="w">ptar</span> -x <span class="s">[</span>-<span class="w">v</span><span class="s">]</span> <span class="s">[</span>-z<span class="s">]</span> <span class="s">[</span>-f <span class="w">ARCHIVE_FILE</span> | -<span class="s">]</span></li><li>    <span class="w">ptar</span> -t <span class="s">[</span>-z<span class="s">]</span> <span class="s">[</span>-f <span class="w">ARCHIVE_FILE</span> | -<span class="s">]</span></li><li>    <span class="w">ptar</span> -<span class="w">h</span></li></ol></pre><a class='view-head1' id="OPTIONS"></a><h2 class='h2' >OPTIONS</h2>
+<pre class="verbatim"><ol><li>    <span class="w">c</span>   <span class="w">Create</span> <span class="w">ARCHIVE_FILE</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">STDOUT</span> <span class="s">(</span>-<span class="s">)</span> <span class="w">from</span> <span class="w">FILE</span></li><li>    <span class="w">x</span>   <span class="w">Extract</span> <span class="w">from</span> <span class="w">ARCHIVE_FILE</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">STDIN</span> <span class="s">(</span>-<span class="s">)</span></li><li>    <span class="w">t</span>   <span class="w">List</span> <span class="w">the</span> <span class="w">contents</span> <span class="w">of</span> <span class="w">ARCHIVE_FILE</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">STDIN</span> <span class="s">(</span>-<span class="s">)</span></li><li>    <span class="w">f</span>   <span class="w">Name</span> <span class="w">of</span> <span class="w">the</span> <span class="w">ARCHIVE_FILE</span> <span class="w">to</span> <a class="l_k" href="functions/use.html">use</a>. <span class="w">Default</span> <span class="w">is</span> <span class="q">&#39;./default.tar&#39;</span></li><li>    <span class="w">z</span>   <span class="w">Read</span>/<span class="w">Write</span> <span class="w">zlib</span> <span class="w">compressed</span> <span class="w">ARCHIVE_FILE</span> <span class="s">(</span><a class="l_k" href="functions/not.html">not</a> <span class="w">always</span> <span class="w">available</span><span class="s">)</span></li><li>    <span class="w">v</span>   <span class="w">Print</span> <span class="w">filenames</span> <span class="w">as</span> <span class="w">they</span> <span class="w">are</span> <span class="w">added</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">extracted</span> <span class="w">from</span> <span class="w">ARCHIVE_FILE</span></li><li>    <span class="w">h</span>   <span class="w">Prints</span> <span class="w">this</span> <span class="w">help</span> <span class="w">message</span></li><li>    <span class="w">C</span>   <span class="w">CPAN</span> <span class="w">mode</span> - <span class="w">drop</span> <span class="n">022</span> <span class="w">from</span> <span class="w">permissions</span></li><li>    <span class="w">T</span>   <span class="w">get</span> <span class="w">names</span> <span class="w">to</span> <span class="w">create</span> <span class="w">from</span> <span class="w">file</span></li></ol></pre><a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><i>tar(1)</i>, <a href="Archive/Tar.html">Archive::Tar</a>.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#OPTIONS">OPTIONS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,299 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Text::ParseWords - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Text::ParseWords - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/Text/ParseWords.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-T.html">Core modules (T)</a> &gt;
+      
+    
+    Text::ParseWords
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Text::ParseWords</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#EXAMPLES">EXAMPLES</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHORS">AUTHORS</a></li><li><a href="#COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>Text::ParseWords - parse text into an array of tokens or array of arrays</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="../functions/use.html">use</a> <span class="w">Text::ParseWords</span><span class="sc">;</span></li><li>  <span class="i">@lists</span> = <span class="i">nested_quotewords</span><span class="s">(</span><span class="i">$delim</span><span class="cm">,</span> <span class="i">$keep</span><span class="cm">,</span> <span class="i">@lines</span><span class="s">)</span><span class="sc">;</span></li><li>  <span class="i">@words</span> = <span class="i">quotewords</span><span class="s">(</span><span class="i">$delim</span><span class="cm">,</span> <span class="i">$keep</span><span class="cm">,</span> <span class="i">@lines</span><span class="s">)</span><span class="sc">;</span></li><li>  <span class="i">@words</span> = <span class="i">shellwords</span><span class="s">(</span><span class="i">@lines</span><span class="s">)</span><span class="sc">;</span></li><li>  <span class="i">@words</span> = <span class="i">parse_line</span><span class="s">(</span><span class="i">$delim</span><span class="cm">,</span> <span class="i">$keep</span><span class="cm">,</span> <span class="i">$line</span><span class="s">)</span><span class="sc">;</span></li><li>  <span class="i">@words</span> = <span class="i">old_shellwords</span><span class="s">(</span><span class="i">@lines</span><span class="s">)</span><span class="sc">;</span> <span class="c"># DEPRECATED!</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>The &amp;nested_quotewords() and &amp;quotewords() functions accept a delimiter 
+(which can be a regular expression)
+and a list of lines and then breaks those lines up into a list of
+words ignoring delimiters that appear inside quotes.  &amp;quotewords()
+returns all of the tokens in a single long list, while &amp;nested_quotewords()
+returns a list of token lists corresponding to the elements of @lines.
+&amp;parse_line() does tokenizing on a single string.  The &amp;*quotewords()
+functions simply call &amp;parse_line(), so if you're only splitting
+one line you can call &amp;parse_line() directly and save a function
+call.</p>
+<p>The $keep argument is a boolean flag.  If true, then the tokens are
+split on the specified delimiter, but all other characters (including
+quotes and backslashes) are kept in the tokens.  If $keep is false then the
+&amp;*quotewords() functions remove all quotes and backslashes that are
+not themselves backslash-escaped or inside of single quotes (i.e.,
+&amp;quotewords() tries to interpret these characters just like the Bourne
+shell).  NB: these semantics are significantly different from the
+original version of this module shipped with Perl 5.000 through 5.004.
+As an additional feature, $keep may be the keyword "delimiters" which
+causes the functions to preserve the delimiters in each string as
+tokens in the token lists, in addition to preserving quote and
+backslash characters.</p>
+<p>&amp;shellwords() is written as a special case of &amp;quotewords(), and it
+does token parsing with whitespace as a delimiter-- similar to most
+Unix shells.</p>
+<a class='view-head1' id="EXAMPLES"></a><h2 class='h2' >EXAMPLES</h2>
+<p>The sample program:</p>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="../functions/use.html">use</a> <span class="w">Text::ParseWords</span><span class="sc">;</span></li><li>  <span class="i">@words</span> = <span class="i">quotewords</span><span class="s">(</span><span class="q">&#39;\s+&#39;</span><span class="cm">,</span> <span class="n">0</span><span class="cm">,</span> <span class="q">q{this   is &quot;a test&quot; of\ quotewords \&quot;for you}</span><span class="s">)</span><span class="sc">;</span></li><li>  <span class="i">$i</span> = <span class="n">0</span><span class="sc">;</span></li><li>  <a class="l_k" href="../functions/foreach.html">foreach</a> <span class="s">(</span><span class="i">@words</span><span class="s">)</span> <span class="s">{</span></li><li>      <a class="l_k" href="../functions/print.html">print</a> <span class="q">&quot;$i: &lt;$_&gt;\n&quot;</span><span class="sc">;</span></li><li>      <span class="i">$i</span>++<span class="sc">;</span></li><li>  <span class="s">}</span></li></ol></pre><p>produces:</p>
+<pre class="verbatim"><ol><li>  <span class="n">0</span><span class="co">:</span> <span class="q">&lt;this&gt;</span></li><li>  <span class="n">1</span><span class="co">:</span> <span class="q">&lt;is&gt;</span></li><li>  <span class="n">2</span><span class="co">:</span> <span class="q">&lt;a test&gt;</span></li><li>  <span class="n">3</span><span class="co">:</span> <span class="q">&lt;of quotewords&gt;</span></li><li>  <span class="n">4</span><span class="co">:</span> <span class="q">&lt;&quot;for&gt;</span></li><li>  <span class="n">5</span><span class="co">:</span> <span class="q">&lt;you&gt;</span></li></ol></pre><p>demonstrating:</p>
+<dl>
+<li>
+<p>a simple word</p>
+</li>
+<li>
+<p>multiple spaces are skipped because of our $delim</p>
+</li>
+<li>
+<p>use of quotes to include a space in a word</p>
+</li>
+<li>
+<p>use of a backslash to include a space in a word</p>
+</li>
+<li>
+<p>use of a backslash to remove the special meaning of a double-quote</p>
+</li>
+<li>
+<p>another simple word (note the lack of effect of the
+backslashed double-quote)</p>
+</li>
+</dl>
+<p>Replacing <code class="inline"><span class="i">quotewords</span><span class="s">(</span><span class="q">&#39;\s+&#39;</span><span class="cm">,</span> <span class="n">0</span><span class="cm">,</span> <span class="q">q{this   is...}</span><span class="s">)</span></code>
+
+with <code class="inline"><span class="i">shellwords</span><span class="s">(</span><span class="q">q{this   is...}</span><span class="s">)</span></code>
+
+is a simpler way to accomplish the same thing.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="https://search.cpan.org/perldoc/Text::CSV">Text::CSV</a> - for parsing CSV files</p>
+<a class='view-head1' id="AUTHORS"></a><h2 class='h2' >AUTHORS</h2>
+<p>Maintainer: Alexandr Ciornii &lt;alexchornyATgmail.com&gt;.</p>
+<p>Previous maintainer: Hal Pomeranz &lt;pomeranz@netcom.com&gt;, 1994-1997 (Original
+author unknown).  Much of the code for &amp;parse_line() (including the
+primary regexp) from Joerk Behrends &lt;jbehrends@multimediaproduzenten.de&gt;.</p>
+<p>Examples section another documentation provided by John Heidemann 
+&lt;johnh@ISI.EDU&gt;</p>
+<p>Bug reports, patches, and nagging provided by lots of folks-- thanks
+everybody!  Special thanks to Michael Schwern &lt;schwern@envirolink.org&gt;
+for assuring me that a &amp;nested_quotewords() would be useful, and to 
+Jeff Friedl &lt;jfriedl@yahoo-inc.com&gt; for telling me not to worry about
+error-checking (sort of-- you had to be there).</p>
+<a class='view-head1' id="COPYRIGHT-AND-LICENSE"></a><h2 class='h2' >COPYRIGHT AND LICENSE</h2>
+<p>This library is free software; you may redistribute and/or modify it
+under the same terms as Perl itself.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#EXAMPLES">EXAMPLES</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHORS">AUTHORS</a></li><li><a href="#COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,408 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Pragmas - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Pragmas - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/index-pragmas.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+    Pragmas
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Pragmas</h1>
+<ul>
+  
+    <li><a href="attributes.html">attributes</a></li>
+    
+      - get/set subroutine or variable attributes
+    
+  
+    <li><a href="autodie.html">autodie</a></li>
+    
+      - Replace functions with ones that succeed or die with lexical scope
+    
+  
+    <li><a href="autouse.html">autouse</a></li>
+    
+      - postpone load of modules until a function is used
+    
+  
+    <li><a href="base.html">base</a></li>
+    
+      - Establish an ISA relationship with base classes at compile time
+    
+  
+    <li><a href="bigint.html">bigint</a></li>
+    
+      - Transparent BigInteger support for Perl
+    
+  
+    <li><a href="bignum.html">bignum</a></li>
+    
+      - Transparent BigNumber support for Perl
+    
+  
+    <li><a href="bigrat.html">bigrat</a></li>
+    
+      - Transparent BigNumber/BigRational support for Perl
+    
+  
+    <li><a href="blib.html">blib</a></li>
+    
+      - Use MakeMaker's uninstalled version of a package
+    
+  
+    <li><a href="bytes.html">bytes</a></li>
+    
+      - Perl pragma to expose the individual bytes of characters
+    
+  
+    <li><a href="charnames.html">charnames</a></li>
+    
+      - access to Unicode character names and named character sequences; also define character names
+    
+  
+    <li><a href="constant.html">constant</a></li>
+    
+      - Perl pragma to declare constants
+    
+  
+    <li><a href="diagnostics.html">diagnostics</a></li>
+    
+      - produce verbose warning diagnostics
+    
+  
+    <li><a href="encoding.html">encoding</a></li>
+    
+      - allows you to write your script in non-ASCII and non-UTF-8
+    
+  
+    <li><a href="feature.html">feature</a></li>
+    
+      - Perl pragma to enable new features
+    
+  
+    <li><a href="fields.html">fields</a></li>
+    
+      - compile-time class fields
+    
+  
+    <li><a href="filetest.html">filetest</a></li>
+    
+      - Perl pragma to control the filetest permission operators
+    
+  
+    <li><a href="if.html">if</a></li>
+    
+      - use a Perl module if a condition holds
+    
+  
+    <li><a href="integer.html">integer</a></li>
+    
+      - Perl pragma to use integer arithmetic instead of floating point
+    
+  
+    <li><a href="less.html">less</a></li>
+    
+      - perl pragma to request less of something
+    
+  
+    <li><a href="lib.html">lib</a></li>
+    
+      - manipulate @INC at compile time
+    
+  
+    <li><a href="locale.html">locale</a></li>
+    
+      - Perl pragma to use or avoid POSIX locales for built-in operations
+    
+  
+    <li><a href="mro.html">mro</a></li>
+    
+      - Method Resolution Order
+    
+  
+    <li><a href="open.html">open</a></li>
+    
+      - perl pragma to set default PerlIO layers for input and output
+    
+  
+    <li><a href="ops.html">ops</a></li>
+    
+      - Perl pragma to restrict unsafe operations when compiling
+    
+  
+    <li><a href="overload.html">overload</a></li>
+    
+      - Package for overloading Perl operations
+    
+  
+    <li><a href="overloading.html">overloading</a></li>
+    
+      - perl pragma to lexically control overloading
+    
+  
+    <li><a href="parent.html">parent</a></li>
+    
+      - Establish an ISA relationship with base classes at compile time
+    
+  
+    <li><a href="re.html">re</a></li>
+    
+      - Perl pragma to alter regular expression behaviour
+    
+  
+    <li><a href="sigtrap.html">sigtrap</a></li>
+    
+      - Perl pragma to enable simple signal handling
+    
+  
+    <li><a href="sort.html">sort</a></li>
+    
+      - perl pragma to control sort() behaviour
+    
+  
+    <li><a href="strict.html">strict</a></li>
+    
+      - Perl pragma to restrict unsafe constructs
+    
+  
+    <li><a href="subs.html">subs</a></li>
+    
+      - Perl pragma to predeclare subroutine names
+    
+  
+    <li><a href="threads.html">threads</a></li>
+    
+      - Perl interpreter-based threads
+    
+  
+    <li><a href="threads/shared.html">threads::shared</a></li>
+    
+      - Perl extension for sharing data structures between threads
+    
+  
+    <li><a href="utf8.html">utf8</a></li>
+    
+      - Perl pragma to enable/disable UTF-8 (or UTF-EBCDIC) in source code
+    
+  
+    <li><a href="vars.html">vars</a></li>
+    
+      - Perl pragma to predeclare global variable names
+    
+  
+    <li><a href="vmsish.html">vmsish</a></li>
+    
+      - Perl pragma to control VMS-specific language features
+    
+  
+    <li><a href="warnings.html">warnings</a></li>
+    
+      - Perl pragma to control optional warnings
+    
+  
+    <li><a href="warnings/register.html">warnings::register</a></li>
+    
+      - warnings import function
+    
+  
+</ul>
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

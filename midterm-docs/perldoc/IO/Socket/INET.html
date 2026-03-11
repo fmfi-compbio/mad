@@ -1,0 +1,320 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="IO::Socket::INET - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>IO::Socket::INET - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/IO/Socket/INET.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../../index-modules-I.html">Core modules (I)</a> &gt;
+      
+    
+    IO::Socket::INET
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>IO::Socket::INET</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#CONSTRUCTOR">CONSTRUCTOR</a></li><ul><li><a href="#METHODS">METHODS</a></li></ul><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>IO::Socket::INET - Object interface for AF_INET domain sockets</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../../functions/use.html">use</a> <span class="w">IO::Socket::INET</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p><code class="inline"><span class="w">IO::Socket::INET</span></code>
+ provides an object interface to creating and using sockets
+in the AF_INET domain. It is built upon the <a href="../../IO/Socket.html">IO::Socket</a> interface and
+inherits all the methods defined by <a href="../../IO/Socket.html">IO::Socket</a>.</p>
+<a class='view-head1' id="CONSTRUCTOR"></a><h2 class='h2' >CONSTRUCTOR</h2>
+<ul>
+<li><a class='view-title' id="new-(-%5bARGS%5d-)"></a><strong>new ( [ARGS] )</strong>
+<p>Creates an <code class="inline"><span class="w">IO::Socket::INET</span></code>
+ object, which is a reference to a
+newly created symbol (see the <code class="inline"><span class="w">Symbol</span></code>
+ package). <code class="inline"><span class="w">new</span></code>
+
+optionally takes arguments, these arguments are in key-value pairs.</p>
+<p>In addition to the key-value pairs accepted by <a href="../../IO/Socket.html">IO::Socket</a>,
+<code class="inline"><span class="w">IO::Socket::INET</span></code>
+ provides.</p>
+<pre class="verbatim"><ol><li> <span class="w">PeerAddr</span>    <span class="w">Remote</span> <span class="w">host</span> <span class="w">address</span>          <span class="q">&lt;hostname&gt;</span><span class="s">[</span><span class="co">:</span><span class="q">&lt;port&gt;</span><span class="s">]</span></li><li> <span class="w">PeerHost</span>    <span class="w">Synonym</span> <a class="l_k" href="../../functions/for.html">for</a> <span class="w">PeerAddr</span></li><li> <span class="w">PeerPort</span>    <span class="w">Remote</span> <span class="w">port</span> <a class="l_k" href="../../functions/or.html">or</a> <span class="w">service</span>       <span class="q">&lt;service&gt;</span><span class="s">[</span><span class="s">(</span><span class="q">&lt;no&gt;</span><span class="s">)</span><span class="s">]</span> | <span class="q">&lt;no&gt;</span></li><li> <span class="w">LocalAddr</span>   <span class="w">Local</span> <span class="w">host</span> <a class="l_k" href="../../functions/bind.html">bind</a> <span class="w">address</span>      <span class="w">hostname</span><span class="s">[</span><span class="co">:</span><span class="w">port</span><span class="s">]</span></li><li> <span class="w">LocalHost</span>   <span class="w">Synonym</span> <a class="l_k" href="../../functions/for.html">for</a> <span class="w">LocalAddr</span></li><li> <span class="w">LocalPort</span>   <span class="w">Local</span> <span class="w">host</span> <a class="l_k" href="../../functions/bind.html">bind</a> <span class="w">port</span>         <span class="q">&lt;service&gt;</span><span class="s">[</span><span class="s">(</span><span class="q">&lt;no&gt;</span><span class="s">)</span><span class="s">]</span> | <span class="q">&lt;no&gt;</span></li><li> <span class="w">Proto</span>       <span class="w">Protocol</span> <span class="w">name</span> <span class="s">(</span><a class="l_k" href="../../functions/or.html">or</a> <span class="w">number</span><span class="s">)</span>    <span class="q">&quot;tcp&quot;</span> | <span class="q">&quot;udp&quot;</span> | ...</li><li> <span class="w">Type</span>        <span class="w">Socket</span> <span class="w">type</span>              <span class="w">SOCK_STREAM</span> | <span class="w">SOCK_DGRAM</span> | ...</li><li> <span class="w">Listen</span>      <span class="w">Queue</span> <span class="w">size</span> <a class="l_k" href="../../functions/for.html">for</a> <a class="l_k" href="../../functions/listen.html">listen</a></li><li> <span class="w">ReuseAddr</span>   <span class="w">Set</span> <span class="w">SO_REUSEADDR</span> <span class="w">before</span> <span class="w">binding</span></li><li> <span class="w">Reuse</span>       <span class="w">Set</span> <span class="w">SO_REUSEADDR</span> <span class="w">before</span> <span class="w">binding</span> <span class="s">(</span><span class="w">deprecated</span><span class="cm">,</span></li><li>                                              <span class="w">prefer</span> <span class="w">ReuseAddr</span><span class="s">)</span></li><li> <span class="w">ReusePort</span>   <span class="w">Set</span> <span class="w">SO_REUSEPORT</span> <span class="w">before</span> <span class="w">binding</span></li><li> <span class="w">Broadcast</span>   <span class="w">Set</span> <span class="w">SO_BROADCAST</span> <span class="w">before</span> <span class="w">binding</span></li><li> <span class="w">Timeout</span>     <span class="w">Timeout</span> <span class="w">value</span> <a class="l_k" href="../../functions/for.html">for</a> <span class="w">various</span> <span class="w">operations</span></li><li> <span class="w">MultiHomed</span>  <span class="w">Try</span> <span class="w">all</span> <span class="w">addresses</span> <a class="l_k" href="../../functions/for.html">for</a> <span class="w">multi</span>-<span class="w">homed</span> <span class="w">hosts</span></li><li> <span class="w">Blocking</span>    <span class="w">Determine</span> <a class="l_k" href="../../functions/if.html">if</a> <span class="w">connection</span> <span class="w">will</span> <span class="w">be</span> <span class="w">blocking</span> <span class="w">mode</span></li></ol></pre><p>If <code class="inline"><span class="w">Listen</span></code>
+ is defined then a listen socket is created, else if the
+socket type, which is derived from the protocol, is SOCK_STREAM then
+connect() is called.  If the <code class="inline"><span class="w">Listen</span></code>
+ argument is given, but false,
+the queue size will be set to 5.</p>
+<p>Although it is not illegal, the use of <code class="inline"><span class="w">MultiHomed</span></code>
+ on a socket
+which is in non-blocking mode is of little use. This is because the
+first connect will never fail with a timeout as the connect call
+will not block.</p>
+<p>The <code class="inline"><span class="w">PeerAddr</span></code>
+ can be a hostname or the IP-address on the
+"xx.xx.xx.xx" form.  The <code class="inline"><span class="w">PeerPort</span></code>
+ can be a number or a symbolic
+service name.  The service name might be followed by a number in
+parenthesis which is used if the service is not known by the system.
+The <code class="inline"><span class="w">PeerPort</span></code>
+ specification can also be embedded in the <code class="inline"><span class="w">PeerAddr</span></code>
+
+by preceding it with a ":".</p>
+<p>If <code class="inline"><span class="w">Proto</span></code>
+ is not given and you specify a symbolic <code class="inline"><span class="w">PeerPort</span></code>
+ port,
+then the constructor will try to derive <code class="inline"><span class="w">Proto</span></code>
+ from the service
+name.  As a last resort <code class="inline"><span class="w">Proto</span></code>
+ "tcp" is assumed.  The <code class="inline"><span class="w">Type</span></code>
+
+parameter will be deduced from <code class="inline"><span class="w">Proto</span></code>
+ if not specified.</p>
+<p>If the constructor is only passed a single argument, it is assumed to
+be a <code class="inline"><span class="w">PeerAddr</span></code>
+ specification.</p>
+<p>If <code class="inline"><span class="w">Blocking</span></code>
+ is set to 0, the connection will be in nonblocking mode.
+If not specified it defaults to 1 (blocking mode).</p>
+<p>Examples:</p>
+<pre class="verbatim"><ol><li>   <span class="i">$sock</span> = <span class="w">IO::Socket::INET</span><span class="w">-&gt;new</span><span class="s">(</span><span class="w">PeerAddr</span> <span class="cm">=&gt;</span> <span class="q">&#39;www.perl.org&#39;</span><span class="cm">,</span></li><li>                                 <span class="w">PeerPort</span> <span class="cm">=&gt;</span> <span class="q">&#39;http(80)&#39;</span><span class="cm">,</span></li><li>                                 <span class="w">Proto</span>    <span class="cm">=&gt;</span> <span class="q">&#39;tcp&#39;</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>   <span class="i">$sock</span> = <span class="w">IO::Socket::INET</span><span class="w">-&gt;new</span><span class="s">(</span><span class="w">PeerAddr</span> <span class="cm">=&gt;</span> <span class="q">&#39;localhost:smtp(25)&#39;</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>   <span class="i">$sock</span> = <span class="w">IO::Socket::INET</span><span class="w">-&gt;new</span><span class="s">(</span><span class="w">Listen</span>    <span class="cm">=&gt;</span> <span class="n">5</span><span class="cm">,</span></li><li>                                 <span class="w">LocalAddr</span> <span class="cm">=&gt;</span> <span class="q">&#39;localhost&#39;</span><span class="cm">,</span></li><li>                                 <span class="w">LocalPort</span> <span class="cm">=&gt;</span> <span class="n">9000</span><span class="cm">,</span></li><li>                                 <span class="w">Proto</span>     <span class="cm">=&gt;</span> <span class="q">&#39;tcp&#39;</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>   <span class="i">$sock</span> = <span class="w">IO::Socket::INET</span><span class="w">-&gt;new</span><span class="s">(</span><span class="q">&#39;127.0.0.1:25&#39;</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>   <span class="i">$sock</span> = <span class="w">IO::Socket::INET</span><span class="w">-&gt;new</span><span class="s">(</span></li><li>                           <span class="w">PeerPort</span>  <span class="cm">=&gt;</span> <span class="n">9999</span><span class="cm">,</span></li><li>                           <span class="w">PeerAddr</span>  <span class="cm">=&gt;</span> <span class="i">inet_ntoa</span><span class="s">(</span><span class="w">INADDR_BROADCAST</span><span class="s">)</span><span class="cm">,</span></li><li>                           <span class="w">Proto</span>     <span class="cm">=&gt;</span> <span class="w">udp</span><span class="cm">,</span>    </li><li>                           <span class="w">LocalAddr</span> <span class="cm">=&gt;</span> <span class="q">&#39;localhost&#39;</span><span class="cm">,</span></li><li>                           <span class="w">Broadcast</span> <span class="cm">=&gt;</span> <span class="n">1</span> <span class="s">)</span> </li><li>                       <a class="l_k" href="../../functions/or.html">or</a> <a class="l_k" href="../../functions/die.html">die</a> <span class="q">&quot;Can&#39;t bind : $@\n&quot;</span><span class="sc">;</span></li></ol></pre><p><strong>NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE</strong></p>
+<p>As of VERSION 1.18 all IO::Socket objects have autoflush turned on
+by default. This was not the case with earlier releases.</p>
+<p><strong>NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE NOTE</strong></p>
+</li>
+</ul>
+<a class='view-head2' id="METHODS"></a><h3 class='h3' >METHODS</h3>
+<ul>
+<li><a class='view-title' id="sockaddr-()"></a><strong>sockaddr ()</strong>
+<p>Return the address part of the sockaddr structure for the socket</p>
+</li>
+<li><a class='view-title' id="sockport-()"></a><strong>sockport ()</strong>
+<p>Return the port number that the socket is using on the local host</p>
+</li>
+<li><a class='view-title' id="sockhost-()"></a><strong>sockhost ()</strong>
+<p>Return the address part of the sockaddr structure for the socket in a
+text form xx.xx.xx.xx</p>
+</li>
+<li><a class='view-title' id="peeraddr-()"></a><strong>peeraddr ()</strong>
+<p>Return the address part of the sockaddr structure for the socket on
+the peer host</p>
+</li>
+<li><a class='view-title' id="peerport-()"></a><strong>peerport ()</strong>
+<p>Return the port number for the socket on the peer host.</p>
+</li>
+<li><a class='view-title' id="peerhost-()"></a><strong>peerhost ()</strong>
+<p>Return the address part of the sockaddr structure for the socket on the
+peer host in a text form xx.xx.xx.xx</p>
+</li>
+</ul>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../../Socket.html">Socket</a>, <a href="../../IO/Socket.html">IO::Socket</a></p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Graham Barr. Currently maintained by the Perl Porters.  Please report all
+bugs to &lt;perlbug@perl.org&gt;.</p>
+<a class='view-head1' id="COPYRIGHT"></a><h2 class='h2' >COPYRIGHT</h2>
+<p>Copyright (c) 1996-8 Graham Barr &lt;gbarr@pobox.com&gt;. All rights reserved.
+This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#CONSTRUCTOR">CONSTRUCTOR</a></li><ul><li><a href="#METHODS">METHODS</a></li></ul><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

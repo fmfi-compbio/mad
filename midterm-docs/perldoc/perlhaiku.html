@@ -1,0 +1,258 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="perlhaiku - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>perlhaiku - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/perlhaiku.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-platforms.html">Platform specific</a> &gt;
+      
+    
+    perlhaiku
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>perlhaiku</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#BUILD-AND-INSTALL">BUILD AND INSTALL</a></li><li><a href="#KNOWN-PROBLEMS">KNOWN PROBLEMS</a></li><li><a href="#CONTACT">CONTACT</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>perlhaiku - Perl version 5.10+ on Haiku</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This file contains instructions how to build Perl for Haiku and lists
+known problems.</p>
+<a class='view-head1' id="BUILD-AND-INSTALL"></a><h2 class='h2' >BUILD AND INSTALL</h2>
+<p>The build procedure is completely standard:</p>
+<pre class="verbatim"><ol><li>  .<span class="q">/Configure -de</span></li><li>  <span class="q">  make</span></li><li>  <span class="q">  make install</span></li></ol></pre><p>Make perl executable and create a symlink for libperl:</p>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="functions/chmod.html">chmod</a> <span class="w">a</span>+<span class="w">x</span> /<span class="w">boot</span>/<span class="w">common</span>/<span class="w">bin</span>/<span class="w">perl</span></li><li>  <span class="w">cd</span> /<span class="w">boot</span>/<span class="w">common</span>/<span class="w">lib</span><span class="sc">;</span> <span class="w">ln</span> -s <span class="w">perl5</span>/<span class="v">5.32.0</span>/<span class="w">BePC</span>-<span class="w">haiku</span>/<span class="w">CORE</span>/<span class="w">libperl</span>.<span class="w">so</span> .</li></ol></pre><p>Replace <code class="inline"><span class="v">5.32.0</span></code>
+ with your respective version of Perl.</p>
+<a class='view-head1' id="KNOWN-PROBLEMS"></a><h2 class='h2' >KNOWN PROBLEMS</h2>
+<p>The following problems are encountered with Haiku revision 28311:</p>
+<ul>
+<li>
+<p>Perl cannot be compiled with threading support ATM.</p>
+</li>
+<li>
+<p>The <i>cpan/Socket/t/socketpair.t</i> test fails. More precisely: the subtests
+using datagram sockets fail. Unix datagram sockets aren't implemented in
+Haiku yet.</p>
+</li>
+<li>
+<p>A subtest of the <i>cpan/Sys-Syslog/t/syslog.t</i> test fails. This is due to Haiku
+not implementing <i>/dev/log</i> support yet.</p>
+</li>
+<li>
+<p>The tests <i>dist/Net-Ping/t/450_service.t</i> and <i>dist/Net-Ping/t/510_ping_udp.t</i>
+fail. This is due to bugs in Haiku's network stack implementation.</p>
+</li>
+</ul>
+<a class='view-head1' id="CONTACT"></a><h2 class='h2' >CONTACT</h2>
+<p>For Haiku specific problems contact the HaikuPorts developers:
+<a href="http://ports.haiku-files.org/">http://ports.haiku-files.org/</a></p>
+<p>The initial Haiku port was done by Ingo Weinhold &lt;ingo_weinhold@gmx.de&gt;.</p>
+<p>Last update: 2008-10-29</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#BUILD-AND-INSTALL">BUILD AND INSTALL</a></li><li><a href="#KNOWN-PROBLEMS">KNOWN PROBLEMS</a></li><li><a href="#CONTACT">CONTACT</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

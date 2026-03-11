@@ -1,0 +1,262 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="tie - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>tie - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/functions/tie.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-language.html">Language reference</a> &gt;
+      
+        <a href="../index-functions.html">Functions</a> &gt;
+      
+    
+    tie
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>tie</h1>
+<div class="mod_az_list">
+  <a href="/5.32.0/index-functions.html">Perl functions A-Z</a> |
+  <a href="/5.32.0/index-functions-by-cat.html">Perl functions by category</a> |
+  <a href="/5.32.0/perlfunc.html">The 'perlfunc' manpage</a>
+</div>
+
+
+  <!--    -->
+<ul>
+<li><a class='view-title' id="tie-VARIABLE%2cCLASSNAME%2cLIST"></a><strong>tie VARIABLE,CLASSNAME,LIST</strong>
+<p></p>
+<p>This function binds a variable to a package class that will provide the
+implementation for the variable.  VARIABLE is the name of the variable
+to be enchanted.  CLASSNAME is the name of a class implementing objects
+of correct type.  Any additional arguments are passed to the
+appropriate constructor
+method of the class (meaning <code class="inline"><span class="w">TIESCALAR</span></code>
+, <code class="inline"><span class="w">TIEHANDLE</span></code>
+, <code class="inline"><span class="w">TIEARRAY</span></code>
+,
+or <code class="inline"><span class="w">TIEHASH</span></code>
+).  Typically these are arguments such as might be passed
+to the <i>dbm_open(3)</i> function of C.  The object returned by the
+constructor is also returned by the
+<a href="#tie-VARIABLE%2cCLASSNAME%2cLIST">tie</a> function, which would be useful
+if you want to access other methods in CLASSNAME.</p>
+<p>Note that functions such as <a href="#keys-HASH">keys</a> and
+<a href="#values-HASH">values</a> may return huge lists when used on large
+objects, like DBM files.  You may prefer to use the <a href="#each-HASH">each</a> function to iterate over such.  Example:</p>
+<pre class="verbatim"><ol><li>    <span class="c"># print out history file offsets</span></li><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">NDBM_File</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/tie.html">tie</a><span class="s">(</span><a class="l_k" href="../functions/my.html">my</a> <span class="i">%HIST</span><span class="cm">,</span> <span class="q">&#39;NDBM_File&#39;</span><span class="cm">,</span> <span class="q">&#39;/usr/lib/news/history&#39;</span><span class="cm">,</span> <span class="n">1</span><span class="cm">,</span> <span class="n">0</span><span class="s">)</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span><a class="l_k" href="../functions/my.html">my</a> <span class="s">(</span><span class="i">$key</span><span class="cm">,</span><span class="i">$val</span><span class="s">)</span> = <a class="l_k" href="../functions/each.html">each</a> <span class="i">%HIST</span><span class="s">)</span> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/print.html">print</a> <span class="i">$key</span><span class="cm">,</span> <span class="q">&#39; = &#39;</span><span class="cm">,</span> <a class="l_k" href="../functions/unpack.html">unpack</a><span class="s">(</span><span class="q">&#39;L&#39;</span><span class="cm">,</span> <span class="i">$val</span><span class="s">)</span><span class="cm">,</span> <span class="q">&quot;\n&quot;</span><span class="sc">;</span></li><li>    <span class="s">}</span></li></ol></pre><p>A class implementing a hash should have the following methods:</p>
+<pre class="verbatim"><ol><li>    <span class="w">TIEHASH</span> <span class="w">classname</span><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">FETCH</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span></li><li>    <span class="w">STORE</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span><span class="cm">,</span> <span class="w">value</span></li><li>    <span class="w">DELETE</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span></li><li>    <span class="w">CLEAR</span> <span class="w">this</span></li><li>    <span class="w">EXISTS</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span></li><li>    <span class="w">FIRSTKEY</span> <span class="w">this</span></li><li>    <span class="w">NEXTKEY</span> <span class="w">this</span><span class="cm">,</span> <span class="w">lastkey</span></li><li>    <span class="w">SCALAR</span> <span class="w">this</span></li><li>    <a class="l_k" href="../functions/DESTROY.html">DESTROY</a> <span class="w">this</span></li><li>    <span class="w">UNTIE</span> <span class="w">this</span></li></ol></pre><p>A class implementing an ordinary array should have the following methods:</p>
+<pre class="verbatim"><ol><li>    <span class="w">TIEARRAY</span> <span class="w">classname</span><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">FETCH</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span></li><li>    <span class="w">STORE</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span><span class="cm">,</span> <span class="w">value</span></li><li>    <span class="w">FETCHSIZE</span> <span class="w">this</span></li><li>    <span class="w">STORESIZE</span> <span class="w">this</span><span class="cm">,</span> <span class="w">count</span></li><li>    <span class="w">CLEAR</span> <span class="w">this</span></li><li>    <span class="w">PUSH</span> <span class="w">this</span><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">POP</span> <span class="w">this</span></li><li>    <span class="w">SHIFT</span> <span class="w">this</span></li><li>    <span class="w">UNSHIFT</span> <span class="w">this</span><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">SPLICE</span> <span class="w">this</span><span class="cm">,</span> <span class="w">offset</span><span class="cm">,</span> <a class="l_k" href="../functions/length.html">length</a><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">EXTEND</span> <span class="w">this</span><span class="cm">,</span> <span class="w">count</span></li><li>    <span class="w">DELETE</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span></li><li>    <span class="w">EXISTS</span> <span class="w">this</span><span class="cm">,</span> <span class="w">key</span></li><li>    <a class="l_k" href="../functions/DESTROY.html">DESTROY</a> <span class="w">this</span></li><li>    <span class="w">UNTIE</span> <span class="w">this</span></li></ol></pre><p>A class implementing a filehandle should have the following methods:</p>
+<pre class="verbatim"><ol><li>    <span class="w">TIEHANDLE</span> <span class="w">classname</span><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">READ</span> <span class="w">this</span><span class="cm">,</span> <a class="l_k" href="../functions/scalar.html">scalar</a><span class="cm">,</span> <a class="l_k" href="../functions/length.html">length</a><span class="cm">,</span> <span class="w">offset</span></li><li>    <span class="w">READLINE</span> <span class="w">this</span></li><li>    <span class="w">GETC</span> <span class="w">this</span></li><li>    <span class="w">WRITE</span> <span class="w">this</span><span class="cm">,</span> <a class="l_k" href="../functions/scalar.html">scalar</a><span class="cm">,</span> <a class="l_k" href="../functions/length.html">length</a><span class="cm">,</span> <span class="w">offset</span></li><li>    <span class="w">PRINT</span> <span class="w">this</span><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">PRINTF</span> <span class="w">this</span><span class="cm">,</span> format, LIST</li><li><span class="hh">    BINMODE this</span></li><li><span class="hh">    EOF this</span></li><li><span class="hh">    FILENO this</span></li><li><span class="hh">    SEEK this, position, whence</span></li><li><span class="hh">    TELL this</span></li><li><span class="hh">    OPEN this, mode, LIST</span></li><li><span class="hh">    CLOSE this</span></li><li><span class="hh">    DESTROY this</span></li><li><span class="hh">    UNTIE this</span></li></ol></pre><p>A class implementing a scalar should have the following methods:</p>
+<pre class="verbatim"><ol><li>    <span class="w">TIESCALAR</span> <span class="w">classname</span><span class="cm">,</span> <span class="w">LIST</span></li><li>    <span class="w">FETCH</span> <span class="w">this</span><span class="cm">,</span></li><li>    <span class="w">STORE</span> <span class="w">this</span><span class="cm">,</span> <span class="w">value</span></li><li>    <a class="l_k" href="../functions/DESTROY.html">DESTROY</a> <span class="w">this</span></li><li>    <span class="w">UNTIE</span> <span class="w">this</span></li></ol></pre><p>Not all methods indicated above need be implemented.  See <a href="../perltie.html">perltie</a>,
+<a href="../Tie/Hash.html">Tie::Hash</a>, <a href="../Tie/Array.html">Tie::Array</a>, <a href="../Tie/Scalar.html">Tie::Scalar</a>, and <a href="../Tie/Handle.html">Tie::Handle</a>.</p>
+<p>Unlike <a href="#dbmopen-HASH%2cDBNAME%2cMASK">dbmopen</a>, the
+<a href="#tie-VARIABLE%2cCLASSNAME%2cLIST">tie</a> function will not
+<a href="#use-Module-VERSION-LIST">use</a> or <a href="#require-VERSION">require</a> a
+module for you; you need to do that explicitly yourself.  See <a href="https://search.cpan.org/perldoc/DB_File">DB_File</a>
+or the <a href="../Config.html">Config</a> module for interesting
+<a href="#tie-VARIABLE%2cCLASSNAME%2cLIST">tie</a> implementations.</p>
+<p>For further details see <a href="../perltie.html">perltie</a>, <a href="#tied-VARIABLE">tied</a>.</p>
+</li>
+</ul>
+
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

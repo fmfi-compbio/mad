@@ -1,0 +1,244 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="shasum - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>shasum - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/shasum.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-utilities.html">Utilities</a> &gt;
+      
+    
+    shasum
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>shasum</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>shasum - Print or Check SHA Checksums</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li> <span class="j">Usage:</span> <span class="w">shasum</span> <span class="s">[</span><span class="w">OPTION</span><span class="s">]</span>... <span class="s">[</span><span class="w">FILE</span><span class="s">]</span>...</li><li> <span class="w">Print</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">check</span> <span class="w">SHA</span> <span class="w">checksums</span>.</li><li> <span class="w">With</span> <a class="l_k" href="functions/no.html">no</a> <span class="w">FILE</span><span class="cm">,</span> <a class="l_k" href="functions/or.html">or</a> <a class="l_k" href="functions/when.html">when</a> <span class="w">FILE</span> <span class="w">is</span> -<span class="cm">,</span> <a class="l_k" href="functions/read.html">read</a> <span class="w">standard</span> <span class="w">input</span>.</li><li></li><li>   -<span class="w">a</span><span class="cm">,</span> --<span class="w">algorithm</span>   <span class="n">1</span> <span class="s">(</span><span class="w">default</span><span class="s">)</span><span class="cm">,</span> <span class="n">224</span><span class="cm">,</span> <span class="n">256</span><span class="cm">,</span> <span class="n">384</span><span class="cm">,</span> <span class="n">512</span><span class="cm">,</span> <span class="n">512224</span><span class="cm">,</span> <span class="n">512256</span></li><li>   -<span class="w">b</span><span class="cm">,</span> --<span class="w">binary</span>      <a class="l_k" href="functions/read.html">read</a> <span class="w">in</span> <span class="w">binary</span> <span class="w">mode</span></li><li>   -c<span class="cm">,</span> --<span class="w">check</span>       <a class="l_k" href="functions/read.html">read</a> <span class="w">SHA</span> <span class="w">sums</span> <span class="w">from</span> <span class="w">the</span> <span class="w">FILEs</span> <a class="l_k" href="functions/and.html">and</a> <span class="w">check</span> <span class="w">them</span></li><li>       --<span class="w">tag</span>         <span class="w">create</span> <span class="w">a</span> <span class="w">BSD</span>-<span class="w">style</span> <span class="w">checksum</span></li><li>   -t<span class="cm">,</span> --<span class="w">text</span>        <a class="l_k" href="functions/read.html">read</a> <span class="w">in</span> <span class="w">text</span> <span class="w">mode</span> <span class="s">(</span><span class="w">default</span><span class="s">)</span></li><li>   -<span class="w">U</span><span class="cm">,</span> --<span class="w">UNIVERSAL</span>   <a class="l_k" href="functions/read.html">read</a> <span class="w">in</span> <span class="w">Universal</span> <span class="w">Newlines</span> <span class="w">mode</span></li><li>                         <span class="w">produces</span> <span class="w">same</span> <span class="w">digest</span> <span class="w">on</span> <span class="w">Windows</span>/<span class="w">Unix</span>/<span class="w">Mac</span></li><li>   -<span class="n">0</span><span class="cm">,</span> --<span class="n">01</span>          <a class="l_k" href="functions/read.html">read</a> <span class="w">in</span> <span class="w">BITS</span> <span class="w">mode</span></li><li>                         <span class="w">ASCII</span> <span class="q">&#39;0&#39;</span> <span class="w">interpreted</span> <span class="w">as</span> <span class="n">0</span>-<span class="w">bit</span><span class="cm">,</span></li><li>                         <span class="w">ASCII</span> <span class="q">&#39;1&#39;</span> <span class="w">interpreted</span> <span class="w">as</span> <span class="n">1</span>-<span class="w">bit</span><span class="cm">,</span></li><li>                         <span class="w">all</span> <span class="w">other</span> <span class="w">characters</span> <span class="w">ignored</span></li><li></li><li> <span class="w">The</span> <span class="w">following</span> <span class="w">five</span> <span class="w">options</span> <span class="w">are</span> <span class="w">useful</span> <span class="w">only</span> <a class="l_k" href="functions/when.html">when</a> <span class="w">verifying</span> <span class="w">checksums</span><span class="co">:</span></li><li>       --<span class="w">ignore</span>-<span class="w">missing</span>  <span class="w">don&#39;t</span> <span class="w">fail</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">report</span> <span class="w">status</span> <a class="l_k" href="functions/for.html">for</a> <span class="w">missing</span> <span class="w">files</span></li><li>   -<span class="q">q, --quiet           don&#39;t print OK for each successfully verified file</span></li><li>   <span class="q">   -s,</span> --<span class="w">status</span>          <span class="w">don&#39;t</span> <span class="w">output</span> <span class="w">anything</span><span class="cm">,</span> <span class="w">status</span> <span class="w">code</span> <span class="w">shows</span> <span class="w">success</span></li><li>       --<span class="w">strict</span>          <a class="l_k" href="functions/exit.html">exit</a> <span class="w">non</span>-<span class="w">zero</span> <a class="l_k" href="functions/for.html">for</a> <span class="w">improperly</span> <span class="w">formatted</span> <span class="w">checksum</span> <span class="w">lines</span></li><li>   -w<span class="cm">,</span> --<a class="l_k" href="functions/warn.html">warn</a>            <a class="l_k" href="functions/warn.html">warn</a> <span class="w">about</span> <span class="w">improperly</span> <span class="w">formatted</span> <span class="w">checksum</span> <span class="w">lines</span></li><li></li><li>   -<span class="w">h</span><span class="cm">,</span> --<span class="w">help</span>        <span class="w">display</span> <span class="w">this</span> <span class="w">help</span> <a class="l_k" href="functions/and.html">and</a> <a class="l_k" href="functions/exit.html">exit</a></li><li>   -<span class="w">v</span><span class="cm">,</span> --<span class="w">version</span>     <span class="w">output</span> <span class="w">version</span> <span class="w">information</span> <a class="l_k" href="functions/and.html">and</a> <a class="l_k" href="functions/exit.html">exit</a></li><li></li><li> <span class="w">When</span> <span class="w">verifying</span> <span class="w">SHA</span>-<span class="n">512</span>/<span class="n">224</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">SHA</span>-<span class="n">512</span>/<span class="n">256</span> <span class="w">checksums</span><span class="cm">,</span> <span class="w">indicate</span> <span class="w">the</span></li><li> <span class="w">algorithm</span> <span class="w">explicitly</span> <span class="w">using</span> <span class="w">the</span> -<span class="w">a</span> <span class="w">option</span><span class="cm">,</span> <span class="w">e</span>.<span class="w">g</span>.</li><li></li><li>   <span class="w">shasum</span> -<span class="w">a</span> <span class="n">512224</span> -<span class="w">c</span> <span class="w">checksumfile</span></li><li></li><li> <span class="w">The</span> <span class="w">sums</span> <span class="w">are</span> <span class="w">computed</span> <span class="w">as</span> <span class="w">described</span> <span class="w">in</span> <span class="w">FIPS</span> <span class="w">PUB</span> <span class="n">180</span>-<span class="n">4.</span>  <span class="w">When</span> <span class="w">checking</span><span class="cm">,</span></li><li> <span class="w">the</span> <span class="w">input</span> <span class="w">should</span> <span class="w">be</span> <span class="w">a</span> <span class="w">former</span> <span class="w">output</span> <span class="w">of</span> <span class="w">this</span> <span class="w">program</span>.  <span class="w">The</span> <span class="w">default</span></li><li> <span class="w">mode</span> <span class="w">is</span> <span class="w">to</span> <a class="l_k" href="functions/print.html">print</a> <span class="i">a</span> <span class="w">line</span> <span class="w">with</span> <span class="w">checksum</span><span class="cm">,</span> <span class="w">a</span> <span class="w">character</span> <span class="w">indicating</span> <span class="i">type</span></li><li> <span class="s">(</span><span class="q">`*&#39; for binary, `</span> <span class="q">&#39; for text, `U&#39;</span> <a class="l_k" href="functions/for.html">for</a> <span class="w">UNIVERSAL</span><span class="cm">,</span> <span class="q">`^&#39; for BITS),</span></li><li> <span class="q"> and name for each FILE.  The line starts with a `</span>\<span class="q">&#39; character if the</span></li><li> <span class="q"> FILE name contains either newlines or backslashes, which are then</span></li><li> <span class="q"> replaced by the two-character sequences `\n&#39;</span> <a class="l_k" href="functions/and.html">and</a> <span class="q">`\\&#39; respectively.</span></li><li></li><li> <span class="q"> Report shasum bugs to mshelor@cpan.org</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>Running <i>shasum</i> is often the quickest way to compute SHA message
+digests.  The user simply feeds data to the script through files or
+standard input, and then collects the results from standard output.</p>
+<p>The following command shows how to compute digests for typical inputs
+such as the NIST test vector "abc":</p>
+<pre class="verbatim"><ol><li>	<span class="w">perl</span> -e <span class="q">&quot;print qq(abc)&quot;</span> | <span class="w">shasum</span></li></ol></pre><p>Or, if you want to use SHA-256 instead of the default SHA-1, simply say:</p>
+<pre class="verbatim"><ol><li>	<span class="w">perl</span> -e <span class="q">&quot;print qq(abc)&quot;</span> | <span class="w">shasum</span> -<span class="w">a</span> <span class="n">256</span></li></ol></pre><p>Since <i>shasum</i> mimics the behavior of the combined GNU <i>sha1sum</i>,
+<i>sha224sum</i>, <i>sha256sum</i>, <i>sha384sum</i>, and <i>sha512sum</i> programs,
+you can install this script as a convenient drop-in replacement.</p>
+<p>Unlike the GNU programs, <i>shasum</i> encompasses the full SHA standard by
+allowing partial-byte inputs.  This is accomplished through the BITS
+option (<i>-0</i>).  The following example computes the SHA-224 digest of
+the 7-bit message <i>0001100</i>:</p>
+<pre class="verbatim"><ol><li>	<span class="w">perl</span> -e <span class="q">&quot;print qq(0001100)&quot;</span> | <span class="w">shasum</span> -<span class="n">0</span> -<span class="w">a</span> <span class="n">224</span></li></ol></pre><a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Copyright (C) 2003-2018 Mark Shelor &lt;mshelor@cpan.org&gt;.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><i>shasum</i> is implemented using the Perl module <a href="Digest/SHA.html">Digest::SHA</a>.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

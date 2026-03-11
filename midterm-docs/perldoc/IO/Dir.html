@@ -1,0 +1,294 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="IO::Dir - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>IO::Dir - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/IO/Dir.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-I.html">Core modules (I)</a> &gt;
+      
+    
+    IO::Dir
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>IO::Dir</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>IO::Dir - supply object methods for directory handles</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">IO::Dir</span><span class="sc">;</span></li><li>    <span class="i">$d</span> = <span class="w">IO::Dir</span><span class="w">-&gt;new</span><span class="s">(</span><span class="q">&quot;.&quot;</span><span class="s">)</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/if.html">if</a> <span class="s">(</span><a class="l_k" href="../functions/defined.html">defined</a> <span class="i">$d</span><span class="s">)</span> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span><a class="l_k" href="../functions/defined.html">defined</a><span class="s">(</span><span class="i">$_</span> = <span class="i">$d</span><span class="i">-&gt;read</span><span class="s">)</span><span class="s">)</span> <span class="s">{</span> <span class="i">something</span><span class="s">(</span><span class="i">$_</span><span class="s">)</span><span class="sc">;</span> <span class="s">}</span></li><li>        <span class="i">$d</span><span class="i">-&gt;rewind</span><span class="sc">;</span></li><li>        <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span><a class="l_k" href="../functions/defined.html">defined</a><span class="s">(</span><span class="i">$_</span> = <span class="i">$d</span><span class="i">-&gt;read</span><span class="s">)</span><span class="s">)</span> <span class="s">{</span> <span class="i">something_else</span><span class="s">(</span><span class="i">$_</span><span class="s">)</span><span class="sc">;</span> <span class="s">}</span></li><li>        <a class="l_k" href="../functions/undef.html">undef</a> <span class="i">$d</span><span class="sc">;</span></li><li>    <span class="s">}</span></li><li></li><li>    <a class="l_k" href="../functions/tie.html">tie</a> <span class="i">%dir</span><span class="cm">,</span> <span class="q">&#39;IO::Dir&#39;</span><span class="cm">,</span> <span class="q">&quot;.&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/foreach.html">foreach</a> <span class="s">(</span><a class="l_k" href="../functions/keys.html">keys</a> <span class="i">%dir</span><span class="s">)</span> <span class="s">{</span></li><li>	<a class="l_k" href="../functions/print.html">print</a> <span class="i">$_</span><span class="cm">,</span> <span class="q">&quot; &quot;</span> <span class="cm">,</span> <span class="i">$dir</span>{<span class="i">$_</span>}<span class="i">-&gt;size</span><span class="cm">,</span><span class="q">&quot;\n&quot;</span><span class="sc">;</span></li><li>    <span class="s">}</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>The <code class="inline"><span class="w">IO::Dir</span></code>
+ package provides two interfaces to perl's directory reading
+routines.</p>
+<p>The first interface is an object approach. <code class="inline"><span class="w">IO::Dir</span></code>
+ provides an object
+constructor and methods, which are just wrappers around perl's built in
+directory reading routines.</p>
+<ul>
+<li><a class='view-title' id="new-(-%5b-DIRNAME-%5d-)"></a><strong>new ( [ DIRNAME ] )</strong>
+<p><code class="inline"><span class="w">new</span></code>
+ is the constructor for <code class="inline"><span class="w">IO::Dir</span></code>
+ objects. It accepts one optional
+argument which,  if given, <code class="inline"><span class="w">new</span></code>
+ will pass to <code class="inline"><a class="l_k" href="../functions/open.html">open</a></code></p>
+</li>
+</ul>
+<p>The following methods are wrappers for the directory related functions built
+into perl (the trailing 'dir' has been removed from the names). See <a href="../perlfunc.html">perlfunc</a>
+for details of these functions.</p>
+<ul>
+<li><a class='view-title' id="open-(-DIRNAME-)"></a><strong>open ( DIRNAME )</strong>
+</li>
+<li><a class='view-title' id="read-()"></a><strong>read ()</strong>
+</li>
+<li><a class='view-title' id="seek-(-POS-)"></a><strong>seek ( POS )</strong>
+</li>
+<li><a class='view-title' id="tell-()"></a><strong>tell ()</strong>
+</li>
+<li><a class='view-title' id="rewind-()"></a><strong>rewind ()</strong>
+</li>
+<li><a class='view-title' id="close-()"></a><strong>close ()</strong>
+</li>
+</ul>
+<p><code class="inline"><span class="w">IO::Dir</span></code>
+ also provides an interface to reading directories via a tied
+hash. The tied hash extends the interface beyond just the directory
+reading routines by the use of <code class="inline"><a class="l_k" href="../functions/lstat.html">lstat</a></code>, from the <code class="inline"><span class="w">File::stat</span></code>
+ package,
+<code class="inline"><a class="l_k" href="../functions/unlink.html">unlink</a></code>, <code class="inline"><a class="l_k" href="../functions/rmdir.html">rmdir</a></code> and <code class="inline"><a class="l_k" href="../functions/utime.html">utime</a></code>.</p>
+<ul>
+<li><a class='view-title' id="tie-%25hash%2c-'IO%3a%3aDir'%2c-DIRNAME-%5b%2c-OPTIONS-%5d"></a><strong>tie %hash, 'IO::Dir', DIRNAME [, OPTIONS ]</strong>
+</li>
+</ul>
+<p>The keys of the hash will be the names of the entries in the directory. 
+Reading a value from the hash will be the result of calling
+<code class="inline"><span class="w">File::stat::lstat</span></code>
+.  Deleting an element from the hash will 
+delete the corresponding file or subdirectory,
+provided that <code class="inline"><span class="w">DIR_UNLINK</span></code>
+ is included in the <code class="inline"><span class="w">OPTIONS</span></code>
+.</p>
+<p>Assigning to an entry in the hash will cause the time stamps of the file
+to be modified. If the file does not exist then it will be created. Assigning
+a single integer to a hash element will cause both the access and 
+modification times to be changed to that value. Alternatively a reference to
+an array of two values can be passed. The first array element will be used to
+set the access time and the second element will be used to set the modification
+time.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../File/stat.html">File::stat</a></p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Graham Barr. Currently maintained by the Perl Porters.  Please report all
+bugs to &lt;perlbug@perl.org&gt;.</p>
+<a class='view-head1' id="COPYRIGHT"></a><h2 class='h2' >COPYRIGHT</h2>
+<p>Copyright (c) 1997-2003 Graham Barr &lt;gbarr@pobox.com&gt;. All rights reserved.
+This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

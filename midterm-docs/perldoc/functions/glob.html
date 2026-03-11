@@ -1,0 +1,275 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="glob - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>glob - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/functions/glob.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-language.html">Language reference</a> &gt;
+      
+        <a href="../index-functions.html">Functions</a> &gt;
+      
+    
+    glob
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>glob</h1>
+<div class="mod_az_list">
+  <a href="/5.32.0/index-functions.html">Perl functions A-Z</a> |
+  <a href="/5.32.0/index-functions-by-cat.html">Perl functions by category</a> |
+  <a href="/5.32.0/perlfunc.html">The 'perlfunc' manpage</a>
+</div>
+
+
+  <!--    -->
+<ul>
+<li><a class='view-title' id="glob-EXPR"></a><strong>glob EXPR</strong>
+<p>   </p>
+</li>
+</ul>
+<ul>
+<li><a class='view-title' id="glob"></a><strong>glob</strong>
+<p>In list context, returns a (possibly empty) list of filename expansions on
+the value of EXPR such as the standard Unix shell <i>/bin/csh</i> would do.  In
+scalar context, glob iterates through such filename expansions, returning
+undef when the list is exhausted.  This is the internal function
+implementing the <code class="inline"><span class="q">&lt;*.c&gt;</span></code>
+ operator, but you can use it directly.  If
+EXPR is omitted, <a href="../perlvar.html#%24_">$_ </a> is used.  The <code class="inline"><span class="q">&lt;*.c&gt;</span></code>
+ operator
+is discussed in more detail in <a href="../perlop.html#I%2fO-Operators">I/O Operators in perlop</a>.</p>
+<p>Note that <a href="#glob-EXPR">glob</a> splits its arguments on whitespace and
+treats
+each segment as separate pattern.  As such, <code class="inline"><a class="l_k" href="../functions/glob.html">glob</a><span class="s">(</span><span class="q">&quot;*.c *.h&quot;</span><span class="s">)</span></code>
+
+matches all files with a <i>.c</i> or <i>.h</i> extension.  The expression
+<code class="inline"><a class="l_k" href="../functions/glob.html">glob</a><span class="s">(</span><span class="q">&quot;.* *&quot;</span><span class="s">)</span></code>
+ matches all files in the current working directory.
+If you want to glob filenames that might contain whitespace, you'll
+have to use extra quotes around the spacey filename to protect it.
+For example, to glob filenames that have an <code class="inline"><span class="w">e</span></code>
+ followed by a space
+followed by an <code class="inline"><span class="w">f</span></code>
+, use one of:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">@spacies</span> = <span class="q">&lt;&quot;*e f*&quot;&gt;</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">@spacies</span> = <a class="l_k" href="../functions/glob.html">glob</a> <span class="q">&#39;&quot;*e f*&quot;&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">@spacies</span> = <a class="l_k" href="../functions/glob.html">glob</a> <span class="q">q(&quot;*e f*&quot;)</span><span class="sc">;</span></li></ol></pre><p>If you had to get a variable through, you could do this:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">@spacies</span> = <a class="l_k" href="../functions/glob.html">glob</a> <span class="q">&quot;&#39;*${var}e f*&#39;&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">@spacies</span> = <a class="l_k" href="../functions/glob.html">glob</a> <span class="q">qq(&quot;*${var}e f*&quot;)</span><span class="sc">;</span></li></ol></pre><p>If non-empty braces are the only wildcard characters used in the
+<a href="#glob-EXPR">glob</a>, no filenames are matched, but potentially many
+strings are returned.  For example, this produces nine strings, one for
+each pairing of fruits and colors:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">@many</span> = <a class="l_k" href="../functions/glob.html">glob</a> <span class="q">&quot;{apple,tomato,cherry}={green,yellow,red}&quot;</span><span class="sc">;</span></li></ol></pre><p>This operator is implemented using the standard <code class="inline"><span class="w">File::Glob</span></code>
+ extension.
+See <a href="../File/Glob.html">File::Glob</a> for details, including
+<a href="../File/Glob.html#bsd_glob">bsd_glob </a>, which does not treat whitespace
+as a pattern separator.</p>
+<p>If a <code class="inline"><a class="l_k" href="../functions/glob.html">glob</a></code> expression is used as the condition of a <code class="inline"><a class="l_k" href="../functions/while.html">while</a></code> or <code class="inline"><a class="l_k" href="../functions/for.html">for</a></code>
+loop, then it will be implicitly assigned to <code class="inline"><span class="i">$_</span></code>
+.  If either a <code class="inline"><a class="l_k" href="../functions/glob.html">glob</a></code>
+expression or an explicit assignment of a <code class="inline"><a class="l_k" href="../functions/glob.html">glob</a></code> expression to a scalar
+is used as a <code class="inline"><a class="l_k" href="../functions/while.html">while</a></code>/<code class="inline"><a class="l_k" href="../functions/for.html">for</a></code> condition, then the condition actually
+tests for definedness of the expression's value, not for its regular
+truth value.</p>
+<p>Portability issues: <a href="../perlport.html#glob">glob in perlport</a>.</p>
+</li>
+</ul>
+
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

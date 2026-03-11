@@ -1,0 +1,290 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="pod2usage - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>pod2usage - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/pod2usage.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-utilities.html">Utilities</a> &gt;
+      
+    
+    pod2usage
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>pod2usage</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#OPTIONS-AND-ARGUMENTS">OPTIONS AND ARGUMENTS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>pod2usage - print usage messages from embedded pod docs in files</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<ul>
+<li><a class='view-title' id="*pod2usage*"></a><strong><strong>pod2usage</strong></strong>
+<p>[<strong>-help</strong>]
+[<strong>-man</strong>]
+[<strong>-exit</strong> <i>exitval</i>]
+[<strong>-output</strong> <i>outfile</i>]
+[<strong>-verbose</strong> <i>level</i>]
+[<strong>-pathlist</strong> <i>dirlist</i>]
+[<strong>-formatter</strong> <i>module</i>]
+[<strong>-utf8</strong>]
+<i>file</i></p>
+</li>
+</ul>
+<a class='view-head1' id="OPTIONS-AND-ARGUMENTS"></a><h2 class='h2' >OPTIONS AND ARGUMENTS</h2>
+<ul>
+<li><a class='view-title' id="*-help*"></a><strong><strong>-help</strong></strong>
+<p>Print a brief help message and exit.</p>
+</li>
+<li><a class='view-title' id="*-man*"></a><strong><strong>-man</strong></strong>
+<p>Print this command's manual page and exit.</p>
+</li>
+<li><a class='view-title' id="*-exit*-_exitval_"></a><strong><strong>-exit</strong> <i>exitval</i></strong>
+<p>The exit status value to return.</p>
+</li>
+<li><a class='view-title' id="*-output*-_outfile_"></a><strong><strong>-output</strong> <i>outfile</i></strong>
+<p>The output file to print to. If the special names "-" or "&gt;&amp;1" or "&gt;&amp;STDOUT"
+are used then standard output is used. If "&gt;&amp;2" or "&gt;&amp;STDERR" is used then
+standard error is used.</p>
+</li>
+<li><a class='view-title' id="*-verbose*-_level_"></a><strong><strong>-verbose</strong> <i>level</i></strong>
+<p>The desired level of verbosity to use:</p>
+<pre class="verbatim"><ol><li>    <span class="n">1</span> <span class="co">:</span> <a class="l_k" href="functions/print.html">print</a> <span class="i">SYNOPSIS</span> <span class="w">only</span></li><li>    <span class="n">2</span> <span class="co">:</span> <a class="l_k" href="functions/print.html">print</a> <span class="i">SYNOPSIS</span> <span class="w">sections</span> <a class="l_k" href="functions/and.html">and</a> <span class="w">any</span> <span class="w">OPTIONS</span>/<span class="w">ARGUMENTS</span> <span class="w">sections</span></li><li>    <span class="n">3</span> <span class="co">:</span> <a class="l_k" href="functions/print.html">print</a> <span class="i">the</span> <span class="w">entire</span> <span class="w">manpage</span> <span class="s">(</span><span class="w">similar</span> <span class="w">to</span> <span class="w">running</span> <span class="w">pod2text</span><span class="s">)</span></li></ol></pre></li>
+<li><a class='view-title' id="*-pathlist*-_dirlist_"></a><strong><strong>-pathlist</strong> <i>dirlist</i></strong>
+<p>Specifies one or more directories to search for the input file if it
+was not supplied with an absolute path. Each directory path in the given
+list should be separated by a ':' on Unix (';' on MSWin32 and DOS).</p>
+</li>
+<li><a class='view-title' id="*-formatter*-_module_"></a><strong><strong>-formatter</strong> <i>module</i></strong>
+<p>Which text formatter to use. Default is <a href="Pod/Text.html">Pod::Text</a>, or for very old
+Perl versions <a href="https://search.cpan.org/perldoc/Pod::PlainText">Pod::PlainText</a>. An alternative would be e.g. 
+<a href="Pod/Text/Termcap.html">Pod::Text::Termcap</a>.</p>
+</li>
+<li><a class='view-title' id="*-utf8*"></a><strong><strong>-utf8</strong></strong>
+<p>This option assumes that the formatter (see above) understands the option
+"utf8". It turns on generation of utf8 output.</p>
+</li>
+<li><a class='view-title' id="_file_"></a><strong><i>file</i></strong>
+<p>The pathname of a file containing pod documentation to be output in
+usage message format (defaults to standard input).</p>
+</li>
+</ul>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p><strong>pod2usage</strong> will read the given input file looking for pod
+documentation and will print the corresponding usage message.
+If no input file is specified then standard input is read.</p>
+<p><strong>pod2usage</strong> invokes the <strong>pod2usage()</strong> function in the <strong>Pod::Usage</strong>
+module. Please see <a href="Pod/Usage.html#pod2usage()">pod2usage() in Pod::Usage</a>.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="Pod/Usage.html">Pod::Usage</a>, <i>pod2text(1)</i></p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Please report bugs using <a href="http://rt.cpan.org">http://rt.cpan.org</a>.</p>
+<p>Brad Appleton &lt;bradapp@enteract.com&gt;</p>
+<p>Based on code for <strong>pod2text(1)</strong> written by
+Tom Christiansen &lt;tchrist@mox.perl.com&gt;</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#OPTIONS-AND-ARGUMENTS">OPTIONS AND ARGUMENTS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

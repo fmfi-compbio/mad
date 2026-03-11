@@ -1,0 +1,293 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="CPAN::Distroprefs - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>CPAN::Distroprefs - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/CPAN/Distroprefs.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-C.html">Core modules (C)</a> &gt;
+      
+    
+    CPAN::Distroprefs
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>CPAN::Distroprefs</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#INTERFACE">INTERFACE</a></li><li><a href="#RESULTS">RESULTS</a></li><ul><li><a href="#Common">Common</a></li><li><a href="#Errors">Errors</a></li><li><a href="#Successes">Successes</a></li></ul><li><a href="#PREFS">PREFS</a></li><li><a href="#LICENSE">LICENSE</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>CPAN::Distroprefs -- read and match distroprefs</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">CPAN::Distroprefs</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">%info</span> = <span class="s">(</span>... <span class="w">distribution</span>/<span class="w">environment</span> <span class="w">info</span> ...<span class="s">)</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$finder</span> = <span class="w">CPAN::Distroprefs</span><span class="w">-&gt;find</span><span class="s">(</span><span class="i">$prefs_dir</span><span class="cm">,</span> \<span class="i">%ext_map</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span><a class="l_k" href="../functions/my.html">my</a> <span class="i">$result</span> = <span class="i">$finder</span><span class="i">-&gt;next</span><span class="s">)</span> <span class="s">{</span></li><li></li><li>        <a class="l_k" href="../functions/die.html">die</a> <span class="i">$result</span><span class="i">-&gt;as_string</span> <a class="l_k" href="../functions/if.html">if</a> <span class="i">$result</span><span class="i">-&gt;is_fatal</span><span class="sc">;</span></li><li></li><li>        <a class="l_k" href="../functions/warn.html">warn</a><span class="s">(</span><span class="i">$result</span><span class="i">-&gt;as_string</span><span class="s">)</span><span class="cm">,</span> <a class="l_k" href="../functions/next.html">next</a> <a class="l_k" href="../functions/if.html">if</a> <span class="i">$result</span><span class="i">-&gt;is_warning</span><span class="sc">;</span></li><li></li><li>        <a class="l_k" href="../functions/for.html">for</a> <a class="l_k" href="../functions/my.html">my</a> <span class="i">$pref</span> <span class="s">(</span><span class="i">@</span>{ <span class="i">$result</span><span class="i">-&gt;prefs</span> }<span class="s">)</span> <span class="s">{</span></li><li>            <a class="l_k" href="../functions/if.html">if</a> <span class="s">(</span><span class="i">$pref</span><span class="i">-&gt;matches</span><span class="s">(</span>\<span class="i">%info</span><span class="s">)</span><span class="s">)</span> <span class="s">{</span></li><li>                <a class="l_k" href="../functions/return.html">return</a> <span class="i">$pref</span><span class="sc">;</span></li><li>            <span class="s">}</span></li><li>        <span class="s">}</span></li><li>    <span class="s">}</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This module encapsulates reading <a href="../CPAN.html">Distroprefs</a> and matching them against CPAN distributions.</p>
+<a class='view-head1' id="INTERFACE"></a><h2 class='h2' >INTERFACE</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$finder</span> = <span class="w">CPAN::Distroprefs</span><span class="w">-&gt;find</span><span class="s">(</span><span class="i">$dir</span><span class="cm">,</span> \<span class="i">%ext_map</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span><a class="l_k" href="../functions/my.html">my</a> <span class="i">$result</span> = <span class="i">$finder</span><span class="i">-&gt;next</span><span class="s">)</span> <span class="s">{</span> ... <span class="s">}</span></li></ol></pre><p>Build an iterator which finds distroprefs files in the tree below the
+given directory. Within the tree directories matching <code class="inline"><a class="l_k" href="../functions/m.html">m/^[._]/</a></code> are
+pruned.</p>
+<p><code class="inline"><span class="i">%ext_map</span></code>
+ is a hashref whose keys are file extensions and whose values are
+modules used to load matching files:</p>
+<pre class="verbatim"><ol><li>    <span class="s">{</span></li><li>        <span class="q">&#39;yml&#39;</span> <span class="cm">=&gt;</span> <span class="q">&#39;YAML::Syck&#39;</span><span class="cm">,</span></li><li>        <span class="q">&#39;dd&#39;</span>  <span class="cm">=&gt;</span> <span class="q">&#39;Data::Dumper&#39;</span><span class="cm">,</span></li><li>        ...</li><li>    <span class="s">}</span></li></ol></pre><p>Each time <code class="inline"><span class="i">$finder</span><span class="i">-&gt;next</span></code>
+ is called, the iterator returns one of two
+possible values:</p>
+<ul>
+<li><a class='view-title' id="*-a-CPAN%3a%3aDistroprefs%3a%3aResult-object"></a><strong>a CPAN::Distroprefs::Result object</strong>
+</li>
+<li><a class='view-title' id="*-undef%2c-indicating-that-no-prefs-files-remain-to-be-found"></a><strong><code class="inline"><a class="l_k" href="../functions/undef.html">undef</a></code>, indicating that no prefs files remain to be found</strong>
+</li>
+</ul>
+<a class='view-head1' id="RESULTS"></a><h2 class='h2' >RESULTS</h2>
+<p><a href="#INTERFACE">find() </a> returns CPAN::Distroprefs::Result objects to
+indicate success or failure when reading a prefs file.</p>
+<a class='view-head2' id="Common"></a><h3 class='h3' >Common</h3>
+<p>All results share some common attributes:</p>
+<a class='view-head3' id="type"></a><h4 class='h4' >type</h4>
+<p><code class="inline"><span class="w">success</span></code>
+, <code class="inline"><span class="w">warning</span></code>
+, or <code class="inline"><span class="w">fatal</span></code>
+</p>
+<a class='view-head3' id="file"></a><h4 class='h4' >file</h4>
+<p>the file from which these prefs were read, or to which this error refers (relative filename)</p>
+<a class='view-head3' id="ext"></a><h4 class='h4' >ext</h4>
+<p>the file's extension, which determines how to load it</p>
+<a class='view-head3' id="dir"></a><h4 class='h4' >dir</h4>
+<p>the directory the file was read from</p>
+<a class='view-head3' id="abs"></a><h4 class='h4' >abs</h4>
+<p>the absolute path to the file</p>
+<a class='view-head2' id="Errors"></a><h3 class='h3' >Errors</h3>
+<p>Error results (warning and fatal) contain:</p>
+<a class='view-head3' id="msg"></a><h4 class='h4' >msg</h4>
+<p>the error message (usually either <code class="inline"><span class="i">$!</span></code>
+ or a YAML error)</p>
+<a class='view-head2' id="Successes"></a><h3 class='h3' >Successes</h3>
+<p>Success results contain:</p>
+<a class='view-head3' id="prefs"></a><h4 class='h4' >prefs</h4>
+<p>an arrayref of CPAN::Distroprefs::Pref objects</p>
+<a class='view-head1' id="PREFS"></a><h2 class='h2' >PREFS</h2>
+<p>CPAN::Distroprefs::Pref objects represent individual distroprefs documents.
+They are constructed automatically as part of <code class="inline"><span class="w">success</span></code>
+ results from <code class="inline"><span class="i">find</span><span class="s">(</span><span class="s">)</span></code>
+.</p>
+<a class='view-head3' id="data"></a><h4 class='h4' >data</h4>
+<p>the pref information as a hashref, suitable for e.g. passing to Kwalify</p>
+<a class='view-head3' id="match_attributes"></a><h4 class='h4' >match_attributes</h4>
+<p>returns a list of the valid match attributes (see the Distroprefs section in <a href="../CPAN.html">CPAN</a>)</p>
+<p>currently: <code class="inline"><span class="w">env</span> <span class="w">perl</span> <span class="w">perlconfig</span> <span class="w">distribution</span> <span class="w">module</span></code>
+</p>
+<a class='view-head3' id="has_any_match"></a><h4 class='h4' >has_any_match</h4>
+<p>true if this pref has a 'match' attribute at all</p>
+<a class='view-head3' id="has_valid_subkeys"></a><h4 class='h4' >has_valid_subkeys</h4>
+<p>true if this pref has a 'match' attribute and at least one valid match attribute</p>
+<a class='view-head3' id="matches"></a><h4 class='h4' >matches</h4>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="../functions/if.html">if</a> <span class="s">(</span><span class="i">$pref</span><span class="i">-&gt;matches</span><span class="s">(</span>\<span class="i">%arg</span><span class="s">)</span><span class="s">)</span> <span class="s">{</span> ... <span class="s">}</span></li></ol></pre><p>true if this pref matches the passed-in hashref, which must have a value for
+each of the <code class="inline"><span class="w">match_attributes</span></code>
+ (above)</p>
+<a class='view-head1' id="LICENSE"></a><h2 class='h2' >LICENSE</h2>
+<p>This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#INTERFACE">INTERFACE</a></li><li><a href="#RESULTS">RESULTS</a></li><ul><li><a href="#Common">Common</a></li><li><a href="#Errors">Errors</a></li><li><a href="#Successes">Successes</a></li></ul><li><a href="#PREFS">PREFS</a></li><li><a href="#LICENSE">LICENSE</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

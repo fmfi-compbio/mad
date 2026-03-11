@@ -1,0 +1,318 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="perl5283delta - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>perl5283delta - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/perl5283delta.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-history.html">History / Changes</a> &gt;
+      
+    
+    perl5283delta
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>perl5283delta</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#Security">Security</a></li><ul><li><a href="#%5bCVE-2020-10543%5d-Buffer-overflow-caused-by-a-crafted-regular-expression">[CVE-2020-10543] Buffer overflow caused by a crafted regular expression</a></li><li><a href="#%5bCVE-2020-10878%5d-Integer-overflow-via-malformed-bytecode-produced-by-a-crafted-regular-expression">[CVE-2020-10878] Integer overflow via malformed bytecode produced by a crafted regular expression</a></li><li><a href="#%5bCVE-2020-12723%5d-Buffer-overflow-caused-by-a-crafted-regular-expression">[CVE-2020-12723] Buffer overflow caused by a crafted regular expression</a></li><li><a href="#Additional-Note">Additional Note</a></li></ul><li><a href="#Incompatible-Changes">Incompatible Changes</a></li><li><a href="#Modules-and-Pragmata">Modules and Pragmata</a></li><ul><li><a href="#Updated-Modules-and-Pragmata">Updated Modules and Pragmata</a></li></ul><li><a href="#Testing">Testing</a></li><li><a href="#Acknowledgements">Acknowledgements</a></li><li><a href="#Reporting-Bugs">Reporting Bugs</a></li><li><a href="#Give-Thanks">Give Thanks</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>perl5283delta - what is new for perl v5.28.3</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This document describes differences between the 5.28.2 release and the 5.28.3
+release.</p>
+<p>If you are upgrading from an earlier release such as 5.28.1, first read
+<a href="perl5282delta.html">perl5282delta</a>, which describes differences between 5.28.1 and 5.28.2.</p>
+<a class='view-head1' id="Security"></a><h2 class='h2' >Security</h2>
+<a class='view-head2' id="%5bCVE-2020-10543%5d-Buffer-overflow-caused-by-a-crafted-regular-expression"></a><h3 class='h3' >[CVE-2020-10543] Buffer overflow caused by a crafted regular expression</h3>
+<p>A signed <code class="inline"><span class="w">size_t</span></code>
+ integer overflow in the storage space calculations for
+nested regular expression quantifiers could cause a heap buffer overflow in
+Perl's regular expression compiler that overwrites memory allocated after the
+regular expression storage space with attacker supplied data.</p>
+<p>The target system needs a sufficient amount of memory to allocate partial
+expansions of the nested quantifiers prior to the overflow occurring.  This
+requirement is unlikely to be met on 64-bit systems.</p>
+<p>Discovered by: ManhND of The Tarantula Team, VinCSS (a member of Vingroup).</p>
+<a class='view-head2' id="%5bCVE-2020-10878%5d-Integer-overflow-via-malformed-bytecode-produced-by-a-crafted-regular-expression"></a><h3 class='h3' >[CVE-2020-10878] Integer overflow via malformed bytecode produced by a crafted regular expression</h3>
+<p>Integer overflows in the calculation of offsets between instructions for the
+regular expression engine could cause corruption of the intermediate language
+state of a compiled regular expression.  An attacker could abuse this behaviour
+to insert instructions into the compiled form of a Perl regular expression.</p>
+<p>Discovered by: Hugo van der Sanden and Slaven Rezic.</p>
+<a class='view-head2' id="%5bCVE-2020-12723%5d-Buffer-overflow-caused-by-a-crafted-regular-expression"></a><h3 class='h3' >[CVE-2020-12723] Buffer overflow caused by a crafted regular expression</h3>
+<p>Recursive calls to <code class="inline"><span class="i">S_study_chunk</span><span class="s">(</span><span class="s">)</span></code>
+ by Perl's regular expression compiler to
+optimize the intermediate language representation of a regular expression could
+cause corruption of the intermediate language state of a compiled regular
+expression.</p>
+<p>Discovered by: Sergey Aleynikov.</p>
+<a class='view-head2' id="Additional-Note"></a><h3 class='h3' >Additional Note</h3>
+<p>An application written in Perl would only be vulnerable to any of the above
+flaws if it evaluates regular expressions supplied by the attacker.  Evaluating
+regular expressions in this fashion is known to be dangerous since the regular
+expression engine does not protect against denial of service attacks in this
+usage scenario.</p>
+<a class='view-head1' id="Incompatible-Changes"></a><h2 class='h2' >Incompatible Changes</h2>
+<p>There are no changes intentionally incompatible with Perl 5.28.2.  If any
+exist, they are bugs, and we request that you submit a report.  See
+<a href="#Reporting-Bugs">Reporting Bugs</a> below.</p>
+<a class='view-head1' id="Modules-and-Pragmata"></a><h2 class='h2' >Modules and Pragmata</h2>
+<a class='view-head2' id="Updated-Modules-and-Pragmata"></a><h3 class='h3' >Updated Modules and Pragmata</h3>
+<ul>
+<li>
+<p><a href="Module/CoreList.html">Module::CoreList</a> has been upgraded from version 5.20190419 to 5.20200601_28.</p>
+</li>
+</ul>
+<a class='view-head1' id="Testing"></a><h2 class='h2' >Testing</h2>
+<p>Tests were added and changed to reflect the other additions and changes in this
+release.</p>
+<a class='view-head1' id="Acknowledgements"></a><h2 class='h2' >Acknowledgements</h2>
+<p>Perl 5.28.3 represents approximately 13 months of development since Perl 5.28.2
+and contains approximately 3,100 lines of changes across 48 files from 16
+authors.</p>
+<p>Excluding auto-generated files, documentation and release tools, there were
+approximately 1,700 lines of changes to 9 .pm, .t, .c and .h files.</p>
+<p>Perl continues to flourish into its fourth decade thanks to a vibrant community
+of users and developers.  The following people are known to have contributed
+the improvements that became Perl 5.28.3:</p>
+<p>Chris 'BinGOs' Williams, Dan Book, Hugo van der Sanden, James E Keenan, John
+Lightsey, Karen Etheridge, Karl Williamson, Matthew Horsfall, Max Maischein,
+Nicolas R., Renee Baecker, Sawyer X, Steve Hay, Tom Hukins, Tony Cook, Zak B.
+Elep.</p>
+<p>The list above is almost certainly incomplete as it is automatically generated
+from version control history.  In particular, it does not include the names of
+the (very much appreciated) contributors who reported issues to the Perl bug
+tracker.</p>
+<p>Many of the changes included in this version originated in the CPAN modules
+included in Perl's core.  We're grateful to the entire CPAN community for
+helping Perl to flourish.</p>
+<p>For a more complete list of all of Perl's historical contributors, please see
+the <i>AUTHORS</i> file in the Perl source distribution.</p>
+<a class='view-head1' id="Reporting-Bugs"></a><h2 class='h2' >Reporting Bugs</h2>
+<p>If you find what you think is a bug, you might check the perl bug database at
+<a class='link-to-page' href="https://github.com/Perl/perl5/issues">https://github.com/Perl/perl5/issues</a>.  There may also be information at
+<a class='link-to-page' href="https://www.perl.org/">https://www.perl.org/</a>, the Perl Home Page.</p>
+<p>If you believe you have an unreported bug, please open an issue at
+<a class='link-to-page' href="https://github.com/Perl/perl5/issues">https://github.com/Perl/perl5/issues</a>.  Be sure to trim your bug down to a
+tiny but sufficient test case.</p>
+<p>If the bug you are reporting has security implications which make it
+inappropriate to send to a public issue tracker, then see
+<a href="perlsec.html#SECURITY-VULNERABILITY-CONTACT-INFORMATION">SECURITY VULNERABILITY CONTACT INFORMATION in perlsec</a> for details of how to
+report the issue.</p>
+<a class='view-head1' id="Give-Thanks"></a><h2 class='h2' >Give Thanks</h2>
+<p>If you wish to thank the Perl 5 Porters for the work we had done in Perl 5, you
+can do so by running the <code class="inline"><span class="w">perlthanks</span></code>
+ program:</p>
+<pre class="verbatim"><ol><li>    <span class="w">perlthanks</span></li></ol></pre><p>This will send an email to the Perl 5 Porters list with your show of thanks.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p>The <i>Changes</i> file for an explanation of how to view exhaustive details on
+what changed.</p>
+<p>The <i>INSTALL</i> file for how to build Perl.</p>
+<p>The <i>README</i> file for general stuff.</p>
+<p>The <i>Artistic</i> and <i>Copying</i> files for copyright information.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#Security">Security</a></li><ul><li><a href="#%5bCVE-2020-10543%5d-Buffer-overflow-caused-by-a-crafted-regular-expression">[CVE-2020-10543] Buffer overflow caused by a crafted regular expression</a></li><li><a href="#%5bCVE-2020-10878%5d-Integer-overflow-via-malformed-bytecode-produced-by-a-crafted-regular-expression">[CVE-2020-10878] Integer overflow via malformed bytecode produced by a crafted regular expression</a></li><li><a href="#%5bCVE-2020-12723%5d-Buffer-overflow-caused-by-a-crafted-regular-expression">[CVE-2020-12723] Buffer overflow caused by a crafted regular expression</a></li><li><a href="#Additional-Note">Additional Note</a></li></ul><li><a href="#Incompatible-Changes">Incompatible Changes</a></li><li><a href="#Modules-and-Pragmata">Modules and Pragmata</a></li><ul><li><a href="#Updated-Modules-and-Pragmata">Updated Modules and Pragmata</a></li></ul><li><a href="#Testing">Testing</a></li><li><a href="#Acknowledgements">Acknowledgements</a></li><li><a href="#Reporting-Bugs">Reporting Bugs</a></li><li><a href="#Give-Thanks">Give Thanks</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

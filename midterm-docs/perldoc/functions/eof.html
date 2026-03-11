@@ -1,0 +1,271 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="eof - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>eof - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/functions/eof.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-language.html">Language reference</a> &gt;
+      
+        <a href="../index-functions.html">Functions</a> &gt;
+      
+    
+    eof
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>eof</h1>
+<div class="mod_az_list">
+  <a href="/5.32.0/index-functions.html">Perl functions A-Z</a> |
+  <a href="/5.32.0/index-functions-by-cat.html">Perl functions by category</a> |
+  <a href="/5.32.0/perlfunc.html">The 'perlfunc' manpage</a>
+</div>
+
+
+  <!--    -->
+<ul>
+<li><a class='view-title' id="eof-FILEHANDLE"></a><strong>eof FILEHANDLE</strong>
+<p>
+
+</p>
+</li>
+</ul>
+<ul>
+<li><a class='view-title' id="eof-()"></a><strong>eof ()</strong>
+</li>
+<li><a class='view-title' id="eof"></a><strong>eof</strong>
+<p>Returns 1 if the next read on FILEHANDLE will return end of file <i>or</i> if
+FILEHANDLE is not open.  FILEHANDLE may be an expression whose value
+gives the real filehandle.  (Note that this function actually
+reads a character and then <code class="inline"><span class="w">ungetc</span></code>
+s it, so isn't useful in an
+interactive context.)  Do not read from a terminal file (or call
+<code class="inline"><a class="l_k" href="../functions/eof.html">eof(FILEHANDLE)</a></code> on it) after end-of-file is reached.  File types such
+as terminals may lose the end-of-file condition if you do.</p>
+<p>An <a href="#eof-FILEHANDLE">eof</a> without an argument uses the last file
+read.  Using <a href="#eof-FILEHANDLE">eof()</a> with empty parentheses is
+different.  It refers to the pseudo file formed from the files listed on
+the command line and accessed via the <code class="inline">&lt;&gt;</code>
+ operator.  Since
+<code class="inline">&lt;&gt;</code>
+ isn't explicitly opened, as a normal filehandle is, an
+<a href="#eof-FILEHANDLE">eof()</a> before <code class="inline">&lt;&gt;</code>
+ has been used will cause
+<a href="../perlvar.html#%40ARGV">@ARGV </a> to be examined to determine if input is
+available.   Similarly, an <a href="#eof-FILEHANDLE">eof()</a> after <code class="inline">&lt;&gt;</code>
+
+has returned end-of-file will assume you are processing another
+<a href="../perlvar.html#%40ARGV">@ARGV </a> list, and if you haven't set
+<a href="../perlvar.html#%40ARGV">@ARGV </a>, will read input from <code class="inline"><span class="w">STDIN</span></code>
+; see
+<a href="../perlop.html#I%2fO-Operators">I/O Operators in perlop</a>.</p>
+<p>In a <code class="inline"><a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span>&lt;&gt;<span class="s">)</span></code>
+ loop, <a href="#eof-FILEHANDLE">eof</a> or <code class="inline"><a class="l_k" href="../functions/eof.html">eof(ARGV)</a></code>
+can be used to detect the end of each file, whereas
+<a href="#eof-FILEHANDLE">eof()</a> will detect the end of the very last file
+only.  Examples:</p>
+<pre class="verbatim"><ol><li>    <span class="c"># reset line numbering on each input file</span></li><li>    <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span>&lt;&gt;<span class="s">)</span> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/next.html">next</a> <a class="l_k" href="../functions/if.html">if</a> <span class="q">/^\s*#/</span><span class="sc">;</span>  <span class="c"># skip comments</span></li><li>        <a class="l_k" href="../functions/print.html">print</a> <span class="q">&quot;$.\t$_&quot;</span><span class="sc">;</span></li><li>    <span class="s">}</span> <a class="l_k" href="../functions/continue.html">continue</a> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/close.html">close</a> <span class="w">ARGV</span> <a class="l_k" href="../functions/if.html">if</a> <a class="l_k" href="../functions/eof.html">eof</a><span class="sc">;</span>  <span class="c"># Not eof()!</span></li><li>    <span class="s">}</span></li><li></li><li>    <span class="c"># insert dashes just before last line of last file</span></li><li>    <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span>&lt;&gt;<span class="s">)</span> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/if.html">if</a> <span class="s">(</span><a class="l_k" href="../functions/eof.html">eof</a><span class="s">(</span><span class="s">)</span><span class="s">)</span> <span class="s">{</span>  <span class="c"># check for end of last file</span></li><li>            <a class="l_k" href="../functions/print.html">print</a> <span class="q">&quot;--------------\n&quot;</span><span class="sc">;</span></li><li>        <span class="s">}</span></li><li>        <a class="l_k" href="../functions/print.html">print</a><span class="sc">;</span></li><li>        <a class="l_k" href="../functions/last.html">last</a> <a class="l_k" href="../functions/if.html">if</a> <a class="l_k" href="../functions/eof.html">eof</a><span class="s">(</span><span class="s">)</span><span class="sc">;</span>     <span class="c"># needed if we&#39;re reading from a terminal</span></li><li>    <span class="s">}</span></li></ol></pre><p>Practical hint: you almost never need to use <a href="#eof-FILEHANDLE">eof</a>
+in Perl, because the input operators typically return <a href="#undef-EXPR">undef</a> when they run out of data or encounter an error.</p>
+</li>
+</ul>
+
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

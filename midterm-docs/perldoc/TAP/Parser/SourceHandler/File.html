@@ -1,0 +1,260 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="TAP::Parser::SourceHandler::File - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>TAP::Parser::SourceHandler::File - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/TAP/Parser/SourceHandler/File.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../../../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../../../index-modules-T.html">Core modules (T)</a> &gt;
+      
+    
+    TAP::Parser::SourceHandler::File
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>TAP::Parser::SourceHandler::File</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#VERSION">VERSION</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#METHODS">METHODS</a></li><ul><li><a href="#Class-Methods">Class Methods</a></li></ul><li><a href="#CONFIGURATION">CONFIGURATION</a></li><li><a href="#SUBCLASSING">SUBCLASSING</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>TAP::Parser::SourceHandler::File - Stream TAP from a text file.</p>
+<a class='view-head1' id="VERSION"></a><h2 class='h2' >VERSION</h2>
+<p>Version 3.42</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="../../../functions/use.html">use</a> <span class="w">TAP::Parser::Source</span><span class="sc">;</span></li><li>  <a class="l_k" href="../../../functions/use.html">use</a> <span class="w">TAP::Parser::SourceHandler::File</span><span class="sc">;</span></li><li></li><li>  <a class="l_k" href="../../../functions/my.html">my</a> <span class="i">$source</span> = <span class="w">TAP::Parser::Source</span><span class="w">-&gt;new</span><span class="w">-&gt;raw</span><span class="s">(</span> \<span class="q">&#39;file.tap&#39;</span> <span class="s">)</span><span class="sc">;</span></li><li>  <span class="i">$source</span><span class="i">-&gt;assemble_meta</span><span class="sc">;</span></li><li></li><li>  <a class="l_k" href="../../../functions/my.html">my</a> <span class="i">$class</span> = <span class="q">&#39;TAP::Parser::SourceHandler::File&#39;</span><span class="sc">;</span></li><li>  <a class="l_k" href="../../../functions/my.html">my</a> <span class="i">$vote</span>  = <span class="i">$class</span><span class="i">-&gt;can_handle</span><span class="s">(</span> <span class="i">$source</span> <span class="s">)</span><span class="sc">;</span></li><li>  <a class="l_k" href="../../../functions/my.html">my</a> <span class="i">$iter</span>  = <span class="i">$class</span><span class="i">-&gt;make_iterator</span><span class="s">(</span> <span class="i">$source</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This is a <i>raw TAP stored in a file</i> <a href="../../../TAP/Parser/SourceHandler.html">TAP::Parser::SourceHandler</a> - it has 2 jobs:</p>
+<p>1. Figure out if the <i>raw</i> source it's given is a file containing raw TAP
+output.  See <a href="../../../TAP/Parser/IteratorFactory.html">TAP::Parser::IteratorFactory</a> for more details.</p>
+<p>2. Takes raw TAP from the text file given, and converts into an iterator.</p>
+<p>Unless you're writing a plugin or subclassing <a href="../../../TAP/Parser.html">TAP::Parser</a>, you probably
+won't need to use this module directly.</p>
+<a class='view-head1' id="METHODS"></a><h2 class='h2' >METHODS</h2>
+<a class='view-head2' id="Class-Methods"></a><h3 class='h3' >Class Methods</h3>
+<a class='view-head3' id="can_handle"></a><h4 class='h4' ><code class="inline"><span class="w">can_handle</span></code>
+</h4>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="../../../functions/my.html">my</a> <span class="i">$vote</span> = <span class="i">$class</span><span class="i">-&gt;can_handle</span><span class="s">(</span> <span class="i">$source</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>Only votes if $source looks like a regular file.  Casts the following votes:</p>
+<pre class="verbatim"><ol><li>  <span class="n">0.9</span> <a class="l_k" href="../../../functions/if.html">if</a> <span class="w">it&#39;s</span> <span class="w">a</span> .<span class="w">tap</span> <span class="w">file</span></li><li>  <span class="n">0.9</span> <a class="l_k" href="../../../functions/if.html">if</a> <span class="w">it</span> <span class="w">has</span> <span class="w">an</span> <span class="w">extension</span> <span class="w">matching</span> <span class="w">any</span> <a class="l_k" href="../../../functions/given.html">given</a> <span class="w">in</span> <span class="w">user</span> <span class="w">config</span>.</li></ol></pre><a class='view-head3' id="make_iterator"></a><h4 class='h4' ><code class="inline"><span class="w">make_iterator</span></code>
+</h4>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="../../../functions/my.html">my</a> <span class="i">$iterator</span> = <span class="i">$class</span><span class="i">-&gt;make_iterator</span><span class="s">(</span> <span class="i">$source</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>Returns a new <a href="../../../TAP/Parser/Iterator/Stream.html">TAP::Parser::Iterator::Stream</a> for the source.  <code class="inline"><span class="w">croak</span></code>
+s
+on error.</p>
+<a class='view-head3' id="iterator_class"></a><h4 class='h4' ><code class="inline"><span class="w">iterator_class</span></code>
+</h4>
+<p>The class of iterator to use, override if you're sub-classing.  Defaults
+to <a href="../../../TAP/Parser/Iterator/Stream.html">TAP::Parser::Iterator::Stream</a>.</p>
+<a class='view-head1' id="CONFIGURATION"></a><h2 class='h2' >CONFIGURATION</h2>
+<pre class="verbatim"><ol><li>  <span class="s">{</span></li><li>   <span class="w">extensions</span> <span class="cm">=&gt;</span> <span class="s">[</span> <span class="i">@case_insensitive_exts_to_match</span> <span class="s">]</span></li><li>  <span class="s">}</span></li></ol></pre><a class='view-head1' id="SUBCLASSING"></a><h2 class='h2' >SUBCLASSING</h2>
+<p>Please see <a href="../../../TAP/Parser.html#SUBCLASSING">SUBCLASSING in TAP::Parser</a> for a subclassing overview.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../../../TAP/Object.html">TAP::Object</a>,
+<a href="../../../TAP/Parser.html">TAP::Parser</a>,
+<a href="../../../TAP/Parser/SourceHandler.html">TAP::Parser::SourceHandler</a>,
+<a href="../../../TAP/Parser/SourceHandler/Executable.html">TAP::Parser::SourceHandler::Executable</a>,
+<a href="../../../TAP/Parser/SourceHandler/Perl.html">TAP::Parser::SourceHandler::Perl</a>,
+<a href="../../../TAP/Parser/SourceHandler/Handle.html">TAP::Parser::SourceHandler::Handle</a>,
+<a href="../../../TAP/Parser/SourceHandler/RawTAP.html">TAP::Parser::SourceHandler::RawTAP</a></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#VERSION">VERSION</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#METHODS">METHODS</a></li><ul><li><a href="#Class-Methods">Class Methods</a></li></ul><li><a href="#CONFIGURATION">CONFIGURATION</a></li><li><a href="#SUBCLASSING">SUBCLASSING</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,282 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="if - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>if - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/if.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-pragmas.html">Pragmas</a> &gt;
+      
+    
+    if
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>if</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#use-if">use if</a></li><li><a href="#no-if">no if</a></li></ul><li><a href="#BUGS">BUGS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT-AND-LICENCE">COPYRIGHT AND LICENCE</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>if - <code class="inline"><a class="l_k" href="functions/use.html">use</a></code> a Perl module if a condition holds</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/if.html">if</a> <span class="w">CONDITION</span><span class="cm">,</span> <span class="q">&quot;MODULE&quot;</span><span class="cm">,</span> <span class="w">ARGUMENTS</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/no.html">no</a>  <a class="l_k" href="functions/if.html">if</a> <span class="w">CONDITION</span><span class="cm">,</span> <span class="q">&quot;MODULE&quot;</span><span class="cm">,</span> <span class="w">ARGUMENTS</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<a class='view-head2' id="use-if"></a><h3 class='h3' ><code class="inline"><a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/if.html">if</a></code>
+</h3>
+<p>The <code class="inline"><a class="l_k" href="functions/if.html">if</a></code> module is used to conditionally load another module.  The construct:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/if.html">if</a> <span class="w">CONDITION</span><span class="cm">,</span> <span class="q">&quot;MODULE&quot;</span><span class="cm">,</span> <span class="w">ARGUMENTS</span><span class="sc">;</span></li></ol></pre><p>... will load <code class="inline"><span class="w">MODULE</span></code>
+ only if <code class="inline"><span class="w">CONDITION</span></code>
+ evaluates to true; it has no
+effect if <code class="inline"><span class="w">CONDITION</span></code>
+ evaluates to false.  (The module name, assuming it
+contains at least one <code class="inline"><span class="w">::</span></code>
+, must be quoted when <code class="inline"><span class="q">&#39;use strict &quot;subs&quot;;&#39;</span></code>
+ is in
+effect.)  If the CONDITION does evaluate to true, then the above line has the
+same effect as:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">MODULE</span> <span class="w">ARGUMENTS</span><span class="sc">;</span></li></ol></pre><p>For example, the <i>Unicode::UCD</i> module's <i>charinfo</i> function will use two functions from <i>Unicode::Normalize</i> only if a certain condition is met:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <a class="l_k" href="functions/if.html">if</a> <a class="l_k" href="functions/defined.html">defined</a> <span class="i">&amp;DynaLoader::boot_DynaLoader</span><span class="cm">,</span></li><li>        <span class="q">&quot;Unicode::Normalize&quot;</span> <span class="cm">=&gt;</span> <span class="q">qw(getCombinClass NFD)</span><span class="sc">;</span></li></ol></pre><p>Suppose you wanted <code class="inline"><span class="w">ARGUMENTS</span></code>
+ to be an empty list, <i>i.e.</i>, to have the
+effect of:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">MODULE</span> <span class="s">(</span><span class="s">)</span><span class="sc">;</span></li></ol></pre><p>You can't do this with the <code class="inline"><a class="l_k" href="functions/if.html">if</a></code> pragma; however, you can achieve
+exactly this effect, at compile time, with:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/BEGIN.html">BEGIN</a> <span class="s">{</span> <a class="l_k" href="functions/require.html">require</a> <span class="w">MODULE</span> <a class="l_k" href="functions/if.html">if</a> <span class="w">CONDITION</span> <span class="s">}</span></li></ol></pre><a class='view-head2' id="no-if"></a><h3 class='h3' ><code class="inline"><a class="l_k" href="functions/no.html">no</a> <a class="l_k" href="functions/if.html">if</a></code>
+</h3>
+<p>The <code class="inline"><a class="l_k" href="functions/no.html">no</a> <a class="l_k" href="functions/if.html">if</a></code>
+ construct is mainly used to deactivate categories of warnings
+when those categories would produce superfluous output under specified
+versions of <i>perl</i>.</p>
+<p>For example, the <code class="inline"><span class="w">redundant</span></code>
+ category of warnings was introduced in
+Perl-5.22.  This warning flags certain instances of superfluous arguments to
+<code class="inline"><a class="l_k" href="functions/printf.html">printf</a></code> and <code class="inline"><a class="l_k" href="functions/sprintf.html">sprintf</a></code>.  But if your code was running warnings-free on
+earlier versions of <i>perl</i> and you don't care about <code class="inline"><span class="w">redundant</span></code>
+ warnings in
+more recent versions, you can call:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">warnings</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/no.html">no</a> <a class="l_k" href="functions/if.html">if</a> <span class="i">$]</span> &gt;= <span class="n">5.022</span><span class="cm">,</span> <span class="q">q|warnings|</span><span class="cm">,</span> <span class="q">qw(redundant)</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/my.html">my</a> <span class="i">$test</span>    = <span class="s">{</span> <span class="w">fmt</span>  <span class="cm">=&gt;</span> <span class="q">&quot;%s&quot;</span><span class="cm">,</span> <span class="w">args</span> <span class="cm">=&gt;</span> <span class="s">[</span> <span class="q">qw( x y )</span> <span class="s">]</span> <span class="s">}</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/my.html">my</a> <span class="i">$result</span>  = <a class="l_k" href="functions/sprintf.html">sprintf</a> <span class="i">$test</span>-&gt;{<span class="w">fmt</span>}<span class="cm">,</span> <span class="i">@</span>{<span class="i">$test</span>-&gt;{<span class="w">args</span>}}<span class="sc">;</span></li></ol></pre><p>The <code class="inline"><a class="l_k" href="functions/no.html">no</a> <a class="l_k" href="functions/if.html">if</a></code>
+ construct assumes that a module or pragma has correctly
+implemented an <code class="inline"><span class="i">unimport</span><span class="s">(</span><span class="s">)</span></code>
+ method -- but most modules and pragmata have not.
+That explains why the <code class="inline"><a class="l_k" href="functions/no.html">no</a> <a class="l_k" href="functions/if.html">if</a></code>
+ construct is of limited applicability.</p>
+<a class='view-head1' id="BUGS"></a><h2 class='h2' >BUGS</h2>
+<p>The current implementation does not allow specification of the required
+version of the module.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="https://search.cpan.org/perldoc/Module::Requires">Module::Requires</a> can be used to conditionally load one or modules,
+with constraints based on the version of the module.
+Unlike <code class="inline"><a class="l_k" href="functions/if.html">if</a></code> though, <a href="https://search.cpan.org/perldoc/Module::Requires">Module::Requires</a> is not a core module.</p>
+<p><a href="Module/Load/Conditional.html">Module::Load::Conditional</a> provides a number of functions you can use to
+query what modules are available, and then load one or more of them at runtime.</p>
+<p>The <a href="https://search.cpan.org/perldoc/provide">provide</a> module from CPAN can be used to select one of several possible
+modules to load based on the version of Perl that is running.</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Ilya Zakharevich <a href="mailto:ilyaz@cpan.org">mailto:ilyaz@cpan.org</a>.</p>
+<a class='view-head1' id="COPYRIGHT-AND-LICENCE"></a><h2 class='h2' >COPYRIGHT AND LICENCE</h2>
+<p>This software is copyright (c) 2002 by Ilya Zakharevich.</p>
+<p>This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#use-if">use if</a></li><li><a href="#no-if">no if</a></li></ul><li><a href="#BUGS">BUGS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT-AND-LICENCE">COPYRIGHT AND LICENCE</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,280 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="strict - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>strict - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/strict.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-pragmas.html">Pragmas</a> &gt;
+      
+    
+    strict
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>strict</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#HISTORY">HISTORY</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>strict - Perl pragma to restrict unsafe constructs</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="q">&quot;vars&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="q">&quot;refs&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="q">&quot;subs&quot;</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/no.html">no</a> <span class="w">strict</span> <span class="q">&quot;vars&quot;</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>The <code class="inline"><span class="w">strict</span></code>
+ pragma disables certain Perl expressions that could behave
+unexpectedly or are difficult to debug, turning them into errors. The
+effect of this pragma is limited to the current file or scope block.</p>
+<p>If no import list is supplied, all possible restrictions are assumed.
+(This is the safest mode to operate in, but is sometimes too strict for
+casual programming.)  Currently, there are three possible things to be
+strict about:  "subs", "vars", and "refs".</p>
+<ul>
+<li><a class='view-title' id="strict-refs"></a><strong><code class="inline"><span class="w">strict</span> <span class="w">refs</span></code>
+</strong>
+<p>This generates a runtime error if you 
+use symbolic references (see <a href="perlref.html">perlref</a>).</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="q">&#39;refs&#39;</span><span class="sc">;</span></li><li>    <span class="i">$ref</span> = \<span class="i">$foo</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">$$ref</span><span class="sc">;</span>	<span class="c"># ok</span></li><li>    <span class="i">$ref</span> = <span class="q">&quot;foo&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">$$ref</span><span class="sc">;</span>	<span class="c"># runtime error; normally ok</span></li><li>    <span class="i">$file</span> = <span class="q">&quot;STDOUT&quot;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/print.html">print</a> <span class="i">$file</span> <span class="q">&quot;Hi!&quot;</span><span class="sc">;</span>	<span class="c"># error; note: no comma after $file</span></li></ol></pre><p>There is one exception to this rule:</p>
+<pre class="verbatim"><ol><li>    <span class="i">$bar</span> = \<span class="i">&amp;</span>{<span class="q">&#39;foo&#39;</span>}<span class="sc">;</span></li><li>    <span class="i">&amp;$bar</span><span class="sc">;</span></li></ol></pre><p>is allowed so that <code class="inline"><a class="l_k" href="functions/goto.html">goto</a> <span class="i">&amp;$AUTOLOAD</span></code>
+ would not break under stricture.</p>
+</li>
+<li><a class='view-title' id="strict-vars"></a><strong><code class="inline"><span class="w">strict</span> <span class="w">vars</span></code>
+</strong>
+<p>This generates a compile-time error if you access a variable that was
+neither explicitly declared (using any of <code class="inline"><a class="l_k" href="functions/my.html">my</a></code>, <code class="inline"><a class="l_k" href="functions/our.html">our</a></code>, <code class="inline"><a class="l_k" href="functions/state.html">state</a></code>, or <code class="inline"><a class="l_k" href="functions/use.html">use</a>
+<span class="w">vars</span></code>
+) nor fully qualified.  (Because this is to avoid variable suicide
+problems and subtle dynamic scoping issues, a merely <code class="inline"><a class="l_k" href="functions/local.html">local</a></code> variable isn't
+good enough.)  See <a class='function-name' href="functions/my.html">my</a>, <a class='function-name' href="functions/our.html">our</a>, <a class='function-name' href="functions/state.html">state</a>,
+<a class='function-name' href="functions/local.html">local</a>, and <a href="vars.html">vars</a>.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="q">&#39;vars&#39;</span><span class="sc">;</span></li><li>    <span class="i">$X::foo</span> = <span class="n">1</span><span class="sc">;</span>	 <span class="c"># ok, fully qualified</span></li><li>    <a class="l_k" href="functions/my.html">my</a> <span class="i">$foo</span> = <span class="n">10</span><span class="sc">;</span>	 <span class="c"># ok, my() var</span></li><li>    <a class="l_k" href="functions/local.html">local</a> <span class="i">$baz</span> = <span class="n">9</span><span class="sc">;</span>	 <span class="c"># blows up, $baz not declared before</span></li><li></li><li><a name="package-Cinna"></a>    package <span class="i">Cinna</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/our.html">our</a> <span class="i">$bar</span><span class="sc">;</span>			<span class="c"># Declares $bar in current package</span></li><li>    <span class="i">$bar</span> = <span class="q">&#39;HgS&#39;</span><span class="sc">;</span>		<span class="c"># ok, global declared via pragma</span></li></ol></pre><p>The local() generated a compile-time error because you just touched a global
+name without fully qualifying it.</p>
+<p>Because of their special use by sort(), the variables $a and $b are
+exempted from this check.</p>
+</li>
+<li><a class='view-title' id="strict-subs"></a><strong><code class="inline"><span class="w">strict</span> <span class="w">subs</span></code>
+</strong>
+<p>This disables the poetry optimization, generating a compile-time error if
+you try to use a bareword identifier that's not a subroutine, unless it
+is a simple identifier (no colons) and that it appears in curly braces or
+on the left hand side of the <code class="inline"><span class="cm">=&gt;</span></code>
+ symbol.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">strict</span> <span class="q">&#39;subs&#39;</span><span class="sc">;</span></li><li>    <span class="i">$SIG</span>{<span class="w">PIPE</span>} = <span class="w">Plumber</span><span class="sc">;</span>   <span class="c"># blows up</span></li><li>    <span class="i">$SIG</span>{<span class="w">PIPE</span>} = <span class="q">&quot;Plumber&quot;</span><span class="sc">;</span> <span class="c"># fine: quoted string is always ok</span></li><li>    <span class="i">$SIG</span>{<span class="w">PIPE</span>} = \<span class="i">&amp;Plumber</span><span class="sc">;</span> <span class="c"># preferred form</span></li></ol></pre></li>
+</ul>
+<p>See <a href="perlmodlib.html#Pragmatic-Modules">Pragmatic Modules in perlmodlib</a>.</p>
+<a class='view-head1' id="HISTORY"></a><h2 class='h2' >HISTORY</h2>
+<p><code class="inline"><span class="w">strict</span> <span class="q">&#39;subs&#39;</span></code>
+, with Perl 5.6.1, erroneously permitted to use an unquoted
+compound identifier (e.g. <code class="inline"><span class="w">Foo::Bar</span></code>
+) as a hash key (before <code class="inline"><span class="cm">=&gt;</span></code>
+ or
+inside curlies), but without forcing it always to a literal string.</p>
+<p>Starting with Perl 5.8.1 strict is strict about its restrictions:
+if unknown restrictions are used, the strict pragma will abort with</p>
+<pre class="verbatim"><ol><li>    <span class="w">Unknown</span> <span class="q">&#39;strict&#39;</span> <span class="i">tag</span><span class="s">(</span><span class="q">s) &#39;...&#39;</span></li></ol></pre><p>As of version 1.04 (Perl 5.10), strict verifies that it is used as
+"strict" to avoid the dreaded Strict trap on case insensitive file
+systems.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#HISTORY">HISTORY</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

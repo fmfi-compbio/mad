@@ -1,0 +1,316 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Test2::Tools::Tiny - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Test2::Tools::Tiny - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/Test2/Tools/Tiny.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../../index-modules-T.html">Core modules (T)</a> &gt;
+      
+    
+    Test2::Tools::Tiny
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Test2::Tools::Tiny</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#USE-Test2%3a%3aSuite-INSTEAD">USE Test2::Suite INSTEAD</a></li><li><a href="#EXPORTS">EXPORTS</a></li><li><a href="#SOURCE">SOURCE</a></li><li><a href="#MAINTAINERS">MAINTAINERS</a></li><li><a href="#AUTHORS">AUTHORS</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>Test2::Tools::Tiny - Tiny set of tools for unfortunate souls who cannot use
+<a href="https://search.cpan.org/perldoc/Test2::Suite">Test2::Suite</a>.</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>You should really look at <a href="https://search.cpan.org/perldoc/Test2::Suite">Test2::Suite</a>. This package is some very basic
+essential tools implemented using <a href="../../Test2.html">Test2</a>. This exists only so that <a href="../../Test2.html">Test2</a>
+and other tools required by <a href="https://search.cpan.org/perldoc/Test2::Suite">Test2::Suite</a> can be tested. This is the package
+<a href="../../Test2.html">Test2</a> uses to test itself.</p>
+<a class='view-head1' id="USE-Test2%3a%3aSuite-INSTEAD"></a><h2 class='h2' >USE Test2::Suite INSTEAD</h2>
+<p>Use <a href="https://search.cpan.org/perldoc/Test2::Suite">Test2::Suite</a> if at all possible.</p>
+<a class='view-head1' id="EXPORTS"></a><h2 class='h2' >EXPORTS</h2>
+<ul>
+<li><a class='view-title' id="ok(%24bool%2c-%24name)"></a><strong>ok($bool, $name)</strong>
+</li>
+<li><a class='view-title' id="ok(%24bool%2c-%24name%2c-%40diag)"></a><strong>ok($bool, $name, @diag)</strong>
+<p>Run a simple assertion.</p>
+</li>
+<li><a class='view-title' id="is(%24got%2c-%24want%2c-%24name)"></a><strong>is($got, $want, $name)</strong>
+</li>
+<li><a class='view-title' id="is(%24got%2c-%24want%2c-%24name%2c-%40diag)"></a><strong>is($got, $want, $name, @diag)</strong>
+<p>Assert that 2 strings are the same.</p>
+</li>
+<li><a class='view-title' id="isnt(%24got%2c-%24do_not_want%2c-%24name)"></a><strong>isnt($got, $do_not_want, $name)</strong>
+</li>
+<li><a class='view-title' id="isnt(%24got%2c-%24do_not_want%2c-%24name%2c-%40diag)"></a><strong>isnt($got, $do_not_want, $name, @diag)</strong>
+<p>Assert that 2 strings are not the same.</p>
+</li>
+<li><a class='view-title' id="like(%24got%2c-%24regex%2c-%24name)"></a><strong>like($got, $regex, $name)</strong>
+</li>
+<li><a class='view-title' id="like(%24got%2c-%24regex%2c-%24name%2c-%40diag)"></a><strong>like($got, $regex, $name, @diag)</strong>
+<p>Check that the input string matches the regex.</p>
+</li>
+<li><a class='view-title' id="unlike(%24got%2c-%24regex%2c-%24name)"></a><strong>unlike($got, $regex, $name)</strong>
+</li>
+<li><a class='view-title' id="unlike(%24got%2c-%24regex%2c-%24name%2c-%40diag)"></a><strong>unlike($got, $regex, $name, @diag)</strong>
+<p>Check that the input string does not match the regex.</p>
+</li>
+<li><a class='view-title' id="is_deeply(%24got%2c-%24want%2c-%24name)"></a><strong>is_deeply($got, $want, $name)</strong>
+</li>
+<li><a class='view-title' id="is_deeply(%24got%2c-%24want%2c-%24name%2c-%40diag)"></a><strong>is_deeply($got, $want, $name, @diag)</strong>
+<p>Check 2 data structures. Please note that this is a <i>DUMB</i> implementation that
+compares the output of <a href="../../Data/Dumper.html">Data::Dumper</a> against both structures.</p>
+</li>
+<li><a class='view-title' id="diag(%24msg)"></a><strong>diag($msg)</strong>
+<p>Issue a diagnostics message to STDERR.</p>
+</li>
+<li><a class='view-title' id="note(%24msg)"></a><strong>note($msg)</strong>
+<p>Issue a diagnostics message to STDOUT.</p>
+</li>
+<li><a class='view-title' id="skip_all(%24reason)"></a><strong>skip_all($reason)</strong>
+<p>Skip all tests.</p>
+</li>
+<li><a class='view-title' id="todo-%24reason-%3d%3e-sub-%7b-...-%7d"></a><strong>todo $reason =&gt; sub { ... }</strong>
+<p>Run a block in TODO mode.</p>
+</li>
+<li><a class='view-title' id="plan(%24count)"></a><strong>plan($count)</strong>
+<p>Set the plan.</p>
+</li>
+<li><a class='view-title' id="done_testing()"></a><strong>done_testing()</strong>
+<p>Set the plan to the current test count.</p>
+</li>
+<li><a class='view-title' id="%24warnings-%3d-warnings-%7b-...-%7d"></a><strong>$warnings = warnings { ... }</strong>
+<p>Capture an arrayref of warnings from the block.</p>
+</li>
+<li><a class='view-title' id="%24exception-%3d-exception-%7b-...-%7d"></a><strong>$exception = exception { ... }</strong>
+<p>Capture an exception.</p>
+</li>
+<li><a class='view-title' id="tests-%24name-%3d%3e-sub-%7b-...-%7d"></a><strong>tests $name =&gt; sub { ... }</strong>
+<p>Run a subtest.</p>
+</li>
+<li><a class='view-title' id="%24output-%3d-capture-%7b-...-%7d"></a><strong>$output = capture { ... }</strong>
+<p>Capture STDOUT and STDERR output.</p>
+<p>Result looks like this:</p>
+<pre class="verbatim"><ol><li>    <span class="s">{</span></li><li>        <span class="w">STDOUT</span> <span class="cm">=&gt;</span> <span class="q">&quot;...&quot;</span><span class="cm">,</span></li><li>        <span class="w">STDERR</span> <span class="cm">=&gt;</span> <span class="q">&quot;...&quot;</span><span class="cm">,</span></li><li>    <span class="s">}</span></li></ol></pre></li>
+</ul>
+<a class='view-head1' id="SOURCE"></a><h2 class='h2' >SOURCE</h2>
+<p>The source code repository for Test2 can be found at
+<i><a href="http://github.com/Test-More/test-more/">http://github.com/Test-More/test-more/</a></i>.</p>
+<a class='view-head1' id="MAINTAINERS"></a><h2 class='h2' >MAINTAINERS</h2>
+<ul>
+<li><a class='view-title' id="Chad-Granum-%3cexodist%40cpan.org%3e"></a><strong>Chad Granum &lt;exodist@cpan.org&gt;</strong>
+</li>
+</ul>
+<a class='view-head1' id="AUTHORS"></a><h2 class='h2' >AUTHORS</h2>
+<ul>
+<li><a class='view-title' id="Chad-Granum-%3cexodist%40cpan.org%3e"></a><strong>Chad Granum &lt;exodist@cpan.org&gt;</strong>
+</li>
+</ul>
+<a class='view-head1' id="COPYRIGHT"></a><h2 class='h2' >COPYRIGHT</h2>
+<p>Copyright 2019 Chad Granum &lt;exodist@cpan.org&gt;.</p>
+<p>This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+<p>See <i><a href="http://dev.perl.org/licenses/">http://dev.perl.org/licenses/</a></i></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#USE-Test2%3a%3aSuite-INSTEAD">USE Test2::Suite INSTEAD</a></li><li><a href="#EXPORTS">EXPORTS</a></li><li><a href="#SOURCE">SOURCE</a></li><li><a href="#MAINTAINERS">MAINTAINERS</a></li><li><a href="#AUTHORS">AUTHORS</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

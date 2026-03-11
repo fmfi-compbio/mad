@@ -1,0 +1,287 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="IO::Pipe - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>IO::Pipe - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/IO/Pipe.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-I.html">Core modules (I)</a> &gt;
+      
+    
+    IO::Pipe
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>IO::Pipe</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#CONSTRUCTOR">CONSTRUCTOR</a></li><li><a href="#METHODS">METHODS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>IO::Pipe - supply object methods for pipes</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>	<a class="l_k" href="../functions/use.html">use</a> <span class="w">IO::Pipe</span><span class="sc">;</span></li><li></li><li>	<span class="i">$pipe</span> = <span class="w">IO::Pipe</span><span class="w">-&gt;new</span><span class="s">(</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>	<a class="l_k" href="../functions/if.html">if</a><span class="s">(</span><span class="i">$pid</span> = <a class="l_k" href="../functions/fork.html">fork</a><span class="s">(</span><span class="s">)</span><span class="s">)</span> <span class="s">{</span> <span class="c"># Parent</span></li><li>	    <span class="i">$pipe</span><span class="i">-&gt;reader</span><span class="s">(</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>	    <a class="l_k" href="../functions/while.html">while</a><span class="s">(</span><span class="q">&lt;$pipe&gt;</span><span class="s">)</span> <span class="s">{</span></li><li>		...</li><li>	    <span class="s">}</span></li><li></li><li>	<span class="s">}</span></li><li>	<a class="l_k" href="../functions/elsif.html">elsif</a><span class="s">(</span><a class="l_k" href="../functions/defined.html">defined</a> <span class="i">$pid</span><span class="s">)</span> <span class="s">{</span> <span class="c"># Child</span></li><li>	    <span class="i">$pipe</span><span class="i">-&gt;writer</span><span class="s">(</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>	    <a class="l_k" href="../functions/print.html">print</a> <span class="i">$pipe</span> ...</li><li>	<span class="s">}</span></li><li></li><li>	<a class="l_k" href="../functions/or.html">or</a></li><li></li><li>	<span class="i">$pipe</span> = <span class="w">IO::Pipe</span><span class="w">-&gt;new</span><span class="s">(</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>	<span class="i">$pipe</span><span class="i">-&gt;reader</span><span class="s">(</span><span class="q">qw(ls -l)</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>	<a class="l_k" href="../functions/while.html">while</a><span class="s">(</span><span class="q">&lt;$pipe&gt;</span><span class="s">)</span> <span class="s">{</span></li><li>	    ...</li><li>	<span class="s">}</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p><code class="inline"><span class="w">IO::Pipe</span></code>
+ provides an interface to creating pipes between
+processes.</p>
+<a class='view-head1' id="CONSTRUCTOR"></a><h2 class='h2' >CONSTRUCTOR</h2>
+<ul>
+<li><a class='view-title' id="new-(-%5bREADER%2c-WRITER%5d-)"></a><strong>new ( [READER, WRITER] )</strong>
+<p>Creates an <code class="inline"><span class="w">IO::Pipe</span></code>
+, which is a reference to a newly created symbol
+(see the <code class="inline"><span class="w">Symbol</span></code>
+ package). <code class="inline"><span class="w">IO::Pipe::new</span></code>
+ optionally takes two
+arguments, which should be objects blessed into <code class="inline"><span class="w">IO::Handle</span></code>
+, or a
+subclass thereof. These two objects will be used for the system call
+to <code class="inline"><a class="l_k" href="../functions/pipe.html">pipe</a></code>. If no arguments are given then method <code class="inline"><span class="w">handles</span></code>
+ is called
+on the new <code class="inline"><span class="w">IO::Pipe</span></code>
+ object.</p>
+<p>These two handles are held in the array part of the GLOB until either
+<code class="inline"><span class="w">reader</span></code>
+ or <code class="inline"><span class="w">writer</span></code>
+ is called.</p>
+</li>
+</ul>
+<a class='view-head1' id="METHODS"></a><h2 class='h2' >METHODS</h2>
+<ul>
+<li><a class='view-title' id="reader-(%5bARGS%5d)"></a><strong>reader ([ARGS])</strong>
+<p>The object is re-blessed into a sub-class of <code class="inline"><span class="w">IO::Handle</span></code>
+, and becomes a
+handle at the reading end of the pipe. If <code class="inline"><span class="w">ARGS</span></code>
+ are given then <code class="inline"><a class="l_k" href="../functions/fork.html">fork</a></code>
+is called and <code class="inline"><span class="w">ARGS</span></code>
+ are passed to exec.</p>
+</li>
+<li><a class='view-title' id="writer-(%5bARGS%5d)"></a><strong>writer ([ARGS])</strong>
+<p>The object is re-blessed into a sub-class of <code class="inline"><span class="w">IO::Handle</span></code>
+, and becomes a
+handle at the writing end of the pipe. If <code class="inline"><span class="w">ARGS</span></code>
+ are given then <code class="inline"><a class="l_k" href="../functions/fork.html">fork</a></code>
+is called and <code class="inline"><span class="w">ARGS</span></code>
+ are passed to exec.</p>
+</li>
+<li><a class='view-title' id="handles-()"></a><strong>handles ()</strong>
+<p>This method is called during construction by <code class="inline"><span class="w">IO::Pipe::new</span></code>
+
+on the newly created <code class="inline"><span class="w">IO::Pipe</span></code>
+ object. It returns an array of two objects
+blessed into <code class="inline"><span class="w">IO::Pipe::End</span></code>
+, or a subclass thereof.</p>
+</li>
+</ul>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../IO/Handle.html">IO::Handle</a></p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Graham Barr. Currently maintained by the Perl Porters.  Please report all
+bugs to &lt;perlbug@perl.org&gt;.</p>
+<a class='view-head1' id="COPYRIGHT"></a><h2 class='h2' >COPYRIGHT</h2>
+<p>Copyright (c) 1996-8 Graham Barr &lt;gbarr@pobox.com&gt;. All rights reserved.
+This program is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#CONSTRUCTOR">CONSTRUCTOR</a></li><li><a href="#METHODS">METHODS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#COPYRIGHT">COPYRIGHT</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

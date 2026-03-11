@@ -1,0 +1,265 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="TAP::Object - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>TAP::Object - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/TAP/Object.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-T.html">Core modules (T)</a> &gt;
+      
+    
+    TAP::Object
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>TAP::Object</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#VERSION">VERSION</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#METHODS">METHODS</a></li><ul><li><a href="#Class-Methods">Class Methods</a></li><li><a href="#Instance-Methods">Instance Methods</a></li></ul></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>TAP::Object - Base class that provides common functionality to all <code class="inline"><span class="w">TAP::</span>*</code>
+ modules</p>
+<a class='view-head1' id="VERSION"></a><h2 class='h2' >VERSION</h2>
+<p>Version 3.42</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li><a name="package-TAP::Whatever"></a>    package <span class="i">TAP::Whatever</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">strict</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">base</span> <span class="q">&#39;TAP::Object&#39;</span><span class="sc">;</span></li><li></li><li>    <span class="c"># new() implementation by TAP::Object</span></li><li><a name="_initialize"></a>    sub <span class="m">_initialize</span> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/my.html">my</a> <span class="s">(</span> <span class="i">$self</span><span class="cm">,</span> <span class="i">@args</span><span class="s">)</span> = <span class="i">@_</span><span class="sc">;</span></li><li>        <span class="c"># initialize your object</span></li><li>        <a class="l_k" href="../functions/return.html">return</a> <span class="i">$self</span><span class="sc">;</span></li><li>    <span class="s">}</span></li><li></li><li>    <span class="c"># ... later ...</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$obj</span> = <span class="w">TAP::Whatever</span><span class="w">-&gt;new</span><span class="s">(</span><span class="i">@args</span><span class="s">)</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p><code class="inline"><span class="w">TAP::Object</span></code>
+ provides a default constructor and exception model for all
+<code class="inline"><span class="w">TAP::</span>*</code>
+ classes.  Exceptions are raised using <a href="../Carp.html">Carp</a>.</p>
+<a class='view-head1' id="METHODS"></a><h2 class='h2' >METHODS</h2>
+<a class='view-head2' id="Class-Methods"></a><h3 class='h3' >Class Methods</h3>
+<a class='view-head3' id="new"></a><h4 class='h4' ><code class="inline"><span class="w">new</span></code>
+</h4>
+<p>Create a new object.  Any arguments passed to <code class="inline"><span class="w">new</span></code>
+ will be passed on to the
+<a href="#_initialize">_initialize</a> method.  Returns a new object.</p>
+<a class='view-head2' id="Instance-Methods"></a><h3 class='h3' >Instance Methods</h3>
+<a class='view-head3' id="_initialize"></a><h4 class='h4' ><code class="inline"><span class="w">_initialize</span></code>
+</h4>
+<p>Initializes a new object.  This method is a stub by default, you should override
+it as appropriate.</p>
+<p><i>Note:</i> <a href="#new">new</a> expects you to return <code class="inline"><span class="i">$self</span></code>
+ or raise an exception.  See
+<a href="#_croak">_croak</a>, and <a href="../Carp.html">Carp</a>.</p>
+<a class='view-head3' id="_croak"></a><h4 class='h4' ><code class="inline"><span class="w">_croak</span></code>
+</h4>
+<p>Raise an exception using <code class="inline"><span class="w">croak</span></code>
+ from <a href="../Carp.html">Carp</a>, eg:</p>
+<pre class="verbatim"><ol><li>    <span class="i">$self</span><span class="i">-&gt;_croak</span><span class="s">(</span> <span class="q">&#39;why me?&#39;</span><span class="cm">,</span> <span class="q">&#39;aaarrgh!&#39;</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>May also be called as a <i>class</i> method.</p>
+<pre class="verbatim"><ol><li>    <span class="i">$class</span><span class="i">-&gt;_croak</span><span class="s">(</span> <span class="q">&#39;this works too&#39;</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><a class='view-head3' id="_confess"></a><h4 class='h4' ><code class="inline"><span class="w">_confess</span></code>
+</h4>
+<p>Raise an exception using <code class="inline"><span class="w">confess</span></code>
+ from <a href="../Carp.html">Carp</a>, eg:</p>
+<pre class="verbatim"><ol><li>    <span class="i">$self</span><span class="i">-&gt;_confess</span><span class="s">(</span> <span class="q">&#39;why me?&#39;</span><span class="cm">,</span> <span class="q">&#39;aaarrgh!&#39;</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>May also be called as a <i>class</i> method.</p>
+<pre class="verbatim"><ol><li>    <span class="i">$class</span><span class="i">-&gt;_confess</span><span class="s">(</span> <span class="q">&#39;this works too&#39;</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><a class='view-head3' id="_construct"></a><h4 class='h4' ><code class="inline"><span class="w">_construct</span></code>
+</h4>
+<p>Create a new instance of the specified class.</p>
+<a class='view-head3' id="mk_methods"></a><h4 class='h4' ><code class="inline"><span class="w">mk_methods</span></code>
+</h4>
+<p>Create simple getter/setters.</p>
+<pre class="verbatim"><ol><li> <span class="w">__PACKAGE__</span><span class="w">-&gt;mk_methods</span><span class="s">(</span><span class="i">@method_names</span><span class="s">)</span><span class="sc">;</span></li></ol></pre>
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#VERSION">VERSION</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#METHODS">METHODS</a></li><ul><li><a href="#Class-Methods">Class Methods</a></li><li><a href="#Instance-Methods">Instance Methods</a></li></ul></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,408 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="UNIVERSAL - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>UNIVERSAL - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/UNIVERSAL.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-modules-U.html">Core modules (U)</a> &gt;
+      
+    
+    UNIVERSAL
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>UNIVERSAL</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#WARNINGS">WARNINGS</a></li><li><a href="#EXPORTS">EXPORTS</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>UNIVERSAL - base class for ALL classes (blessed references)</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <span class="i">$is_io</span>    = <span class="i">$fd</span><span class="i">-&gt;isa</span><span class="s">(</span><span class="q">&quot;IO::Handle&quot;</span><span class="s">)</span><span class="sc">;</span></li><li>    <span class="i">$is_io</span>    = <span class="w">Class</span><span class="w">-&gt;isa</span><span class="s">(</span><span class="q">&quot;IO::Handle&quot;</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>    <span class="i">$does_log</span> = <span class="i">$obj</span><span class="i">-&gt;DOES</span><span class="s">(</span><span class="q">&quot;Logger&quot;</span><span class="s">)</span><span class="sc">;</span></li><li>    <span class="i">$does_log</span> = <span class="w">Class</span><span class="w">-&gt;DOES</span><span class="s">(</span><span class="q">&quot;Logger&quot;</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>    <span class="i">$sub</span>      = <span class="i">$obj</span><span class="i">-&gt;can</span><span class="s">(</span><span class="q">&quot;print&quot;</span><span class="s">)</span><span class="sc">;</span></li><li>    <span class="i">$sub</span>      = <span class="w">Class</span><span class="w">-&gt;can</span><span class="s">(</span><span class="q">&quot;print&quot;</span><span class="s">)</span><span class="sc">;</span></li><li></li><li>    <span class="i">$sub</span>      = <a class="l_k" href="functions/eval.html">eval</a> <span class="s">{</span> <span class="i">$ref</span><span class="i">-&gt;can</span><span class="s">(</span><span class="q">&quot;fandango&quot;</span><span class="s">)</span> <span class="s">}</span><span class="sc">;</span></li><li>    <span class="i">$ver</span>      = <span class="i">$obj</span><span class="i">-&gt;VERSION</span><span class="sc">;</span></li><li></li><li>    <span class="c"># but never do this!</span></li><li>    <span class="i">$is_io</span>    = <span class="i">UNIVERSAL::isa</span><span class="s">(</span><span class="i">$fd</span><span class="cm">,</span> <span class="q">&quot;IO::Handle&quot;</span><span class="s">)</span><span class="sc">;</span></li><li>    <span class="i">$sub</span>      = <span class="i">UNIVERSAL::can</span><span class="s">(</span><span class="i">$obj</span><span class="cm">,</span> <span class="q">&quot;print&quot;</span><span class="s">)</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p><code class="inline"><span class="w">UNIVERSAL</span></code>
+ is the base class from which all blessed references inherit.
+See <a href="perlobj.html">perlobj</a>.</p>
+<p><code class="inline"><span class="w">UNIVERSAL</span></code>
+ provides the following methods:</p>
+<ul>
+<li><a class='view-title' id="%24obj-%3eisa(-TYPE-)"></a><strong><code class="inline"><span class="i">$obj</span><span class="i">-&gt;isa</span><span class="s">(</span> <span class="w">TYPE</span> <span class="s">)</span></code>
+</strong>
+</li>
+<li><a class='view-title' id="CLASS-%3eisa(-TYPE-)"></a><strong><code class="inline"><span class="w">CLASS</span><span class="w">-&gt;isa</span><span class="s">(</span> <span class="w">TYPE</span> <span class="s">)</span></code>
+</strong>
+</li>
+<li><a class='view-title' id="eval-%7b-VAL-%3eisa(-TYPE-)-%7d"></a><strong><code class="inline"><a class="l_k" href="functions/eval.html">eval</a> <span class="s">{</span> <span class="w">VAL</span><span class="w">-&gt;isa</span><span class="s">(</span> <span class="w">TYPE</span> <span class="s">)</span> <span class="s">}</span></code>
+</strong>
+<p>Where</p>
+<ul>
+<li><a class='view-title' id="TYPE"></a><strong><code class="inline"><span class="w">TYPE</span></code>
+</strong>
+<p>is a package name</p>
+</li>
+<li><a class='view-title' id="%24obj"></a><strong><code class="inline"><span class="i">$obj</span></code>
+</strong>
+<p>is a blessed reference or a package name</p>
+</li>
+<li><a class='view-title' id="CLASS"></a><strong><code class="inline"><span class="w">CLASS</span></code>
+</strong>
+<p>is a package name</p>
+</li>
+<li><a class='view-title' id="VAL"></a><strong><code class="inline"><span class="w">VAL</span></code>
+</strong>
+<p>is any of the above or an unblessed reference</p>
+</li>
+</ul>
+<p>When used as an instance or class method (<code class="inline"><span class="i">$obj</span><span class="i">-&gt;isa</span><span class="s">(</span> <span class="w">TYPE</span> <span class="s">)</span></code>
+),
+<code class="inline"><span class="w">isa</span></code>
+ returns <i>true</i> if $obj is blessed into package <code class="inline"><span class="w">TYPE</span></code>
+ or
+inherits from package <code class="inline"><span class="w">TYPE</span></code>
+.</p>
+<p>When used as a class method (<code class="inline"><span class="w">CLASS</span><span class="w">-&gt;isa</span><span class="s">(</span> <span class="w">TYPE</span> <span class="s">)</span></code>
+, sometimes
+referred to as a static method), <code class="inline"><span class="w">isa</span></code>
+ returns <i>true</i> if <code class="inline"><span class="w">CLASS</span></code>
+
+inherits from (or is itself) the name of the package <code class="inline"><span class="w">TYPE</span></code>
+ or
+inherits from package <code class="inline"><span class="w">TYPE</span></code>
+.</p>
+<p>If you're not sure what you have (the <code class="inline"><span class="w">VAL</span></code>
+ case), wrap the method call in an
+<code class="inline"><a class="l_k" href="functions/eval.html">eval</a></code> block to catch the exception if <code class="inline"><span class="w">VAL</span></code>
+ is undefined.</p>
+<p>If you want to be sure that you're calling <code class="inline"><span class="w">isa</span></code>
+ as a method, not a class,
+check the invocand with <code class="inline"><span class="w">blessed</span></code>
+ from <a href="Scalar/Util.html">Scalar::Util</a> first:</p>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="functions/use.html">use</a> <span class="w">Scalar::Util</span> <span class="q">&#39;blessed&#39;</span><span class="sc">;</span></li><li></li><li>  <a class="l_k" href="functions/if.html">if</a> <span class="s">(</span> <span class="i">blessed</span><span class="s">(</span> <span class="i">$obj</span> <span class="s">)</span> &amp;&amp; <span class="i">$obj</span><span class="i">-&gt;isa</span><span class="s">(</span><span class="q">&quot;Some::Class&quot;</span><span class="s">)</span> <span class="s">)</span> <span class="s">{</span></li><li>      ...</li><li>  <span class="s">}</span></li></ol></pre></li>
+<li><a class='view-title' id="%24obj-%3eDOES(-ROLE-)"></a><strong><code class="inline"><span class="i">$obj</span><span class="i">-&gt;DOES</span><span class="s">(</span> <span class="w">ROLE</span> <span class="s">)</span></code>
+</strong>
+</li>
+<li><a class='view-title' id="CLASS-%3eDOES(-ROLE-)"></a><strong><code class="inline"><span class="w">CLASS</span><span class="w">-&gt;DOES</span><span class="s">(</span> <span class="w">ROLE</span> <span class="s">)</span></code>
+</strong>
+<p><code class="inline"><span class="w">DOES</span></code>
+ checks if the object or class performs the role <code class="inline"><span class="w">ROLE</span></code>
+.  A role is a
+named group of specific behavior (often methods of particular names and
+signatures), similar to a class, but not necessarily a complete class by
+itself.  For example, logging or serialization may be roles.</p>
+<p><code class="inline"><span class="w">DOES</span></code>
+ and <code class="inline"><span class="w">isa</span></code>
+ are similar, in that if either is true, you know that the
+object or class on which you call the method can perform specific behavior.
+However, <code class="inline"><span class="w">DOES</span></code>
+ is different from <code class="inline"><span class="w">isa</span></code>
+ in that it does not care <i>how</i> the
+invocand performs the operations, merely that it does.  (<code class="inline"><span class="w">isa</span></code>
+ of course
+mandates an inheritance relationship.  Other relationships include aggregation,
+delegation, and mocking.)</p>
+<p>By default, classes in Perl only perform the <code class="inline"><span class="w">UNIVERSAL</span></code>
+ role, as well as the
+role of all classes in their inheritance.  In other words, by default <code class="inline"><span class="w">DOES</span></code>
+
+responds identically to <code class="inline"><span class="w">isa</span></code>
+.</p>
+<p>There is a relationship between roles and classes, as each class implies the
+existence of a role of the same name.  There is also a relationship between
+inheritance and roles, in that a subclass that inherits from an ancestor class
+implicitly performs any roles its parent performs.  Thus you can use <code class="inline"><span class="w">DOES</span></code>
+ in
+place of <code class="inline"><span class="w">isa</span></code>
+ safely, as it will return true in all places where <code class="inline"><span class="w">isa</span></code>
+ will
+return true (provided that any overridden <code class="inline"><span class="w">DOES</span></code>
+ <i>and</i> <code class="inline"><span class="w">isa</span></code>
+ methods behave
+appropriately).</p>
+</li>
+<li><a class='view-title' id="%24obj-%3ecan(-METHOD-)"></a><strong><code class="inline"><span class="i">$obj</span><span class="i">-&gt;can</span><span class="s">(</span> <span class="w">METHOD</span> <span class="s">)</span></code>
+</strong>
+</li>
+<li><a class='view-title' id="CLASS-%3ecan(-METHOD-)"></a><strong><code class="inline"><span class="w">CLASS</span><span class="w">-&gt;can</span><span class="s">(</span> <span class="w">METHOD</span> <span class="s">)</span></code>
+</strong>
+</li>
+<li><a class='view-title' id="eval-%7b-VAL-%3ecan(-METHOD-)-%7d"></a><strong><code class="inline"><a class="l_k" href="functions/eval.html">eval</a> <span class="s">{</span> <span class="w">VAL</span><span class="w">-&gt;can</span><span class="s">(</span> <span class="w">METHOD</span> <span class="s">)</span> <span class="s">}</span></code>
+</strong>
+<p><code class="inline"><span class="w">can</span></code>
+ checks if the object or class has a method called <code class="inline"><span class="w">METHOD</span></code>
+. If it does,
+then it returns a reference to the sub.  If it does not, then it returns
+<i>undef</i>.  This includes methods inherited or imported by <code class="inline"><span class="i">$obj</span></code>
+, <code class="inline"><span class="w">CLASS</span></code>
+, or
+<code class="inline"><span class="w">VAL</span></code>
+.</p>
+<p><code class="inline"><span class="w">can</span></code>
+ cannot know whether an object will be able to provide a method through
+AUTOLOAD (unless the object's class has overridden <code class="inline"><span class="w">can</span></code>
+ appropriately), so a
+return value of <i>undef</i> does not necessarily mean the object will not be able
+to handle the method call. To get around this some module authors use a forward
+declaration (see <a href="perlsub.html">perlsub</a>) for methods they will handle via AUTOLOAD. For
+such 'dummy' subs, <code class="inline"><span class="w">can</span></code>
+ will still return a code reference, which, when
+called, will fall through to the AUTOLOAD. If no suitable AUTOLOAD is provided,
+calling the coderef will cause an error.</p>
+<p>You may call <code class="inline"><span class="w">can</span></code>
+ as a class (static) method or an object method.</p>
+<p>Again, the same rule about having a valid invocand applies -- use an <code class="inline"><a class="l_k" href="functions/eval.html">eval</a></code>
+block or <code class="inline"><span class="w">blessed</span></code>
+ if you need to be extra paranoid.</p>
+</li>
+<li><a class='view-title' id="VERSION-(-%5b-REQUIRE-%5d-)"></a><strong><code class="inline"><span class="w">VERSION</span> <span class="s">(</span> <span class="s">[</span> <span class="w">REQUIRE</span> <span class="s">]</span> <span class="s">)</span></code>
+</strong>
+<p><code class="inline"><span class="w">VERSION</span></code>
+ will return the value of the variable <code class="inline"><span class="i">$VERSION</span></code>
+ in the
+package the object is blessed into. If <code class="inline"><span class="w">REQUIRE</span></code>
+ is given then
+it will do a comparison and die if the package version is not
+greater than or equal to <code class="inline"><span class="w">REQUIRE</span></code>
+, or if either <code class="inline"><span class="i">$VERSION</span></code>
+ or <code class="inline"><span class="w">REQUIRE</span></code>
+
+is not a "lax" version number (as defined by the <a href="version.html">version</a> module).</p>
+<p>The return from <code class="inline"><span class="w">VERSION</span></code>
+ will actually be the stringified version object
+using the package <code class="inline"><span class="i">$VERSION</span></code>
+ scalar, which is guaranteed to be equivalent
+but may not be precisely the contents of the <code class="inline"><span class="i">$VERSION</span></code>
+ scalar.  If you want
+the actual contents of <code class="inline"><span class="i">$VERSION</span></code>
+, use <code class="inline"><span class="i">$CLASS::VERSION</span></code>
+ instead.</p>
+<p><code class="inline"><span class="w">VERSION</span></code>
+ can be called as either a class (static) method or an object
+method.</p>
+</li>
+</ul>
+<a class='view-head1' id="WARNINGS"></a><h2 class='h2' >WARNINGS</h2>
+<p><strong>NOTE:</strong> <code class="inline"><span class="w">can</span></code>
+ directly uses Perl's internal code for method lookup, and
+<code class="inline"><span class="w">isa</span></code>
+ uses a very similar method and cache-ing strategy. This may cause
+strange effects if the Perl code dynamically changes @ISA in any package.</p>
+<p>You may add other methods to the UNIVERSAL class via Perl or XS code.
+You do not need to <code class="inline"><a class="l_k" href="functions/use.html">use</a> <span class="w">UNIVERSAL</span></code>
+ to make these methods
+available to your program (and you should not do so).</p>
+<a class='view-head1' id="EXPORTS"></a><h2 class='h2' >EXPORTS</h2>
+<p>None.</p>
+<p>Previous versions of this documentation suggested using <code class="inline"><span class="w">isa</span></code>
+ as
+a function to determine the type of a reference:</p>
+<pre class="verbatim"><ol><li>  <span class="i">$yes</span> = <span class="i">UNIVERSAL::isa</span><span class="s">(</span><span class="i">$h</span><span class="cm">,</span> <span class="q">&quot;HASH&quot;</span><span class="s">)</span><span class="sc">;</span></li><li>  <span class="i">$yes</span> = <span class="i">UNIVERSAL::isa</span><span class="s">(</span><span class="q">&quot;Foo&quot;</span><span class="cm">,</span> <span class="q">&quot;Bar&quot;</span><span class="s">)</span><span class="sc">;</span></li></ol></pre><p>The problem is that this code would <i>never</i> call an overridden <code class="inline"><span class="w">isa</span></code>
+ method in
+any class.  Instead, use <code class="inline"><span class="w">reftype</span></code>
+ from <a href="Scalar/Util.html">Scalar::Util</a> for the first case:</p>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="functions/use.html">use</a> <span class="w">Scalar::Util</span> <span class="q">&#39;reftype&#39;</span><span class="sc">;</span></li><li></li><li>  <span class="i">$yes</span> = <span class="i">reftype</span><span class="s">(</span> <span class="i">$h</span> <span class="s">)</span> <a class="l_k" href="functions/eq.html">eq</a> <span class="q">&quot;HASH&quot;</span><span class="sc">;</span></li></ol></pre><p>and the method form of <code class="inline"><span class="w">isa</span></code>
+ for the second:</p>
+<pre class="verbatim"><ol><li>  <span class="i">$yes</span> = <span class="w">Foo</span><span class="w">-&gt;isa</span><span class="s">(</span><span class="q">&quot;Bar&quot;</span><span class="s">)</span><span class="sc">;</span></li></ol></pre>
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#WARNINGS">WARNINGS</a></li><li><a href="#EXPORTS">EXPORTS</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

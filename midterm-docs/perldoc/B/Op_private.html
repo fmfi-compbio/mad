@@ -1,0 +1,254 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="B::Op_private - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>B::Op_private - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/B/Op_private.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-B.html">Core modules (B)</a> &gt;
+      
+    
+    B::Op_private
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>B::Op_private</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#%25bits">%bits</a></li><li><a href="#%25defines">%defines</a></li><li><a href="#%25labels">%labels</a></li><li><a href="#%25ops_using">%ops_using</a></li></ul></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>B::Op_private - OP op_private flag definitions</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">B::Op_private</span><span class="sc">;</span></li><li></li><li>    <span class="c"># flag details for bit 7 of OP_AELEM&#39;s op_private:</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$name</span>  = <span class="i">$B::Op_private::bits</span>{<span class="w">aelem</span>}{<span class="n">7</span>}<span class="sc">;</span> <span class="c"># OPpLVAL_INTRO</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$value</span> = <span class="i">$B::Op_private::defines</span>{<span class="i">$name</span>}<span class="sc">;</span> <span class="c"># 128</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$label</span> = <span class="i">$B::Op_private::labels</span>{<span class="i">$name</span>}<span class="sc">;</span>  <span class="c"># LVINTRO</span></li><li></li><li>    <span class="c"># the bit field at bits 5..6 of OP_AELEM&#39;s op_private:</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$bf</span>  = <span class="i">$B::Op_private::bits</span>{<span class="w">aelem</span>}{<span class="n">6</span>}<span class="sc">;</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$mask</span> = <span class="i">$bf</span>-&gt;{<span class="w">bitmask</span>}<span class="sc">;</span> <span class="c"># etc</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This module provides four global hashes:</p>
+<pre class="verbatim"><ol><li>    <span class="i">%B::Op_private::bits</span></li><li>    %<span class="w">B::Op_private::defines</span></li><li>    <span class="i">%B::Op_private::labels</span></li><li>    %<span class="w">B::Op_private::ops_using</span></li></ol></pre><p>which contain information about the per-op meanings of the bits in the
+op_private field.</p>
+<a class='view-head2' id="%25bits"></a><h3 class='h3' ><code class="inline"><span class="i">%bits</span></code>
+</h3>
+<p>This is indexed by op name and then bit number (0..7). For single bit flags,
+it returns the name of the define (if any) for that bit:</p>
+<pre class="verbatim"><ol><li>   <span class="i">$B::Op_private::bits</span>{<span class="w">aelem</span>}{<span class="n">7</span>} <a class="l_k" href="../functions/eq.html">eq</a> <span class="q">&#39;OPpLVAL_INTRO&#39;</span><span class="sc">;</span></li></ol></pre><p>For bit fields, it returns a hash ref containing details about the field.
+The same reference will be returned for all bit positions that make
+up the bit field; so for example these both return the same hash ref:</p>
+<pre class="verbatim"><ol><li>    <span class="i">$bitfield</span> = <span class="i">$B::Op_private::bits</span>{<span class="w">aelem</span>}{<span class="n">5</span>}<span class="sc">;</span></li><li>    <span class="i">$bitfield</span> = <span class="i">$B::Op_private::bits</span>{<span class="w">aelem</span>}{<span class="n">6</span>}<span class="sc">;</span></li></ol></pre><p>The general format of this hash ref is</p>
+<pre class="verbatim"><ol><li>    <span class="s">{</span></li><li>        <span class="c"># The bit range and mask; these are always present.</span></li><li>        <span class="w">bitmin</span>        <span class="cm">=&gt;</span> <span class="n">5</span><span class="cm">,</span></li><li>        <span class="w">bitmax</span>        <span class="cm">=&gt;</span> <span class="n">6</span><span class="cm">,</span></li><li>        <span class="w">bitmask</span>       <span class="cm">=&gt;</span> <span class="n">0x60</span><span class="cm">,</span></li><li></li><li>        <span class="c"># (The remaining keys are optional)</span></li><li></li><li>        <span class="c"># The names of any defines that were requested:</span></li><li>        <span class="w">mask_def</span>      <span class="cm">=&gt;</span> <span class="q">&#39;OPpFOO_MASK&#39;</span><span class="cm">,</span></li><li>        <span class="w">baseshift_def</span> <span class="cm">=&gt;</span> <span class="q">&#39;OPpFOO_SHIFT&#39;</span><span class="cm">,</span></li><li>        <span class="w">bitcount_def</span>  <span class="cm">=&gt;</span> <span class="q">&#39;OPpFOO_BITS&#39;</span><span class="cm">,</span></li><li></li><li>        <span class="c"># If present, Concise etc will display the value with a &#39;FOO=&#39;</span></li><li>        <span class="c"># prefix. If it equals &#39;-&#39;, then Concise will treat the bit</span></li><li>        <span class="c"># field as raw bits and not try to interpret it.</span></li><li>        <span class="w">label</span>         <span class="cm">=&gt;</span> <span class="q">&#39;FOO&#39;</span><span class="cm">,</span></li><li></li><li>        <span class="c"># If present, specifies the names of some defines and the</span></li><li>        <span class="c"># display labels that are used to assign meaning to particu-</span></li><li>        <span class="c"># lar integer values within the bit field; e.g. 3 is dis-</span></li><li>        <span class="c"># played as &#39;C&#39;.</span></li><li>        <span class="w">enum</span>          <span class="cm">=&gt;</span> <span class="s">[</span> <span class="q">qw(</span></li><li>                             <span class="q">1   OPpFOO_A  A</span></li><li>                             <span class="q">2   OPpFOO_B  B</span></li><li>                             <span class="q">3   OPpFOO_C  C</span></li><li>                         <span class="q">)</span><span class="s">]</span><span class="cm">,</span></li><li></li><li>    <span class="s">}</span><span class="sc">;</span></li></ol></pre><a class='view-head2' id="%25defines"></a><h3 class='h3' ><code class="inline"><span class="i">%defines</span></code>
+</h3>
+<p>This gives the value of every <code class="inline"><span class="w">OPp</span></code>
+ define, e.g.</p>
+<pre class="verbatim"><ol><li>    <span class="i">$B::Op_private::defines</span>{<span class="w">OPpLVAL_INTRO</span>} == <span class="n">128</span><span class="sc">;</span></li></ol></pre><a class='view-head2' id="%25labels"></a><h3 class='h3' ><code class="inline"><span class="i">%labels</span></code>
+</h3>
+<p>This gives the short display label for each define, as used by <code class="inline"><span class="w">B::Concise</span></code>
+
+and <code class="inline"><span class="w">perl</span> -<span class="w">Dx</span></code>
+, e.g.</p>
+<pre class="verbatim"><ol><li>    <span class="i">$B::Op_private::labels</span>{<span class="w">OPpLVAL_INTRO</span>} <a class="l_k" href="../functions/eq.html">eq</a> <span class="q">&#39;LVINTRO&#39;</span><span class="sc">;</span></li></ol></pre><p>If the label equals '-', then Concise will treat the bit as a raw bit and
+not try to display it symbolically.</p>
+<a class='view-head2' id="%25ops_using"></a><h3 class='h3' ><code class="inline"><span class="i">%ops_using</span></code>
+</h3>
+<p>For each define, this gives a reference to an array of op names that use
+the flag.</p>
+<pre class="verbatim"><ol><li>    <span class="i">@ops_using_lvintro</span> = <span class="i">@</span>{ <span class="i">$B::Op_private::ops_using</span>{<span class="w">OPp_LVAL_INTRO</span>} }<span class="sc">;</span></li></ol></pre>
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#%25bits">%bits</a></li><li><a href="#%25defines">%defines</a></li><li><a href="#%25labels">%labels</a></li><li><a href="#%25ops_using">%ops_using</a></li></ul></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

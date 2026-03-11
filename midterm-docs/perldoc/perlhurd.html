@@ -1,0 +1,251 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="perlhurd - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>perlhurd - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/perlhurd.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-platforms.html">Platform specific</a> &gt;
+      
+    
+    perlhurd
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>perlhurd</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Known-Problems-with-Perl-on-Hurd">Known Problems with Perl on Hurd</a></li></ul><li><a href="#AUTHOR">AUTHOR</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>perlhurd - Perl version 5 on Hurd</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>If you want to use Perl on the Hurd, I recommend using the Debian
+GNU/Hurd distribution ( see <a class='link-to-page' href="https://www.debian.org/">https://www.debian.org/</a> ), even if an
+official, stable release has not yet been made.  The old "gnu-0.2"
+binary distribution will most certainly have additional problems.</p>
+<a class='view-head2' id="Known-Problems-with-Perl-on-Hurd"></a><h3 class='h3' >Known Problems with Perl on Hurd</h3>
+<p>The Perl test suite may still report some errors on the Hurd.  The
+"lib/anydbm" and "pragma/warnings" tests will almost certainly fail.
+Both failures are not really specific to the Hurd, as indicated by the
+test suite output.</p>
+<p>The socket tests may fail if the network is not configured.  You have
+to make "/hurd/pfinet" the translator for "/servers/socket/2", giving
+it the right arguments.  Try "/hurd/pfinet --help" for more
+information.</p>
+<p>Here are the statistics for Perl 5.005_62 on my system:</p>
+<pre class="verbatim"><ol><li> <span class="w">Failed</span> <span class="w">Test</span>  <span class="w">Status</span> <span class="w">Wstat</span> <span class="w">Total</span> <span class="w">Fail</span>  <span class="w">Failed</span>  <span class="w">List</span> <span class="w">of</span> <span class="w">failed</span></li><li> -----------------------------------------------------------------------</li><li> <span class="w">lib</span>/<span class="w">anydbm</span>.<span class="w">t</span>                 <span class="n">12</span>    <span class="n">1</span>   <span class="n">8.33</span>%  <span class="n">12</span></li><li> <span class="w">pragma</span>/<span class="w">warnings</span>             <span class="n">333</span>    <span class="n">1</span>   <span class="n">0.30</span>%  <span class="n">215</span></li><li></li><li> <span class="n">8</span> <span class="w">tests</span> <a class="l_k" href="functions/and.html">and</a> <span class="n">24</span> <span class="w">subtests</span> <span class="w">skipped</span>.</li><li> <span class="w">Failed</span> <span class="n">2</span>/<span class="n">229</span> <span class="w">test</span> <span class="w">scripts</span><span class="cm">,</span> <span class="n">99.13</span>% <span class="w">okay</span>. <span class="n">2</span>/<span class="n">10850</span> <span class="w">subtests</span> <span class="w">failed</span><span class="cm">,</span></li><li>     <span class="n">99.98</span>% <span class="w">okay</span>.</li></ol></pre><p>There are quite a few systems out there that do worse!</p>
+<p>However, since I am running a very recent Hurd snapshot, in which a lot of
+bugs that were exposed by the Perl test suite have been fixed, you may
+encounter more failures.  Likely candidates are: "op/stat", "lib/io_pipe",
+"lib/io_sock", "lib/io_udp" and "lib/time".</p>
+<p>In any way, if you're seeing failures beyond those mentioned in this
+document, please consider upgrading to the latest Hurd before reporting
+the failure as a bug.</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Mark Kettenis &lt;kettenis@gnu.org&gt;</p>
+<p>Last Updated: Fri, 29 Oct 1999 22:50:30 +0200</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Known-Problems-with-Perl-on-Hurd">Known Problems with Perl on Hurd</a></li></ul><li><a href="#AUTHOR">AUTHOR</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

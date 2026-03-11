@@ -1,0 +1,267 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="less - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>less - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/less.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-pragmas.html">Pragmas</a> &gt;
+      
+    
+    less
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>less</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#FOR-MODULE-AUTHORS">FOR MODULE AUTHORS</a></li><ul><li><a href="#BOOLEAN-%3d-less-%3eof(-FEATURE-)">BOOLEAN = less->of( FEATURE )</a></li><li><a href="#FEATURES-%3d-less-%3eof()">FEATURES = less->of()</a></li></ul><li><a href="#CAVEATS">CAVEATS</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>less - perl pragma to request less of something</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">less</span> <span class="q">&#39;CPU&#39;</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This is a user-pragma. If you're very lucky some code you're using
+will know that you asked for less CPU usage or ram or fat or... we
+just can't know. Consult your documentation on everything you're
+currently using.</p>
+<p>For general suggestions, try requesting <code class="inline"><span class="w">CPU</span></code>
+ or <code class="inline"><span class="w">memory</span></code>
+.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">less</span> <span class="q">&#39;memory&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">less</span> <span class="q">&#39;CPU&#39;</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">less</span> <span class="q">&#39;fat&#39;</span><span class="sc">;</span></li></ol></pre><p>If you ask for nothing in particular, you'll be asking for <code class="inline"><span class="w">less</span>
+<span class="q">&#39;please&#39;</span></code>
+.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">less</span> <span class="q">&#39;please&#39;</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="FOR-MODULE-AUTHORS"></a><h2 class='h2' >FOR MODULE AUTHORS</h2>
+<p><a href="less.html">less</a> has been in the core as a "joke" module for ages now and it
+hasn't had any real way to communicating any information to
+anything. Thanks to Nicholas Clark we have user pragmas (see
+<a href="perlpragma.html">perlpragma</a>) and now <code class="inline"><span class="w">less</span></code>
+ can do something.</p>
+<p>You can probably expect your users to be able to guess that they can
+request less CPU or memory or just "less" overall.</p>
+<p>If the user didn't specify anything, it's interpreted as having used
+the <code class="inline"><span class="w">please</span></code>
+ tag. It's up to you to make this useful.</p>
+<pre class="verbatim"><ol><li>  <span class="c"># equivalent</span></li><li>  <a class="l_k" href="functions/use.html">use</a> <span class="w">less</span><span class="sc">;</span></li><li>  <a class="l_k" href="functions/use.html">use</a> <span class="w">less</span> <span class="q">&#39;please&#39;</span><span class="sc">;</span></li></ol></pre><a class='view-head2' id="BOOLEAN-%3d-less-%3eof(-FEATURE-)"></a><h3 class='h3' ><code class="inline"><span class="w">BOOLEAN</span> = <span class="w">less</span><span class="w">-&gt;of</span><span class="s">(</span> <span class="w">FEATURE</span> <span class="s">)</span></code>
+</h3>
+<p>The class method <code class="inline"><span class="w">less</span><span class="w">-&gt;of</span><span class="s">(</span> <span class="w">NAME</span> <span class="s">)</span></code>
+ returns a boolean to tell you
+whether your user requested less of something.</p>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="functions/if.html">if</a> <span class="s">(</span> <span class="w">less</span><span class="w">-&gt;of</span><span class="s">(</span> <span class="q">&#39;CPU&#39;</span> <span class="s">)</span> <span class="s">)</span> <span class="s">{</span></li><li>      ...</li><li>  <span class="s">}</span></li><li>  <a class="l_k" href="functions/elsif.html">elsif</a> <span class="s">(</span> <span class="w">less</span><span class="w">-&gt;of</span><span class="s">(</span> <span class="q">&#39;memory&#39;</span> <span class="s">)</span> <span class="s">)</span> <span class="s">{</span></li><li></li><li>  <span class="s">}</span></li></ol></pre><a class='view-head2' id="FEATURES-%3d-less-%3eof()"></a><h3 class='h3' ><code class="inline"><span class="w">FEATURES</span> = <span class="w">less</span><span class="w">-&gt;of</span><span class="s">(</span><span class="s">)</span></code>
+</h3>
+<p>If you don't ask for any feature, you get the list of features that
+the user requested you to be nice to. This has the nice side effect
+that if you don't respect anything in particular then you can just ask
+for it and use it like a boolean.</p>
+<pre class="verbatim"><ol><li>  <a class="l_k" href="functions/if.html">if</a> <span class="s">(</span> <span class="w">less</span><span class="w">-&gt;of</span> <span class="s">)</span> <span class="s">{</span></li><li>      ...</li><li>  <span class="s">}</span></li><li>  <a class="l_k" href="functions/else.html">else</a> <span class="s">{</span></li><li>      ...</li><li>  <span class="s">}</span></li></ol></pre><a class='view-head1' id="CAVEATS"></a><h2 class='h2' >CAVEATS</h2>
+<ul>
+<li><a class='view-title' id="This-probably-does-nothing."></a><strong>This probably does nothing.</strong>
+</li>
+<li><a class='view-title' id="This-works-only-on-5.10%2b"></a><strong>This works only on 5.10+</strong>
+<p>At least it's backwards compatible in not doing much.</p>
+</li>
+</ul>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#FOR-MODULE-AUTHORS">FOR MODULE AUTHORS</a></li><ul><li><a href="#BOOLEAN-%3d-less-%3eof(-FEATURE-)">BOOLEAN = less->of( FEATURE )</a></li><li><a href="#FEATURES-%3d-less-%3eof()">FEATURES = less->of()</a></li></ul><li><a href="#CAVEATS">CAVEATS</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

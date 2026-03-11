@@ -1,0 +1,257 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="B::Showlex - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>B::Showlex - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/B/Showlex.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-B.html">Core modules (B)</a> &gt;
+      
+    
+    B::Showlex
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>B::Showlex</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#EXAMPLES">EXAMPLES</a></li><ul><li><a href="#OPTIONS">OPTIONS</a></li></ul><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#TODO">TODO</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>B::Showlex - Show lexical variables used in functions or files</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>	<span class="w">perl</span> -<span class="w">MO</span>=<span class="w">Showlex</span><span class="s">[</span><span class="cm">,</span>-<span class="w">OPTIONS</span><span class="s">]</span><span class="s">[</span><span class="cm">,</span><span class="w">SUBROUTINE</span><span class="s">]</span> <span class="w">foo</span>.<span class="w">pl</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>When a comma-separated list of subroutine names is given as options, Showlex
+prints the lexical variables used in those subroutines.  Otherwise, it prints
+the file-scope lexicals in the file.</p>
+<a class='view-head1' id="EXAMPLES"></a><h2 class='h2' >EXAMPLES</h2>
+<p>Traditional form:</p>
+<pre class="verbatim"><ol><li> <span class="i">$ perl</span> -<span class="w">MO</span>=<span class="w">Showlex</span> -e <span class="q">&#39;my ($i,$j,$k)=(1,&quot;foo&quot;)&#39;</span></li><li> <span class="w">Pad</span> <span class="w">of</span> <span class="w">lexical</span> <span class="w">names</span> <a class="l_k" href="../functions/for.html">for</a> <span class="w">comppadlist</span> <span class="w">has</span> <span class="n">4</span> <span class="w">entries</span></li><li> <span class="n">0</span><span class="co">:</span> <span class="s">(</span><span class="n">0x8caea4</span><span class="s">)</span> <a class="l_k" href="../functions/undef.html">undef</a></li><li> <span class="n">1</span><span class="co">:</span> <span class="s">(</span><span class="n">0x9db0fb0</span><span class="s">)</span> <span class="i">$i</span></li><li> <span class="n">2</span><span class="co">:</span> <span class="s">(</span><span class="n">0x9db0f38</span><span class="s">)</span> <span class="i">$j</span></li><li> <span class="n">3</span><span class="co">:</span> <span class="s">(</span><span class="n">0x9db0f50</span><span class="s">)</span> <span class="i">$k</span></li><li> <span class="w">Pad</span> <span class="w">of</span> <span class="w">lexical</span> <a class="l_k" href="../functions/values.html">values</a> <a class="l_k" href="../functions/for.html">for</a> <span class="w">comppadlist</span> <span class="w">has</span> <span class="n">5</span> <span class="w">entries</span></li><li> <span class="n">0</span><span class="co">:</span> <span class="w">SPECIAL</span> <span class="c">#1 &amp;PL_sv_undef</span></li><li> <span class="n">1</span><span class="co">:</span> <span class="w">NULL</span> <span class="s">(</span><span class="n">0x9da4234</span><span class="s">)</span></li><li> <span class="n">2</span><span class="co">:</span> <span class="w">NULL</span> <span class="s">(</span><span class="n">0x9db0f2c</span><span class="s">)</span></li><li> <span class="n">3</span><span class="co">:</span> <span class="w">NULL</span> <span class="s">(</span><span class="n">0x9db0f44</span><span class="s">)</span></li><li> <span class="n">4</span><span class="co">:</span> <span class="w">NULL</span> <span class="s">(</span><span class="n">0x9da4264</span><span class="s">)</span></li><li> -<span class="w">e</span> <span class="w">syntax</span> <span class="w">OK</span></li></ol></pre><p>New-style form:</p>
+<pre class="verbatim"><ol><li> <span class="i">$ perl</span> -<span class="w">MO</span>=<span class="w">Showlex</span><span class="cm">,</span>-<span class="w">newlex</span> -e <span class="q">&#39;my ($i,$j,$k)=(1,&quot;foo&quot;)&#39;</span></li><li> <span class="w">main</span> <span class="w">Pad</span> <span class="w">has</span> <span class="n">4</span> <span class="w">entries</span></li><li> <span class="n">0</span><span class="co">:</span> <span class="s">(</span><span class="n">0x8caea4</span><span class="s">)</span> <a class="l_k" href="../functions/undef.html">undef</a></li><li> <span class="n">1</span><span class="co">:</span> <span class="s">(</span><span class="n">0xa0c4fb8</span><span class="s">)</span> <span class="q">&quot;$i&quot;</span> = <span class="w">NULL</span> <span class="s">(</span><span class="n">0xa0b8234</span><span class="s">)</span></li><li> <span class="n">2</span><span class="co">:</span> <span class="s">(</span><span class="n">0xa0c4f40</span><span class="s">)</span> <span class="q">&quot;$j&quot;</span> = <span class="w">NULL</span> <span class="s">(</span><span class="n">0xa0c4f34</span><span class="s">)</span></li><li> <span class="n">3</span><span class="co">:</span> <span class="s">(</span><span class="n">0xa0c4f58</span><span class="s">)</span> <span class="q">&quot;$k&quot;</span> = <span class="w">NULL</span> <span class="s">(</span><span class="n">0xa0c4f4c</span><span class="s">)</span></li><li> -<span class="w">e</span> <span class="w">syntax</span> <span class="w">OK</span></li></ol></pre><p>New form, no specials, outside O framework:</p>
+<pre class="verbatim"><ol><li> <span class="i">$ perl</span> -<span class="w">MB::Showlex</span> -e \</li><li>    <span class="q">&#39;my ($i,$j,$k)=(1,&quot;foo&quot;); B::Showlex::compile(-newlex,-nosp)-&gt;()&#39;</span></li><li> <span class="w">main</span> <span class="w">Pad</span> <span class="w">has</span> <span class="n">4</span> <span class="w">entries</span></li><li> <span class="n">1</span><span class="co">:</span> <span class="s">(</span><span class="n">0x998ffb0</span><span class="s">)</span> <span class="q">&quot;$i&quot;</span> = <span class="w">IV</span> <span class="s">(</span><span class="n">0x9983234</span><span class="s">)</span> <span class="n">1</span></li><li> <span class="n">2</span><span class="co">:</span> <span class="s">(</span><span class="n">0x998ff68</span><span class="s">)</span> <span class="q">&quot;$j&quot;</span> = <span class="w">PV</span> <span class="s">(</span><span class="n">0x998ff5c</span><span class="s">)</span> <span class="q">&quot;foo&quot;</span></li><li> <span class="n">3</span><span class="co">:</span> <span class="s">(</span><span class="n">0x998ff80</span><span class="s">)</span> <span class="q">&quot;$k&quot;</span> = <span class="w">NULL</span> <span class="s">(</span><span class="n">0x998ff74</span><span class="s">)</span></li></ol></pre><p>Note that this example shows the values of the lexicals, whereas the other
+examples did not (as they're compile-time only).</p>
+<a class='view-head2' id="OPTIONS"></a><h3 class='h3' >OPTIONS</h3>
+<p>The <code class="inline">-<span class="w">newlex</span></code>
+ option produces a more readable <code class="inline"><span class="w">name</span> <span class="cm">=&gt;</span> <span class="w">value</span></code>
+ format,
+and is shown in the second example above.</p>
+<p>The <code class="inline">-<span class="w">nosp</span></code>
+ option eliminates reporting of SPECIALs, such as <code class="inline"><span class="n">0</span><span class="co">:</span> <span class="w">SPECIAL</span>
+<span class="c">#1 &amp;PL_sv_undef</span></code>
+ above.  Reporting of SPECIALs can sometimes overwhelm
+your declared lexicals.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../B/Showlex.html">B::Showlex</a> can also be used outside of the O framework, as in the third
+example.  See <a href="../B/Concise.html">B::Concise</a> for a fuller explanation of reasons.</p>
+<a class='view-head1' id="TODO"></a><h2 class='h2' >TODO</h2>
+<p>Some of the reported info, such as hex addresses, is not particularly
+valuable.  Other information would be more useful for the typical
+programmer, such as line-numbers, pad-slot reuses, etc..  Given this,
+-newlex is not a particularly good flag-name.</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Malcolm Beattie, <code class="inline"><span class="w">mbeattie</span><span class="i">@sable</span>.<span class="w">ox</span>.<span class="w">ac</span>.<span class="w">uk</span></code>
+</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#EXAMPLES">EXAMPLES</a></li><ul><li><a href="#OPTIONS">OPTIONS</a></li></ul><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#TODO">TODO</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

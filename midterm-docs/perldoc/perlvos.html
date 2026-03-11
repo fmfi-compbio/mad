@@ -1,0 +1,301 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="perlvos - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>perlvos - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/perlvos.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-platforms.html">Platform specific</a> &gt;
+      
+    
+    perlvos
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>perlvos</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#BUILDING-PERL-FOR-OPENVOS">BUILDING PERL FOR OPENVOS</a></li><li><a href="#INSTALLING-PERL-IN-OPENVOS">INSTALLING PERL IN OPENVOS</a></li><li><a href="#USING-PERL-IN-OPENVOS">USING PERL IN OPENVOS</a></li><ul><li><a href="#Restrictions-of-Perl-on-OpenVOS">Restrictions of Perl on OpenVOS</a></li></ul><li><a href="#TEST-STATUS">TEST STATUS</a></li><li><a href="#SUPPORT-STATUS">SUPPORT STATUS</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#LAST-UPDATE">LAST UPDATE</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>perlvos - Perl for Stratus OpenVOS</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<p>This file contains notes for building perl on the Stratus OpenVOS
+operating system.  Perl is a scripting or macro language that is
+popular on many systems.  See <a href="perlbook.html">perlbook</a> for a number of good books
+on Perl.</p>
+<p>These are instructions for building Perl from source.  This version of
+Perl requires the dynamic linking support that is found in OpenVOS
+Release 17.1 and thus is not supported on OpenVOS Release 17.0 or
+earlier releases.</p>
+<p>If you are running VOS Release 14.4.1 or later, you can obtain a
+pre-compiled, supported copy of perl by purchasing the GNU Tools
+product from Stratus Technologies.</p>
+<a class='view-head1' id="BUILDING-PERL-FOR-OPENVOS"></a><h2 class='h2' >BUILDING PERL FOR OPENVOS</h2>
+<p>To build perl from its source code on the Stratus V Series platform
+you must have OpenVOS Release 17.1.0 or later, GNU Tools Release
+3.5 or later, and the C/POSIX Runtime Libraries.</p>
+<p>Follow the normal instructions for building perl; e.g, enter bash, run
+the Configure script, then use "gmake" to build perl.</p>
+<a class='view-head1' id="INSTALLING-PERL-IN-OPENVOS"></a><h2 class='h2' >INSTALLING PERL IN OPENVOS</h2>
+<dl>
+<li>
+<p>After you have built perl using the Configure script, ensure that you
+have modify and default write permission to <code class="inline">&gt;<a class="l_k" href="functions/system.html">system</a>&gt;<span class="w">ported</span></code>
+ and
+all subdirectories.  Then type</p>
+<pre class="verbatim"><ol><li>     <span class="w">gmake</span> <span class="w">install</span></li></ol></pre></li>
+<li>
+<p>While there are currently no architecture-specific extensions or
+modules distributed with perl, the following directories can be
+used to hold such files (replace the string VERSION by the
+appropriate version number):</p>
+<pre class="verbatim"><ol><li>     &gt;<a class="l_k" href="functions/system.html">system</a>&gt;<span class="w">ported</span>&gt;<span class="w">lib</span>&gt;<span class="w">perl5</span>&gt;<span class="w">VERSION</span>&gt;<span class="w">i786</span></li></ol></pre></li>
+<li>
+<p>Site-specific perl extensions and modules can be installed in one of
+two places.  Put architecture-independent files into:</p>
+<pre class="verbatim"><ol><li>     &gt;<a class="l_k" href="functions/system.html">system</a>&gt;<span class="w">ported</span>&gt;<span class="w">lib</span>&gt;<span class="w">perl5</span>&gt;<span class="w">site_perl</span>&gt;<span class="w">VERSION</span></li></ol></pre><p>Put site-specific architecture-dependent files into one of the
+following directories:</p>
+<pre class="verbatim"><ol><li>     &gt;<a class="l_k" href="functions/system.html">system</a>&gt;<span class="w">ported</span>&gt;<span class="w">lib</span>&gt;<span class="w">perl5</span>&gt;<span class="w">site_perl</span>&gt;<span class="w">VERSION</span>&gt;<span class="w">i786</span></li></ol></pre></li>
+<li>
+<p>You can examine the @INC variable from within a perl program
+to see the order in which Perl searches these directories.</p>
+</li>
+</dl>
+<a class='view-head1' id="USING-PERL-IN-OPENVOS"></a><h2 class='h2' >USING PERL IN OPENVOS</h2>
+<a class='view-head2' id="Restrictions-of-Perl-on-OpenVOS"></a><h3 class='h3' >Restrictions of Perl on OpenVOS</h3>
+<p>This port of Perl version 5 prefers Unix-style, slash-separated
+pathnames over OpenVOS-style greater-than-separated pathnames.
+OpenVOS-style pathnames should work in most contexts, but if you have
+trouble, replace all greater-than characters by slash characters.
+Because the slash character is used as a pathname delimiter, Perl
+cannot process OpenVOS pathnames containing a slash character in a
+directory or file name; these must be renamed.</p>
+<p>This port of Perl also uses Unix-epoch date values internally.
+As long as you are dealing with ASCII character string
+representations of dates, this should not be an issue.  The
+supported epoch is January 1, 1980 to January 17, 2038.</p>
+<p>See the file pod/perlport.pod for more information about the OpenVOS
+port of Perl.</p>
+<a class='view-head1' id="TEST-STATUS"></a><h2 class='h2' >TEST STATUS</h2>
+<p>A number of the perl self-tests fails for various reasons; generally
+these are minor and due to subtle differences between common
+POSIX-based environments and the OpenVOS POSIX environment.  Ensure
+that you conduct sufficient testing of your code to guarantee that it
+works properly in the OpenVOS environment.</p>
+<a class='view-head1' id="SUPPORT-STATUS"></a><h2 class='h2' >SUPPORT STATUS</h2>
+<p>I'm offering this port "as is".  You can ask me questions, but I
+can't guarantee I'll be able to answer them.  There are some
+excellent books available on the Perl language; consult a book
+seller.</p>
+<p>If you want a supported version of perl for OpenVOS, purchase the
+OpenVOS GNU Tools product from Stratus Technologies, along with a
+support contract (or from anyone else who will sell you support).</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Paul Green (Paul.Green@stratus.com)</p>
+<a class='view-head1' id="LAST-UPDATE"></a><h2 class='h2' >LAST UPDATE</h2>
+<p>February 28, 2013</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#BUILDING-PERL-FOR-OPENVOS">BUILDING PERL FOR OPENVOS</a></li><li><a href="#INSTALLING-PERL-IN-OPENVOS">INSTALLING PERL IN OPENVOS</a></li><li><a href="#USING-PERL-IN-OPENVOS">USING PERL IN OPENVOS</a></li><ul><li><a href="#Restrictions-of-Perl-on-OpenVOS">Restrictions of Perl on OpenVOS</a></li></ul><li><a href="#TEST-STATUS">TEST STATUS</a></li><li><a href="#SUPPORT-STATUS">SUPPORT STATUS</a></li><li><a href="#AUTHOR">AUTHOR</a></li><li><a href="#LAST-UPDATE">LAST UPDATE</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,247 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="CPAN::Plugin - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>CPAN::Plugin - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/CPAN/Plugin.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-C.html">Core modules (C)</a> &gt;
+      
+    
+    CPAN::Plugin
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>CPAN::Plugin</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Alpha-Status">Alpha Status</a></li><li><a href="#How-Plugins-work%3f">How Plugins work?</a></li></ul><li><a href="#METHODS">METHODS</a></li><ul><li><a href="#plugin_requires">plugin_requires</a></li><li><a href="#distribution_object">distribution_object</a></li><li><a href="#distribution">distribution</a></li><li><a href="#distribution_info">distribution_info</a></li><li><a href="#build_dir">build_dir</a></li><li><a href="#is_xs">is_xs</a></li></ul><li><a href="#AUTHOR">AUTHOR</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>CPAN::Plugin - Base class for CPAN shell extensions</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li><a name="package-CPAN::Plugin::Flurb"></a>   package <span class="i">CPAN::Plugin::Flurb</span><span class="sc">;</span></li><li>   <a class="l_k" href="../functions/use.html">use</a> <span class="w">parent</span> <span class="q">&#39;CPAN::Plugin&#39;</span><span class="sc">;</span></li><li></li><li><a name="post_test"></a>   sub <span class="m">post_test</span> <span class="s">{</span></li><li>     <a class="l_k" href="../functions/my.html">my</a> <span class="s">(</span><span class="i">$self</span><span class="cm">,</span> <span class="i">$distribution_object</span><span class="s">)</span> = <span class="i">@_</span><span class="sc">;</span></li><li>     <span class="i">$self</span> = <span class="i">$self</span><span class="i">-&gt;new</span> <span class="s">(</span><span class="w">distribution_object</span> <span class="cm">=&gt;</span> <span class="i">$distribution_object</span><span class="s">)</span><span class="sc">;</span></li><li>     ...<span class="sc">;</span></li><li>   <span class="s">}</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<a class='view-head2' id="Alpha-Status"></a><h3 class='h3' >Alpha Status</h3>
+<p>The plugin system in the CPAN shell was introduced in version 2.07 and
+is still considered experimental.</p>
+<a class='view-head2' id="How-Plugins-work%3f"></a><h3 class='h3' >How Plugins work?</h3>
+<p>See <a href="../CPAN.html#Plugin-support">Plugin support in CPAN</a>.</p>
+<a class='view-head1' id="METHODS"></a><h2 class='h2' >METHODS</h2>
+<a class='view-head2' id="plugin_requires"></a><h3 class='h3' >plugin_requires</h3>
+<p>returns list of packages given plugin requires for functionality.
+This list is evaluated using <code class="inline"><span class="w">CPAN</span><span class="w">-&gt;use_inst</span></code>
+ method.</p>
+<a class='view-head2' id="distribution_object"></a><h3 class='h3' >distribution_object</h3>
+<p>Get current distribution object.</p>
+<a class='view-head2' id="distribution"></a><h3 class='h3' >distribution</h3>
+<a class='view-head2' id="distribution_info"></a><h3 class='h3' >distribution_info</h3>
+<a class='view-head2' id="build_dir"></a><h3 class='h3' >build_dir</h3>
+<p>Simple delegatees for misc parameters derived from distribution</p>
+<a class='view-head2' id="is_xs"></a><h3 class='h3' >is_xs</h3>
+<p>Predicate to detect whether package contains XS.</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Branislav Zahradnik &lt;barney@cpan.org&gt;</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Alpha-Status">Alpha Status</a></li><li><a href="#How-Plugins-work%3f">How Plugins work?</a></li></ul><li><a href="#METHODS">METHODS</a></li><ul><li><a href="#plugin_requires">plugin_requires</a></li><li><a href="#distribution_object">distribution_object</a></li><li><a href="#distribution">distribution</a></li><li><a href="#distribution_info">distribution_info</a></li><li><a href="#build_dir">build_dir</a></li><li><a href="#is_xs">is_xs</a></li></ul><li><a href="#AUTHOR">AUTHOR</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,273 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="readline - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>readline - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/functions/readline.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-language.html">Language reference</a> &gt;
+      
+        <a href="../index-functions.html">Functions</a> &gt;
+      
+    
+    readline
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>readline</h1>
+<div class="mod_az_list">
+  <a href="/5.32.0/index-functions.html">Perl functions A-Z</a> |
+  <a href="/5.32.0/index-functions-by-cat.html">Perl functions by category</a> |
+  <a href="/5.32.0/perlfunc.html">The 'perlfunc' manpage</a>
+</div>
+
+
+  <!--    -->
+<ul>
+<li><a class='view-title' id="readline-EXPR"></a><strong>readline EXPR</strong>
+</li>
+<li><a class='view-title' id="readline"></a><strong>readline</strong>
+<p>  </p>
+<p>Reads from the filehandle whose typeglob is contained in EXPR (or from
+<code class="inline"><span class="i">*ARGV</span></code>
+ if EXPR is not provided).  In scalar context, each call reads and
+returns the next line until end-of-file is reached, whereupon the
+subsequent call returns <a href="#undef-EXPR">undef</a>.  In list context, reads
+until end-of-file is reached and returns a list of lines.  Note that the
+notion of "line" used here is whatever you may have defined with
+<a href="../perlvar.html#%24%2f">$/ </a> (or <code class="inline"><span class="i">$INPUT_RECORD_SEPARATOR</span></code>
+ in
+<a href="../English.html">English</a>).  See <a href="../perlvar.html#%24%2f">$/ in perlvar</a>.</p>
+<p>When <a href="../perlvar.html#%24%2f">$/ </a> is set to <a href="#undef-EXPR">undef</a>,
+when <a href="#readline-EXPR">readline</a> is in scalar context (i.e., file
+slurp mode), and when an empty file is read, it returns <code class="inline"><span class="q">&#39;&#39;</span></code>
+ the first
+time, followed by <a href="#undef-EXPR">undef</a> subsequently.</p>
+<p>This is the internal function implementing the <code class="inline"><span class="q">&lt;EXPR&gt;</span></code>
+
+operator, but you can use it directly.  The <code class="inline"><span class="q">&lt;EXPR&gt;</span></code>
+
+operator is discussed in more detail in <a href="../perlop.html#I%2fO-Operators">I/O Operators in perlop</a>.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$line</span> = <span class="q">&lt;STDIN&gt;</span><span class="sc">;</span></li><li>    <a class="l_k" href="../functions/my.html">my</a> <span class="i">$line</span> = <a class="l_k" href="../functions/readline.html">readline</a><span class="s">(</span><span class="w">STDIN</span><span class="s">)</span><span class="sc">;</span>    <span class="c"># same thing</span></li></ol></pre><p>If <a href="#readline-EXPR">readline</a> encounters an operating system error,
+<a href="../perlvar.html#%24!">$! </a> will be set with the corresponding error message.
+It can be helpful to check <a href="../perlvar.html#%24!">$! </a> when you are reading from
+filehandles you don't trust, such as a tty or a socket.  The following
+example uses the operator form of <a href="#readline-EXPR">readline</a> and dies
+if the result is not defined.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span> ! <a class="l_k" href="../functions/eof.html">eof</a><span class="s">(</span><span class="i">$fh</span><span class="s">)</span> <span class="s">)</span> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/defined.html">defined</a><span class="s">(</span> <span class="i">$_</span> = <a class="l_k" href="../functions/readline.html">readline</a> <span class="i">$fh</span> <span class="s">)</span> <a class="l_k" href="../functions/or.html">or</a> <a class="l_k" href="../functions/die.html">die</a> <span class="q">&quot;readline failed: $!&quot;</span><span class="sc">;</span></li><li>        ...</li><li>    <span class="s">}</span></li></ol></pre><p>Note that you have can't handle <a href="#readline-EXPR">readline</a> errors
+that way with the <code class="inline"><span class="w">ARGV</span></code>
+ filehandle.  In that case, you have to open
+each element of <a href="../perlvar.html#%40ARGV">@ARGV </a> yourself since
+<a href="#eof-FILEHANDLE">eof</a> handles <code class="inline"><span class="w">ARGV</span></code>
+ differently.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/foreach.html">foreach</a> <a class="l_k" href="../functions/my.html">my</a> <span class="i">$arg</span> <span class="s">(</span><span class="i">@ARGV</span><span class="s">)</span> <span class="s">{</span></li><li>        <a class="l_k" href="../functions/open.html">open</a><span class="s">(</span><a class="l_k" href="../functions/my.html">my</a> <span class="i">$fh</span><span class="cm">,</span> <span class="i">$arg</span><span class="s">)</span> <a class="l_k" href="../functions/or.html">or</a> <a class="l_k" href="../functions/warn.html">warn</a> <span class="q">&quot;Can&#39;t open $arg: $!&quot;</span><span class="sc">;</span></li><li></li><li>        <a class="l_k" href="../functions/while.html">while</a> <span class="s">(</span> ! <a class="l_k" href="../functions/eof.html">eof</a><span class="s">(</span><span class="i">$fh</span><span class="s">)</span> <span class="s">)</span> <span class="s">{</span></li><li>            <a class="l_k" href="../functions/defined.html">defined</a><span class="s">(</span> <span class="i">$_</span> = <a class="l_k" href="../functions/readline.html">readline</a> <span class="i">$fh</span> <span class="s">)</span></li><li>                <a class="l_k" href="../functions/or.html">or</a> <a class="l_k" href="../functions/die.html">die</a> <span class="q">&quot;readline failed for $arg: $!&quot;</span><span class="sc">;</span></li><li>            ...</li><li>        <span class="s">}</span></li><li>    <span class="s">}</span></li></ol></pre><p>Like the <code class="inline"><span class="q">&lt;EXPR&gt;</span></code>
+ operator, if a <code class="inline"><a class="l_k" href="../functions/readline.html">readline</a></code> expression is
+used as the condition of a <code class="inline"><a class="l_k" href="../functions/while.html">while</a></code> or <code class="inline"><a class="l_k" href="../functions/for.html">for</a></code> loop, then it will be
+implicitly assigned to <code class="inline"><span class="i">$_</span></code>
+.  If either a <code class="inline"><a class="l_k" href="../functions/readline.html">readline</a></code> expression or
+an explicit assignment of a <code class="inline"><a class="l_k" href="../functions/readline.html">readline</a></code> expression to a scalar is used
+as a <code class="inline"><a class="l_k" href="../functions/while.html">while</a></code>/<code class="inline"><a class="l_k" href="../functions/for.html">for</a></code> condition, then the condition actually tests for
+definedness of the expression's value, not for its regular truth value.</p>
+</li>
+</ul>
+
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

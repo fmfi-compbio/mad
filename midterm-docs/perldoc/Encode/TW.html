@@ -1,0 +1,264 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Encode::TW - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Encode::TW - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/Encode/TW.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-E.html">Core modules (E)</a> &gt;
+      
+    
+    Encode::TW
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Encode::TW</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#NOTES">NOTES</a></li><li><a href="#BUGS">BUGS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>Encode::TW - Taiwan-based Chinese Encodings</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">Encode</span> <span class="q">qw/encode decode/</span><span class="sc">;</span> </li><li>    <span class="i">$big5</span> = <span class="i">encode</span><span class="s">(</span><span class="q">&quot;big5&quot;</span><span class="cm">,</span> <span class="i">$utf8</span><span class="s">)</span><span class="sc">;</span> <span class="c"># loads Encode::TW implicitly</span></li><li>    <span class="i">$utf8</span> = <span class="i">decode</span><span class="s">(</span><span class="q">&quot;big5&quot;</span><span class="cm">,</span> <span class="i">$big5</span><span class="s">)</span><span class="sc">;</span> <span class="c"># ditto</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This module implements tradition Chinese charset encodings as used
+in Taiwan and Hong Kong.
+Encodings supported are as follows.</p>
+<pre class="verbatim"><ol><li>  <span class="w">Canonical</span>   <span class="w">Alias</span>		<span class="w">Description</span></li><li>  --------------------------------------------------------------------</li><li>  <span class="w">big5</span>-<span class="w">eten</span>   <span class="q">/\bbig-?5$/i</span>	<span class="w">Big5</span> <span class="w">encoding</span> <span class="s">(</span><span class="w">with</span> <span class="w">ETen</span> <span class="w">extensions</span><span class="s">)</span></li><li>          /\<span class="w">bbig5</span>-<span class="q">?et(en)?</span><span class="i">$/</span><span class="w">i</span></li><li>          <span class="q">/\btca-?big5$/i</span></li><li>  <span class="w">big5</span>-<span class="w">hkscs</span>  <span class="q">/\bbig5-?hk(scs)?$/i</span></li><li>              /\<span class="i">bhk</span><span class="s">(</span><span class="w">scs</span><span class="s">)</span>?-<span class="q">?big5$/i</span></li><li>                                <span class="q">                                Big5 + Cantonese characters in Hong Kong</span></li><li>  <span class="q">  MacChineseTrad		Big5 + Apple Vendor Mappings</span></li><li>  <span class="q">  cp950		                Code Page 950 </span></li><li>                                <span class="q">                                = Big5 + Microsoft vendor mappings</span></li><li>  <span class="q">  --------------------------------------------------------------------</span></li></ol></pre><p>To find out how to use this module in detail, see <a href="../Encode.html">Encode</a>.</p>
+<a class='view-head1' id="NOTES"></a><h2 class='h2' >NOTES</h2>
+<p>Due to size concerns, <code class="inline"><span class="w">EUC</span>-<span class="w">TW</span></code>
+ (Extended Unix Character), <code class="inline"><span class="w">CCCII</span></code>
+
+(Chinese Character Code for Information Interchange), <code class="inline"><span class="w">BIG5PLUS</span></code>
+
+(CMEX's Big5+) and <code class="inline"><span class="w">BIG5EXT</span></code>
+ (CMEX's Big5e) are distributed separately
+on CPAN, under the name <a href="https://search.cpan.org/perldoc/Encode::HanExtra">Encode::HanExtra</a>. That module also contains
+extra China-based encodings.</p>
+<a class='view-head1' id="BUGS"></a><h2 class='h2' >BUGS</h2>
+<p>Since the original <code class="inline"><span class="w">big5</span></code>
+ encoding (1984) is not supported anywhere
+(glibc and DOS-based systems uses <code class="inline"><span class="w">big5</span></code>
+ to mean <code class="inline"><span class="w">big5</span>-<span class="w">eten</span></code>
+; Microsoft
+uses <code class="inline"><span class="w">big5</span></code>
+ to mean <code class="inline"><span class="w">cp950</span></code>
+), a conscious decision was made to alias
+<code class="inline"><span class="w">big5</span></code>
+ to <code class="inline"><span class="w">big5</span>-<span class="w">eten</span></code>
+, which is the de facto superset of the original
+big5.</p>
+<p>The <code class="inline"><span class="w">CNS11643</span></code>
+ encoding files are not complete. For common <code class="inline"><span class="w">CNS11643</span></code>
+
+manipulation, please use <code class="inline"><span class="w">EUC</span>-<span class="w">TW</span></code>
+ in <a href="https://search.cpan.org/perldoc/Encode::HanExtra">Encode::HanExtra</a>, which contains
+planes 1-7.</p>
+<p>The ASCII region (0x00-0x7f) is preserved for all encodings, even
+though this conflicts with mappings by the Unicode Consortium.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../Encode.html">Encode</a></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#NOTES">NOTES</a></li><li><a href="#BUGS">BUGS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,254 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Test::use::ok - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Test::use::ok - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/Test/use/ok.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../../index-modules-T.html">Core modules (T)</a> &gt;
+      
+    
+    Test::use::ok
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Test::use::ok</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#MAINTAINER">MAINTAINER</a></li><li><a href="#CC0-1.0-Universal">CC0 1.0 Universal</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>Test::use::ok - Alternative to Test::More::use_ok</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../../functions/use.html">use</a> <span class="w">ok</span> <span class="q">&#39;Some::Module&#39;</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>According to the <strong>Test::More</strong> documentation, it is recommended to run
+<code class="inline"><span class="i">use_ok</span><span class="s">(</span><span class="s">)</span></code>
+ inside a <code class="inline"><a class="l_k" href="../../functions/BEGIN.html">BEGIN</a></code> block, so functions are exported at
+compile-time and prototypes are properly honored.</p>
+<p>That is, instead of writing this:</p>
+<pre class="verbatim"><ol><li>    <span class="i">use_ok</span><span class="s">(</span> <span class="q">&#39;Some::Module&#39;</span> <span class="s">)</span><span class="sc">;</span></li><li>    <span class="i">use_ok</span><span class="s">(</span> <span class="q">&#39;Other::Module&#39;</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>One should write this:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../../functions/BEGIN.html">BEGIN</a> <span class="s">{</span> <span class="i">use_ok</span><span class="s">(</span> <span class="q">&#39;Some::Module&#39;</span> <span class="s">)</span><span class="sc">;</span> <span class="s">}</span></li><li>    <a class="l_k" href="../../functions/BEGIN.html">BEGIN</a> <span class="s">{</span> <span class="i">use_ok</span><span class="s">(</span> <span class="q">&#39;Other::Module&#39;</span> <span class="s">)</span><span class="sc">;</span> <span class="s">}</span></li></ol></pre><p>However, people often either forget to add <code class="inline"><a class="l_k" href="../../functions/BEGIN.html">BEGIN</a></code>, or mistakenly group
+<code class="inline"><span class="w">use_ok</span></code>
+ with other tests in a single <code class="inline"><a class="l_k" href="../../functions/BEGIN.html">BEGIN</a></code> block, which can create subtle
+differences in execution order.</p>
+<p>With this module, simply change all <code class="inline"><span class="w">use_ok</span></code>
+ in test scripts to <code class="inline"><a class="l_k" href="../../functions/use.html">use</a> <span class="w">ok</span></code>
+,
+and they will be executed at <code class="inline"><a class="l_k" href="../../functions/BEGIN.html">BEGIN</a></code> time.  The explicit space after <code class="inline"><a class="l_k" href="../../functions/use.html">use</a></code>
+makes it clear that this is a single compile-time action.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../../Test/More.html">Test::More</a></p>
+<a class='view-head1' id="MAINTAINER"></a><h2 class='h2' >MAINTAINER</h2>
+<ul>
+<li><a class='view-title' id="Chad-Granum-%3cexodist%40cpan.org%3e"></a><strong>Chad Granum &lt;exodist@cpan.org&gt;</strong>
+</li>
+</ul>
+<a class='view-head1' id="CC0-1.0-Universal"></a><h2 class='h2' >CC0 1.0 Universal</h2>
+<p>To the extent possible under law, &#x5510;&#x9cf3; has waived all copyright and related
+or neighboring rights to <a href="https://search.cpan.org/perldoc/Test-use-ok">Test-use-ok</a>.</p>
+<p>This work is published from Taiwan.</p>
+<p><a href="http://creativecommons.org/publicdomain/zero/1.0">http://creativecommons.org/publicdomain/zero/1.0</a></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#MAINTAINER">MAINTAINER</a></li><li><a href="#CC0-1.0-Universal">CC0 1.0 Universal</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

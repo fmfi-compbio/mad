@@ -1,0 +1,306 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="SDBM_File - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>SDBM_File - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/SDBM_File.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-modules-S.html">Core modules (S)</a> &gt;
+      
+    
+    SDBM_File
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>SDBM_File</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Tie">Tie</a></li></ul><li><a href="#EXPORTS">EXPORTS</a></li><li><a href="#DIAGNOSTICS">DIAGNOSTICS</a></li><ul><li><a href="#sdbm-store-returned--1%2c-errno-22%2c-key-%22...%22-at-...">sdbm store returned -1, errno 22, key "..." at ...</a></li></ul><li><a href="#SECURITY-WARNING">SECURITY WARNING</a></li><li><a href="#BUGS-AND-WARNINGS">BUGS AND WARNINGS</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>SDBM_File - Tied access to sdbm files</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li> <a class="l_k" href="functions/use.html">use</a> <span class="w">Fcntl</span><span class="sc">;</span>   <span class="c"># For O_RDWR, O_CREAT, etc.</span></li><li> <a class="l_k" href="functions/use.html">use</a> <span class="w">SDBM_File</span><span class="sc">;</span></li><li></li><li> <a class="l_k" href="functions/tie.html">tie</a><span class="s">(</span><span class="i">%h</span><span class="cm">,</span> <span class="q">&#39;SDBM_File&#39;</span><span class="cm">,</span> <span class="q">&#39;filename&#39;</span><span class="cm">,</span> <span class="w">O_RDWR</span>|<span class="w">O_CREAT</span><span class="cm">,</span> <span class="n">0666</span><span class="s">)</span></li><li>   <a class="l_k" href="functions/or.html">or</a> <a class="l_k" href="functions/die.html">die</a> <span class="q">&quot;Couldn&#39;t tie SDBM file &#39;filename&#39;: $!; aborting&quot;</span><span class="sc">;</span></li><li></li><li> <span class="c"># Now read and change the hash</span></li><li> <span class="i">$h</span>{<span class="w">newkey</span>} = <span class="w">newvalue</span><span class="sc">;</span></li><li> <a class="l_k" href="functions/print.html">print</a> <span class="i">$h</span>{<span class="w">oldkey</span>}<span class="sc">;</span> </li><li> ...</li><li></li><li> <a class="l_k" href="functions/untie.html">untie</a> <span class="i">%h</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p><code class="inline"><span class="w">SDBM_File</span></code>
+ establishes a connection between a Perl hash variable and
+a file in SDBM_File format.  You can manipulate the data in the file
+just as if it were in a Perl hash, but when your program exits, the
+data will remain in the file, to be used the next time your program
+runs.</p>
+<a class='view-head2' id="Tie"></a><h3 class='h3' >Tie</h3>
+<p>Use <code class="inline"><span class="w">SDBM_File</span></code>
+ with the Perl built-in <code class="inline"><a class="l_k" href="functions/tie.html">tie</a></code> function to establish
+the connection between the variable and the file.</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/tie.html">tie</a> <span class="i">%hash</span><span class="cm">,</span> <span class="q">&#39;SDBM_File&#39;</span><span class="cm">,</span> <span class="i">$basename</span><span class="cm">,</span> <span class="i">$modeflags</span><span class="cm">,</span> <span class="i">$perms</span><span class="sc">;</span></li><li></li><li>    <a class="l_k" href="functions/tie.html">tie</a> <span class="i">%hash</span><span class="cm">,</span> <span class="q">&#39;SDBM_File&#39;</span><span class="cm">,</span> <span class="i">$dirfile</span><span class="cm">,</span>  <span class="i">$modeflags</span><span class="cm">,</span> <span class="i">$perms</span><span class="cm">,</span> <span class="i">$pagfilename</span><span class="sc">;</span></li></ol></pre><p><code class="inline"><span class="i">$basename</span></code>
+ is the base filename for the database.  The database is two
+files with ".dir" and ".pag" extensions appended to <code class="inline"><span class="i">$basename</span></code>
+,</p>
+<pre class="verbatim"><ol><li>    <span class="i">$basename</span>.<span class="w">dir</span>     <span class="s">(</span><a class="l_k" href="functions/or.html">or</a> .<span class="w">sdbm_dir</span> <span class="w">on</span> <span class="w">VMS</span><span class="cm">,</span> <span class="w">per</span> <span class="w">DIRFEXT</span> <span class="w">constant</span><span class="s">)</span></li><li>    <span class="i">$basename</span>.<span class="w">pag</span></li></ol></pre><p>The two filenames can also be given separately in full as <code class="inline"><span class="i">$dirfile</span></code>
+
+and <code class="inline"><span class="i">$pagfilename</span></code>
+.  This suits for two files without ".dir" and ".pag"
+extensions, perhaps for example two files from <a href="File/Temp.html">File::Temp</a>.</p>
+<p><code class="inline"><span class="i">$modeflags</span></code>
+ can be the following constants from the <code class="inline"><span class="w">Fcntl</span></code>
+ module (in
+the style of the <i>open(2)</i> system call),</p>
+<pre class="verbatim"><ol><li>    <span class="w">O_RDONLY</span>          <a class="l_k" href="functions/read.html">read</a>-<span class="w">only</span> <span class="w">access</span></li><li>    <span class="w">O_WRONLY</span>          <a class="l_k" href="functions/write.html">write</a>-<span class="w">only</span> <span class="w">access</span></li><li>    <span class="w">O_RDWR</span>            <a class="l_k" href="functions/read.html">read</a> <a class="l_k" href="functions/and.html">and</a> <a class="l_k" href="functions/write.html">write</a> <span class="w">access</span></li></ol></pre><p>If you want to create the file if it does not already exist then bitwise-OR
+(<code class="inline">|</code>
+) <code class="inline"><span class="w">O_CREAT</span></code>
+ too.  If you omit <code class="inline"><span class="w">O_CREAT</span></code>
+ and the database does not
+already exist then the <code class="inline"><a class="l_k" href="functions/tie.html">tie</a></code> call will fail.</p>
+<pre class="verbatim"><ol><li>    <span class="w">O_CREAT</span>           <span class="w">create</span> <span class="w">database</span> <a class="l_k" href="functions/if.html">if</a> <span class="w">doesn&#39;t</span> <span class="w">already</span> <span class="w">exist</span></li></ol></pre><p><code class="inline"><span class="i">$perms</span></code>
+ is the file permissions bits to use if new database files are
+created.  This parameter is mandatory even when not creating a new database.
+The permissions will be reduced by the user's umask so the usual value here
+would be 0666, or if some very private data then 0600.  (See
+<a class='function-name' href="functions/umask.html">umask</a>.)</p>
+<a class='view-head1' id="EXPORTS"></a><h2 class='h2' >EXPORTS</h2>
+<p>SDBM_File optionally exports the following constants:</p>
+<ul>
+<li>
+<p><code class="inline"><span class="w">PAGFEXT</span></code>
+ - the extension used for the page file, usually <code class="inline">.<span class="w">pag</span></code>
+.</p>
+</li>
+<li>
+<p><code class="inline"><span class="w">DIRFEXT</span></code>
+ - the extension used for the directory file, <code class="inline">.<span class="w">dir</span></code>
+
+everywhere but VMS, where it is <code class="inline">.<span class="w">sdbm_dir</span></code>
+.</p>
+</li>
+<li>
+<p><code class="inline"><span class="w">PAIRMAX</span></code>
+ - the maximum size of a stored hash entry, including the
+length of both the key and value.</p>
+</li>
+</ul>
+<p>These constants can also be used with fully qualified names,
+eg. <code class="inline"><span class="w">SDBM_File::PAGFEXT</span></code>
+.</p>
+<a class='view-head1' id="DIAGNOSTICS"></a><h2 class='h2' >DIAGNOSTICS</h2>
+<p>On failure, the <code class="inline"><a class="l_k" href="functions/tie.html">tie</a></code> call returns an undefined value and probably
+sets <code class="inline"><span class="i">$!</span></code>
+ to contain the reason the file could not be tied.</p>
+<a class='view-head2' id="sdbm-store-returned--1%2c-errno-22%2c-key-%22...%22-at-..."></a><h3 class='h3' ><code class="inline"><span class="w">sdbm</span> <span class="w">store</span> <span class="w">returned</span> -<span class="n">1</span><span class="cm">,</span> <span class="w">errno</span> <span class="n">22</span><span class="cm">,</span> <span class="w">key</span> <span class="q">&quot;...&quot;</span> <span class="w">at</span> ...</code>
+</h3>
+<p>This warning is emitted when you try to store a key or a value that
+is too long.  It means that the change was not recorded in the
+database.  See BUGS AND WARNINGS below.</p>
+<a class='view-head1' id="SECURITY-WARNING"></a><h2 class='h2' >SECURITY WARNING</h2>
+<p><strong>Do not accept SDBM files from untrusted sources!</strong></p>
+<p>The sdbm file format was designed for speed and convenience, not for
+portability or security.  A maliciously crafted file might cause perl to
+crash or even expose a security vulnerability.</p>
+<a class='view-head1' id="BUGS-AND-WARNINGS"></a><h2 class='h2' >BUGS AND WARNINGS</h2>
+<p>There are a number of limits on the size of the data that you can
+store in the SDBM file.  The most important is that the length of a
+key, plus the length of its associated value, may not exceed 1008
+bytes.</p>
+<p>See <a class='function-name' href="functions/tie.html">tie</a>, <a href="perldbmfilter.html">perldbmfilter</a>, <a href="Fcntl.html">Fcntl</a></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Tie">Tie</a></li></ul><li><a href="#EXPORTS">EXPORTS</a></li><li><a href="#DIAGNOSTICS">DIAGNOSTICS</a></li><ul><li><a href="#sdbm-store-returned--1%2c-errno-22%2c-key-%22...%22-at-...">sdbm store returned -1, errno 22, key "..." at ...</a></li></ul><li><a href="#SECURITY-WARNING">SECURITY WARNING</a></li><li><a href="#BUGS-AND-WARNINGS">BUGS AND WARNINGS</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

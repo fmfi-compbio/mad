@@ -1,0 +1,255 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="AnyDBM_File - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>AnyDBM_File - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/AnyDBM_File.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-modules-A.html">Core modules (A)</a> &gt;
+      
+    
+    AnyDBM_File
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>AnyDBM_File</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#DBM-Comparisons">DBM Comparisons</a></li></ul><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>AnyDBM_File - provide framework for multiple DBMs</p>
+<p>NDBM_File, DB_File, GDBM_File, SDBM_File, ODBM_File - various DBM implementations</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">AnyDBM_File</span><span class="sc">;</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>This module is a "pure virtual base class"--it has nothing of its own.
+It's just there to inherit from one of the various DBM packages.  It
+prefers ndbm for compatibility reasons with Perl 4, then Berkeley DB (See
+<a href="https://search.cpan.org/perldoc/DB_File">DB_File</a>), GDBM, SDBM (which is always there--it comes with Perl), and
+finally ODBM.   This way old programs that used to use NDBM via dbmopen()
+can still do so, but new ones can reorder @ISA:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/BEGIN.html">BEGIN</a> <span class="s">{</span> <span class="i">@AnyDBM_File::ISA</span> = <span class="q">qw(DB_File GDBM_File NDBM_File)</span> <span class="s">}</span></li><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">AnyDBM_File</span><span class="sc">;</span></li></ol></pre><p>Having multiple DBM implementations makes it trivial to copy database formats:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/use.html">use</a> <span class="w">Fcntl</span><span class="sc">;</span> <a class="l_k" href="functions/use.html">use</a> <span class="w">NDBM_File</span><span class="sc">;</span> <a class="l_k" href="functions/use.html">use</a> <span class="w">DB_File</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/tie.html">tie</a> <span class="i">%newhash</span><span class="cm">,</span>  <span class="q">&#39;DB_File&#39;</span><span class="cm">,</span> <span class="i">$new_filename</span><span class="cm">,</span> <span class="w">O_CREAT</span>|<span class="w">O_RDWR</span><span class="sc">;</span></li><li>    <a class="l_k" href="functions/tie.html">tie</a> <span class="i">%oldhash</span><span class="cm">,</span>  <span class="q">&#39;NDBM_File&#39;</span><span class="cm">,</span> <span class="i">$old_filename</span><span class="cm">,</span> <span class="n">1</span><span class="cm">,</span> <span class="n">0</span><span class="sc">;</span></li><li>    <span class="i">%newhash</span> = <span class="i">%oldhash</span><span class="sc">;</span></li></ol></pre><a class='view-head2' id="DBM-Comparisons"></a><h3 class='h3' >DBM Comparisons</h3>
+<p>Here's a partial table of features the different packages offer:</p>
+<pre class="verbatim"><ol><li>                         <span class="w">odbm</span>    <span class="w">ndbm</span>    <span class="w">sdbm</span>    <span class="w">gdbm</span>    <span class="w">bsd</span>-<span class="w">db</span></li><li>			 ----	 ----    ----    ----    ------</li><li> <span class="w">Linkage</span> <span class="w">comes</span> <span class="w">w</span>/ <span class="w">perl</span>   <span class="w">yes</span>     <span class="w">yes</span>     <span class="w">yes</span>     <span class="w">yes</span>     <span class="w">yes</span></li><li> <span class="w">Src</span> <span class="w">comes</span> <span class="w">w</span>/ <span class="w">perl</span>       <a class="l_k" href="functions/no.html">no</a>      <a class="l_k" href="functions/no.html">no</a>      <span class="w">yes</span>     <a class="l_k" href="functions/no.html">no</a>      <a class="l_k" href="functions/no.html">no</a></li><li> <span class="w">Comes</span> <span class="w">w</span>/ <span class="w">many</span> <span class="w">unix</span> <span class="w">os</span>   <span class="w">yes</span>     <span class="w">yes</span><span class="s">[</span><span class="n">0</span><span class="s">]</span>  <a class="l_k" href="functions/no.html">no</a>      <a class="l_k" href="functions/no.html">no</a>      <a class="l_k" href="functions/no.html">no</a></li><li> <span class="w">Builds</span> <span class="w">ok</span> <span class="w">on</span> !<span class="w">unix</span>      ?       <span class="q">?       yes     yes     ?</span></li><li> <span class="w">Code</span> <span class="w">Size</span>               ?       <span class="q">?       small   big     big</span></li><li> <span class="q"> Database Size           ?</span>       ?       <span class="w">small</span>   <span class="w">big</span>?    <span class="w">ok</span><span class="s">[</span><span class="n">1</span><span class="s">]</span></li><li> <span class="w">Speed</span>                   ?       <span class="q">?       slow    ok      fast</span></li><li> <span class="q"> FTPable                 no      no      yes     yes     yes</span></li><li> <span class="q"> Easy to build          N/A     N/A      yes     yes     ok[2]</span></li><li> <span class="q"> Size limits             1k      4k      1k[3]   none    none</span></li><li> <span class="q"> Byte-order independent  no      no      no      no      yes</span></li><li> <span class="q"> Licensing restrictions  ?</span>       ?       <a class="l_k" href="functions/no.html">no</a>      <span class="w">yes</span>     <a class="l_k" href="functions/no.html">no</a></li></ol></pre><ul>
+<li><a class='view-title' id="%5b0%5d"></a><strong>[0]</strong>
+<p>on mixed universe machines, may be in the bsd compat library,
+which is often shunned.</p>
+</li>
+<li><a class='view-title' id="%5b1%5d"></a><strong>[1]</strong>
+<p>Can be trimmed if you compile for one access method.</p>
+</li>
+<li><a class='view-title' id="%5b2%5d"></a><strong>[2]</strong>
+<p>See <a href="https://search.cpan.org/perldoc/DB_File">DB_File</a>. 
+Requires symbolic links.</p>
+</li>
+<li><a class='view-title' id="%5b3%5d"></a><strong>[3]</strong>
+<p>By default, but can be redefined.</p>
+</li>
+</ul>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p>dbm(3), ndbm(3), DB_File(3), <a href="perldbmfilter.html">perldbmfilter</a></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#DBM-Comparisons">DBM Comparisons</a></li></ul><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

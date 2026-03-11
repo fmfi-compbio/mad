@@ -1,0 +1,297 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="File::Spec::Win32 - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>File::Spec::Win32 - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/File/Spec/Win32.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../../index-modules-F.html">Core modules (F)</a> &gt;
+      
+    
+    File::Spec::Win32
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>File::Spec::Win32</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Note-For-File%3a%3aSpec%3a%3aWin32-Maintainers">Note For File::Spec::Win32 Maintainers</a></li></ul><li><a href="#COPYRIGHT">COPYRIGHT</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>File::Spec::Win32 - methods for Win32 file specs</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li> <a class="l_k" href="../../functions/require.html">require</a> <span class="w">File::Spec::Win32</span><span class="sc">;</span> <span class="c"># Done internally by File::Spec if needed</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>See File::Spec::Unix for a documentation of the methods provided
+there. This package overrides the implementation of these methods, not
+the semantics.</p>
+<ul>
+<li><a class='view-title' id="devnull"></a><strong>devnull</strong>
+<p>Returns a string representation of the null device.</p>
+</li>
+<li><a class='view-title' id="tmpdir"></a><strong>tmpdir</strong>
+<p>Returns a string representation of the first existing directory
+from the following list:</p>
+<pre class="verbatim"><ol><li>    <span class="i">$ENV</span>{<span class="w">TMPDIR</span>}</li><li>    <span class="i">$ENV</span>{<span class="w">TEMP</span>}</li><li>    <span class="i">$ENV</span>{<span class="w">TMP</span>}</li><li>    <span class="w">SYS</span><span class="co">:</span><span class="q">/temp</span></li><li>    <span class="q">    C:\system\temp</span></li><li>    <span class="q">    C:/</span><span class="w">temp</span></li><li>    /<span class="w">tmp</span></li><li>    /</li></ol></pre><p>The SYS:/temp is preferred in Novell NetWare and the C:\system\temp
+for Symbian (the File::Spec::Win32 is used also for those platforms).</p>
+<p>If running under taint mode, and if the environment
+variables are tainted, they are not used.</p>
+</li>
+<li><a class='view-title' id="case_tolerant"></a><strong>case_tolerant</strong>
+<p>MSWin32 case-tolerance depends on GetVolumeInformation() $ouFsFlags == FS_CASE_SENSITIVE,
+indicating the case significance when comparing file specifications.
+Since XP FS_CASE_SENSITIVE is effectively disabled for the NT subsubsystem.
+See <a href="http://cygwin.com/ml/cygwin/2007-07/msg00891.html">http://cygwin.com/ml/cygwin/2007-07/msg00891.html</a>
+Default: 1</p>
+</li>
+<li><a class='view-title' id="file_name_is_absolute"></a><strong>file_name_is_absolute</strong>
+<p>As of right now, this returns 2 if the path is absolute with a
+volume, 1 if it's absolute with no volume, 0 otherwise.</p>
+</li>
+<li><a class='view-title' id="catfile"></a><strong>catfile</strong>
+<p>Concatenate one or more directory names and a filename to form a
+complete path ending with a filename</p>
+</li>
+<li><a class='view-title' id="canonpath"></a><strong>canonpath</strong>
+<p>No physical check on the filesystem, but a logical cleanup of a
+path. On UNIX eliminated successive slashes and successive "/.".
+On Win32 makes</p>
+<pre class="verbatim"><ol><li>	<span class="w">dir1</span>\<span class="w">dir2</span>\<span class="w">dir3</span>\..\..\<span class="w">dir4</span> -&gt; \<span class="w">dir</span>\<span class="w">dir4</span> <a class="l_k" href="../../functions/and.html">and</a> <span class="w">even</span></li><li>	<span class="w">dir1</span>\<span class="w">dir2</span>\<span class="w">dir3</span>\...\<span class="w">dir4</span>   -&gt; \<span class="w">dir</span>\<span class="w">dir4</span></li></ol></pre></li>
+<li><a class='view-title' id="splitpath"></a><strong>splitpath</strong>
+<pre class="verbatim"><ol><li>   <span class="s">(</span><span class="i">$volume</span><span class="cm">,</span><span class="i">$directories</span><span class="cm">,</span><span class="i">$file</span><span class="s">)</span> = <span class="w">File::Spec</span><span class="w">-&gt;splitpath</span><span class="s">(</span> <span class="i">$path</span> <span class="s">)</span><span class="sc">;</span></li><li>   <span class="s">(</span><span class="i">$volume</span><span class="cm">,</span><span class="i">$directories</span><span class="cm">,</span><span class="i">$file</span><span class="s">)</span> = <span class="w">File::Spec</span><span class="w">-&gt;splitpath</span><span class="s">(</span> <span class="i">$path</span><span class="cm">,</span></li><li>                                                         <span class="i">$no_file</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>Splits a path into volume, directory, and filename portions. Assumes that 
+the last file is a path unless the path ends in '\\', '\\.', '\\..'
+or $no_file is true.  On Win32 this means that $no_file true makes this return 
+( $volume, $path, '' ).</p>
+<p>Separators accepted are \ and /.</p>
+<p>Volumes can be drive letters or UNC sharenames (\\server\share).</p>
+<p>The results can be passed to <a href="#catpath">catpath</a> to get back a path equivalent to
+(usually identical to) the original path.</p>
+</li>
+<li><a class='view-title' id="splitdir"></a><strong>splitdir</strong>
+<p>The opposite of <a href="../../File/Spec.html#catdir">catdir()</a>.</p>
+<pre class="verbatim"><ol><li>    <span class="i">@dirs</span> = <span class="w">File::Spec</span><span class="w">-&gt;splitdir</span><span class="s">(</span> <span class="i">$directories</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>$directories must be only the directory portion of the path on systems 
+that have the concept of a volume or that have path syntax that differentiates
+files from directories.</p>
+<p>Unlike just splitting the directories on the separator, leading empty and 
+trailing directory entries can be returned, because these are significant
+on some OSs. So,</p>
+<pre class="verbatim"><ol><li>    <span class="w">File::Spec</span><span class="w">-&gt;splitdir</span><span class="s">(</span> <span class="q">&quot;/a/b/c&quot;</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>Yields:</p>
+<pre class="verbatim"><ol><li>    <span class="s">(</span> <span class="q">&#39;&#39;</span><span class="cm">,</span> <span class="q">&#39;a&#39;</span><span class="cm">,</span> <span class="q">&#39;b&#39;</span><span class="cm">,</span> <span class="q">&#39;&#39;</span><span class="cm">,</span> <span class="q">&#39;c&#39;</span><span class="cm">,</span> <span class="q">&#39;&#39;</span> <span class="s">)</span></li></ol></pre></li>
+<li><a class='view-title' id="catpath"></a><strong>catpath</strong>
+<p>Takes volume, directory and file portions and returns an entire path. Under
+Unix, $volume is ignored, and this is just like catfile(). On other OSs,
+the $volume become significant.</p>
+</li>
+</ul>
+<a class='view-head2' id="Note-For-File%3a%3aSpec%3a%3aWin32-Maintainers"></a><h3 class='h3' >Note For File::Spec::Win32 Maintainers</h3>
+<p>Novell NetWare inherits its File::Spec behaviour from File::Spec::Win32.</p>
+<a class='view-head1' id="COPYRIGHT"></a><h2 class='h2' >COPYRIGHT</h2>
+<p>Copyright (c) 2004,2007 by the Perl 5 Porters.  All rights reserved.</p>
+<p>This program is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p>See <a href="../../File/Spec.html">File::Spec</a> and <a href="../../File/Spec/Unix.html">File::Spec::Unix</a>.  This package overrides the
+implementation of these methods, not the semantics.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Note-For-File%3a%3aSpec%3a%3aWin32-Maintainers">Note For File::Spec::Win32 Maintainers</a></li></ul><li><a href="#COPYRIGHT">COPYRIGHT</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

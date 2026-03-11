@@ -1,0 +1,247 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Encode::JP - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Encode::JP - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/Encode/JP.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../index-modules-E.html">Core modules (E)</a> &gt;
+      
+    
+    Encode::JP
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Encode::JP</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#ABSTRACT">ABSTRACT</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#Note-on-ISO-2022-JP(-1)%3f">Note on ISO-2022-JP(-1)?</a></li><li><a href="#BUGS">BUGS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>Encode::JP - Japanese Encodings</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="../functions/use.html">use</a> <span class="w">Encode</span> <span class="q">qw/encode decode/</span><span class="sc">;</span> </li><li>    <span class="i">$euc_jp</span> = <span class="i">encode</span><span class="s">(</span><span class="q">&quot;euc-jp&quot;</span><span class="cm">,</span> <span class="i">$utf8</span><span class="s">)</span><span class="sc">;</span>   <span class="c"># loads Encode::JP implicitly</span></li><li>    <span class="i">$utf8</span>   = <span class="i">decode</span><span class="s">(</span><span class="q">&quot;euc-jp&quot;</span><span class="cm">,</span> <span class="i">$euc_jp</span><span class="s">)</span><span class="sc">;</span> <span class="c"># ditto</span></li></ol></pre><a class='view-head1' id="ABSTRACT"></a><h2 class='h2' >ABSTRACT</h2>
+<p>This module implements Japanese charset encodings.  Encodings
+supported are as follows.</p>
+<pre class="verbatim"><ol><li>  <span class="w">Canonical</span>   <span class="w">Alias</span>		<span class="w">Description</span></li><li>  --------------------------------------------------------------------</li><li>  <span class="w">euc</span>-<span class="w">jp</span>      <span class="q">/\beuc.*jp$/i</span>	<span class="w">EUC</span> <span class="s">(</span><span class="w">Extended</span> <span class="w">Unix</span> <span class="w">Character</span><span class="s">)</span></li><li>              /\<span class="w">bjp</span>.<span class="i">*euc</span>/<span class="w">i</span>   </li><li>          <span class="q">/\bujis$/i</span></li><li>  <span class="w">shiftjis</span>    <span class="q">/\bshift.*jis$/i</span>	<span class="w">Shift</span> <span class="w">JIS</span> <span class="s">(</span><span class="w">aka</span> <span class="w">MS</span> <span class="w">Kanji</span><span class="s">)</span></li><li>          /\<span class="w">bsjis</span><span class="i">$/</span><span class="w">i</span></li><li>  <span class="n">7</span><span class="w">bit</span>-<span class="w">jis</span>    <span class="q">/\bjis$/i</span>		<span class="n">7</span><span class="w">bit</span> <span class="w">JIS</span></li><li>  <span class="w">iso</span>-<span class="n">2022</span>-<span class="w">jp</span>			<span class="w">ISO</span>-<span class="n">2022</span>-<span class="w">JP</span>                  <span class="s">[</span><span class="w">RFC1468</span><span class="s">]</span></li><li>                = <span class="n">7</span><span class="w">bit</span> <span class="w">JIS</span> <span class="w">with</span> <span class="w">all</span> <span class="w">Halfwidth</span> <span class="w">Kana</span> </li><li>                  <span class="w">converted</span> <span class="w">to</span> <span class="w">Fullwidth</span></li><li>  <span class="w">iso</span>-<span class="n">2022</span>-<span class="w">jp</span>-<span class="n">1</span>			<span class="w">ISO</span>-<span class="n">2022</span>-<span class="w">JP</span>-<span class="n">1</span>                <span class="s">[</span><span class="w">RFC2237</span><span class="s">]</span></li><li>                                = <span class="w">ISO</span>-<span class="n">2022</span>-<span class="w">JP</span> <span class="w">with</span> <span class="w">JIS</span> <span class="w">X</span> <span class="n">0212</span>-<span class="n">1990</span></li><li>                  <span class="w">support</span>.  <span class="w">See</span> <span class="w">below</span></li><li>  <span class="w">MacJapanese</span>	                <span class="w">Shift</span> <span class="w">JIS</span> + <span class="w">Apple</span> <span class="w">vendor</span> <span class="w">mappings</span></li><li>  <span class="w">cp932</span>       <span class="q">/\bwindows-31j$/i</span> <span class="w">Code</span> <span class="w">Page</span> <span class="n">932</span></li><li>                                = <span class="w">Shift</span> <span class="w">JIS</span> + <span class="w">MS</span>/<span class="w">IBM</span> <span class="w">vendor</span> <span class="w">mappings</span></li><li>  <span class="w">jis0201</span>-<span class="w">raw</span>                   <span class="w">JIS0201</span><span class="cm">,</span> <span class="w">raw</span> <a class="l_k" href="../functions/format.html">format</a></li><li><span class="hh">  jis0208-raw                   JIS0201, raw format</span></li><li><span class="hh">  jis0212-raw                   JIS0201, raw format</span></li><li><span class="hh">  --------------------------------------------------------------------</span></li></ol></pre><a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>To find out how to use this module in detail, see <a href="../Encode.html">Encode</a>.</p>
+<a class='view-head1' id="Note-on-ISO-2022-JP(-1)%3f"></a><h2 class='h2' >Note on ISO-2022-JP(-1)?</h2>
+<p>ISO-2022-JP-1 (RFC2237) is a superset of ISO-2022-JP (RFC1468) which
+adds support for JIS X 0212-1990.  That means you can use the same
+code to decode to utf8 but not vice versa.</p>
+<pre class="verbatim"><ol><li>  <span class="i">$utf8</span> = <span class="i">decode</span><span class="s">(</span><span class="q">&#39;iso-2022-jp-1&#39;</span><span class="cm">,</span> <span class="i">$stream</span><span class="s">)</span><span class="sc">;</span></li></ol></pre><p>and</p>
+<pre class="verbatim"><ol><li>  <span class="i">$utf8</span> = <span class="i">decode</span><span class="s">(</span><span class="q">&#39;iso-2022-jp&#39;</span><span class="cm">,</span>   <span class="i">$stream</span><span class="s">)</span><span class="sc">;</span></li></ol></pre><p>yield the same result but</p>
+<pre class="verbatim"><ol><li>  <span class="i">$with_0212</span> = <span class="i">encode</span><span class="s">(</span><span class="q">&#39;iso-2022-jp-1&#39;</span><span class="cm">,</span> <span class="i">$utf8</span><span class="s">)</span><span class="sc">;</span></li></ol></pre><p>is now different from</p>
+<pre class="verbatim"><ol><li>  <span class="i">$without_0212</span> = <span class="i">encode</span><span class="s">(</span><span class="q">&#39;iso-2022-jp&#39;</span><span class="cm">,</span> <span class="i">$utf8</span> <span class="s">)</span><span class="sc">;</span></li></ol></pre><p>In the latter case, characters that map to 0212 are first converted
+to U+3013 (0xA2AE in EUC-JP; a white square also known as 'Tofu' or
+'geta mark') then fed to the decoding engine.  U+FFFD is not used,
+in order to preserve text layout as much as possible.</p>
+<a class='view-head1' id="BUGS"></a><h2 class='h2' >BUGS</h2>
+<p>The ASCII region (0x00-0x7f) is preserved for all encodings, even
+though this conflicts with mappings by the Unicode Consortium.</p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../Encode.html">Encode</a></p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#ABSTRACT">ABSTRACT</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#Note-on-ISO-2022-JP(-1)%3f">Note on ISO-2022-JP(-1)?</a></li><li><a href="#BUGS">BUGS</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

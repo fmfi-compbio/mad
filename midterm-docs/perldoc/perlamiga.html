@@ -1,0 +1,360 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="perlamiga - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>perlamiga - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/perlamiga.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-platforms.html">Platform specific</a> &gt;
+      
+    
+    perlamiga
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>perlamiga</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#NOTE">NOTE</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Prerequisites-for-running-Perl-5.22.1-under-AmigaOS-4.1">Prerequisites for running Perl 5.22.1 under AmigaOS 4.1</a></li><li><a href="#Starting-Perl-programs-under-AmigaOS-4.1">Starting Perl programs under AmigaOS 4.1</a></li><li><a href="#Limitations-of-Perl-under-AmigaOS-4.1">Limitations of Perl under AmigaOS 4.1</a></li></ul><li><a href="#INSTALLATION">INSTALLATION</a></li><li><a href="#Amiga-Specific-Modules">Amiga Specific Modules</a></li><ul><li><a href="#Amiga%3a%3aARexx">Amiga::ARexx</a></li><li><a href="#Amiga%3a%3aExec">Amiga::Exec</a></li></ul><li><a href="#BUILDING">BUILDING</a></li><li><a href="#CHANGES">CHANGES</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>perlamiga - Perl under AmigaOS 4.1</p>
+<a class='view-head1' id="NOTE"></a><h2 class='h2' >NOTE</h2>
+<p>This is a port of Perl 5.22.1, it is a fresh port and not in any way
+compatible with my previous ports of Perl 5.8 and 5.16.3. This means
+you will need to reinstall / rebuild any third party modules you have
+installed.</p>
+<p>newlib.library version 53.28 or greater is required.</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<p>Once perl is installed you can read this document in the following way</p>
+<pre class="verbatim"><ol><li>	<span class="w">sh</span> -c <span class="q">&quot;perldoc perlamiga&quot;</span></li></ol></pre><p>or you may read <i>as is</i>: either as <i>README.amiga</i>, or <i>pod/perlamiga.pod</i>.</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<a class='view-head2' id="Prerequisites-for-running-Perl-5.22.1-under-AmigaOS-4.1"></a><h3 class='h3' >Prerequisites for running Perl 5.22.1 under AmigaOS 4.1</h3>
+<ul>
+<li><a class='view-title' id="*AmigaOS-4.1-update-6-with-all-updates-applied-as-of-9th-October-2013*"></a><strong><strong>AmigaOS 4.1 update 6 with all updates applied as of 9th October 2013</strong></strong>
+<p>The most important of which is:</p>
+</li>
+<li><a class='view-title' id="*newlib.library-version-53.28-or-greater*"></a><strong><strong>newlib.library version 53.28 or greater</strong></strong>
+</li>
+<li><a class='view-title' id="*AmigaOS-SDK*"></a><strong><strong>AmigaOS SDK</strong></strong>
+<p>Perl installs into the SDK directory structure and expects many of the
+build tools present in the SDK to be available. So for the best results
+install the SDK first.</p>
+</li>
+<li><a class='view-title' id="*abc-shell*"></a><strong><strong>abc-shell</strong></strong>
+<p>If you do not have the SDK installed you must at least have abc-shell
+installed or some other suitable sh port. This is required to run
+external commands and should be available as 'sh' in your path.</p>
+</li>
+</ul>
+<a class='view-head2' id="Starting-Perl-programs-under-AmigaOS-4.1"></a><h3 class='h3' >Starting Perl programs under AmigaOS 4.1</h3>
+<p>Perl may be run from the AmigaOS shell but for best results should be
+run under abc-shell.  (abc-shell handles file globbing, pattern
+expansion, and sets up environment variables in the UN*Xy way that
+Perl expects.)</p>
+<p>For example:</p>
+<pre class="verbatim"><ol><li>	<span class="w">New</span> <span class="w">Shell</span> <span class="w">process</span> <span class="n">10</span></li><li>	<span class="n">10.</span><span class="w">AmigaOS4</span><span class="co">:</span>&gt; <span class="w">sh</span></li><li>	/<span class="w">AmigaOS4</span>&gt;<span class="w">perl</span> <span class="w">path</span><span class="co">:</span><span class="w">to</span>/<span class="w">myprog</span> <span class="w">arg1</span> <span class="w">arrg2</span> <span class="w">arg3</span></li></ol></pre><p>Abc-shell can also launch programs via the #! syntax at the start of
+the program file, it's best use the form #!SDK:Local/C/perl so that
+the AmigaOS shell may also find perl in the same way. AmigaOS requires
+the script bit to be set for this to work</p>
+<pre class="verbatim"><ol><li>	<span class="n">10.</span><span class="w">AmigaOS4</span><span class="co">:</span>&gt; <span class="w">sh</span></li><li>	/<span class="w">AmigaOS4</span>&gt;<span class="w">myprog</span> <span class="w">arg1</span> <span class="w">arrg2</span> <span class="w">arg3</span></li></ol></pre><a class='view-head2' id="Limitations-of-Perl-under-AmigaOS-4.1"></a><h3 class='h3' >Limitations of Perl under AmigaOS 4.1</h3>
+<ul>
+<li><a class='view-title' id="*Nested-Piped-programs-can-crash-when-run-from-older-abc-shells*"></a><strong><strong>Nested Piped programs can crash when run from older abc-shells</strong></strong>
+<p>abc-shell version 53.2 has a bug that can cause crashes in the
+subprocesses used to run piped programs, if a later version is
+available you should install it instead.</p>
+</li>
+<li><a class='view-title' id="*Incorrect-or-unexpected-command-line-unescaping*"></a><strong><strong>Incorrect or unexpected command line unescaping</strong></strong>
+<p>newlib.library 53.30 and earlier incorrectly unescape slashed escape
+sequences e.g. \" \n \t etc requiring unusual extra escaping.</p>
+</li>
+<li><a class='view-title' id="*Starting-subprocesses-via-open-has-limitations*"></a><strong><strong>Starting subprocesses via open has limitations</strong></strong>
+<pre class="verbatim"><ol><li>	<a class="l_k" href="functions/open.html">open</a> <span class="w">FH</span><span class="cm">,</span> <span class="q">&quot;command |&quot;</span></li></ol></pre><p>Subprocesses started with open use a minimal popen() routine and
+therefore they do not return pids usable with waitpid etc.</p>
+</li>
+<li><a class='view-title' id="If-you-find-any-other-limitations-or-bugs-then-let-me-know."></a><strong>If you find any other limitations or bugs then let me know.</strong>
+<p>Please report bugs in this version of perl to andy@broad.ology.org.uk
+in the first instance.</p>
+</li>
+</ul>
+<a class='view-head1' id="INSTALLATION"></a><h2 class='h2' >INSTALLATION</h2>
+<p>This guide assumes you have obtained a prebuilt archive from os4depot.net.</p>
+<p>Unpack the main archive to a temporary location (RAM: is fine).</p>
+<p>Execute the provided install script from shell or via its icon.</p>
+<p>You <strong>must not</strong> attempt to install by hand.</p>
+<p>Once installed you may delete the temporary archive.</p>
+<p>This approach will preserve links in the installation without creating
+duplicate binaries.</p>
+<p>If you have the earlier ports perl 5.16 or 5.8 installed you may like
+to rename your perl executable to perl516 or perl58 or something
+similar before the installation of 5.22.1, this will allow you to use
+both versions at the same time.</p>
+<a class='view-head1' id="Amiga-Specific-Modules"></a><h2 class='h2' >Amiga Specific Modules</h2>
+<a class='view-head2' id="Amiga%3a%3aARexx"></a><h3 class='h3' >Amiga::ARexx</h3>
+<p>The Amiga::ARexx module allows you to easily create a perl based ARexx
+host or to send ARexx commands to other programs.</p>
+<p>Try <code class="inline"><span class="w">perldoc</span> <span class="w">Amiga::ARexx</span></code>
+ for more info.</p>
+<a class='view-head2' id="Amiga%3a%3aExec"></a><h3 class='h3' >Amiga::Exec</h3>
+<p>The Amiga::Exec module introduces support for Wait().</p>
+<p>Try <code class="inline"><span class="w">perldoc</span> <span class="w">Amiga::Exec</span></code>
+ for more info.</p>
+<a class='view-head1' id="BUILDING"></a><h2 class='h2' >BUILDING</h2>
+<p>To build perl under AmigaOS from the patched sources you will need to
+have a recent version of the SDK. Version 53.29 is recommended,
+earlier versions will probably work too.</p>
+<p>With the help of Jarkko Hietaniemi the Configure system has been tweaked to
+run under abc-shell so the recommend build process is as follows.</p>
+<pre class="verbatim"><ol><li>	<span class="w">stack</span> <span class="n">2000000</span></li><li>	<span class="w">sh</span> <span class="w">Configure</span> -<span class="w">de</span></li><li>	<span class="w">gmake</span></li></ol></pre><p>This will build the default setup that installs under SDK:local/newlib/lib/</p>
+<a class='view-head1' id="CHANGES"></a><h2 class='h2' >CHANGES</h2>
+<ul>
+<li><a class='view-title' id="*August-2015*"></a><strong><strong>August 2015</strong></strong>
+<ul>
+<li><a class='view-title' id="Port-to-Perl-5.22"></a><strong>Port to Perl 5.22</strong>
+</li>
+<li><a class='view-title' id="Add-handling-of-NIL%3a-to-afstat()"></a><strong>Add handling of NIL: to afstat()</strong>
+</li>
+<li><a class='view-title' id="Fix-inheritance-of-environment-variables-by-subprocesses."></a><strong>Fix inheritance of environment variables by subprocesses.</strong>
+</li>
+<li><a class='view-title' id="Fix-exec%2c-and-exit-in-%22forked%22-subprocesses."></a><strong>Fix exec, and exit in "forked" subprocesses.</strong>
+</li>
+<li><a class='view-title' id="Fix-issue-with-newlib's-unlink%2c-which-could-cause-infinite-loops."></a><strong>Fix issue with newlib's unlink, which could cause infinite loops.</strong>
+</li>
+<li><a class='view-title' id="Add-flock()-emulation-using-IDOS-%3eLockRecord-thanks-to-Tony-Cook-for-the-suggestion."></a><strong>Add flock() emulation using IDOS-&gt;LockRecord thanks to Tony Cook
+for the suggestion.</strong>
+</li>
+<li><a class='view-title' id="Fix-issue-where-kill-was-using-the-wrong-kind-of-process-ID"></a><strong>Fix issue where kill was using the wrong kind of process ID</strong>
+</li>
+</ul>
+</li>
+<li><a class='view-title' id="*27th-November-2013*"></a><strong><strong>27th November 2013</strong></strong>
+<ul>
+<li><a class='view-title' id="Create-new-installation-system-based-on-installperl-links-and-Amiga-protection-bits-now-set-correctly."></a><strong>Create new installation system based on installperl links
+and Amiga protection bits now set correctly.</strong>
+</li>
+<li><a class='view-title' id="Pod-now-defaults-to-text."></a><strong>Pod now defaults to text.</strong>
+</li>
+<li><a class='view-title' id="File%3a%3aSpec-should-now-recognise-an-Amiga-style-absolute-path-as-well-as-an-Unix-style-one.-Relative-paths-must-always-be-Unix-style."></a><strong>File::Spec should now recognise an Amiga style absolute path as well
+as an Unix style one. Relative paths must always be Unix style.</strong>
+</li>
+</ul>
+</li>
+<li><a class='view-title' id="*20th-November-2013*"></a><strong><strong>20th November 2013</strong></strong>
+<ul>
+<li><a class='view-title' id="Configured-to-use-SDK%3aLocal%2fC%2fperl-to-start-standard-scripts"></a><strong>Configured to use SDK:Local/C/perl to start standard scripts</strong>
+</li>
+<li><a class='view-title' id="Added-Amiga%3a%3aExec-module-with-support-for-Wait()-and-AmigaOS-signal-numbers."></a><strong>Added Amiga::Exec module with support for Wait() and AmigaOS signal numbers.</strong>
+</li>
+</ul>
+</li>
+<li><a class='view-title' id="*10th-October-13*"></a><strong><strong>10th October 13</strong></strong>
+<p>First release of port to 5.16.3.</p>
+</li>
+</ul>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p>You like this port?  See <a href="http://www.broad.ology.org.uk/amiga/">http://www.broad.ology.org.uk/amiga/</a>
+for how you can help.</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#NOTE">NOTE</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Prerequisites-for-running-Perl-5.22.1-under-AmigaOS-4.1">Prerequisites for running Perl 5.22.1 under AmigaOS 4.1</a></li><li><a href="#Starting-Perl-programs-under-AmigaOS-4.1">Starting Perl programs under AmigaOS 4.1</a></li><li><a href="#Limitations-of-Perl-under-AmigaOS-4.1">Limitations of Perl under AmigaOS 4.1</a></li></ul><li><a href="#INSTALLATION">INSTALLATION</a></li><li><a href="#Amiga-Specific-Modules">Amiga Specific Modules</a></li><ul><li><a href="#Amiga%3a%3aARexx">Amiga::ARexx</a></li><li><a href="#Amiga%3a%3aExec">Amiga::Exec</a></li></ul><li><a href="#BUILDING">BUILDING</a></li><li><a href="#CHANGES">CHANGES</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

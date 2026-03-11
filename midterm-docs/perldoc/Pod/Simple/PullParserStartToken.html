@@ -1,0 +1,306 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Pod::Simple::PullParserStartToken - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>Pod::Simple::PullParserStartToken - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/Pod/Simple/PullParserStartToken.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="../../index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="../../index-modules-P.html">Core modules (P)</a> &gt;
+      
+    
+    Pod::Simple::PullParserStartToken
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>Pod::Simple::PullParserStartToken</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#SUPPORT">SUPPORT</a></li><li><a href="#COPYRIGHT-AND-DISCLAIMERS">COPYRIGHT AND DISCLAIMERS</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>Pod::Simple::PullParserStartToken -- start-tokens from Pod::Simple::PullParser</p>
+<a class='view-head1' id="SYNOPSIS"></a><h2 class='h2' >SYNOPSIS</h2>
+<p>(See <a href="../../Pod/Simple/PullParser.html">Pod::Simple::PullParser</a>)</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>When you do $parser-&gt;get_token on a <a href="../../Pod/Simple/PullParser.html">Pod::Simple::PullParser</a> object, you might
+get an object of this class.</p>
+<p>This is a subclass of <a href="../../Pod/Simple/PullParserToken.html">Pod::Simple::PullParserToken</a> and inherits all its methods,
+and adds these methods:</p>
+<ul>
+<li><a class='view-title' id="%24token-%3etagname"></a><strong>$token-&gt;tagname</strong>
+<p>This returns the tagname for this start-token object.
+For example, parsing a "=head1 ..." line will give you
+a start-token with the tagname of "head1", token(s) for its
+content, and then an end-token with the tagname of "head1".</p>
+</li>
+<li><a class='view-title' id="%24token-%3etagname(_somestring_)"></a><strong>$token-&gt;tagname(<i>somestring</i>)</strong>
+<p>This changes the tagname for this start-token object.
+You probably won't need
+to do this.</p>
+</li>
+<li><a class='view-title' id="%24token-%3etag(...)"></a><strong>$token-&gt;tag(...)</strong>
+<p>A shortcut for $token-&gt;tagname(...)</p>
+</li>
+<li><a class='view-title' id="%24token-%3eis_tag(_somestring_)-or-%24token-%3eis_tagname(_somestring_)"></a><strong>$token-&gt;is_tag(<i>somestring</i>) or $token-&gt;is_tagname(<i>somestring</i>)</strong>
+<p>These are shortcuts for <code class="inline">$token-&gt;tag() eq <i>somestring</i></code></p>
+</li>
+<li><a class='view-title' id="%24token-%3eattr(_attrname_)"></a><strong>$token-&gt;attr(<i>attrname</i>)</strong>
+<p>This returns the value of the <i>attrname</i> attribute for this start-token
+object, or undef.</p>
+<p>For example, parsing a L&lt;Foo/"Bar"&gt; link will produce a start-token
+with a "to" attribute with the value "Foo", a "type" attribute with the
+value "pod", and a "section" attribute with the value "Bar".</p>
+</li>
+<li><a class='view-title' id="%24token-%3eattr(_attrname_%2c-_newvalue_)"></a><strong>$token-&gt;attr(<i>attrname</i>, <i>newvalue</i>)</strong>
+<p>This sets the <i>attrname</i> attribute for this start-token object to
+<i>newvalue</i>.  You probably won't need to do this.</p>
+</li>
+<li><a class='view-title' id="%24token-%3eattr_hash"></a><strong>$token-&gt;attr_hash</strong>
+<p>This returns the hashref that is the attribute set for this start-token.
+This is useful if (for example) you want to ask what all the attributes
+are -- you can just do <code class="inline"><a class="l_k" href="../../functions/keys.html">keys</a> <span class="i">%</span>{<span class="i">$token</span><span class="i">-&gt;attr_hash</span>}</code>
+</p>
+</li>
+</ul>
+<p>You're unlikely to ever need to construct an object of this class for
+yourself, but if you want to, call
+<code class="inline">Pod::Simple::PullParserStartToken-&gt;new( <i>tagname</i>, <i>attrhash</i> )</code></p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../../Pod/Simple/PullParserToken.html">Pod::Simple::PullParserToken</a>, <a href="../../Pod/Simple.html">Pod::Simple</a>, <a href="../../Pod/Simple/Subclassing.html">Pod::Simple::Subclassing</a></p>
+<a class='view-head1' id="SEE-ALSO"></a><h2 class='h2' >SEE ALSO</h2>
+<p><a href="../../Pod/Simple/PullParserToken.html">Pod::Simple::PullParserToken</a>, <a href="../../Pod/Simple.html">Pod::Simple</a>, <a href="../../Pod/Simple/Subclassing.html">Pod::Simple::Subclassing</a></p>
+<a class='view-head1' id="SUPPORT"></a><h2 class='h2' >SUPPORT</h2>
+<p>Questions or discussion about POD and Pod::Simple should be sent to the
+pod-people@perl.org mail list. Send an empty email to
+pod-people-subscribe@perl.org to subscribe.</p>
+<p>This module is managed in an open GitHub repository,
+<a class='link-to-page' href="https://github.com/perl-pod/pod-simple/">https://github.com/perl-pod/pod-simple/</a>. Feel free to fork and contribute, or
+to clone <a class='link-to-page' href="git://github.com/perl-pod/pod-simple.git">git://github.com/perl-pod/pod-simple.git</a> and send patches!</p>
+<p>Patches against Pod::Simple are welcome. Please send bug reports to
+&lt;bug-pod-simple@rt.cpan.org&gt;.</p>
+<a class='view-head1' id="COPYRIGHT-AND-DISCLAIMERS"></a><h2 class='h2' >COPYRIGHT AND DISCLAIMERS</h2>
+<p>Copyright (c) 2002 Sean M. Burke.</p>
+<p>This library is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.</p>
+<p>This program is distributed in the hope that it will be useful, but
+without any warranty; without even the implied warranty of
+merchantability or fitness for a particular purpose.</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Pod::Simple was created by Sean M. Burke &lt;sburke@cpan.org&gt;.
+But don't bother him, he's retired.</p>
+<p>Pod::Simple is maintained by:</p>
+<ul>
+<li><a class='view-title' id="*-Allison-Randal-allison%40perl.org"></a><strong>Allison Randal <code class="inline"><span class="w">allison</span><span class="i">@perl</span>.<span class="w">org</span></code>
+</strong>
+</li>
+<li><a class='view-title' id="*-Hans-Dieter-Pearcey-hdp%40cpan.org"></a><strong>Hans Dieter Pearcey <code class="inline"><span class="w">hdp</span><span class="i">@cpan</span>.<span class="w">org</span></code>
+</strong>
+</li>
+<li><a class='view-title' id="*-David-E.-Wheeler-dwheeler%40cpan.org"></a><strong>David E. Wheeler <code class="inline"><span class="w">dwheeler</span><span class="i">@cpan</span>.<span class="w">org</span></code>
+</strong>
+</li>
+</ul>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#SYNOPSIS">SYNOPSIS</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#SEE-ALSO">SEE ALSO</a></li><li><a href="#SUPPORT">SUPPORT</a></li><li><a href="#COPYRIGHT-AND-DISCLAIMERS">COPYRIGHT AND DISCLAIMERS</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="/5.32.0/index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="/5.32.0/index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="/5.32.0/index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>

@@ -1,0 +1,306 @@
+      
+      
+      
+      
+
+      <!DOCTYPE html>
+      <html lang="en">
+
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="perlplan9 - perldoc.perl.org">
+        <link rel="icon" href="/public/img/favicon.ico">
+        <title>perlplan9 - perldoc.perl.org</title>
+        <link href="/public/css/main.min.css" rel="stylesheet">
+        <link rel="canonical" href="/perlplan9.html">
+        <link
+          href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900'
+          rel='stylesheet' type='text/css'>
+        <script>
+          window.ga = window.ga || function () {
+            (ga.q = ga.q || []).push(arguments)
+          };
+          ga.l = +new Date;
+          ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+          ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+          ga('require', 'outboundLinkTracker', {
+            events: ['click', 'auxclick', 'contextmenu'],
+          });
+          ga('require', 'maxScrollTracker');
+          ga('send', 'pageview');
+          ga('perlOrg.send', 'pageview');
+        </script>
+        <script async src="https://www.google-analytics.com/analytics.js">
+        </script>
+        <script async src="/public/js/tracking.min.js"></script>
+      </head>
+
+      <body class="body container-fluid ">
+        <div class="wrapper">
+
+
+
+          <main class="row main-content pb-5 pt-5" id='content'>
+            <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div id="breadcrumbs">
+                      
+    <a href="index.html">Home</a>&nbsp; &gt;
+    
+      
+        <a href="index-platforms.html">Platform specific</a> &gt;
+      
+    
+    perlplan9
+  
+
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <article class="col-sm-12 content">
+                  <div class="documentation-wrapper">
+                    <div id="perl_version">
+                      <h7 class='page-title'> Perl 5 version 32.0
+                        documentation</h7>
+                    </div>
+                    <h1>perlplan9</h1>
+
+
+  <!--    -->
+<ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Invoking-Perl">Invoking Perl</a></li><li><a href="#What's-in-Plan-9-Perl">What's in Plan 9 Perl</a></li><li><a href="#What's-not-in-Plan-9-Perl">What's not in Plan 9 Perl</a></li><li><a href="#Perl5-Functions-not-currently-supported-in-Plan-9-Perl">Perl5 Functions not currently supported in Plan 9 Perl</a></li><li><a href="#Signals-in-Plan-9-Perl">Signals in Plan 9 Perl</a></li></ul><li><a href="#COMPILING-AND-INSTALLING-PERL-ON-PLAN-9">COMPILING AND INSTALLING PERL ON PLAN 9</a></li><ul><li><a href="#Installing-Perl-Documentation-on-Plan-9">Installing Perl Documentation on Plan 9</a></li></ul><li><a href="#BUGS">BUGS</a></li><li><a href="#Revision-date">Revision date</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul><a class='view-head1' id="NAME"></a><h2 class='h2' >NAME</h2>
+<p>perlplan9 - Plan 9-specific documentation for Perl</p>
+<a class='view-head1' id="DESCRIPTION"></a><h2 class='h2' >DESCRIPTION</h2>
+<p>These are a few notes describing features peculiar to
+Plan 9 Perl. As such, it is not intended to be a replacement
+for the rest of the Perl 5 documentation (which is both 
+copious and excellent). If you have any questions to 
+which you can't find answers in these man pages, contact 
+Luther Huffman at lutherh@stratcom.com and we'll try to 
+answer them.</p>
+<a class='view-head2' id="Invoking-Perl"></a><h3 class='h3' >Invoking Perl</h3>
+<p>Perl is invoked from the command line as described in 
+<a href="perl.html">perl</a>. Most perl scripts, however, do have a first line 
+such as "#!/usr/local/bin/perl". This is known as a shebang 
+(shell-bang) statement and tells the OS shell where to find 
+the perl interpreter. In Plan 9 Perl this statement should be 
+"#!/bin/perl" if you wish to be able to directly invoke the 
+script by its name.
+     Alternatively, you may invoke perl with the command "Perl"
+instead of "perl". This will produce Acme-friendly error
+messages of the form "filename:18".</p>
+<p>Some scripts, usually identified with a *.PL extension, are 
+self-configuring and are able to correctly create their own 
+shebang path from config information located in Plan 9 
+Perl. These you won't need to be worried about.</p>
+<a class='view-head2' id="What's-in-Plan-9-Perl"></a><h3 class='h3' >What's in Plan 9 Perl</h3>
+<p>Although Plan 9 Perl currently only  provides static 
+loading, it is built with a number of useful extensions. 
+These include Opcode, FileHandle, Fcntl, and POSIX. Expect 
+to see others (and DynaLoading!) in the future.</p>
+<a class='view-head2' id="What's-not-in-Plan-9-Perl"></a><h3 class='h3' >What's not in Plan 9 Perl</h3>
+<p>As mentioned previously, dynamic loading isn't currently 
+available nor is MakeMaker. Both are high-priority items.</p>
+<a class='view-head2' id="Perl5-Functions-not-currently-supported-in-Plan-9-Perl"></a><h3 class='h3' >Perl5 Functions not currently supported in Plan 9 Perl</h3>
+<p>Some, such as <code class="inline"><a class="l_k" href="functions/chown.html">chown</a></code> and <code class="inline"><a class="l_k" href="functions/umask.html">umask</a></code> aren't provided 
+because the concept does not exist within Plan 9. Others,
+such as some of the socket-related functions, simply
+haven't been written yet. Many in the latter category 
+may be supported in the future.</p>
+<p>The functions not currently implemented include:</p>
+<pre class="verbatim"><ol><li>    <a class="l_k" href="functions/chown.html">chown</a><span class="cm">,</span> <a class="l_k" href="functions/chroot.html">chroot</a><span class="cm">,</span> <a class="l_k" href="functions/dbmclose.html">dbmclose</a><span class="cm">,</span> <a class="l_k" href="functions/dbmopen.html">dbmopen</a><span class="cm">,</span> <a class="l_k" href="functions/getsockopt.html">getsockopt</a><span class="cm">,</span> </li><li>    <a class="l_k" href="functions/setsockopt.html">setsockopt</a><span class="cm">,</span> <span class="w">recvmsg</span><span class="cm">,</span> <span class="w">sendmsg</span><span class="cm">,</span> <a class="l_k" href="functions/getnetbyname.html">getnetbyname</a><span class="cm">,</span> </li><li>    <a class="l_k" href="functions/getnetbyaddr.html">getnetbyaddr</a><span class="cm">,</span> <a class="l_k" href="functions/getnetent.html">getnetent</a><span class="cm">,</span> <a class="l_k" href="functions/getprotoent.html">getprotoent</a><span class="cm">,</span> <a class="l_k" href="functions/getservent.html">getservent</a><span class="cm">,</span> </li><li>    <a class="l_k" href="functions/sethostent.html">sethostent</a><span class="cm">,</span> <a class="l_k" href="functions/setnetent.html">setnetent</a><span class="cm">,</span> <a class="l_k" href="functions/setprotoent.html">setprotoent</a><span class="cm">,</span> <a class="l_k" href="functions/setservent.html">setservent</a><span class="cm">,</span> </li><li>    <a class="l_k" href="functions/endservent.html">endservent</a><span class="cm">,</span> <a class="l_k" href="functions/endnetent.html">endnetent</a><span class="cm">,</span> <a class="l_k" href="functions/endprotoent.html">endprotoent</a><span class="cm">,</span> <a class="l_k" href="functions/umask.html">umask</a></li></ol></pre><p>There may be several other functions that have undefined 
+behavior so this list shouldn't be considered complete.</p>
+<a class='view-head2' id="Signals-in-Plan-9-Perl"></a><h3 class='h3' >Signals in Plan 9 Perl</h3>
+<p>For compatibility with perl scripts written for the Unix 
+environment, Plan 9 Perl uses the POSIX signal emulation
+provided in Plan 9's ANSI POSIX Environment (APE). Signal stacking
+isn't supported. The signals provided are:</p>
+<pre class="verbatim"><ol><li>    <span class="w">SIGHUP</span><span class="cm">,</span> <span class="w">SIGINT</span><span class="cm">,</span> <span class="w">SIGQUIT</span><span class="cm">,</span> <span class="w">SIGILL</span><span class="cm">,</span> <span class="w">SIGABRT</span><span class="cm">,</span></li><li>    <span class="w">SIGFPE</span><span class="cm">,</span> <span class="w">SIGKILL</span><span class="cm">,</span> <span class="w">SIGSEGV</span><span class="cm">,</span> <span class="w">SIGPIPE</span><span class="cm">,</span> <span class="w">SIGPIPE</span><span class="cm">,</span> <span class="w">SIGALRM</span><span class="cm">,</span> </li><li>    <span class="w">SIGTERM</span><span class="cm">,</span> <span class="w">SIGUSR1</span><span class="cm">,</span> <span class="w">SIGUSR2</span><span class="cm">,</span> <span class="w">SIGCHLD</span><span class="cm">,</span> <span class="w">SIGCONT</span><span class="cm">,</span></li><li>    <span class="w">SIGSTOP</span><span class="cm">,</span> <span class="w">SIGTSTP</span><span class="cm">,</span> <span class="w">SIGTTIN</span><span class="cm">,</span> <span class="w">SIGTTOU</span></li></ol></pre><a class='view-head1' id="COMPILING-AND-INSTALLING-PERL-ON-PLAN-9"></a><h2 class='h2' >COMPILING AND INSTALLING PERL ON PLAN 9</h2>
+<p>WELCOME to Plan 9 Perl, brave soul!</p>
+<pre class="verbatim"><ol><li>   <span class="w">This</span> <span class="w">is</span> <span class="w">a</span> <span class="w">preliminary</span> <span class="w">alpha</span> <span class="w">version</span> <span class="w">of</span> <span class="w">Plan</span> <span class="n">9</span> <span class="w">Perl</span>. <span class="w">Still</span> <span class="w">to</span> <span class="w">be</span></li><li><span class="w">implemented</span> <span class="w">are</span> <span class="w">MakeMaker</span> <a class="l_k" href="functions/and.html">and</a> <span class="w">DynaLoader</span>. <span class="w">Many</span> <span class="w">perl</span> <span class="w">commands</span> <span class="w">are</span></li><li><span class="w">missing</span> <a class="l_k" href="functions/or.html">or</a> <span class="w">currently</span> <span class="w">behave</span> <span class="w">in</span> <span class="w">an</span> <span class="w">inscrutable</span> <span class="w">manner</span>. <span class="w">These</span> <span class="w">gaps</span> <span class="w">will</span><span class="cm">,</span></li><li><span class="w">with</span> <span class="w">perseverance</span> <a class="l_k" href="functions/and.html">and</a> <span class="w">a</span> <span class="w">modicum</span> <span class="w">of</span> <span class="w">luck</span><span class="cm">,</span> <span class="w">be</span> <span class="w">remedied</span> <span class="w">in</span> <span class="w">the</span> <span class="w">near</span></li><li><span class="w">future</span>.<span class="w">To</span> <span class="w">install</span> <span class="w">this</span> <span class="w">software</span><span class="co">:</span></li></ol></pre><p>1. Create the source directories and libraries for perl by running the
+plan9/setup.rc command (i.e., located in the plan9 subdirectory).
+Note: the setup routine assumes that you haven't dearchived these
+files into /sys/src/cmd/perl. After running setup.rc you may delete
+the copy of the source you originally detarred, as source code has now
+been installed in /sys/src/cmd/perl. If you plan on installing perl
+binaries for all architectures, run "setup.rc -a".</p>
+<p>2. After making sure that you have adequate privileges to build system
+software, from /sys/src/cmd/perl/5.00301 (adjust version
+appropriately) run:</p>
+<pre class="verbatim"><ol><li>	<span class="w">mk</span> <span class="w">install</span></li></ol></pre><p>If you wish to install perl versions for all architectures (68020,
+mips, sparc and 386) run:</p>
+<pre class="verbatim"><ol><li>	<span class="w">mk</span> <span class="w">installall</span></li></ol></pre><p>3. Wait. The build process will take a *long* time because perl
+bootstraps itself. A 75MHz Pentium, 16MB RAM machine takes roughly 30
+minutes to build the distribution from scratch.</p>
+<a class='view-head2' id="Installing-Perl-Documentation-on-Plan-9"></a><h3 class='h3' >Installing Perl Documentation on Plan 9</h3>
+<p>This perl distribution comes with a tremendous amount of
+documentation. To add these to the built-in manuals that come with
+Plan 9, from /sys/src/cmd/perl/5.00301 (adjust version appropriately)
+run:</p>
+<pre class="verbatim"><ol><li>	<span class="w">mk</span> <span class="w">man</span></li></ol></pre><p>To begin your reading, start with:</p>
+<pre class="verbatim"><ol><li>	<span class="w">man</span> <span class="w">perl</span></li></ol></pre><p>This is a good introduction and will direct you towards other man
+pages that may interest you.</p>
+<p>(Note: "mk man" may produce some extraneous noise. Fear not.)</p>
+<a class='view-head1' id="BUGS"></a><h2 class='h2' >BUGS</h2>
+<p>"As many as there are grains of sand on all the beaches of the 
+world . . ." - Carl Sagan</p>
+<a class='view-head1' id="Revision-date"></a><h2 class='h2' >Revision date</h2>
+<p>This document was revised 09-October-1996 for Perl 5.003_7.</p>
+<a class='view-head1' id="AUTHOR"></a><h2 class='h2' >AUTHOR</h2>
+<p>Direct questions, comments, and the unlikely bug report (ahem) direct
+comments toward:</p>
+<p>Luther Huffman, lutherh@stratcom.com, 
+Strategic Computer Solutions, Inc.		</p>
+
+
+
+
+      <ul><li><a href="#NAME">NAME</a></li><li><a href="#DESCRIPTION">DESCRIPTION</a></li><ul><li><a href="#Invoking-Perl">Invoking Perl</a></li><li><a href="#What's-in-Plan-9-Perl">What's in Plan 9 Perl</a></li><li><a href="#What's-not-in-Plan-9-Perl">What's not in Plan 9 Perl</a></li><li><a href="#Perl5-Functions-not-currently-supported-in-Plan-9-Perl">Perl5 Functions not currently supported in Plan 9 Perl</a></li><li><a href="#Signals-in-Plan-9-Perl">Signals in Plan 9 Perl</a></li></ul><li><a href="#COMPILING-AND-INSTALLING-PERL-ON-PLAN-9">COMPILING AND INSTALLING PERL ON PLAN 9</a></li><ul><li><a href="#Installing-Perl-Documentation-on-Plan-9">Installing Perl Documentation on Plan 9</a></li></ul><li><a href="#BUGS">BUGS</a></li><li><a href="#Revision-date">Revision date</a></li><li><a href="#AUTHOR">AUTHOR</a></li></ul>
+
+
+                  </div>
+                </article>
+              </div>
+            </div>
+          </main>
+        </div>
+           <footer class="footer row bg-light pt-5 pb-5">
+       <div class="col-sm-10 offset-sm-1 col-xl-8 offset-xl-2">
+           <div class="row">
+               <div class="col-md-4">
+                   <ul class="list-unstyled">
+                       <li>
+                           <h4>Site info</h4>
+                       </li>
+                       <li>Docs mantained by
+                           <a href="//lists.perl.org/list/perl5-porters.html"
+                               rel="noopener">Perl 5 Porters</a>
+                       </li>
+                       <li>Perldoc site development sponsored by
+                           <a href="//opusvl.com" rel="noopener">
+                           <img style="margin: 20px 20px 5px 10px" class="opus-logo" src="/public/img/opusvl_logo.svg" alt="OpusVL Logo">
+                        </a>
+                    <li><span class="about_perldoc"><a href="//about.html">About PerlDOC</a></span>
+                    </li>
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md-8">
+                   <div class="row">
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Manuals</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-overview.html">Overview</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-tutorials.html">Tutorials</a>
+                               </li>
+                               <li>
+                                   <a href="./index-faq.html">FAQs</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-history.html">Changes</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Reference</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-language.html">Language</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-functions.html">Functions</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlop.html">Operators</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./perlvar.html">Variables</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Modules</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-modules-A.html">Modules</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-pragmas.html">Pragmas</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-utilities.html">Utilities</a>
+                               </li>
+                           </ul>
+                       </div>
+                       <div class="col-md-6 col-lg-3">
+                           <ul class=" list-unstyled">
+                               <li>
+                                   <h4>Misc</h4>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-licence.html">License</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-internals.html">Internals</a>
+                               </li>
+                               <li>
+                                   <a
+                                       href="./index-platforms.html">Platforms</a>
+                               </li>
+                            <li>
+                                <a
+                                    href="./index-about.html">About</a>
+                            </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+               <div class=" col-12 footer-inf text-center">
+                   <small>perldoc.perl.org - Official documentation for the Perl
+                       programming language</small>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+        	<div class="beta-wrapper beta-bottom-right ">
+		<div class="beta beta-blue  ">
+			<a class="beta-link "
+				href="//github.com/OpusVL/perldoc.perl.org/issues/new" rel="noopener">
+				<span class="beta-text">
+					This website is a Beta release.
+				</span>
+				<span class="beta-text">
+					For any issues please raise a ticket on GitHub
+				</span>
+			</a>
+		</div>
+	</div>
+
+        <script src="/public/js/main.min.js"></script>
+      </body>
+
+      </html>
