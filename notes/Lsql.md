@@ -283,10 +283,9 @@ multiplication table.
   - When we modify the database, it is important to run `commit` command
     to actually write them to the disk.
   - We use a [command-line
-    argument](./Python#Command-line_arguments.md) to get the name
+    argument](./Python.html#command-line-arguments) to get the name
     of the file with the database from the user
 
-<!-- end list -->
 
 ``` python
 import sqlite3

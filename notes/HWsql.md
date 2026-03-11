@@ -5,8 +5,8 @@ title: HWsql
 * TOC
 {:toc}
 
-See also the [lecture](./Lsql.md) and [Python
-tutorial](./Python.md).
+See also the [lecture](./Lsql.html) and [Python
+tutorial](./Python.html).
 
 ### Introduction
 
@@ -41,10 +41,10 @@ Submit by copying requested files to `/submit/sql/username/` as follows
 
 ``` bash
 # for beginners in Python:
-cp -ipv protocol.txt taskA.py taskA.txt taskB1.sql taskB1.txt taskB2.sql taskB2.txt taskC.py series.db series2.db /submit/sql/username/
+cp -ipv protocol.txt taskA.py taskA.txt taskB1.sql taskB1.txt taskB2.sql taskB2.txt taskC.py series.db series6.db series10.db /submit/sql/username/
 
 # for non-beginners in Python:
-cp -ipv protocol.txt taskB1.sql taskB1.txt taskB2.sql taskB2.txt taskC.py series.db series2.db taskD.py taskD.sql taskD.txt /submit/sql/username/
+cp -ipv protocol.txt taskB1.sql taskB1.txt taskB2.sql taskB2.txt taskC.py series.db series6.db series10.db taskD.py taskD.sql taskD.txt /submit/sql/username/
 # one of taskD.py and taskD.sql will be missing
 # this is ok
 ```
@@ -61,7 +61,9 @@ python3 taskA.py > taskA.txt
 
 One of the lines of your output should be:
 
-    The number of episodes for channel "HBO" is 76
+```
+The number of episodes for channel "HBO" is 76
+```
 
 **Submit** file `taskA.py` with your script and the output file
 `taskA.txt`:
@@ -93,7 +95,7 @@ sqlite3 series.db "select count() from episodes; select count() from series;"
 ```
 
 The **task** here is to extend the [last query in the
-lecture](./Lsql#SQL_queries.md), which counts the number of
+lecture](./Lsql.html#sql-queries), which counts the number of
 episodes and average rating per each season of each series:
 
 ``` sql
@@ -146,14 +148,16 @@ sqlite3 series.db < taskB2.sql > taskB2.txt
 For example, all 76 episodes for the two HBO series have average rating
 as follows:
 
-    HBO         76          8.98947368421053
+```
+HBO         76          8.98947368421053
+```
 
 **Submit** `taskB2.sql` and `taskB2.txt`
 
 ### Task C (Python+SQL)
 
 If you have not done so already, create the SQLite3 database, as
-explained at the beginning of [task B1](#Task_B1_\(SQL\) "wikilink").
+explained at the beginning of [task B1](#task-b1-sql).
 
 In this task you should write a script `taskC.py` that will combine
 
@@ -177,14 +181,14 @@ SELECT seriesId, season, COUNT() AS episode_count,
 
 Command-line arguments of your script:
 
-  - one required argument giving name of the file with the database
+  - one required argument giving the name of the file with the database
     (e.g. `series.db`)
   - an optional argument `min_count` (switch `-m`) with default value 6
     which gives the minimum episode count in a season to be printed. Use
     this value instead of constant 6 in the query above.
 
 An example with similar arguments is in `argument_example.py` (see
-[Python tutorial](./Python#Command-line_arguments.md).
+[Python tutorial](./Python.html#command-line-arguments).
 
   - At the start of your script, execute SQL command `DROP TABLE IF
     EXISTS seasons`, which will erase attempts from previous runs of
@@ -194,7 +198,7 @@ An example with similar arguments is in `argument_example.py` (see
   - Use
     [placeholder](https://docs.python.org/3/library/sqlite3.html#how-to-use-placeholders-to-bind-values-in-sql-queries)
     `"?"` in the `SELECT` query to insert `min_count` value (as in
-    [read\_db.py](./Lsql#read_db.py.md) from the lecture).
+    [`read\_db.py`](./Lsql.html#read-dbpy) from the lecture).
   - Read each row of the `SELECT` query in Python and store it by
     running `INSERT` command from Python. (SQL can
     [store](https://www.sqlite.org/lang_insert.html) the results from a
@@ -220,19 +224,25 @@ To test your script, run the following sequence of commands
 rm series.db
 # create series.db as in task B1
 sqlite3 series.db < create_db.sql
-# create a copy of the database
-cp series.db series2.db
+# create two copies of the database
+cp series.db series6.db
+cp series.db series10.db
 
-# run your script on series.db with default min_count=6
-python3 taskC.py series.db
+# run your script on series6.db with default min_count=6
+python3 taskC.py series6.db
 # the following line prints the number of records in your table
 #   it should be 29
-sqlite3 series.db "SELECT count(*) FROM seasons"
+sqlite3 series6.db "SELECT count(*) FROM seasons"
 
-# run your script on series2.db with min_count=10
-python3 taskC.py --min_count=10 series2.db
+# run your script on series10.db with min_count=10
+python3 taskC.py --min_count=10 series10.db
 # here the number of lines should be 22
-sqlite3 series2.db "SELECT count(*) FROM seasons"
+sqlite3 series10.db "SELECT count(*) FROM seasons"
+
+# run your script on series.db with min_count=0, meaning all seasons should be included
+python3 taskC.py --min_count=0 series.db
+# here the number of lines should be 35
+sqlite3 series.db "SELECT count(*) FROM seasons"
 ```
 
 To further check your table, print all rows of your table:
@@ -244,8 +254,8 @@ sqlite3 series.db "SELECT * FROM seasons"
 One of the lines printed should be `"5|1|8|9.3"` which is for season 1
 of series 5 (True Detective) with 8 episodes.
 
-**Submit** your script `taskC.py` and the modified databases `series.db`
-and `series2.db`.
+**Submit** your script `taskC.py` and the modified databases `series.db`,
+`series6.db`, and `series10.db`.
 
 ### Task D (SQL, optionally Python)
 
@@ -261,7 +271,7 @@ much has the average rating increased or decreased.
     columns, i.e. from seasons with the highest increase to seasons with
     the highest drop.
   - One option is to run a query in SQL in which you join the `seasons`
-    table from task C with itself and select rows that belong to the
+    table from task C (in `series.db` file) with itself and select rows that belong to the
     same series and successive seasons.
   - You can also read the rows of the `seasons` table in Python, combine
     information from rows for successive seasons of the same series and
