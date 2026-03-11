@@ -16,7 +16,7 @@ Python is a very popular programming language.
 Other resources:
 
   - [A very concise cheat
-    sheet](https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf)
+    sheet](https://scouv.lisn.upsaclay.fr/python-memento/index.en.html)
   - [A more detailed tutorial](https://docs.python.org/3/tutorial/)
 
 We will illustrate basic features of Python on several scripts working
