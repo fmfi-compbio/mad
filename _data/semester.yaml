@@ -51,14 +51,15 @@ weeks:
   - date: '2026-03-12'
     topics:
     - for: ALL
+      lecturer: BB
       topic: Introduction to projects
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Project, name: 'Project'}
     - for: ALL
       lecturer: TV
       topic: SQL (and Python) for beginners
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lsql, name: 'Lecture'}
         - {type: notes, file: HWsql, name: 'Homework'}
