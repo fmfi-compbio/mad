@@ -2,8 +2,8 @@
 title: Midterm
 ---
 
-#* TOC
-#{:toc}
+* TOC
+{:toc}
 
 ## Organization and basic rules
 
@@ -17,18 +17,18 @@ title: Midterm
 ## Technical notes
 
 * You will use the computer in I-H6, logged in to a special account under Linux. **Do not log out or restart the computer.**
-* A special exam server will contain the following:
+* A special exam website will contain the following:
   * a copy of the following lectures and homeworks from the course website: [Lperl](./Lperl.html), [HWperl](./HWperl.html), [Lbash](./Lbash.html), [HWbash](./HWbash.html), [Lmake](./Lmake.html), [HWmake](./HWmake.html), [Command-line basics](./Command-line_basics.html)
   * documentation of Perl and command line tools [available here](/mad/midterm-docs/)
   * tasks for the midterm
   * files required for solving the tasks
   * your submitted homeworks HWperl, HWbash and HWmake (files not relevant for the homework may be omitted)
-* The exam server will also be used for submitting your solutions via a web interface.
-* **Internet access will not be allowed.**
-* You are allowed to use the following tools on the Linux computer in I_H6:
-  * Web browser to view pages of the special exam server
+* The exam website will also be used for submitting your solutions.
+* **Internet access will not be allowed.** (The only exception is the exam website.)
+* You are allowed to use the following tools on the Linux computer in I-H6:
+  * Web browser to view the exam website.
   * Editors, such as vim or kate to edit your answers
-  * Command-line tools covered in class
+  * Command-line tools covered in class or specified in the questions
   * Graphical file browsers to manipulate your files
   * If you need to use anything else, please ask us
 
@@ -39,6 +39,7 @@ title: Midterm
 * It might be a good idea to briefly review the lectures and homeworks before the midterm.
 * Small details you do not remember / have not seen before can be found in the lectures / documentation, but you will not have time to study bigger parts of these materials during midterm.
 * The midterm questions will be written in both Slovak and English, but other materials (lectures, documentation etc.) are only in English.
+* If any text answers are required, you can use Slovak or English. 
 
 
 

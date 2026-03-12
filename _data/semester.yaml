@@ -52,10 +52,11 @@ weeks:
     topics:
     - for: ALL
       lecturer: BB
-      topic: Introduction to projects
+      topic: Announcements
       show: 1
       items:
-        - {type: notes, file: Project, name: 'Project'}
+        - {type: notes, file: Project, name: 'Introduction to projects'}
+        - {type: notes, file: Midterm, name: 'Midterm rules'}	
     - for: ALL
       lecturer: TV
       topic: SQL (and Python) for beginners
