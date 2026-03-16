@@ -94,7 +94,7 @@ the web browser on your local machine. In such case, you need to use
     may get various unpleasant errors.
   - Decorator `@app.route('/')` marks a function which will serve the
     main page of the application with URL <http://localhost:4247/>.
-    Similarly decorator `@app.route('/wat/`<random_id>`/')` marks a
+    Similarly decorator `@app.route('/wat/<random_id>/')` marks a
     function which will serve URLs of the form
     <http://localhost:4247/wat/100> where the particular string which
     the user uses in the URL (here `100`) will be stored in `random_id`
