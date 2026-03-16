@@ -187,7 +187,7 @@ documentation](https://docs.scipy.org/doc/numpy-dev/user/quickstart.html).
   - [FastAPI](https://fastapi.tiangolo.com/) is sort of similar to Flask
     but more focused on making API (not webpages).
   - [Django](https://www.djangoproject.com/) is big web framework with
-    all belts and whistles (e.g. database support, i18n, ...).
+    all bells and whistles (e.g. database support, i18n, ...).
   - [Dash](https://dash.plotly.com/) is another fully featured (read
     bloated) web framework for creating analytics pages (has extensive
     support, for graphs, tables, ...).
