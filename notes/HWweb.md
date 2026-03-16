@@ -34,7 +34,7 @@ Build a crawler, which crawls comments in pravda.sk discussions. You
 have two options:
 
   - For fewer points: Script which gets URL of a user (e.g.
-    <https://debata.pravda.sk/profil/debata/anysta/>) and crawls the
+    <https://debata.pravda.sk/profil/debata/maxlll/>) and crawls the
     comments of this user from the last month.
   - For more points: Scripts which gets one starting URL (either user
     profile or some discussion, your choice) and automatically discovers
