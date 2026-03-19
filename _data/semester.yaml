@@ -71,7 +71,7 @@ weeks:
     - for: INF/DAV
       lecturer: AG
       topic: Python, web crawling, HTML parsing, sqlite3
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lweb, name: 'Lecture'}
         - {type: notes, file: HWweb, name: 'Homework'}
@@ -79,7 +79,7 @@ weeks:
     - for: BIN
       lecturer: LD
       topic: Bioinformatics 1 (sequencing and genome assembly)
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lbioinf1, name: 'Lecture'}
         - {type: notes, file: HWbioinf1, name: 'Homework'}
