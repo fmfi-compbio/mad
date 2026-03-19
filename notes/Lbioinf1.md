@@ -100,6 +100,17 @@ A short video for this section: [1](https://youtu.be/qANrSl5w4t8)
   - More in the [lecture on
     Perl](./Lperl#The_second_input_file_for_today:_DNA_sequencing_reads_.28fastq.29.md).
 
+<!-- end list -->
+
+    @SRR022868.1845/1
+    AAATTTAGGAAAAGATGATTTAGCAACATTTAGCCTTAATGAAAGACCAG...
+    +
+    IICIIIIIIIIIID%IIII8>I8III1II,II)I+III*II<II,E;-HI...
+    @SRR022868.1846/1
+    TAGCGTTGTAAAATAAATTTCTAGAATGGAAGTGATGATATTGAAATACA...
+    +
+    4CIIIIIIII52I)IIIII0I16IIIII2IIII;IIAII&I6AI+*+&G5...
+
 ### SAM/BAM
 
   - SAM and BAM are formats for storing alignments of sequencing reads
@@ -114,6 +125,8 @@ A short video for this section: [1](https://youtu.be/qANrSl5w4t8)
     [samtools](https://github.com/samtools/samtools).
   - [Full documentation of the
     format](https://samtools.github.io/hts-specs/SAMv1.pdf)
+  - [Explain SAM Flags](https://broadinstitute.github.io/picard/explain-flags.html)
+    (might be useful if you have to work with SAM/BAM files in the future)
 
 ### PAF format
 
@@ -124,7 +137,8 @@ A short video for this section: [1](https://youtu.be/qANrSl5w4t8)
 
 ### Gzip
 
-  - Gzip is a general-purpose tool for file compression.
+  - [Gzip](https://www.gnu.org/software/gzip/) is a general-purpose tool
+    for file compression.
   - It is often used in bioinformatics on large FASTQ or FASTA files.
   - Running command `gzip filename.ext` will create compressed file
     `filename.ext.gz` and the original file will be deleted.
