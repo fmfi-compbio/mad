@@ -8,7 +8,7 @@ title: HWweb
 See [the lecture](./Lweb.md)
 
 * Submit by copying requested files to `/submit/web/username/`
-* Outline of the protocol can be found in /tasks/web/protocol.txt
+* Outline of the protocol can be found in `/tasks/web/protocol.txt`
 
 **General goal:** Scrape comments from user discussions at the
 `pravda.sk` website. Store comments from several (hundreds) users from
