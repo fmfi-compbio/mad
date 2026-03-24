@@ -13,6 +13,7 @@ title: Midterm
 * Bring your ISIC. You can also bring a pen or a pencil. We will provide a paper for taking notes upon request.
 * All electronic devices (phones, computers, watches, earbuds, etc.) must be switched off and stored in your bag. No papers or other materials are allowed.
 * You are not allowed to communicate with persons other than instructors.
+* If you leave the classroom during the exam, you cannot come back.
 
 ## Technical notes
 
@@ -24,7 +25,7 @@ title: Midterm
   * files required for solving the tasks
   * your submitted homeworks HWperl, HWbash and HWmake (files not relevant for the homework may be omitted)
 * The exam website will also be used for submitting your solutions.
-* **Internet access will not be allowed.** (The only exception is the exam website.)
+* **Internet access will not be allowed.** (The only exception is the exam website.) You will not have access to vyuka server.
 * You are allowed to use the following tools on the Linux computer in I-H6:
   * Web browser to view the exam website.
   * Editors, such as vim or kate to edit your answers
