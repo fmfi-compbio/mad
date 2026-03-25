@@ -9,7 +9,7 @@ See [the lecture](./Lcpp.md)
 
 ## Overview
 
-We will be solving a problem where we are given a list of documents.
+We will work with a data set of documents.
 Each document consists of multiple words separated by space. We will
 assign each document an ID 0,1,... in the order they appear on input. We
 want to implement an indexing data structure that allows the following
@@ -36,8 +36,8 @@ list or a set of document IDs that contain it.
 
 You are given the main program `doc_finder.py` which is almost finished.
 It requires three command-line arguments. The first is the name of the
-implementation, which is one of ListIndexPython, ListIndexCpp,
-SetIndexPython, SetIndexCpp. The second input is a file with documents,
+implementation, which is one of `ListIndexPython`, `ListIndexCpp`,
+`SetIndexPython`, `SetIndexCpp`. The second input is a file with documents,
 one document per line. Words in the document are separated by spaces.
 The third argument is a file with queries, one query per line. If the
 line contains a single word, it is passed to `search`, otherwise to
