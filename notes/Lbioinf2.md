@@ -18,6 +18,10 @@ title: Lbioinf2
   - The coding part of the gene starts with a start codon, contains a
     sequence of additional codons and ends with a stop codon. Codons can
     be interrupted by introns.
+  - "Transcript" is a broader term used to indicate any RNA produced
+    from a gene by transcription. All mRNAs are transcripts, but not
+    all transcripts are mRNAs (since they could also be pre-mRNA or
+    noncoding RNAs).
 
 {% include figure.html
    src="Dogma.png"
@@ -53,8 +57,14 @@ title: Lbioinf2
 RNA-seq technology can sequence mRNA extracted from a sample of cells.
 
   - We can align sequenced reads back to the genome.
+  - We will align reads using [STAR](https://github.com/alexdobin/STAR),
+    a specialized aligner which perform "spliced alignment" in order to
+    align reads to exons and recognize introns.
   - The number of reads coming from a gene depends on its expression
     level (and on its length).
+  - We will compute gene expression using
+    [kallisto](https://github.com/pachterlab/kallisto),
+    a tool for quantifying abundances of transcripts from RNA-Seq data.
 
 ## File formats
 

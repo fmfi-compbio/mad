@@ -118,7 +118,51 @@ or use a one-liner. The result should be named
 Write your answers to the **protocol**. **Submit** the files
 `rnaseq-star.bam` and `rnaseq-star-introns.bed`.
 
-### Task C: Visualizing in IGV
+### Task C: Computing gene expression
+
+  - To compute gene expression using kallisto, we first need to extract
+    the mRNA sequences in FASTA format
+
+```
+gffread -w mrna.annot.fa -g ref.fasta annot.gff
+```
+
+  - We then need to create the index required by kallisto and finally
+    quantify the mRNA sequences using the reads:
+
+```
+# 1. Indexing
+kallisto index --index kallisto.idx mrna.annot.fa
+# 2. Quantification
+kallisto quant --index kallisto.idx -o kallisto-quant --single rnaseq.fastq -l 250 -s 100
+```
+  - Quantification is stored in the `kallisto-quant/abundance.tsv` file
+    (Tab-Separated Values format)
+  - TPM stands for Transcripts Per Million and is a way to convert raw
+    reads counts to transcripts (mRNA) abundances. TPM normalizes raw
+    reads counts for gene length and for sequencing depth so that the
+    sum of TPMs in a sample = 1000000.
+  - Note: TPM are higher than usual due to the limited number of genes
+    we are quantifying
+  - More information on the output .tsv file can be found in the
+    [kallisto manual](https://pachterlab.github.io/kallisto/manual.html)
+
+Examine the .tsv file to find out answers to the following questions:
+
+(a) How many mRNA are not expressed? Which one(s)?
+
+(b) Does TPM values sum to 1000000? If not, do you have any idea why?
+
+(c) What is the (estimated) fraction of reads used in the quantification
+    step? (you can divide the sum of est_counts column by the total
+    number of reads in the FASTQ file)
+
+(d) Why not all reads have been used? (it might be easier to answer
+    this question after completing the next task)
+
+Write your answers to the **protocol**. **Submit** the file `abundance.tsv`.
+
+### Task D: Visualizing in IGV
 
 As before, run IGV as follows:
 
@@ -132,6 +176,11 @@ rnaseq-star-introns.bed`
 
   - In GTF and GFF files, exons are shown as thicker boxes, introns are
     thinner.
+  - You can change how annotations are displayed by right-clicking on the
+    left part of the corresponding track (where the name of the file is
+    shown). Suggested view: "Expanded". In this way, introns are displayed
+    as lines. Moreover, all mRNAs IDs/names are displayed
+    (e.g., ID=rna158 and name=XM_659157.1).
   - For each of the following questions, select a part of the sequence
     illustrating the answer and export a figure using `File->Save image`
   - You can check these images using command `eog`
@@ -142,14 +191,12 @@ Questions:
 parameters and the reference annotation, save as `a.png`. Briefly
 describe the differences in words.
 
-(b) Find some differences between Augustus with *A. nidulans* parameters
-and the reference annotation. Store an illustrative figure as `b.png`.
-Which parameters have yielded a more accurate prediction?
+(b) Find the most expressed gene (from kallisto output) and zoom in to
+its region. Store the image as `b.png`. Is there any differerence between
+the annotations? Which parameters have yielded a more accurate prediction?
+Try to find how many spliced read alignments supports the annotated intron
+boundaries. Does this number coincide with the number reported by STAR?
 
-(c) Zoom in to one of the genes with a high expression level and try to
-find spliced read alignments supporting the annotated intron boundaries.
-Store the image as `c.png`.
 
-**Submit** files `a.png, b.png, c.png`. Write answers to your
-**protocol**.
+**Submit** files `a.png, b.png`. Write answers to your **protocol**.
 
