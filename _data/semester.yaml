@@ -99,14 +99,14 @@ weeks:
     - for: INF/DAV
       lecturer: AG
       topic: Text data processing, flask
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lflask, name: 'Lecture'}
         - {type: notes, file: HWflask, name: 'Homework'}
     - for: BIN
       lecturer: LD
       topic: Bioinformatics 2 (gene finding, RNA-seq)
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lbioinf2, name: 'Lecture'}
         - {type: notes, file: HWbioinf2, name: 'Homework'}
