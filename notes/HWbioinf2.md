@@ -151,14 +151,12 @@ Examine the .tsv file to find out answers to the following questions:
 
 (a) How many mRNA are not expressed? Which one(s)?
 
-(b) Does TPM values sum to 1000000? If not, do you have any idea why?
+(b) What is the sum of TPM values? Is it 1000000, as expected?
+    If not, do you have any idea why?
 
 (c) What is the (estimated) fraction of reads used in the quantification
     step? (you can divide the sum of est_counts column by the total
     number of reads in the FASTQ file)
-
-(d) Why not all reads have been used? (it might be easier to answer
-    this question after completing the next task)
 
 Write your answers to the **protocol**. **Submit** the file `abundance.tsv`.
 
@@ -181,21 +179,26 @@ rnaseq-star-introns.bed`
     shown). Suggested view: "Expanded". In this way, introns are displayed
     as lines. Moreover, all mRNAs IDs/names are displayed
     (e.g., ID=rna158 and name=XM_659157.1).
-  - For each of the following questions, select a part of the sequence
+  - For the following questions, select a part of the sequence
     illustrating the answer and export a figure using `File->Save image`
   - You can check these images using command `eog`
 
 Questions:
 
 (a) Create an image illustrating differences between Augustus with human
-parameters and the reference annotation, save as `a.png`. Briefly
-describe the differences in words.
+parameters and the reference annotation, save as `a.png`. Is there any
+gene not covered by read alignment? Does this agree with kallisto output?
+(note: kallisto output reports mRNA quantification, so you have to compare
+the mRNA(s) of the gene(s) without any supporting read)
 
 (b) Find the most expressed gene (from kallisto output) and zoom in to
 its region. Store the image as `b.png`. Is there any differerence between
 the annotations? Which parameters have yielded a more accurate prediction?
-Try to find how many spliced read alignments supports the annotated intron
-boundaries. Does this number coincide with the number reported by STAR?
+
+(c) Looking at read alignment in this region, find how many spliced read
+alignments support the annotated intron boundaries. Does this number
+coincide with the number reported by STAR? Write the BED line representing
+this intron (from the BED file created in Task b).
 
 
 **Submit** files `a.png, b.png`. Write answers to your **protocol**.
