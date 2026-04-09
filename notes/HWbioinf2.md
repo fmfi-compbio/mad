@@ -188,7 +188,7 @@ Questions:
 (a) Create an image illustrating differences between Augustus with human
 parameters and the reference annotation, save as `a.png`. Is there any
 gene not covered by read alignment? Does this agree with kallisto output?
-(note: kallisto output reports mRNA quantification, so you have to compare
+(Beware: kallisto output reports mRNA quantification, so you have to compare
 the mRNA(s) of the gene(s) without any supporting read)
 
 (b) Find the most expressed gene (from kallisto output) and zoom in to
