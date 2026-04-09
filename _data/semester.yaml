@@ -158,8 +158,8 @@ weeks:
   - date: '2026-05-07'
     topics:
     - for: ALL
-      lecturer: Guest lecturer
-      topic: Additional topics
+      lecturer: Victor Epain
+      topic: Rust
       show: 0
       items: []
 
