@@ -94,7 +94,7 @@ function of this gene?
 
   - When you click on the gene (possibly twice), you get an information
     page. The UniProtKB section includes a description of its function.
-    Copy the first sentence to your protocol.
+    Copy the "FUNCTION" line to your protocol.
   - Further down on the gene information page you see RNA-Seq Expression
     Data (colorful boxplots). Find out which tissue haves the highest
     signal.
@@ -105,8 +105,8 @@ function of this gene?
     after switching this track to pack or full mode. You can click on
     each SNPs to see more information and to copy their ID to your
     protocol.
-  - Information page of the gene (part c) describes function of various
-    alleles of this gene (see e.g. part POLYMORPHISM).
+  - UniProtKB information page of the gene (part c) describes function
+    of various alleles of this gene (see e.g. part POLYMORPHISM).
   - You can also find information about individual SNPs by looking for
     them by their ID in
     [SNPedia](https://www.snpedia.com/index.php/SNPedia) (not required
