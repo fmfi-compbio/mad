@@ -59,7 +59,7 @@ rm -rf _site
 docker rmi ukba-mad-jekyll:latest
 ```
 
-## Custom macros
+### Custom macros
 
 * `{% include figure.html src="name.png" caption="Some caption" width="100px" %}` will add a figure with a caption. The file should be in [`files`](./files) folder. The `width` argument is optional. The figure can be made floating using `<div class="float-right">...</div>`.
 * [`_data/semester.yaml`](./_data/semester.yaml) contains several weeks, each week given by the dates, content and a list of items (can be empty).
