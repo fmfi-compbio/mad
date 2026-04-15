@@ -1,0 +1,41 @@
+{% assign type = include.type | default: "info" %}
+
+{% case type %}
+  {% when "info" %}
+    {% assign icon = "fa-solid fa-circle-info" %}
+  {% when "tip" %}
+    {% assign icon = "fa-solid fa-lightbulb" %}
+  {% when "important" %}
+    {% assign icon = "fa-solid fa-message" %}
+  {% when "warning" %}
+    {% assign icon = "fa-solid fa-triangle-exclamation" %}
+  {% when "danger" %}
+    {% assign icon = "fa-solid fa-circle-xmark" %}
+  {% else %}
+    {% assign icon = "fa-solid fa-note-sticky" %}
+{% endcase %}
+
+<div style="break-before: auto;"></div>
+
+{% if include.collapsible %}
+  <details class="gh-admonition {{ type }}">
+    <summary class="gh-admonition-title">
+      <i class="{{ icon }} gh-admonition-icon"></i>
+      <span>{{ include.title | default: type | capitalize }}</span>
+      <span class="gh-admonition-toggle"></span>
+    </summary>
+    <div class="gh-admonition-content">
+      {{ include.content | markdownify }}
+    </div>
+  </details>
+{% else %}
+  <div class="gh-admonition {{ type }}">
+    <div class="gh-admonition-title">
+      <i class="{{ icon }} gh-admonition-icon"></i>
+      <span>{{ include.title | default: type | capitalize }}</span>
+    </div>
+    <div class="gh-admonition-content">
+      {{ include.content | markdownify }}
+    </div>
+  </div>
+{% endif %}

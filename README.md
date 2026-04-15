@@ -67,6 +67,46 @@ docker rmi ukba-mad-jekyll:latest
 * Field `name` of an item is the visible text
 * Field `file` is the filename. For notes, extension `.md` is added automatically, but for files it should be included. For URL the full URL should be given here. For type `text`, this field is ignored.
 
+#### Admonitions
+
+As in GitHub <https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts>.
+
+* `tip`
+* `note`
+* `important`
+* `warning`
+* `danger`
+
+```md
+Simple admonitions:
+
+{% include admonition.html type="info" content="Info." %}
+
+{% include admonition.html type="tip" content="Tip." %}
+
+{% include admonition.html type="important" content="Important." %}
+
+{% include admonition.html type="warning" content="Warning." %}
+
+{% include admonition.html type="danger" content="Danger." %}
+
+Collapsing admonition:
+
+{% include admonition.html type="tip" collapsible=true content="Hidden details here." %}
+
+Multi-line content:
+
+{% capture tipcontent %}
+Markdown **works here**, including *formatting* and lists.
+
+* item1
+* item2
+
+{% endcapture %}
+
+{% include admonition.html type="tip" content=tipcontent %}
+```
+
 ## Documentation
 
 * Yekyll: <https://jekyllrb.com/docs/>

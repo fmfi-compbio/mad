@@ -1,0 +1,167 @@
+/* -------------------------------------------------------------------------- */
+/*                               Base Container                               */
+/* -------------------------------------------------------------------------- */
+.gh-admonition {
+  color-scheme: light;
+  border-left: 4px solid;
+  margin: 16px 0;
+  background: #f6f8fa; /* light gray */
+  font-size: 0.95rem;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                       Title (works For Div + Summary)                      */
+/* -------------------------------------------------------------------------- */
+.gh-admonition-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  padding: 10px 12px 6px 12px;
+  line-height: 1.4;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* icon */
+.gh-admonition-title i {
+  font-size: 14px;
+  width: 18px;
+  flex: 0 0 18px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                        Collapsible toggle indicator                        */
+/* -------------------------------------------------------------------------- */
+.gh-admonition-toggle {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+/* Closed state → chevron right/down */
+.gh-admonition-toggle::before {
+  content: "▸"; /* closed */
+  font-size: 14px;
+  color: inherit;
+}
+
+/* Open state → rotate chevron */
+details[open] .gh-admonition-toggle::before {
+  content: "▾"; /* open */
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Content                                  */
+/* -------------------------------------------------------------------------- */
+.gh-admonition-content {
+  padding: 0 12px 12px 12px;
+  /* color: #24292f; */
+}
+
+/* Remove bottom spacing inside admonition */
+.gh-admonition-content > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.gh-admonition-content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.gh-admonition-content ul:last-child,
+.gh-admonition-content ol:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               <details> Reset                              */
+/* -------------------------------------------------------------------------- */
+details.gh-admonition summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+details.gh-admonition summary::-webkit-details-marker {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  ICON SPAN                                 */
+/* -------------------------------------------------------------------------- */
+.gh-admonition-icon {
+  width: 18px;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Info                                    */
+/* -------------------------------------------------------------------------- */
+.gh-admonition.info {
+  border-color: #0969da;
+}
+.gh-admonition.info .gh-admonition-title {
+  color: #0969da;
+}
+.gh-admonition.info .gh-admonition-title i {
+  color: #0969da;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                     Tip                                    */
+/* -------------------------------------------------------------------------- */
+.gh-admonition.tip {
+  border-color: #1a7f37;
+}
+.gh-admonition.tip .gh-admonition-title {
+  color: #1a7f37;
+}
+.gh-admonition.tip .gh-admonition-title i {
+  color: #1a7f37;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Important                                 */
+/* -------------------------------------------------------------------------- */
+.gh-admonition.important {
+  border-color: #8250df; /* GitHub-like purple */
+}
+
+.gh-admonition.important .gh-admonition-title {
+  color: #8250df;
+}
+
+.gh-admonition.important .gh-admonition-title i {
+  color: #8250df;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Warning                                  */
+/* -------------------------------------------------------------------------- */
+.gh-admonition.warning {
+  border-color: #9a6700;
+}
+.gh-admonition.warning .gh-admonition-title {
+  color: #9a6700;
+}
+.gh-admonition.warning .gh-admonition-title i {
+  color: #9a6700;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Danger                                   */
+/* -------------------------------------------------------------------------- */
+.gh-admonition.danger {
+  border-color: #cf222e;
+}
+.gh-admonition.danger .gh-admonition-title {
+  color: #cf222e;
+}
+.gh-admonition.danger .gh-admonition-title i {
+  color: #cf222e;
+}
