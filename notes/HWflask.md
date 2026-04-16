@@ -14,7 +14,7 @@ of this user.
 Submit your source code (web server and preprocessing scripts) and
 database files (even when you are using database from us). Copy these
 files to `/submit/flask/username/`. 
-Outline of the protocol can be found in `/tasks/flast/protocol.txt`.
+Outline of the protocol can be found in `/tasks/flask/protocol.txt`.
 
 This lesson requires crawled data from previous lesson. If you don't
 have one, you can find it at `/tasks/flask/db.sqlite3`
