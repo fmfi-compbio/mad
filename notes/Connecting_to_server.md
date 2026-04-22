@@ -26,7 +26,7 @@ If connecting from a **Windows 10 or Windows 11 computer**, open
 command-line window in Ubuntu subsystem for Windows or Powershell or
 cmd.exe Command Prompt and run
 
-```
+```bash
 ssh your_username@vyuka.compbio.fmph.uniba.sk
 ```
 
@@ -49,26 +49,26 @@ the server to your local machine (this is accomplished by your ssh
 client), and you need a program that can interpret these commands on you
 local machine (this is called X server).
 
-  - Install [putty
+* Install [putty
     client](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
     which you will use instead of ssh.
-  - Install X server, such as
+* Install X server, such as
     [xming](https://sourceforge.net/projects/xming/)
-  - Make sure that X server is running (you should have "X" icon in your
+* Make sure that X server is running (you should have "X" icon in your
     app control bar)
-  - Run putty, connect using ssh connection type and in your settings
+* Run putty, connect using ssh connection type and in your settings
     choose Connection-\>SSH-\>X11 and check "Enable X11 forwarding" box
-  - Login to the vyuka.compbio.fmph.uniba.sk server in putty
-  - `echo $DISPLAY` command on the server should show a non-empty string
+* Login to the vyuka.compbio.fmph.uniba.sk server in putty
+* `echo $DISPLAY` command on the server should show a non-empty string
     (e.g. localhost:11.0)
-  - Try running `xeyes &`: this simple testing application should
+* Try running `xeyes &`: this simple testing application should
     display a pair of eyes tracking your mouse cursor
 
 ## Copying files to/from the server via scp or WinSCP
 
-  - You can copy files using `scp` command on the command line, both in
+* You can copy files using `scp` command on the command line, both in
     Windows and Linux.
-  - Alternatively use the graphical [WinSCP
+* Alternatively use the graphical [WinSCP
     program](https://winscp.net/eng/downloads.php) for Windows.
 
 Examples of using `scp` command
@@ -99,6 +99,7 @@ An example of using `sshfs` command for mounting a folder from a remote
 server:
 
 ```bash
+# On your local machine
 mkdir vyuka  # create an empty folder with an arbitrary name
 sshfs username@vyuka.compbio.fmph.uniba.sk: vyuka   # mounting the remote folder to the empty folder
 ```
@@ -108,12 +109,18 @@ folder on vyuka server. You can copy files to and from the server and
 even open them in editors as if they were on your computer, however with
 network-related slowdown.
 
+To unmount:
+
+```bash
+# On your local machine
+fusermount -u vyuka # or fusermount3
+```
+
 ## MacOS
 
-  - Command ssh in text mode should work on MacOS.
-  - For GUIs you need an X server, try installing
+* Command ssh in text mode should work on MacOS.
+* For GUIs you need an X server, try installing
     [XQuartz](https://www.xquartz.org/).
-  - Alternatively, you can install sshfs from
+* Alternatively, you can install sshfs from
     [macFUSE](https://osxfuse.github.io/) and mount vyuka as shown
     above.
-
