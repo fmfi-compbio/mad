@@ -12,6 +12,7 @@ simple visualizations.
 
 Submit your source code to `/submit/javascript/username/`. Also do not
 forget to submit the database (even if it is the database from us).
+Outline of the protocol can be found in `/tasks/javascript/protocol.txt`.
 
 This lesson requires a database with crawled data and a webserver from
 previous lessons. If you don't have one, you can find it at

@@ -117,14 +117,14 @@ weeks:
     - for: INF/DAV
       lecturer: AG
       topic: Data visualization in JavaScript
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Ljavascript, name: 'Lecture'}
         - {type: notes, file: HWjavascript, name: 'Homework'}
     - for: BIN
       lecturer: LD
       topic: Bioinformatics 3 (genome variants)
-      show: 0
+      show: 1
       items:
         - {type: notes, file: Lbioinf3, name: 'Lecture'}
         - {type: notes, file: HWbioinf3, name: 'Homework'}
