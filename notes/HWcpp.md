@@ -152,12 +152,12 @@ Python.
     inputs and produce correct output (empty diff) using the commands
     below:
 
-<!-- end list -->
-
-    # compile C++, this should produce no compiler errors
-    make compile
-    # run tests, this should report that the files are identical
-    make tests
+```bash
+# compile C++, this should produce no compiler errors
+make compile
+# run tests, this should report that the files are identical
+make tests
+```
 
   - **Submit** files `Makefile`, `doc_finder.py` and `ListIndexCpp.cc`.
     (You will modify the first two of these files also in task B.)
@@ -172,7 +172,7 @@ word.
     return sets, not lists. As a result, the document IDs are not
     necessarily ordered on output. Makefile contains a sorting step
     before comparing with the correct answer.
-  - Also, the `ListIndexPython` checks in the `add_document` method that
+  - The `ListIndexPython` checks in the `add_document` method that
     document IDs are increasing. This check would be costly here, do not
     perform it.
   - In Python, use set intersection instead of manual merge algorithm in
@@ -191,7 +191,6 @@ word.
   - After these modifications, you should be able to compile and test
     all modules using the same commands as in part A.
 
-<!-- end list -->
 
   - **Submit** files `Makefile`, `doc_finder.py`, `SetIndexPython.py`,
     `SetIndexCpp.cc`. When you are done with task B, your `Makefile` and
@@ -209,7 +208,7 @@ word.
       - `/tasks/cpp/queries.txt` to measure the speed of `search`
       - `/tasks/cpp/multiqueries.txt` to measure the speed of
         `multi-search`
-  - Use /usr/bin/time as described in the lecture.
+  - Use `/usr/bin/time` as described in the lecture.
   - Run each implementation several times (at least 3x) on each input to
     see how the time and memory fluctuate.
   - Report the results in the protocol (in some easy-to-read form).
@@ -226,8 +225,8 @@ Notes:
     parsing the time and memory values and creating final table or plot.
     If you do so, submit your script as well. You can instead add new
     rules to the `Makefile` for this purpose.
-  - You can run the experiments on your computer or on vyuka. If you run
-    on vyuka, make sure the server is not too busy (you should get a
+  - You can run the experiments on your computer or on vyuka.
+    Make sure the computer you use is not too busy (you should get a
     high % of CPU, close to 100%).
   - Do not store outputs of these runs on vyuka. Remove them when not
     needed, as they are large files. However, it is a good idea to check

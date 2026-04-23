@@ -73,7 +73,7 @@ c++ -O3 -Wall -shared -std=c++11 -fPIC $(python3 -m pybind11 --includes) example
 ```
 
 If there are no errors, this will create binary file
-`example_module.cpython-310-x86_64-linux-gnu.so` (the suffix may
+`example_module.cpython-312-x86_64-linux-gnu.so` (the suffix may
 differ). We can now import and use this module in Python. We need to be
 in the same directory as the compiled output.
 
@@ -110,36 +110,42 @@ time and memory of a process is to use `/usr/bin/time` command.
 Assume we have a script `memory.py` which appends 10 million integers to
 a list:
 
-    a = []
-    for i in range(10 ** 7):
+```python
+a = []
+for i in range(10 ** 7):
+   a.append(i)
+```
 
 Here we run it using the time command in verbose mode and get several
 lines of output when the command is done:
 
-    /usr/bin/time -v python3 memory.py 
-        Command being timed: "python3 memory.py"
-        User time (seconds): 1.29
-        System time (seconds): 1.04
-        Percent of CPU this job got: 99%
-        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.34
-        Average shared text size (kbytes): 0
-        Average unshared data size (kbytes): 0
-        Average stack size (kbytes): 0
-        Average total size (kbytes): 0
-        Maximum resident set size (kbytes): 400728
-        Average resident set size (kbytes): 0
-        Major (requiring I/O) page faults: 0
-        Minor (reclaiming a frame) page faults: 98963
-        Voluntary context switches: 1
-        Involuntary context switches: 10
-        Swaps: 0
-        File system inputs: 0
-        File system outputs: 0
-        Socket messages sent: 0
-        Socket messages received: 0
-        Signals delivered: 0
-        Page size (bytes): 4096
-        Exit status: 0
+```
+/usr/bin/time -v python3 memory.py
+	Command being timed: "python3 memory.py"
+	User time (seconds): 1.23
+	System time (seconds): 0.57
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.81
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 402304
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 99130
+	Voluntary context switches: 1
+	Involuntary context switches: 6
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+```
+
 
   - **User time** is CPU time spent on computation in user mode while
     **system time** is CPU time spent in kernel mode, e.g. to read a
@@ -167,6 +173,56 @@ lines of output when the command is done:
 For easier parsing, you can also specify a **format**; see documentation
 in `man time` and this example:
 
-    /usr/bin/time --format="%e %M %P" python3 memory.py
-    2.03 400692 99%
+```
+/usr/bin/time --format="%e %M %P" python3 memory.py
+1.83 402304 99%
+```
+
+For comparison, consider a similar program in C++:
+
+```cpp
+#include <vector>
+using std::vector;
+
+int main() {
+  vector <int> a;
+  int n = 1e7;
+  for(int i=0; i<n; i++) {
+    a.push_back(i);
+  }
+}
+```
+
+```
+c++ -O3 -Wall -std=c++11 memory.cc -o memory
+/usr/bin/time -v  ./memory
+	Command being timed: "./memory"
+	User time (seconds): 0.05
+	System time (seconds): 0.13
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.19
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 68816
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 26296
+	Voluntary context switches: 1
+	Involuntary context switches: 1
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+```
+
+* Maximum memory C++ 69M vs Python 402M
+* User time C++ 0.19s vs Python 1.81s
+* C++ compilation 0.38s, 42M memory
+* In homework you will compare more complex programs
 

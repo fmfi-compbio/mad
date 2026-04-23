@@ -151,11 +151,11 @@ weeks:
       - for: ALL
         lecturer: BB
         topic: Python + C++
-        show: 0
+        show: 1
         items:
           - { type: notes, file: Lcpp, name: "Lecture" }
           - { type: notes, file: HWcpp, name: "Homework" }
-
+	  
   - date: "2026-04-30"
     topics:
       - for: ALL
