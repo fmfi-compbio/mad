@@ -44,9 +44,9 @@ public:
     // a method which gets a vector of strings,
     // adds their lengths to the counter
     // and returns the value of the counter
-    int add_lengths(vector<string> strings) {
-        for (auto &one_string: strings) {
-            counter_ += one_string.size();
+    int add_lengths(const vector<string> & strings) {
+        for (const auto & one_string: strings) {
+             counter_ += one_string.size();
         }
         return counter_;
     }
