@@ -190,13 +190,13 @@ weeks:
     topics:
       - for: ALL
         topic: Tutorial to R and basic plotting
-        show: 0
+        show: 1
         items:
           - { type: notes, file: Lr1, name: "Lecture" }
           - { type: notes, file: HWr1, name: "Homework" }
       - for: ALL
         topic: Statistical tests in R
-        show: 0
+        show: 1
         items:
           - { type: notes, file: Lr2, name: "Lecture" }
           - { type: notes, file: HWr2, name: "Homework" }
