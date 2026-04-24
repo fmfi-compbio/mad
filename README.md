@@ -4,12 +4,12 @@ Webpage of Data Management course **<https://fmfi-compbio.github.io/mad>**
 
 ## File system overview
 
-* Individual lectures and other text material are in folder [`notes`](./notes) in Markdown format wich is converted to html
-* Images, pdf files, zip files etc are in folder [`data`](./data)
+* Individual lectures and other text material are in folder [`notes`](./notes) in Markdown format which is converted to HTML
+* Images, PDF files, zip files etc are in folder [`data`](./data)
 * File [`index.md`](./index.md) contains part of the main page but the schedule with links to lectures etc is created by macros in [`_includes/semester.html`](./_includes/semester.html) based on a data in file [`_data/semester.yaml`](./_data/semester.yaml)
 * Announcements displayed at the top of each page are written in file [`_data/notes.yml`](./_data/notes.yml)
 * Overall page layout is in [`_layouts/default.html`](./_layouts/default.html)
-* Shared parts of pages are in [`_includes/head.html`](./_includes/head.html) (html head including styles), [`_includes/header.html`](./_includes/header.html) (top of the page including the menu and annoucements) and [`_includes/footer.html`](./_includes/footer.html) (bottom of the page).
+* Shared parts of pages are in [`_includes/head.html`](./_includes/head.html) (HTML head including styles), [`_includes/header.html`](./_includes/header.html) (top of the page including the menu and announcements) and [`_includes/footer.html`](./_includes/footer.html) (bottom of the page).
 * [`_config.yml`](./_config.yml) contains configuration including academic year which should be updated
 
 ## Updating the website
@@ -17,7 +17,7 @@ Webpage of Data Management course **<https://fmfi-compbio.github.io/mad>**
 You can edit the files in GitHub web interface or clone the repository to your computer, edit it there and then push the changes to the `master` branch.
 
 >[!TIP]
-> If you clone and edit locally the webiste, you can use docker to check live changes, see [Live changes via docker](#live-changes-via-docker)
+> If you clone and edit locally the website, you can use docker to check live changes, see [Live changes via docker](#live-changes-via-docker)
 
 After push, GitHub Actions are executed to run Jekyll framework which converts webpage to static HTML. The HTML files are then copied to the web.
 It takes several minutes for this to happen. You can view progress in Action tab.
@@ -28,7 +28,7 @@ In case of success, the website is available at <https://fmfi-compbio.github.io/
 
 [`_data/semester.yaml`](./_data/semester.yaml) contains several weeks, each week given by the dates, content and a list of items (can be empty).
 
-* Items have field `type` which can be `notes` if it is an `.md` file in `notes` folder, or `file` if it is a file in `files` folder, `text` for just a text or `url` for a link to external website
+* Items have field `type` which can be `notes` if it is a `.md` file in `notes` folder, or `file` if it is a file in `files` folder, `text` for just a text or `url` for a link to external website
 * Field `name` of an item is the visible text
 * Field `file` is the filename. For `notes`, extension `.md` is added automatically, but for files in the `./files` folder it should be included. For `url` the full URL should be given here. For type `text`, this field is ignored.
 
@@ -84,7 +84,7 @@ Markdown **works here**, including *formatting* and lists.
 
 If you have cloned this repository, you can build locally the website to check your updates.
 
-Inpired by <https://jogendra.dev/dockerize-your-jekyll-site-for-local-development> and <https://mademistakes.com/mastering-jekyll/site-url-baseurl/>.
+Inspired by <https://jogendra.dev/dockerize-your-jekyll-site-for-local-development> and <https://mademistakes.com/mastering-jekyll/site-url-baseurl/>.
 
 Launch the live server:
 
@@ -122,10 +122,10 @@ docker rmi ukba-mad-jekyll:latest
 
 ## Documentation
 
-* Yekyll: <https://jekyllrb.com/docs/>
+* Jekyll: <https://jekyllrb.com/docs/>
 * Bootstrap: <https://getbootstrap.com/docs/4.0/getting-started/introduction/>
 * Markdown: <https://docs.github.com/en/get-started/writing-on-github>
-* Github pages: <https://docs.github.com/en/pages>
+* GitHub pages: <https://docs.github.com/en/pages>
 * YAML: <https://yaml.org/spec/1.2.2/>
 
 Other useful docs:
