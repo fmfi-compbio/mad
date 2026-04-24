@@ -80,6 +80,27 @@ Markdown **works here**, including *formatting* and lists.
 {% include admonition.html type="tip" content=tipcontent %}
 ```
 
+#### Mermaid diagrams
+
+Add to the Mardkown file metadata the option `use_mermaid: true` to enable mermaid diagrams:
+
+````yaml
+---
+title: A page with rendered mermaid diagram
+use_mermaid: true
+---
+````
+
+````md
+```mermaid
+graph TD;
+A-->B;
+A-->C;
+B-->D;
+C-->D;
+```
+````
+
 ### Live changes via docker
 
 If you have cloned this repository, you can build locally the website to check your updates.
