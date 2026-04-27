@@ -11,6 +11,10 @@
     {% assign icon = "fa-solid fa-triangle-exclamation" %}
   {% when "danger" %}
     {% assign icon = "fa-solid fa-circle-xmark" %}
+  {% when "question" %}
+    {% assign icon = "fa-solid fa-circle-question" %}
+  {% when "task" %}
+    {% assign icon = "fa-solid fa-square-check" %}
   {% else %}
     {% assign icon = "fa-solid fa-note-sticky" %}
 {% endcase %}
@@ -21,7 +25,13 @@
   <details class="gh-admonition {{ type }}">
     <summary class="gh-admonition-title">
       <i class="{{ icon }} gh-admonition-icon"></i>
-      <span>{{ include.title | default: type | capitalize }}</span>
+      <span>
+        {{ include.title | default: type | capitalize }}
+        {% if include.subtitle %}
+          <span class="gh-admonition-subtitle">
+            - {{ include.subtitle }}</span>
+        {% endif %}
+      </span>
       <span class="gh-admonition-toggle"></span>
     </summary>
     <div class="gh-admonition-content">
@@ -32,7 +42,13 @@
   <div class="gh-admonition {{ type }}">
     <div class="gh-admonition-title">
       <i class="{{ icon }} gh-admonition-icon"></i>
-      <span>{{ include.title | default: type | capitalize }}</span>
+      <span>
+        {{ include.title | default: type | capitalize }}
+        {% if include.subtitle %}
+          <span class="gh-admonition-subtitle">
+            - {{ include.subtitle }}</span>
+        {% endif %}
+      </span>
     </div>
     <div class="gh-admonition-content">
       {{ include.content | markdownify }}

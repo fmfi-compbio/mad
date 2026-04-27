@@ -48,28 +48,33 @@ A figure with a caption:
 
 #### Admonitions
 
-As in GitHub <https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts>.
+As in GitHub <https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts>:
+
+| Type        | Description |
+| ----------- | ----------- |
+| `info`      | Information |
+| `tip`       | Tip         |
+| `important` | Important   |
+| `warning`   | Warning     |
+| `danger`    | Danger      |
+| `question`  | Question    |
+| `task`      | Task        |
+
+| Option        | Type    | Description                                  | Example                 |
+| ------------- | ------- | -------------------------------------------- | ----------------------- |
+| `collapsible` | Boolean | Whether the admonition should be collapsible | `collapsible=true`      |
+| `subtitle`    | String  | Subtitle of the admonition                   | `subtitle="A subtitle"` |
+
+Inline admonition:
 
 ```md
-Simple admonitions:
+{% include admonition.html type="Type" content="The content" %}
+```
 
-{% include admonition.html type="info" content="Info." %}
+Multi lines admonition:
 
-{% include admonition.html type="tip" content="Tip." %}
-
-{% include admonition.html type="important" content="Important." %}
-
-{% include admonition.html type="warning" content="Warning." %}
-
-{% include admonition.html type="danger" content="Danger." %}
-
-Collapsing admonition:
-
-{% include admonition.html type="tip" collapsible=true content="Hidden details here." %}
-
-Multi-line content:
-
-{% capture tipcontent %}
+```md
+{% capture admocontent %}
 Markdown **works here**, including *formatting* and lists.
 
 * item1
@@ -77,7 +82,7 @@ Markdown **works here**, including *formatting* and lists.
 
 {% endcapture %}
 
-{% include admonition.html type="tip" content=tipcontent %}
+{% include admonition.html type="Type" content=admocontent %}
 ```
 
 #### Mermaid diagrams
@@ -94,10 +99,10 @@ use_mermaid: true
 ````md
 ```mermaid
 graph TD;
-A-->B;
-A-->C;
-B-->D;
-C-->D;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
 ```
 ````
 

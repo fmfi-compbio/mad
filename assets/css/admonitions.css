@@ -165,3 +165,28 @@ details.gh-admonition summary::-webkit-details-marker {
 .gh-admonition.danger .gh-admonition-title i {
   color: #cf222e;
 }
+/* -------------------------------------------------------------------------- */
+/*                                  Question                                  */
+/* -------------------------------------------------------------------------- */
+.gh-admonition.question {
+  border-color: #0550ae; /* slightly deeper blue */
+}
+.gh-admonition.question .gh-admonition-title {
+  color: #0550ae;
+}
+.gh-admonition.question .gh-admonition-title i {
+  color: #0550ae;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Task                                    */
+/* -------------------------------------------------------------------------- */
+.gh-admonition.task {
+  border-color: #8250df; /* reuse purple or tweak */
+}
+.gh-admonition.task .gh-admonition-title {
+  color: #8250df;
+}
+.gh-admonition.task .gh-admonition-title i {
+  color: #8250df;
+}
