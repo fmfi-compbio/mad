@@ -740,7 +740,7 @@ If the space body is not in our `SpaceMap`, return an error.
 
 {% capture admocontent %}
 
-Once you have you have verified the body is in the container, an idiomatic way of returning the list of neighbours is to chain the methods:
+Once you have verified the body is in the container, an idiomatic way of returning the list of neighbours is to chain the methods:
 
 1. first get the internal neighbour list of the space body
 2. iterate over of the names in it
@@ -763,7 +763,7 @@ In the main function, create your space map with the space bodies you have alrea
 
 {% capture admocontent %}
 
-You can custom the `SpaceMap` interface if you do not find it user-friendly. In that case, explain your choices.
+You can customize the `SpaceMap` interface if you do not find it user-friendly. In that case, explain your choices.
 
 {% endcapture %}
 {% include admonition.html type="task" content=admocontent %}
