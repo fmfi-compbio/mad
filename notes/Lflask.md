@@ -107,7 +107,7 @@ the web browser on your local machine. In such case, you need to use
     language, as is done in the `home` function. The template itself is
     in file `templates/main.html`. You may want to construct different
     templates for different webpages (e.g. main menu, user page).
-  - To fill in variables in the template we use `{{ ... }}` notation.
+  - To fill in variables in the template we use {% raw %}`{{ ... }}`{% endraw %} notation.
     There are also `\{\% for x in something \%\}` and `\{\% if ...
     \%\}` statements.
   - To get the url of some other page you can use `url_for` (see the
