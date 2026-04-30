@@ -2,31 +2,29 @@
 # text sa pouzije na vrchu kazdej stranky pod menu
 # vacsinou dolezite oznamy
 notes: |
-  <strong>Grades</strong> from marked homeworks are on the server in file <tt>/grades/userid.txt</tt><br/>
-  We offer a chance to write a remedial <strong><a href="/mad/notes/Midterm.html">midterm</a></strong> again with similar types of quastions as last time. It will take place on May 14 during lecture. It will be necessary to register one week in advance. If you register for second midterm, you lose points from the first midterm. We will not lower the maximum of points on the second midterm as was done on the first.</br>
-  <strong>Early project deadline</strong> (mainly for Master students finishing their studies or other students who need or want to finish exams early) Tuesday May 19, 22:00. Oral exams Thursday May 21 during class. Registration for early exam Monday May 18, 22:00 in AIS.
-  Normal <strong>project deadline</strong> is on June 9, 22:00 and <strong>oral exams</strong> will be on June 15.
+  · <strong>Grades</strong> from marked homeworks are on the server in file <tt>/grades/userid.txt</tt><br/>
+  · We offer a chance to write a remedial <strong><a href="/mad/notes/Midterm.html">midterm</a></strong> again with similar types of quastions as last time. It will take place on May 14 during lecture. It will be necessary to register one week in advance. If you register for second midterm, you lose points from the first midterm. We will not lower the maximum of points on the second midterm as was done on the first.<br/>
+  · <strong>Dates of <a href="/mad/notes/Project.html">project</a> submission and <a href="/mad/notes/Rules.html#Oral_exam">oral exams</a>:</strong><br/><em>Early:</em> submit project Tuesday May 19 22:00pm, oral exams Thursday May 21 during class (for students who need or want to finish exams early). Registration for early exam Monday May 18, 22:00 in AIS.<br/><strong>Regular:</strong> project deadline June 9, 22:00 and oral exams on June 15.<br/><strong>Remedial</strong> exams will take place in the last weeks of the exam period. Beware, there will not be much time to prepare a better project.
+
+# Projects should be submitted as homeworks to <tt>/submit/project</tt>.<br/>
+
+# · Homeworks HWweb and HWbioinf1 are due Tuesday March 31 9:00am (after midterm).<br/>
+
+# · Please submit <a href="/mad/notes/Project.html#project-proposal">project proposals</a> until Monday April 13. 
 
 
-
-# Homeworks HWweb and HWbioinf1 are due Tuesday March 31 9:00am (after midterm).<br/>
-
-# Please submit <a href="/mad/notes/Project.html#project-proposal">project proposals</a> until Monday April 13. 
+# · Use the time during Easter break to think about possible project topics.
 
 
-#Use the time during Easter break to think about possible project topics.
+# · <strong><a href="/mad/notes/Midterm.html">Midterm information</a></strong><br/>
+
+# · Please fill in the following <a href="https://goo.gl/forms/aKdhAAUZIGD80PrQ2">survey</a>.
+
+# · The webpage for this semester will be available soon.
 
 
-#<strong><a href="/mad/notes/Midterm.html">Midterm information</a></strong><br/>
-
-# Please fill in the following <a href="https://goo.gl/forms/aKdhAAUZIGD80PrQ2">survey</a>.
-
-#The webpage for this semester will be available soon.
-
-#<strong>Dates of <a href="/mad/notes/Project.html">project</a> submission and <a href="/mad/notes/Rules.html#Oral_exam">oral exams</a>:</strong><br/><em>Early:</em> submit project Wednesday May 28 9:00am, oral exams Friday May 30 9:00am (limit 8 students).<br><em>Regular:</em> submit project Monday June 16, 9:00am, oral exams Thursday June 19 and 20 (estimated 9:00am-2:00pm, schedule will be published before exam).<br>Sign up for one the exam days in AIS before June 16, 9:30am.<br><em>Remedial</em> exams will take place in the last week of the exam period. Beware, there will not be much time to prepare a better project. Projects should be submitted as homeworks to <tt>/submit/project</tt>.<br/>
-
-# Topics from potential bachelor topic supervisors can be found in <tt>/tasks/temy.txt</tt> (in Slovak). -->
-# Cpp homework is due May 15, 9:00am. Use the time to work on projects. <!-- Cloud homework is due on May 20 9:00am.
+# · Topics from potential bachelor topic supervisors can be found in <tt>/tasks/temy.txt</tt> (in Slovak). -->
+# · Cpp homework is due May 15, 9:00am. Use the time to work on projects. <!-- Cloud homework is due on May 20 9:00am.
 
 # nepouzite oznamy su zakomentovane
 # treba dokomentovat a spravne odsadit
