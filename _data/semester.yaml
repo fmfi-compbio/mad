@@ -161,7 +161,7 @@ weeks:
       - for: ALL
         lecturer: AG
         topic: Parallel computing
-        show: 0
+        show: 1
         items:
           - { type: notes, file: Lpar, name: "Lecture" }
           - { type: notes, file: HWpar, name: "Homework" }
