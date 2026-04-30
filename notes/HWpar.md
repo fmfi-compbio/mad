@@ -14,7 +14,7 @@ Ideally, you should run the code locally on your computer or try some
 cloud providers if you want.
 
 * Submit directory is `/submit/par/`
-* Outline of the protocol is in `'/tasks/par/protocol.txt`
+* Outline of the protocol is in `/tasks/par/protocol.txt`
 * Submit files `task_a.py` and `task_b.py` with your programs, `task_a.out` with your output for task A
 * Write the output for task B to the protocol.
 * Also include a short description of your algorithm in both tasks to the protocol.
