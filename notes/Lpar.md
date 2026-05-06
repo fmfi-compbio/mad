@@ -16,7 +16,7 @@ machines, but today we will run them locally.
 On your own machine, please install packages with
 
 ``` bash
-pip install apache-beam
+pip install apache-beam==2.67.0
 ```
 
 You are given basic template with comments in

@@ -7,15 +7,17 @@ title: HWpar
 
 See also the [lecture](./Lpar.md)
 
-Deadline: 22th May 2025 9:00
-
 For both tasks, submit your source code and the result, when run on
 whole dataset (`/tasks/par/dataset`). The code is expected to use the
-Apache beam framework presented in the lecture. Submit directory is
-`/submit/par/`
-
+Apache beam framework presented in the lecture. 
 Ideally, you should run the code locally on your computer or try some
 cloud providers if you want.
+
+* Submit directory is `/submit/par/`
+* Outline of the protocol is in `/tasks/par/protocol.txt`
+* Submit files `task_a.py` and `task_b.py` with your programs, `task_a.out` with your output for task A
+* Write the output for task B to the protocol.
+* Also include a short description of your algorithm in both tasks to the protocol.
 
 ### Task A
 
