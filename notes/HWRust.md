@@ -300,11 +300,15 @@ rstest = "0.26.1" # or a more recent version
 In the `tests` module, create a `rstest` fixture function `sun` that returns a `Star` with the name `Sun`:
 
 ```rs
-use rstest::fixture;
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rstest::fixture;
 
-#[fixture]
-pub fn sun() -> Star {
-    // do something
+    #[fixture]
+    fn sun() -> Star {
+        // do something
+    }
 }
 ```
 
@@ -331,13 +335,18 @@ You can get inspired from the main page of the [`rstest` crate documentation](ht
 Write a unit test to test the constructor `Star::new` using the fixture `sun` as an expected result:
 
 ```rs
-use rstest::rstest;
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use rstest::fixture;
+    use rstest::rstest;
 
-// Your fixture function before...
+    // Your fixture function before...
 
-#[rstest]
-fn new(sun: Star) { // sun is the name of the fixture function, rstest will handle that for you
-    // do something
+    #[rstest]
+    fn new(sun: Star) { // sun is the name of the fixture function, rstest will handle that for you
+        // do something
+    }
 }
 ```
 
