@@ -170,9 +170,11 @@ weeks:
     topics:
       - for: ALL
         lecturer: Victor Epain
-        topic: Rust
-        show: 0
-        items: []
+        topic: Introduction to Rust
+        show: 1
+        items:
+          - { type: notes, file: LRust, name: "Lecture" }
+          - { type: notes, file: HWRust, name: "Homework" }
 
   - date: "2026-05-14"
     note: "No lecture"

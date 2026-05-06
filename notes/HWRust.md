@@ -7,7 +7,7 @@ use_mermaid: true
 {:toc}
 
 {% capture admocontent %}
-See also the [lecture](./LRust.md).
+Come back to the [lecture](./LRust.md).
 {% endcapture %}
 
 {% include admonition.html type="important" content=admocontent %}
@@ -24,11 +24,30 @@ A space map represents space bodies, linked with space routes:
 
 {% capture admocontent %}
 
-Your objective is to at least define a star, an asteroid field and a planet.
-If you can, complete also the last section: the space map itself.
+Your objective is to at least define a star, an asteroid field and a planet (do TASK A, B and C).
+If you can, complete also the last section: the space map itself (TASK D).
+
+Returned files:
+
+* You have to answer to the questions via the `protocol.txt` file.
+* You will have to copy your project folder `intro-rs` to the final return directory under your ID.
+
+**Do not erase the code you have written in the `main` function. Fix it instead.**
 
 {% endcapture %}
 {% include admonition.html type="important" subtitle="Your tasks" content=admocontent %}
+
+{% capture admocontent %}
+
+You have two types of blocs:
+
+* task bloc: you need to code
+* question bloc: (copied in `protocol.txt`) write the answer in your `protocol.txt` file
+
+Some information and tip blocs are collapsible, they provide to you additional information you can skip.
+
+{% endcapture %}
+{% include admonition.html type="tip" subtitle="How to read this page" content=admocontent %}
 
 ## Configuration of the workspace
 
@@ -81,7 +100,7 @@ Familiarize yourself with the above `cargo` command lines, you will use them reg
 {% endcapture %}
 {% include admonition.html type="important" content=admocontent %}
 
-## Once upon a time, there was a star
+## TASK A - Once upon a time, there was a star
 
 🎶 *[Shooting Stars, Marvellous (1994), Michel Petrucciani Trio](https://youtu.be/kVek4_rmLIc){:target="_blank"}*
 
@@ -220,7 +239,9 @@ Fix the code in `main.rs`.
 
 {% capture admocontent %}
 
-As you already declare the `bodies` module in `main.rs`, you can directly use it `main.rs`
+As you already declare the `bodies` module in `main.rs`, you can directly use it `main.rs`.
+
+Now the `Star` structure is in a different module, you must fix the visibility issues in order to use the `Star` structure and its methods in `main.rs`.
 
 {% endcapture %}
 {% include admonition.html type="tip" content=admocontent %}
@@ -234,17 +255,17 @@ It is already installed on our server, test it via `cargo nextest --version`.
 
 {% capture admocontent %}
 
-In `src/bodies.rs`, create a private test module `tests`.
+In `src/bodies.rs`, create a private test module `tests`:
+
+```rs
+#[cfg(test)]
+mod tests {
+
+}
+```
 
 {% endcapture %}
 {% include admonition.html type="task" content=admocontent %}
-
-{% capture admocontent %}
-
-Refer to the Rust book chapter on [unit tests](https://doc.rust-lang.org/stable/book/ch11-03-test-organization.html#unit-tests){:target="_blank"}.
-
-{% endcapture %}
-{% include admonition.html type="tip" content=admocontent %}
 
 We would like to reuse a `Star` instance in the future test functions.
 The default Rust testing framework is not well suited for what we call a *fixture*.
@@ -276,7 +297,16 @@ rstest = "0.26.1" # or a more recent version
 
 {% capture admocontent %}
 
-In the `tests` module, create a `rstest` fixture function `sun` that returns a `Star` with the name `Sun`.
+In the `tests` module, create a `rstest` fixture function `sun` that returns a `Star` with the name `Sun`:
+
+```rs
+use rstest::fixture;
+
+#[fixture]
+pub fn sun() -> Star {
+    // do something
+}
+```
 
 This fixture must not use the constructor `Star::new`: as `bodies::test` is a submodule of `bodies`, you can instantiate `Star` using its private attribute `name`.
 More details in [Rust book - section Private Function Tests](https://doc.rust-lang.org/book/ch11-03-test-organization.html#private-function-tests){:target="_blank"}.
@@ -298,7 +328,18 @@ You can get inspired from the main page of the [`rstest` crate documentation](ht
 
 {% capture admocontent %}
 
-Write a unit test to test the constructor `Star::new` using the fixture `sun` as an expected result.
+Write a unit test to test the constructor `Star::new` using the fixture `sun` as an expected result:
+
+```rs
+use rstest::rstest;
+
+// Your fixture function before...
+
+#[rstest]
+fn new(sun: Star) { // sun is the name of the fixture function, rstest will handle that for you
+    // do something
+}
+```
 
 {% endcapture %}
 {% include admonition.html type="task" content=admocontent %}
@@ -358,7 +399,7 @@ You cannot directly use the `pretty_assertions::assert_eq!` macro to check if tw
 {% endcapture %}
 {% include admonition.html type="important" subtitle="If you have used pretty_assertions" collapsible=true content=admocontent %}
 
-## Asteroid field
+## TASK B - Asteroid field
 
 🎶 *[The Asteroid Field, Star Wars The Empire Strikes Back (1980), John Williams and the London Symphony Orchestra](https://youtu.be/XNDEljd1cQI){:target="_blank"}*
 
@@ -490,7 +531,7 @@ Change the signature of the `rename` function to accept any type that implements
 {% endcapture %}
 {% include admonition.html type="task" content=admocontent %}
 
-## The planets
+## TASK C - The planets
 
 🎶 *[Monde constraté, Parallèles (2019), Chapelier Fou](https://youtu.be/JE-UvSNlzD8){:target="_blank"}*
 
@@ -613,7 +654,7 @@ If you have succeeded to compile the code and made it works, try to make it more
 {% endcapture %}
 {% include admonition.html type="task" subtitle="Optional task (idiomatic)" collapsible=true content=admocontent %}
 
-## Space: the final frontier
+## TASK D (Optional) - Space: the final frontier
 
 🎶 *[Façades, Glassworks, Philip Glass (1981)](https://youtu.be/yZ438-J1kcs){:target="_blank"}*
 
