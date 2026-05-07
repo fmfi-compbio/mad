@@ -29,7 +29,7 @@ If you can, complete also the last section: the space map itself (TASK D).
 
 Returned files:
 
-* You have to answer to the questions via the `protocol.txt` file.
+* You have to answer to the questions via the `protocol.txt` file (`cp /tasks/rust/protocol.txt ...`)
 * You will have to copy your project folder `intro-rs` to the final return directory under your user ID: `/submit/rust/userid`
 
 On the `vyuka` server:
