@@ -47,7 +47,7 @@ If you can, complete also the last section: the space map itself (TASK D).
 
 Returned files:
 
-* You have to answer to the questions via the `protocol.txt` file (`cp /tasks/rust/protocol.txt ...`)
+* You have to answer to the questions via the `protocol.txt` file (`cp /tasks/rust/protocol.txt ...`) or the markdown version if you prefer (`protocol.md`)
 * You will have to copy your project folder `intro-rs` to the final return directory under your user ID: `/submit/rust/userid`
 
 On the `vyuka` server:
@@ -57,7 +57,7 @@ On the `vyuka` server:
 └── 📂 submit
     └── 📂 rust
         └── 📂 userid
-            ├── 📄 protocol.txt # your answers
+            ├── 📄 protocol.txt # your answers, or the protocol.md
             └── 📂 intro-rs # your code
 ```
 
@@ -71,7 +71,7 @@ On the `vyuka` server:
 You have two types of blocs:
 
 * task bloc: you need to code
-* question bloc: (copied in `protocol.txt`) write the answer in your `protocol.txt` file
+* question bloc: (copied in `protocol.[txt|md]`) write the answer in your protocol file
 
 Some information and tip blocs are collapsible, they provide to you additional information you can skip.
 
