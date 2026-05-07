@@ -52,6 +52,13 @@ Strong conventions, implemented in the default linter `clippy` (get the linter r
 
 ## Startup - begin a new project
 
+{% capture admocontent %}
+
+You will manipulate Cargo in the [practical exercises](./HWRust.md) to create and manage your project.
+
+{% endcapture %}
+{% include admonition.html type="info" content=admocontent %}
+
 ```sh
 cargo new my-project
 cd my-project
@@ -641,19 +648,14 @@ See also the [Rust Book - Recoverable Errors with `Result`](https://doc.rust-lan
 
 ## Structuring a project
 
-Vocabulary:
+### Vocabulary
 
 * **Packages:** A Cargo feature that lets you build, test, and share crates
 * **Crates:** A tree of modules that produces a library or executable
 * **Modules and `use`:** Let you control the organization, scope, and privacy of paths
 * **Paths:** A way of naming an item, such as a struct, function, or module
 
-{% capture admocontent %}
-
-You will manipulate Cargo in the [practical exercises](./HWRust.md) to create and manage your project.
-
-{% endcapture %}
-{% include admonition.html type="info" content=admocontent %}
+### Managing a Rust project with Cargo
 
 Creating a new project:
 
@@ -669,6 +671,8 @@ Produces:
 │   └── 📄 main.rs # main entry point (reserved module)
 └── 📄 Cargo.toml # project metadata (name, version, dependencies, etc.)
 ```
+
+### Modules and visibility levels
 
 When the code is growing, we would like to separate logics into different modules.
 
