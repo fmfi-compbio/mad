@@ -83,9 +83,9 @@ cargo build
 
 {% capture admocontent %}
 
-Unlike `C` or `C++`, we don't need to write the compilation rules in a Makefile, as these are handled automatically by the Rust compiler.
+Unlike `C` or `C++`, we don't need to write the compilation rules in a Makefile, as these are automatically handled by the Rust compiler.
 
-Also, Cargo provides a build process for a release code: `cargo build --release` (longer compilation time but for a better performance).
+Also, Cargo provides a build process for a release code: `cargo build --release` (longer compilation time but for better performances).
 
 {% endcapture %}
 {% include admonition.html type="info" content=admocontent %}
@@ -121,7 +121,7 @@ With the `let` keyword:
 /// ```
 fn main() {
     // A line comment
-    let x = 5; // by default an signed integer on 32bits (i32)
+    let x = 5; // by default a signed integer on 32bits (i32)
     println!("The value of x is: {}", x);
 
     let y: u8 = 10; // types are specified after the `:` token
@@ -758,6 +758,10 @@ In `src/city/mod.rs`:
 mod opera;
 mod house;
 
+// As the module `house` is declared, we can directly use the `House` structure with `house::House`
+// If we want to import directly `House` without everytime writting `house::House` we can do:
+use house::House;
+
 pub struct City { ... }
 
 impl City {
@@ -769,7 +773,7 @@ impl City {
 
     pub fn opera(&self) -> Option<&opera::Opera> { ... }
 
-    pub fn houses(&self) -> &Vec<house::House> { ... }
+    pub fn houses(&self) -> &Vec<House> { ... }
 }
 ```
 
@@ -810,7 +814,7 @@ fn main() {
 
 {% capture admocontent %}
 
-There are other visibility level such as `pub(super)` and `pub(crate)`.
+There are other visibility levels such as `pub(super)` and `pub(crate)`.
 See the [Rust Cheat Sheet - Organizing Code](https://cheats.rs/#organizing-code){:target="_blank"}.
 
 {% endcapture %}
@@ -909,6 +913,24 @@ fn main() {
 }
 ```
 
+Some traits can be *derived* i.e. implemented automatically for a given type.
+
+Examples:
+
+* The `Clone` trait: to be able to clone an instance of your structure
+* The `PartialEq` trait to be able to compare two instances of your structure with `==` and `!=`
+
+```rs
+#[derive(PartialEq, Clone)]  // The derive macro is a procedural macro
+struct Rectangle { ... }
+
+fn main() {
+    let rec1 = Rectangle { ... };
+    let rec2 = rec1.clone(); // method `clone` exists because `Rectangle` implements the `Clone` trait
+    assert!(rec1 == rec2); // it works because `Rectangle` implements the `PartialEq` trait
+}
+```
+
 {% capture admocontent %}
 
 See the [Rust Book - Defining Shared Behavior with Traits](https://doc.rust-lang.org/stable/book/ch10-02-traits.html){:target="_blank"} chapter.
@@ -918,7 +940,15 @@ See the [Rust Book - Defining Shared Behavior with Traits](https://doc.rust-lang
 
 ### Generics
 
-In the above code we can change the function `print_perimeter` by:
+In the above code we can change the function `print_perimeter`:
+
+```rs
+fn print_perimeter(shape: &impl Perimeter) {
+    println!("The perimeter is {}", shape.perimeter());
+}
+```
+
+to:
 
 ```rs
 fn print_perimeter<T: Perimeter>(shape: &T) {
@@ -933,12 +963,16 @@ In that simple example, nothing.
 But in the following:
 
 ```rs
-fn print_perimeter_of_same_shape_types<T: Perimeter>(shape_a: &T, shape_b: &T) { ... }
+fn print_perimeter_of_same_types<T: Perimeter>(shape_a: &T, shape_b: &T) { ... }
 
-fn print_perimeter_of_different_shape_types(shape_a: &impl Perimeter, shape_b: &impl Perimeter) { ... }
+fn print_perimeter_of_different_types(shape_a: &impl Perimeter, shape_b: &impl Perimeter) { ... }
 
-/// Same as above
-fn print_perimeter_of_different_shape_types_prime<T: Perimeter, U: Perimeter>(shape_a: &T, shape_b: &U) { ... }
+/// Same as above with another way of declaring generic bounds
+fn print_perimeter_of_different_types_prime<T, U>(shape_a: &T, shape_b: &U)
+where
+    T: Perimeter, // the where clause is usefull if T or U must implement a lot of traits
+    U: Perimeter,
+{ ... }
 
 
 fn main() {
@@ -946,11 +980,11 @@ fn main() {
     let rec_b = Rectangle { ... }
     let circle = Circle { ... }
 
-    print_perimeter_of_same_shape_types(&rec_a, &rec_b);
-    print_perimeter_of_different_shape_types(&rec_a, &circle);
+    print_perimeter_of_same_types(&rec_a, &rec_b);
+    print_perimeter_of_different_types(&rec_a, &circle);
 
     // Cannot do that, because `Rectangle` and `Circle` are two different types:
-    // print_perimeter_of_same_shape_types(&rec_a, &circle);
+    // print_perimeter_of_same_types(&rec_a, &circle);
 }
 ```
 
@@ -959,6 +993,19 @@ Actually, we have already seen the use of generics with vectors `Vec<T>`:
 ```rs
 let v_of_ints: Vec<i32> = Vec::new();
 let v_of_strings: Vec<String> = Vec::new();
+```
+
+Another useful type from the standard library is `HashMap<K, V>`
+
+```rs
+use std::collections::HashMap; // Require to import the `HashMap` type
+
+fn main() {
+    // Same for HashMap<K, V>
+    let map_of_ints: HashMap<String, i32> = HashMap::new();
+    // Same but without declaring the type:
+    let map_of_ints = HashMap::<String, i32>::new();
+}
 ```
 
 {% capture admocontent %}
