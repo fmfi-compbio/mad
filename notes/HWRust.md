@@ -18,9 +18,27 @@ We would like to represent a space map in Rust.
 
 A space map represents space bodies, linked with space routes:
 
-* A space body can be a star, an asteroid field or a planet. They all have a name.
-* An asteroid field has also a resource interest, which can be high, medium or low.
-* A planet can be habitable or not. If it is habitable, we have the number of inhabitants. If not, it can be because of the atmosphere, the climate, or the wild fauna.
+A space body can be:
+
+* a star ⭐
+* an asteroid field 🪨
+* or a planet 🪐
+
+Each space body is identified with a name.
+
+An asteroid field 🪨 has also a resource interest, which can be:
+
+* high
+* medium
+* or low
+
+A planet 🪐 can be habitable or not.
+
+* If it is habitable, we have the number of inhabitants.
+* If not, it can be because of:
+  * the atmosphere
+  * the climate
+  * or the wild fauna
 
 {% capture admocontent %}
 
