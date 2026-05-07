@@ -208,7 +208,7 @@ A function can also return a value, where the returned type is specified after t
 
 ```rs
 fn add_one(x: i32) -> i32 {
-    x + 1
+    x + 1 // no `;` token
 }
 ```
 
@@ -218,7 +218,7 @@ In the case of a premature return, we can use the `return` keyword:
 ```rs
 fn add_one_if_even(x: i32) -> i32 {
     if x % 2 == 0 {
-        return x + 1
+        return x + 1; // need to use `;` for `return` statement
     }
     x
 }
