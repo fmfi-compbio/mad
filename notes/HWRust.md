@@ -57,7 +57,7 @@ On the `vyuka` server:
 └── 📂 submit
     └── 📂 rust
         └── 📂 userid
-            ├── 📄 protocol.txt # your answers, or the protocol.md
+            ├── 📄 protocol.txt # your answers, or the protocol.md file
             └── 📂 intro-rs # your code
 ```
 
@@ -473,7 +473,7 @@ To avoid using long test function names, you can split the `tests` module into t
 * `tests::star` for the `Star` tests
 * `tests::asteroid_field` for the `AsteroidField` tests
 
-In that case, instead of having two functions `tests::test_name_star` and `tests::test_name_asteroid_field`, you can have two functions `tests::star::test_name` and `tests::asteroid_field::test_name`.
+In that case, instead of having two functions `tests::name_star` and `tests::name_asteroid_field`, you can have two functions `tests::star::name` and `tests::asteroid_field::name`.
 
 It is advised to import the `rstest` and `pretty_assertions` in each of the module `tests::star` and `tests::asteroid_field`, and avoid importing them in the parent `tests` module.
 The only import cascade you may want to do is `use super::*;` in the `tests`, `tests::star` and `tests::asteroid_field` modules.
@@ -522,7 +522,7 @@ See also the [Use borrowed types for arguments idiom in the Rust Design Patterns
 As you may have noticed, the `Star` and `AsteroidField` structures are sharing behaviour: they have a name we can access with the `name` method.
 
 If you go back to `main.rs`, you see that the function `print_name` takes as argument a `Star`.
-We would like it also accept an `AsteroidField`.
+We would like it also accepts an `AsteroidField`.
 
 {% capture admocontent %}
 
@@ -581,7 +581,7 @@ If not, we can provide the reason why they are not habitable: because of the atm
 
 {% capture admocontent %}
 
-Declare a structure `Planet` to represent planets a `name` attribute and a `habitability` attribute of type `Habitability`.
+Declare a structure `Planet` to represent planets with a `name` attribute and a `habitability` attribute of type `Habitability`.
 The type for the causes of not being habitable is `UninhabitableCause`.
 
 As for the `Star` and `AsteroidField` structures, implement the `NamedEntity` trait for the `Planet` structure, and implement a constructor.
@@ -593,7 +593,7 @@ Add a getter and a setter for the `habitability` attribute.
 
 {% capture admocontent %}
 
-We know the habitable planets does not have a population higher than 100 billion, but know Earth has approximately 8 billion inhabitants.
+We know the habitable planets don't have a population higher than 100 billion, but we know Earth has approximately 8 billion inhabitants.
 What type should we use to represent the number of inhabitants?
 
 {% endcapture %}
@@ -607,7 +607,7 @@ He was coding a method `Planet::set_number_of_inhabitants` that sets the number 
 * if the planet is habitable, the method must return the previous number of inhabitants as a (positive) result;
 * if the planet is not habitable, the method must return an error containing the value of `UninhabitableCause`.
 
-Unfortunately, it did not succeed to build the code.
+Unfortunately, he did not succeed to build the code.
 
 ```rs
 pub fn set_number_of_inhabitants(
@@ -663,7 +663,7 @@ mod planet {
     }
 
     #[rstest]
-    fn test_set_number_of_inhabitants(mut earth: Planet) {
+    fn set_number_of_inhabitants(mut earth: Planet) {
         assert_eq!(
             earth.set_number_of_inhabitants(9_000_000_000),
             Ok(8_000_000_000)
@@ -715,7 +715,7 @@ graph LR
 ### The `SpaceMap` type
 
 There are many ways to implement a graph.
-We will use the adjacency list structure: for each space body (vertex) we associate the list of the other spaces bodies we can reach (neighbours).
+We will use the adjacency list structure: for each space body (vertex) we associate the list of the other spaces bodies we can reach from it (neighbours).
 
 In what follow, we will consider the space bodies to have distinct names.
 It follows that we will associate to each of the name a list of names.
@@ -727,7 +727,7 @@ Create and define a module `graph` in the `src` directory in which you will defi
 The attribute `neighbours` corresponds to an object that maps a space body name to a list of an unknown number of names.
 Use the appropriate types.
 
-The attribute corresponds to an object that maps a space body name to that space body.
+The attribute `bodies` corresponds to an object that maps a space body's name to that space body.
 
 {% endcapture %}
 {% include admonition.html type="task" content=admocontent %}
@@ -756,13 +756,13 @@ An idiomatic way can be to map each name to a unique integer acting as an index.
 
 As for the space bodies, we would like to implement a constructor for the `SpaceMap` type.
 
-You have probably already noticed that, unlike spatial objects, `SpaceMap` is a container, and that we would expect a new container to be empty.
+You have probably already noticed that, unlike space bodies, `SpaceMap` is a container, and that we would expect a new container to be empty.
 The `SpaceMap` is a composition of two other containers (`neighbours` and `bodies` are both maps), and a `SpaceMap` is new i.e. empty if and only if both `neighbours` and `bodies` are empty.
 A *default* container is an empty container.
 So a `SpaceMap` is a default one if and only if both `neighbours` and `bodies` are default.
 
 The above statement implies a cascade structure: a cascade of "default" behaviours.
-In rust, the default behaviour is implemented using the `Default` trait.
+In rust, the default behaviour is implemented via the `Default` trait.
 
 {% capture admocontent %}
 
@@ -788,7 +788,7 @@ Implement a `SpaceMap::add_body` method that borrows a space body, adds it to th
 
 Implement a `SpaceMap::add_route` method that borrows two space bodies and add the corresponding routes.
 
-Note that if there is a route to a space body `A` to another space body `B`, there is also a route to `B` to `A` (undirected graph).
+Note that if there is a route from a space body `A` to another space body `B`, there is also a route from `B` to `A` (undirected graph).
 
 In a first time, you can consider the names exist in the maps' keys.
 
